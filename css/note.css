@@ -1,0 +1,13 @@
+.ws--note {
+  background: #ffc000;
+  color: rgba(0,0,0,0.75);
+  font-size: 1.6rem;
+  min-height: 3rem;
+  line-height: 2.2rem;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  padding: 0.4rem 1rem;
+  box-sizing: border-box;
+}

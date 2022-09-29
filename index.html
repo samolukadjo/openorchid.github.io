@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+  <title data-l10n-id="brandName"></title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Orchid" />
+  <meta property="og:title" content="Home Page" />
+  <meta property="og:description" content="Discover new things." />
+  <meta property="og:url" content="https://orchidfoss.github.io/" />
+  <meta property="og:image" content="images/thumbnail.svg" />
+  <meta name="title" content="Orchid" />
+  <meta name="description" content="Discover new things." />
+  <meta name="keywords" content="MortCodesWeb, Orchid, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0" />
+  <meta property="twitter:card" content="website">
+  <meta property="twitter:site" content="@orchid" />
+  <meta property="twitter:title" content="Orchid" />
+  <meta property="twitter:description" content="Discover new things." />
+  <meta property="twitter:url" content="https://orchidfoss.github.io/" />
+  <meta property="twitter:image" content="images/thumbnail.svg" />
+  <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" href="css/html.css">
+  <link rel="stylesheet" href="css/note.css">
+  <link rel="stylesheet" href="css/offers_banner.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/content.css">
+  <link rel="stylesheet" href="css/quick_search.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script defer src="js/components/home.js"></script>
+  <script defer src="js/components/posters.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/service_worker.js"></script>
+  <script defer src="js/content.js"></script>
+  <script defer src="js/quick_search.js"></script>
+  <script defer src="js/languages.js"></script>
+
+  <!-- Localization -->
+  <script src="js/l10n.js"></script>
+  <meta name="defaultLanguage" content="en-US">
+  <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+  <link rel="localization" href="locales/main.{locale}.properties">
+</head>
+<body>
+  <div class="ws--note" data-l10n-id="website-not-finished"></div>
+
+  <div class="ws--offers-banner" id="service-worker-dialog">
+    <div>
+      <h1 data-l10n-id="sw-title"></h1>
+      <p data-l10n-id="sw-detail"></p>
+      <ul>
+        <li data-l10n-id="sw-feature1"></li>
+        <li data-l10n-id="sw-feature2"></li>
+        <li data-l10n-id="sw-feature3"></li>
+      </ul>
+      <menu>
+        <a href="#" class="ws--button" data-l10n-id="privacyPolicy"></a>
+      </menu>
+    </div>
+    <div>
+      <menu>
+        <button class="recommend" id="service-worker-dialog-allow" data-l10n-id="yes"></button>
+        <button id="service-worker-dialog-deny" data-l10n-id="no"></button>
+      </menu>
+    </div>
+  </div>
+
+  <header class="ws--header">
+    <a href="#" class="home"></a>
+    <a href="#" class="tab-skip" data-l10n-id="header-skipToContent"></a>
+    <ul>
+      <li><a href="#" data-l10n-id="header-products"></a></li>
+      <li><a href="#" data-l10n-id="header-services"></a></li>
+      <li><a href="#" data-l10n-id="header-store"></a></li>
+      <li><a href="#" data-l10n-id="header-contacts"></a></li>
+      <li><a href="#" data-l10n-id="header-about"></a></li>
+    </ul>
+    <menu type="toolbar">
+      <a href="#" class="ws--button recommend" data-l10n-id="header-getOS"></a>
+      <a href="#" data-icon="shopping-cart"></a>
+      <a href="#" data-icon="alarm-clock"></a>
+      <a href="#quick-search" data-icon="search"></a>
+      <a href="#" data-icon="options"></a>
+    </menu>
+  </header>
+
+  <main class="ws--content" id="content"></main>
+
+  <div class="ws--quick-search" id="quick-search">
+    <div class="spacer">
+      <h1 data-icon="search" data-l10n-id="quick-search"></h1>
+      <form action="" id="quick-search-form">
+        <input type="text" data-l10n-id="type-here-to-search" id="quick-search-input" />
+        <menu id="quick-search-results"></menu>
+      </form>
+    </div>
+  </div>
+
+  <footer class="ws--footer">
+    <div class="container">
+      <div class="row">
+        <img src="images/logo_monochrome.svg" alt="">
+      </div>
+      <div class="row center">
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-products"></h4>
+          <ul>
+            <li><a href="#" data-l10n-id="footer-products-os"></a></li>
+            <li><a href="#" data-l10n-id="footer-products-webstore"></a></li>
+            <li><a href="#" data-l10n-id="footer-products-weather"></a></li>
+            <li><a href="#" data-l10n-id="footer-products-newspaper"></a></li>
+            <li><a href="#" data-l10n-id="footer-products-maps"></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-llc"></h4>
+          <ul>
+            <li><a href="#" data-l10n-id="footer-llc-joinUs"></a></li>
+            <li><a href="#" data-l10n-id="footer-llc-contactUs"></a></li>
+            <li><a href="#" data-l10n-id="footer-llc-donate"></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-support"></h4>
+          <ul>
+            <li><a href="#" data-l10n-id="footer-support-getHelp"></a></li>
+            <li><a href="#" data-l10n-id="footer-support-sendFeedback"></a></li>
+            <li><a href="#" data-l10n-id="footer-support-reportBugs"></a></li>
+            <li><a href="#" data-l10n-id="footer-support-tour"></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-developers"></h4>
+          <ul>
+            <li><a href="#" data-l10n-id="footer-developers-badge"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-betas"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-nightly"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-libraries"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-tools"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-sdk"></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-socialMedia"></h4>
+          <div class="social-media">
+            <a href="#" data-icon="twitter" data-l10n-id="footer-socialMedia-twitter"></a>
+          </div>
+        </div>
+      </div>
+      <div class="row horizontal">
+        <div class="bottom-wrapper">
+          <div class="links">
+            <p data-l10n-id="copyright"></p>
+            <div class="footer-row">
+              <ul>
+                <li><a href="#" data-l10n-id="termsOfService"></a></li>
+                <li><a href="#" data-l10n-id="privacyPolicy"></a></li>
+                <li><a href="#" data-l10n-id="legalLicenses"></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="languages">
+            <p data-l10n-id="footer-languages"></p>
+            <select name="" id="languages"></select>
+          </div>
+        </div>
+        <div class="footer-row">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7034928554835327" crossorigin="anonymous"></script>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

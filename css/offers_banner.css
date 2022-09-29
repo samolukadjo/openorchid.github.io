@@ -1,0 +1,71 @@
+.ws--offers-banner {
+  width: 100%;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+  display: none;
+  background: var(--banner-background);
+  flex-wrap: wrap;
+  font-size: 1.6rem;
+  --accent-color: var(--banner-text-color);
+  --accent-color-text: #fff;
+}
+
+.ws--offers-banner.visible {
+  display: flex;
+}
+
+.ws--offers-banner > div {
+  min-width: 260px;
+  position: relative;
+  padding: 0 0 5rem;
+}
+
+.ws--offers-banner > div:first-child {
+  flex: 1;
+}
+
+.ws--offers-banner h1 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--banner-text-color);
+  margin: 0;
+}
+
+.ws--offers-banner p {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--banner-text-color);
+  margin: 0;
+}
+
+.ws--offers-banner menu {
+  width: 100%;
+  height: 5rem;
+  margin: 0;
+  padding: 1rem 0 0;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+
+.ws--offers-banner div:last-child menu {
+  justify-content: end;
+}
+
+.ws--offers-banner div:first-child menu button {
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
+}
+
+.ws--offers-banner div:last-child menu button {
+  -moz-margin-start: 1rem;
+  margin-inline-start: 1rem;
+}
+
+@media screen and (min-width: 1280px) {
+  .ws--offers-banner {
+    padding: 5rem 3rem;
+  }
+}

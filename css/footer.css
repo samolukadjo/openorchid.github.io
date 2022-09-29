@@ -1,0 +1,228 @@
+.ws--footer {
+  margin: 0;
+  padding: 1.5rem 0;
+  width: 100%;
+  background: var(--footer-background);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ws--footer > .container {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.ws--footer p {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--footer-text-color);
+  margin: 3rem 0 1rem;
+  width: 100%;
+}
+
+.ws--footer .row {
+  display: inline-flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 0 0 3rem;
+}
+
+.ws--footer .row:last-child {
+  margin: 0;
+}
+
+.ws--footer .row.center {
+  justify-content: center;
+}
+
+.ws--footer .row.horizontal {
+  border-top: solid 0.1rem rgba(255,255,255,0.125);
+}
+
+.ws--footer .row img {
+  height: 5rem;
+}
+
+.ws--footer .footer-col {
+  width: 20%;
+  min-width: 290px;
+}
+
+.ws--footer .footer-col h4 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--footer-header-color);
+  text-transform: uppercase;
+  margin: 3rem 0 1rem;
+}
+
+.ws--footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ws--footer ul li {
+  list-style: none;
+  margin-bottom: 1rem;
+  text-align: start;
+  pointer-events: none;
+}
+
+.ws--footer ul li:last-child {
+  margin-bottom: 0;
+}
+
+.ws--footer ul li:after {
+  content: '';
+  font-size: 1.6rem;
+  font-family: 'gaia-icons';
+  -moz-margin-start: 0.5rem;
+  margin-inline-start: 0.5rem;
+  color: var(--footer-text-color);
+  transition: margin 0.3s cubic-bezier(0, 0, 0, 2);
+}
+html[dir="ltr"] .ws--footer ul li:after {
+  content: 'forward';
+}
+html[dir="rtl"] .ws--footer ul li:after {
+  content: 'back';
+}
+
+.ws--footer ul li:hover:after {
+  -moz-margin-start: 1rem;
+  margin-inline-start: 1rem;
+  font-weight: bold;
+}
+
+.ws--footer ul li > a {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--footer-text-color);
+  text-decoration: none;
+  display: inline-block;
+  pointer-events: all;
+}
+
+.ws--footer ul li > a:hover {
+  text-decoration: underline;
+}
+
+.ws--footer .social-media {
+  display: flex;
+  width: 100%;
+}
+
+.ws--footer .social-media > a {
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  background: var(--footer-text-color);
+  color: var(--footer-background);
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.ws--footer .social-media > a {
+  margin: 0;
+  -moz-margin-end: 0.5rem;
+  margin-inline-end: 0.5rem;
+}
+
+.ws--footer .social-media > a:last-child {
+  -moz-margin-end: 0;
+  margin-inline-end: 0;
+}
+
+.ws--footer .social-media > a:before {
+  font-size: 2rem;
+}
+
+.ws--footer .footer-row {
+  width: 100%;
+}
+
+.ws--footer .bottom-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.ws--footer .bottom-wrapper > .links {
+  flex: 1;
+  width: 100%;
+  min-width: 290px;
+}
+
+.ws--footer .bottom-wrapper > .languages {
+  width: 290px;
+  position: relative;
+}
+
+.ws--footer .bottom-wrapper > .languages:before {
+  content: 'web';
+  font-family: 'gaia-icons';
+  position: absolute;
+  top: 5rem;
+  width: 290px;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 2rem;
+  display: block;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  text-align: end;
+  pointer-events: none;
+  color: var(--footer-text-color);
+}
+
+.ws--footer .bottom-wrapper > .languages > p {
+  margin: 2rem 0 0.5rem;
+}
+
+.ws--footer .bottom-wrapper > .languages > select {
+  width: 100%;
+  height: 4rem;
+  line-height: 4rem;
+  border-radius: 1rem;
+  border: none;
+  background: var(--footer-background);
+  border: solid 0.1rem #858585;
+  color: transparent;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-weight: normal;
+  text-shadow: 0 0 0 var(--footer-text-color);
+}
+
+@media screen and (min-width: 800px) {
+  .ws--footer .footer-row ul {
+    display: flex;
+    margin: 1rem 0;
+  }
+
+  .ws--footer .footer-row ul li {
+    margin: 0;
+    -moz-margin-end: 2rem;
+    margin-inline-end: 2rem;
+  }
+
+  .ws--footer .footer-row ul li:last-child {
+    -moz-margin-end: 0;
+    margin-inline-end: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .ws--footer > .container {
+    padding: 4.8rem 6.4rem;
+  }
+}
