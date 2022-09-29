@@ -44,6 +44,8 @@ html, body {
   background: var(--background);
   font-family: var(--font-families);
   accent-color: var(--accent-color);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 button,
@@ -70,25 +72,30 @@ button:hover,
 
 button:active
 .ws--button:active {
-  background: var(--accent-color) linear-gradient(0deg, rgba(0,0,0,0.125), rgba(0,0,0,0.125));
+  background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.125), rgba(255,255,255,0.125));
 }
 
 button.recommend,
 .ws--button.recommend {
   background: var(--accent-color);
   color: var(--accent-color-text);
+  border: none;
 }
 
 button.recommend:hover,
 .ws--button.recommend:hover {
-  background: var(--accent-color) linear-gradient(0deg, rgba(0,0,0,0.125), rgba(0,0,0,0.125));
+  background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.125), rgba(255,255,255,0.125));
 }
 
 button.recommend:active,
 .ws--button.recommend:active {
-  background: var(--accent-color) linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25));
+  background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.25), rgba(255,255,255,0.25));
 }
 
 button, select, input {
   font-family: var(--font-families);
+}
+
+.pointerless {
+  pointer-events: none;
 }

@@ -6,7 +6,11 @@
 
   window.addEventListener('load', function() {
     navigator.mozL10n.language.code = selectedLanguage;
-    languageSelector.value = selectedLanguage;
+    if (selectedLanguage) {
+      languageSelector.value = selectedLanguage;
+    } else {
+      languageSelector.value = 'en-US';
+    }
   });
 
   var client = new XMLHttpRequest();

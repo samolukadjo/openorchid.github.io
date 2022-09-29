@@ -1,0 +1,115 @@
+html, body {
+  --background: #000;
+  --background-plus: #212121;
+  --header-background: rgba(0,0,0,0.5);
+  --footer-background: #101010;
+  --text-color: #e7e7e7;
+  --logo: url(/images/logo.svg);
+}
+
+.preview {
+  width: 100%;
+  height: calc(100vw / 1.75);
+  position: relative;
+  margin: 0;
+}
+
+.preview > img,
+.preview > video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.preview.with-context {
+  overflow: hidden;
+}
+
+.preview.with-context:nth-child(2n) {
+  background: #101010;
+}
+
+.preview.with-context > img,
+.preview.with-context > video {
+  object-fit: cover;
+}
+
+.preview.with-context.left > img,
+.preview.with-context.left > video {
+  transform: translateX(-50%);
+  mask-image: linear-gradient(to right, white 50%, transparent);
+  -webkit-mask-image: linear-gradient(to right, white 50%, transparent);
+}
+
+.preview.with-context.right > img,
+.preview.with-context.right > video {
+  transform: translateX(50%);
+  mask-image: linear-gradient(to left, white, transparent);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+
+.preview.with-context > p {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-size: 5vw;
+  font-weight: normal;
+  line-height: 5.5vw;
+  display: flex;
+  align-items: center;
+  color: #80c0ff;
+  margin: 0;
+  text-align: center;
+}
+
+.preview.with-context.left > p {
+  left: 50%;
+}
+
+.preview.with-context.right > p {
+  left: 0;
+}
+
+.preview.with-context[data-scroll-animate] > p {
+  transition: all 1s cubic-bezier(0.2, 0.9, 0.1, 1) 0.25s;
+  opacity: 0;
+  transform: translateY(128px);
+}
+
+.preview.with-context[data-scroll-animate].visible > p {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.context {
+
+}
+
+@media screen and (orientation: landscape) {
+  .preview {
+    width: 100%;
+    height: calc(100vh - 5rem);
+  }
+}
+
+@media screen and (orientation: landscape) and (min-width: 1280px) {
+  .preview {
+    width: 90vw;
+    height: calc(90vh - 5rem);
+    margin: calc(5vh - (5rem / 2)) 5vw 3rem;
+  }
+
+  .preview.with-context {
+    border-radius: 1.5rem;
+  }
+
+  .preview.with-context:nth-child(2n) {
+    background: transparent;
+  }
+}

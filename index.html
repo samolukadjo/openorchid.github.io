@@ -29,13 +29,11 @@
   <link rel="stylesheet" href="css/content.css">
   <link rel="stylesheet" href="css/quick_search.css">
   <link rel="stylesheet" href="css/footer.css">
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script defer src="js/components/home.js"></script>
-  <script defer src="js/components/posters.js"></script>
+  <link rel="stylesheet" href="css/animated/learn_more.css">
   <script defer src="js/main.js"></script>
   <script defer src="js/service_worker.js"></script>
   <script defer src="js/content.js"></script>
+  <script defer src="js/gfx_effects.js"></script>
   <script defer src="js/quick_search.js"></script>
   <script defer src="js/languages.js"></script>
 
@@ -70,8 +68,8 @@
   </div>
 
   <header class="ws--header">
-    <a href="#" class="home"></a>
-    <a href="#" class="tab-skip" data-l10n-id="header-skipToContent"></a>
+    <a href="/" class="home"></a>
+    <a href="#content" class="tab-skip" data-l10n-id="header-skipToContent"></a>
     <ul>
       <li><a href="#" data-l10n-id="header-products"></a></li>
       <li><a href="#" data-l10n-id="header-services"></a></li>
@@ -80,7 +78,7 @@
       <li><a href="#" data-l10n-id="header-about"></a></li>
     </ul>
     <menu type="toolbar">
-      <a href="#" class="ws--button recommend" data-l10n-id="header-getOS"></a>
+      <a href="?p=orchid" class="ws--button recommend" data-l10n-id="header-getOS"></a>
       <a href="#" data-icon="shopping-cart"></a>
       <a href="#" data-icon="alarm-clock"></a>
       <a href="#quick-search" data-icon="search"></a>

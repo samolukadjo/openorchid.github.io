@@ -7,7 +7,7 @@
   flex-wrap: wrap;
   font-size: 1.6rem;
   --accent-color: var(--banner-text-color);
-  --accent-color-text: #fff;
+  --accent-color-text: rgba(255,255,255,0.75);
 }
 
 .ws--offers-banner.visible {

@@ -1,0 +1,1 @@
+var posters = content.querySelector('.posters');
