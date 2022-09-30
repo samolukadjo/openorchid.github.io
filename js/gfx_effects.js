@@ -20,7 +20,7 @@
       });
 
       parallaxAnimation.forEach(function(element) {
-        var y = root.scrollTop - element.parentElement.offsetTop;
+        var y = (root.scrollTop - element.parentElement.offsetTop) + (element.parentElement.offsetHeight / 3);
         var intensity = (element.parentElement.dataset.scrollParallax || 0);
 
         element.style.transform = 'translateY(' + (y * intensity) + 'px)';

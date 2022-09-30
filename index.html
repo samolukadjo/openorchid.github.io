@@ -8,7 +8,7 @@
   <title data-l10n-id="brandName"></title>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Orchid" />
-  <meta property="og:title" content="Home Page" />
+  <meta property="og:title" content="Website" />
   <meta property="og:description" content="Discover new things." />
   <meta property="og:url" content="https://orchidfoss.github.io/" />
   <meta property="og:image" content="images/thumbnail.svg" />
@@ -27,6 +27,9 @@
   <link rel="stylesheet" href="css/offers_banner.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/content.css">
+  <link rel="stylesheet" href="css/posters.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/article.css">
   <link rel="stylesheet" href="css/quick_search.css">
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/animated/learn_more.css">
@@ -42,6 +45,7 @@
   <meta name="defaultLanguage" content="en-US">
   <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
   <link rel="localization" href="locales/main.{locale}.properties">
+  <link rel="localization" href="locales/changelog.{locale}.properties">
 </head>
 <body>
   <div class="ws--note" data-l10n-id="website-not-finished"></div>
@@ -78,7 +82,7 @@
       <li><a href="#" data-l10n-id="header-about"></a></li>
     </ul>
     <menu type="toolbar">
-      <a href="?p=orchid" class="ws--button recommend" data-l10n-id="header-getOS"></a>
+      <a href="?p=products/os" class="ws--button recommend" data-l10n-id="header-getOS"></a>
       <a href="#" data-icon="shopping-cart"></a>
       <a href="#" data-icon="alarm-clock"></a>
       <a href="#quick-search" data-icon="search"></a>
@@ -107,7 +111,7 @@
         <div class="footer-col">
           <h4 data-l10n-id="footer-products"></h4>
           <ul>
-            <li><a href="#" data-l10n-id="footer-products-os"></a></li>
+            <li><a href="?p=products/os" data-l10n-id="footer-products-os"></a></li>
             <li><a href="#" data-l10n-id="footer-products-webstore"></a></li>
             <li><a href="#" data-l10n-id="footer-products-weather"></a></li>
             <li><a href="#" data-l10n-id="footer-products-newspaper"></a></li>
@@ -120,6 +124,7 @@
             <li><a href="#" data-l10n-id="footer-llc-joinUs"></a></li>
             <li><a href="#" data-l10n-id="footer-llc-contactUs"></a></li>
             <li><a href="#" data-l10n-id="footer-llc-donate"></a></li>
+            <li><a href="#" data-l10n-id="footer-llc-credits"></a></li>
           </ul>
         </div>
         <div class="footer-col">

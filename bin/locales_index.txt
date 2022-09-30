@@ -1,1 +1,2 @@
+locales/changelog.en-US.properties
 locales/main.en-US.properties

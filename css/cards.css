@@ -1,0 +1,81 @@
+.ws--cards {
+  width: calc(100% - 2rem);
+  display: flex;
+  margin: 1rem auto;
+  flex-wrap: wrap;
+}
+
+.ws--cards > a {
+  width: 25%;
+  min-width: 300px;
+  display: block;
+  font-size: 1.6rem;
+  font-weight: normal;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.ws--cards > a > img {
+  width: calc(100% - 1rem);
+  height: 240px;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 1.5rem;
+}
+
+.ws--cards > a:hover > img {
+  opacity: 0.8;
+}
+
+.ws--cards > a > div h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.ws--cards > a > div p {
+  font-size: 1.6rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+.ws--cards > a > div span {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--accent-color);
+  display: inline-block;
+  text-align: start;
+}
+
+.ws--cards > a > div span:after {
+  content: '';
+  font-size: 1.6rem;
+  font-family: 'gaia-icons';
+  -moz-margin-start: 0.5rem;
+  margin-inline-start: 0.5rem;
+  transition: margin 0.3s cubic-bezier(0, 0, 0, 2);
+}
+html[dir="ltr"] .ws--cards > a > div span:after {
+  content: 'forward';
+}
+html[dir="rtl"] .ws--cards > a > div span:after {
+  content: 'back';
+}
+
+.ws--cards > a:hover > div span:after {
+  -moz-margin-start: 1rem;
+  margin-inline-start: 1rem;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 1280px) {
+  .ws--cards {
+    width: calc(100% - 128px);
+    margin: 48px 64px;
+  }
+
+  .ws--cards > a {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+}

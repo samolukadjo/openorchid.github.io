@@ -1,0 +1,35 @@
+.ws--article {
+  width: calc(100% - 2rem);
+  max-width: 768px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+}
+
+.ws--article .notice {
+  width: 100%;
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+  min-height: 4rem;
+  line-height: 2.2rem;
+  margin: 1rem 0;
+  background: #ffd880;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+.ws--article h1 {
+  font-size: 2.4rem;
+  font-weight: normal;
+  color: var(--accent-color);
+}
+
+.ws--article h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.ws--article img {
+  width: 100%;
+  border-radius: 1rem;
+  background: var(--background-plus);
+}

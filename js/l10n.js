@@ -9,6 +9,17 @@ For any new code use L20n.js located in ./shared/js/intl/l20n.js
 (function(window, undefined) {
   'use strict';
 
+  function EnglishToArabicNumerals(numberString) {
+    var arabicNumerals = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    if (document.dir == 'rtl') {
+      return numberString.replace(/[0-9]/g, function(w) {
+        return arabicNumerals[+w];
+      });
+    } else {
+      return numberString;
+    }
+  }
+
   /* jshint validthis:true */
   function L10nError(message, id, loc) {
     this.name = 'L10nError';
@@ -1969,12 +1980,12 @@ For any new code use L20n.js located in ./shared/js/intl/l20n.js
 
     if (typeof value === 'string') {
       if (!reOverlay.test(value)) {
-        element.textContent = value;
+        element.textContent = EnglishToArabicNumerals(value);
       } else {
         // start with an inert template element and move its children into
         // `element` but such that `element`'s own children are not replaced
         var translation = element.ownerDocument.createElement('template');
-        translation.innerHTML = value;
+        translation.innerHTML = EnglishToArabicNumerals(value);
         // overlay the node with the DocumentFragment
         overlayElement(element, translation.content);
       }

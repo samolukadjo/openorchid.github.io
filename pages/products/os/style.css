@@ -1,0 +1,137 @@
+html, body {
+  --background: #000;
+  --background-plus: #212121;
+  --text-color: #e7e7e7;
+  --logo: url(/images/logo.svg);
+
+  --header-background: rgba(0,0,0,0.5);
+  --footer-background: #101010;
+
+  --href-active: rgba(255,255,255,0.1);
+  --href-hover: rgba(255,255,255,0.05);
+}
+
+.preview {
+  width: 100%;
+  height: calc(100vw / 1.75);
+  position: relative;
+  margin: 0;
+}
+
+.preview > img,
+.preview > video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.preview.with-context {
+  overflow: hidden;
+  background: #000;
+  position: sticky;
+  top: 5rem;
+}
+
+.preview.with-context:nth-child(2n) {
+  background: #101010;
+}
+
+.preview.with-context > img,
+.preview.with-context > video {
+  object-fit: cover;
+}
+
+.preview.with-context {
+  transition: all 0.25s cubic-bezier(0.2, 0.9, 0.1, 1) 0.3s;
+  transform: scale(0.9);
+  filter: blur(16px);
+  opacity: 0;
+}
+
+.preview.with-context.visible {
+  transition: all 0.25s cubic-bezier(0.2, 0.9, 0.1, 1.125) 0.25s;
+  transform: translateX(0);
+  filter: blur(0px);
+  opacity: 1;
+}
+
+.preview.with-context.left > img,
+.preview.with-context.left > video {
+  transform: translateX(-50%) !important;
+  mask-image: linear-gradient(to right, white 50%, transparent);
+  -webkit-mask-image: linear-gradient(to right, white 50%, transparent);
+}
+
+.preview.with-context.right > img,
+.preview.with-context.right > video {
+  transform: translateX(50%) !important;
+  mask-image: linear-gradient(to left, white, transparent);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+
+.preview.with-context > p {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-size: 5vw;
+  font-weight: normal;
+  line-height: 5.5vw;
+  display: flex;
+  align-items: center;
+  color: #80c0ff;
+  margin: 0;
+  text-align: center;
+}
+
+.preview.with-context.left > p {
+  left: 50%;
+}
+
+.preview.with-context.right > p {
+  left: 0;
+}
+
+.preview.with-context[data-scroll-animate] > p {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.preview.with-context[data-scroll-animate].visible > p {
+  transition: opacity 0.3s ease 0.5s;
+  opacity: 1;
+}
+
+@media screen and (orientation: landscape) {
+  .preview {
+    width: 100%;
+    height: calc(100vh - 5rem);
+  }
+}
+
+@media screen and (orientation: landscape) and (min-width: 1280px) {
+  .preview {
+    width: 75vw;
+    height: calc(75vh - 5rem);
+    margin: calc(12.5vh - (5rem / 2)) 12.5vw;
+  }
+
+  .preview.with-context {
+    border-radius: 2.5vw;
+    background: #101010;
+  }
+
+  .preview.with-context:nth-child(2n) {
+    background: #101010;
+  }
+
+  .preview.with-context > p {
+    font-size: 4vw;
+    line-height: 4.5vw;
+  }
+}
