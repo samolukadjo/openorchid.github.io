@@ -1,6 +1,6 @@
 .learn-more {
   width: 100%;
-  height: 8rem;
+  min-height: 6rem;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -14,21 +14,23 @@
 }
 
 .learn-more > img {
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   margin: 1rem;
   position: relative;
   z-index: 1;
 
-  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1) 0.5s, opacity 0.5s ease 0.5s;
+  transition: all 0.5s ease;
   opacity: 0;
-  transform: translateX(128px) rotate(360deg);
+  transform: translateX(128px);
+  filter: blur(16px);
 }
 
 .learn-more.visible > img {
   transition: all 2s cubic-bezier(0.2, 0.9, 0.1, 1) 0.5s, opacity 0.5s ease 0.5s;
   opacity: 1;
-  transform: translateX(0) rotate(0deg);
+  transform: translateX(0);
+  filter: blur(0px);
 }
 
 .learn-more > p {
@@ -36,8 +38,9 @@
   color: var(--text-color);
   -moz-padding-end: 1rem;
   padding-inline-end: 1rem;
+  max-width: 400px;
 
-  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1) 0.5s;
+  transition: all 0.5s ease;
   transform: translateX(-32px);
   mask-image: linear-gradient(to left, white calc(50% - 32px), transparent calc(50% + 32px));
   mask-size: calc(200% + 64px);
@@ -54,8 +57,15 @@
 
 @media screen and (min-width: 1280px) {
   .learn-more {
-    padding: 0 3rem;
+    padding: 0 12.5vw;
     box-sizing: border-box;
+    min-height: 8rem;
+  }
+
+  .learn-more > img {
+    width: 6rem;
+    height: 6rem;
+    margin: 1rem 1.5rem;
   }
 
   .learn-more > p {

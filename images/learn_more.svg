@@ -171,7 +171,7 @@
        inkscape:label="Drop Shadow"
        id="filter854">
       <feFlood
-         flood-opacity="0.498039"
+         flood-opacity="0.25"
          flood-color="rgb(0,0,0)"
          result="flood"
          id="feFlood844" />
@@ -188,7 +188,7 @@
          id="feGaussianBlur848" />
       <feOffset
          dx="0"
-         dy="0.5"
+         dy="1"
          result="offset"
          id="feOffset850" />
       <feComposite
@@ -228,7 +228,7 @@
      y2="100%">
     <stop
        offset="0%"
-       style="stop-color:#00ddff;stop-opacity:1"
+       style="stop-color:#00a0e8;stop-opacity:1"
        id="stop2" />
     <stop
        offset="100%"

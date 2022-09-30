@@ -5,6 +5,7 @@
 
   setInterval(function() {
     var animateOnView = document.querySelectorAll('[data-scroll-animate]');
+    var parallaxAnimation = document.querySelectorAll('[data-scroll-parallax] > *');
 
     document.onscroll = function() {
       animateOnView.forEach(function(element) {
@@ -16,6 +17,13 @@
         } else {
           element.classList.remove('visible');
         }
+      });
+
+      parallaxAnimation.forEach(function(element) {
+        var y = root.scrollTop - element.parentElement.offsetTop;
+        var intensity = (element.parentElement.dataset.scrollParallax || 0);
+
+        element.style.transform = 'translateY(' + (y * intensity) + 'px)';
       });
     };
   }, 1000 / 60);

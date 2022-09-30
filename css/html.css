@@ -45,7 +45,6 @@ html, body {
   font-family: var(--font-families);
   accent-color: var(--accent-color);
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 button,

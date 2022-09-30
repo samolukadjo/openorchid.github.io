@@ -6,7 +6,9 @@
     var scale = 1 + (root.scrollTop / (window.innerHeight / 2));
     var opacity = 1 - (root.scrollTop / (window.innerHeight / 2));
 
-    teaser.style.transform = 'scale(' + scale + ')';
-    teaser.style.opacity = opacity;
+    if (root.scrollTop <= window.innerHeight) {
+      teaser.style.transform = 'scale(' + scale + ')';
+      teaser.style.opacity = opacity;
+    }
   })
 })(window);
