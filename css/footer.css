@@ -84,7 +84,7 @@
   -moz-margin-start: 0.5rem;
   margin-inline-start: 0.5rem;
   color: var(--footer-text-color);
-  transition: margin 0.3s cubic-bezier(0, 0, 0, 2);
+  transition: margin 0.2s ease;
 }
 html[dir="ltr"] .ws--footer ul li:after {
   content: 'forward';
@@ -96,7 +96,6 @@ html[dir="rtl"] .ws--footer ul li:after {
 .ws--footer ul li:hover:after {
   -moz-margin-start: 1rem;
   margin-inline-start: 1rem;
-  font-weight: bold;
 }
 
 .ws--footer ul li > a {

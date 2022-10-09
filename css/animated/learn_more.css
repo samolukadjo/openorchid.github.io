@@ -23,14 +23,14 @@
   transition: all 0.5s ease;
   opacity: 0;
   transform: translateX(128px);
-  filter: blur(16px);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
 }
 
-.learn-more.visible > img {
+.learn-more.visible > img,
+.learn-more:not([data-scroll-animate]) > img {
   transition: all 2s cubic-bezier(0.2, 0.9, 0.1, 1) 0.5s, opacity 0.5s ease 0.5s;
   opacity: 1;
   transform: translateX(0);
-  filter: blur(0px);
 }
 
 .learn-more > p {
@@ -48,7 +48,8 @@
   -webkit-mask-size: calc(200% + 64px);
 }
 
-.learn-more.visible > p {
+.learn-more.visible > p,
+.learn-more:not([data-scroll-animate]) > p {
   transition: all 2s cubic-bezier(0.2, 0.9, 0.1, 1) 0.5s;
   transform: translateX(0);
   mask-position: calc(100%);

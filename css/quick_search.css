@@ -22,6 +22,7 @@
 
 .ws--quick-search h1:before {
   line-height: 3rem;
+  margin-top: 0.4rem;
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
   font-size: 2.4rem;

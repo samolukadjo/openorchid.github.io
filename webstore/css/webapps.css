@@ -1,0 +1,120 @@
+#webapps {
+  padding: 1rem 0;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.webapp {
+  width: 10rem;
+  border-radius: 0.8rem;
+  background: var(--background-plus);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  margin: 0 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.webapp:hover {
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
+  transform: translateY(-0.2rem);
+}
+
+.webapp > .icon-holder {
+  width: 100%;
+  height: 6rem;
+  padding: 1rem 0;
+}
+
+.webapp > .icon-holder img {
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto;
+  display: block;
+}
+
+.webapp > .context {
+  padding: 0 1rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.webapp > .context .title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-color);
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 2.2rem;
+  overflow: hidden;
+}
+
+.webapp > .context .categories {
+  display: flex;
+  overflow: hidden;
+  border-radius: 0.4rem;
+}
+
+.webapp > .context .categories > span {
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin: 0;
+  color: var(--text-color);
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 2.2rem;
+  overflow: hidden;
+  height: 2.2rem;
+  background: var(--background);
+  border-radius: 0.4rem;
+  -moz-margin-end: 0.4rem;
+  margin-inline-end: 0.4rem;
+  padding: 0 0.4rem;
+  box-sizing: border-box;
+  flex: none;
+}
+
+.webapp > .context .author {
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin: 0;
+  color: var(--accent-color);
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 2.2rem;
+  overflow: hidden;
+}
+
+.webapp > .context .author:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  #webapps {
+    padding: 1.5rem;
+  }
+
+  .webapp {
+    width: 12rem;
+  }
+
+  .webapp > .context .title {
+    font-size: 1.6rem;
+  }
+
+  .webapp > .context .categories {
+    font-size: 1.6rem;
+  }
+
+  .webapp > .context .author {
+    font-size: 1.6rem;
+  }
+}

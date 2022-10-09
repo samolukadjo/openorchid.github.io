@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/store_16.png" type="image/x-icon" sizes="16x16">
+  <link rel="shortcut icon" href="images/store_32.png" type="image/x-icon" sizes="24x24 32x32">
+  <link rel="shortcut icon" href="images/store_48.png" type="image/x-icon" sizes="40x40 48x48">
+  <link rel="shortcut icon" href="images/store_64.png" type="image/x-icon" sizes="56x56 64x64">
+  <link rel="shortcut icon" href="images/store_128.png" type="image/x-icon" sizes="84x84 98x98 100x100 112x112 126x126 128x128">
+  <link rel="shortcut icon" href="images/store_256.png" type="image/x-icon" sizes="256x256">
+  <link rel="shortcut icon" href="images/store.svg" type="image/x-icon" sizes="284x284 512x512">
+  <title data-l10n-id="title"></title>
+  <meta name="theme-color" content="var(--background, #e7e7e7)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Orchid Web Store" />
+  <meta property="og:title" content="Website" />
+  <meta property="og:description" content="Explore to find your favorite webapps and games." />
+  <meta property="og:url" content="https://orchidfoss.github.io/webstore/" />
+  <meta property="og:image" content="/images/thumbnail.svg" />
+  <meta name="title" content="Orchid Web Store" />
+  <meta name="description" content="Explore to find your favorite webapps and games." />
+  <meta name="keywords" content="MortCodesWeb, Orchid Web Store, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0" />
+  <meta property="twitter:card" content="website">
+  <meta property="twitter:site" content="@orchid_webstore" />
+  <meta property="twitter:title" content="Orchid Web Store" />
+  <meta property="twitter:description" content="Explore to find your favorite webapps and games." />
+  <meta property="twitter:url" content="https://orchidfoss.github.io/webstore/" />
+  <meta property="twitter:image" content="/images/thumbnail.svg" />
+  <link rel="stylesheet" href="/lib/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" href="/lib/gaia-icons/bidi-helper.css">
+  <link rel="stylesheet" href="css/splashscreen.css">
+  <link rel="stylesheet" href="css/webstore.css">
+  <link rel="stylesheet" href="css/posters.css">
+  <link rel="stylesheet" href="css/webapps.css">
+  <link rel="stylesheet" href="css/webapp_info.css">
+  <link rel="stylesheet" href="/lib/orchid_ui/header.css">
+  <script defer src="/OrchidServices/script.js" type="module"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/languages.js"></script>
+  <script defer src="js/webapps.js"></script>
+
+  <!-- Localization -->
+  <script src="/js/l10n.js"></script>
+  <meta name="defaultLanguage" content="en-US">
+  <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+  <link rel="localization" href="locales/main.{locale}.properties">
+</head>
+<body>
+  <div id="splashscreen">
+    <div class="progress"></div>
+  </div>
+
+  <header class="oui--header">
+    <a href="#" id="back-button" data-icon="back"></a>
+    <a href="#" id="toggle-sidebar-button" data-icon="menu"></a>
+    <a href="#" class="logo"></a>
+    <h1></h1>
+    <form action="" id="searchbox">
+      <input type="text" data-l10n-id="type-here-to-search">
+      <button type="reset" data-icon="close"></button>
+    </form>
+    <a href="#" data-icon="help"></a>
+    <a href="#" id="profile-button">
+      <img src="" alt="" id="profile-avatar">
+    </a>
+    <a href="#" id="options-button" data-icon="options"></a>
+  </header>
+
+  <nav id="sidebar">
+    <a href="/?p=submit/webapp" id="upload-button" data-icon="add">Upload</a>
+
+    <header>Categories</header>
+    <ul>
+      <li><a href="#" data-icon="apps" aria-selected="true">Webapps</a></li>
+      <li><a href="#" data-icon="play">Games</a></li>
+      <li><a href="#" data-icon="addons">Add-Ons</a></li>
+      <li><a href="#" data-icon="library">Libraries</a></li>
+      <li><a href="#" data-icon="languages">Languages</a></li>
+      <li><a href="#" data-icon="wallpaper">Media</a></li>
+      <li><a href="#" data-icon="database">Cloud</a></li>
+      <li><a href="#" data-icon="auth">Security</a></li>
+      <li><a href="#" data-icon="folder">Filesystem</a></li>
+    </ul>
+
+    <header>Personal</header>
+    <ul>
+      <li><a href="#" data-icon="download">Installed</a></li>
+      <li><a href="#" data-icon="settings">Settings</a></li>
+    </ul>
+  </nav>
+
+  <main id="content">
+    <div class="poster">
+      <img src="/images/business-team-discussing-ideas-startup/4380.jpg" alt="">
+      <div>
+        <h1>Use this</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo labore numquam accusamus aliquam, quis deserunt ducimus ipsa rerum pariatur iusto a laborum doloribus quidem harum eos iure quibusdam molestiae optio.</p>
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+    <div id="webapps"></div>
+  </main>
+
+  <div id="webapp">
+    <div id="webapp-banner"></div>
+    <div class="container" id="webapp-card">
+      <header class="app-header">
+        <div class="app-header-info">
+          <img src="" alt="" id="webapp-icon">
+          <div class="context">
+            <div id="webapp-name"></div>
+            <div id="webapp-author"></div>
+            <div class="ratings">
+              <div id="webapp-star-ratings"></div>
+              <div id="webapp-average-rating"></div>
+            </div>
+            <div id="webapp-categories"></div>
+          </div>
+        </div>
+        <div class="options">
+          <button id="webapp-install-button">Install</button>
+          <button id="webapp-uninstall-button">Uninstall</button>
+          <button id="webapp-update-button">Update</button>
+        </div>
+      </header>
+
+      <div class="section">
+        <header>Screenshot</header>
+        <div class="rected-container">
+          <div id="webapp-screenshots"></div>
+        </div>
+        <header>Description</header>
+        <div class="rected-container">
+          <div id="webapp-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam, accusantium maxime voluptatem optio veritatis modi aspernatur cumque expedita obcaecati, quibusdam asperiores? Maiores porro qui saepe aspernatur suscipit fugit perferendis ipsa.</div>
+        </div>
+        <header>Patch Notes</header>
+        <div class="rected-container">
+          <div id="webapp-patch-notes">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt natus error earum harum, libero suscipit alias ipsum delectus atque, labore aliquam maiores beatae obcaecati velit assumenda minus at dignissimos ipsa!</div>
+        </div>
+        <header>Install Size</header>
+        <div class="rected-container">
+          <div id="webapp-install-size"></div>
+        </div>
+        <header>Supported Devices</header>
+        <div class="rected-container">
+          <div id="webapp-supported-devices"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

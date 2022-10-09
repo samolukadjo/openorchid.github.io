@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
   <title data-l10n-id="brandName"></title>
+  <meta name="theme-color" content="var(--background, #e7e7e7)">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Orchid" />
   <meta property="og:title" content="Website" />
@@ -31,14 +32,21 @@
   <link rel="stylesheet" href="css/cards.css">
   <link rel="stylesheet" href="css/article.css">
   <link rel="stylesheet" href="css/quick_search.css">
+  <link rel="stylesheet" href="css/notices.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/videoplayer.css">
   <link rel="stylesheet" href="css/animated/learn_more.css">
+  <script defer src="/OrchidServices/script.js" type="module"></script>
+  <!-- Elastic Scrolling -->
+  <!-- <script defer src="lib/smooth-scrollbar.js"></script>
+  <script defer src="lib/plugins/overscroll.js"></script> -->
   <script defer src="js/main.js"></script>
   <script defer src="js/service_worker.js"></script>
   <script defer src="js/content.js"></script>
   <script defer src="js/gfx_effects.js"></script>
   <script defer src="js/quick_search.js"></script>
   <script defer src="js/languages.js"></script>
+  <script defer src="js/videoplayer.js"></script>
 
   <!-- Localization -->
   <script src="js/l10n.js"></script>
@@ -77,7 +85,7 @@
     <ul>
       <li><a href="#" data-l10n-id="header-products"></a></li>
       <li><a href="#" data-l10n-id="header-services"></a></li>
-      <li><a href="#" data-l10n-id="header-store"></a></li>
+      <li><a href="/webstore/index.html" data-l10n-id="header-store"></a></li>
       <li><a href="#" data-l10n-id="header-contacts"></a></li>
       <li><a href="#" data-l10n-id="header-about"></a></li>
     </ul>
@@ -102,6 +110,17 @@
     </div>
   </div>
 
+  <ul class="ws--notices">
+    <li data-l10n-id="notice-doNotSteal"></li>
+    <li data-l10n-id="notice-doNotMessWithTheCode"></li>
+    <li data-l10n-id="notice-doNotPirate"></li>
+    <li data-l10n-id="notice-bewareOfScammers"></li>
+    <li data-l10n-id="notice-bewareOfMalware"></li>
+    <li data-l10n-id="notice-blockTrolls"></li>
+    <li data-l10n-id="notice-notTwitter"></li>
+    <li data-l10n-id="notice-gecko48"></li>
+  </ul>
+
   <footer class="ws--footer">
     <div class="container">
       <div class="row">
@@ -112,7 +131,7 @@
           <h4 data-l10n-id="footer-products"></h4>
           <ul>
             <li><a href="?p=products/os" data-l10n-id="footer-products-os"></a></li>
-            <li><a href="#" data-l10n-id="footer-products-webstore"></a></li>
+            <li><a href="/webstore/index.html" data-l10n-id="footer-products-webstore"></a></li>
             <li><a href="#" data-l10n-id="footer-products-weather"></a></li>
             <li><a href="#" data-l10n-id="footer-products-newspaper"></a></li>
             <li><a href="#" data-l10n-id="footer-products-maps"></a></li>
@@ -177,5 +196,12 @@
       </div>
     </div>
   </footer>
+
+  <div id="video-player">
+    <video controls id="video-player-content">
+      <source src="" type="video/mp4" id="video-player-source">
+    </video>
+    <button id="video-player-close" data-icon="close"></button>
+  </div>
 </body>
 </html>

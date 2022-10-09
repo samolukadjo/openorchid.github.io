@@ -1,0 +1,228 @@
+.oui--footer {
+  margin: 0;
+  padding: 1.5rem 0;
+  width: 100%;
+  background: var(--background, #e7e7e7);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.oui--footer > .container {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.oui--footer p {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color, #333);
+  margin: 3rem 0 1rem;
+  width: 100%;
+}
+
+.oui--footer .row {
+  display: inline-flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 0 0 3rem;
+}
+
+.oui--footer .row:last-child {
+  margin: 0;
+}
+
+.oui--footer .row.center {
+  justify-content: center;
+}
+
+.oui--footer .row.horizontal {
+  border-top: solid 0.1rem rgba(255,255,255,0.125);
+}
+
+.oui--footer .row img {
+  height: 5rem;
+}
+
+.oui--footer .footer-col {
+  width: 20%;
+  min-width: 290px;
+}
+
+.oui--footer .footer-col h4 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--footer-header-color);
+  text-transform: uppercase;
+  margin: 3rem 0 1rem;
+}
+
+.oui--footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.oui--footer ul li {
+  list-style: none;
+  margin-bottom: 1rem;
+  text-align: start;
+  pointer-events: none;
+}
+
+.oui--footer ul li:last-child {
+  margin-bottom: 0;
+}
+
+.oui--footer ul li:after {
+  content: '';
+  font-size: 1.6rem;
+  font-family: 'gaia-icons';
+  -moz-margin-start: 0.5rem;
+  margin-inline-start: 0.5rem;
+  color: var(--text-color, #333);
+  transition: margin 0.3s cubic-bezier(0, 0, 0, 2);
+}
+html[dir="ltr"] .oui--footer ul li:after {
+  content: 'forward';
+}
+html[dir="rtl"] .oui--footer ul li:after {
+  content: 'back';
+}
+
+.oui--footer ul li:hover:after {
+  -moz-margin-start: 1rem;
+  margin-inline-start: 1rem;
+  font-weight: bold;
+}
+
+.oui--footer ul li > a {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color, #333);
+  text-decoration: none;
+  display: inline-block;
+  pointer-events: all;
+}
+
+.oui--footer ul li > a:hover {
+  text-decoration: underline;
+}
+
+.oui--footer .social-media {
+  display: flex;
+  width: 100%;
+}
+
+.oui--footer .social-media > a {
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  background: var(--text-color, #333);
+  color: var(--background, #e7e7e7);
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.oui--footer .social-media > a {
+  margin: 0;
+  -moz-margin-end: 0.5rem;
+  margin-inline-end: 0.5rem;
+}
+
+.oui--footer .social-media > a:last-child {
+  -moz-margin-end: 0;
+  margin-inline-end: 0;
+}
+
+.oui--footer .social-media > a:before {
+  font-size: 2rem;
+}
+
+.oui--footer .footer-row {
+  width: 100%;
+}
+
+.oui--footer .bottom-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.oui--footer .bottom-wrapper > .links {
+  flex: 1;
+  width: 100%;
+  min-width: 290px;
+}
+
+.oui--footer .bottom-wrapper > .languages {
+  width: 290px;
+  position: relative;
+}
+
+.oui--footer .bottom-wrapper > .languages:before {
+  content: 'web';
+  font-family: 'gaia-icons';
+  position: absolute;
+  top: 5rem;
+  width: 290px;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 2rem;
+  display: block;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  text-align: end;
+  pointer-events: none;
+  color: var(--text-color, #333);
+}
+
+.oui--footer .bottom-wrapper > .languages > p {
+  margin: 2rem 0 0.5rem;
+}
+
+.oui--footer .bottom-wrapper > .languages > select {
+  width: 100%;
+  height: 4rem;
+  line-height: 4rem;
+  border-radius: 1rem;
+  border: none;
+  background: var(--background, #e7e7e7);
+  border: solid 0.1rem #858585;
+  color: transparent;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-weight: normal;
+  text-shadow: 0 0 0 var(--text-color, #333);
+}
+
+@media screen and (min-width: 800px) {
+  .oui--footer .footer-row ul {
+    display: flex;
+    margin: 1rem 0;
+  }
+
+  .oui--footer .footer-row ul li {
+    margin: 0;
+    -moz-margin-end: 2rem;
+    margin-inline-end: 2rem;
+  }
+
+  .oui--footer .footer-row ul li:last-child {
+    -moz-margin-end: 0;
+    margin-inline-end: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .oui--footer > .container {
+    padding: 4.8rem 6.4rem;
+  }
+}

@@ -7,15 +7,6 @@
   z-index: 10;
 }
 
-@supports (backdrop-filter: blur(32px)) {
-  .ws--header {
-    position: sticky;
-    top: 0;
-    background: var(--header-background);
-    backdrop-filter: blur(32px);
-  }
-}
-
 .ws--header .home {
   background: var(--logo) no-repeat center / 100% auto;
   display: block;
@@ -41,7 +32,7 @@
   text-align: center;
   pointer-events: none;
 
-  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transition: all 0.15s linear;
   opacity: 0;
 }
 
@@ -81,6 +72,7 @@
 
 .ws--header ul li > a:hover {
   background: var(--href-hover);
+  text-decoration: underline;
 }
 
 .ws--header ul li > a:active {

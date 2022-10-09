@@ -47,23 +47,6 @@
      inkscape:current-layer="visual" />
   <defs
      id="defs7">
-    <linearGradient
-       id="grad1_0"
-       x1="0%"
-       y1="0%"
-       x2="100%"
-       y2="100%">
-      <stop
-         offset="0%"
-         stop-color="#ddeeff"
-         stop-opacity="1"
-         id="stop2" />
-      <stop
-         offset="100%"
-         stop-color="#98c0d0"
-         stop-opacity="1"
-         id="stop4" />
-    </linearGradient>
     <filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Drop Shadow"
@@ -263,67 +246,28 @@
   </defs>
   <defs
      id="defs14">
-    <linearGradient
-       id="grad2_0"
-       x1="0%"
-       y1="0%"
-       x2="100%"
-       y2="100%">
-      <stop
-         offset="20%"
-         stop-color="#8060c0"
-         stop-opacity="1"
-         id="stop9" />
-      <stop
-         offset="80%"
-         stop-color="#2080ff"
-         stop-opacity="1"
-         id="stop11" />
-    </linearGradient>
-  </defs>
-  <defs
-     id="defs21">
-    <linearGradient
-       id="grad3_0"
-       x1="0%"
-       y1="0%"
-       x2="100%"
-       y2="100%">
-      <stop
-         offset="20%"
-         stop-color="#8060c0"
-         stop-opacity="1"
-         id="stop16" />
-      <stop
-         offset="80%"
-         stop-color="#40c0ff"
-         stop-opacity="1"
-         id="stop18" />
-    </linearGradient>
   </defs>
   <rect
      x="0"
      y="0"
      width="900"
      height="600"
-     fill="url(#grad1_0)"
+     fill="#a6a6a6"
      id="rect23" />
   <g
      transform="translate(900, 0)"
-     id="g27"
-     style="filter:url(#filter937)">
+     id="g27">
     <path
        d="M0 486.7C-70.3 486.1 -140.5 485.5 -186.3 449.7C-232 413.9 -253.2 342.9 -296.3 296.3C-339.4 249.7 -404.4 227.5 -439.8 182.2C-475.2 136.8 -481 68.4 -486.7 0L0 0Z"
-       fill="url(#grad2_0)"
+       fill="#6a6a6a"
        id="path25" />
   </g>
   <g
      transform="translate(0, 600)"
-     id="g31"
-     style="filter:url(#filter949)">
+     id="g31">
     <path
        d="M0 -486.7C55.1 -451.4 110.2 -416.1 160.7 -388C211.2 -360 257 -339.2 309 -309C361 -278.8 419.1 -239.3 449.7 -186.3C480.3 -133.2 483.5 -66.6 486.7 0L0 0Z"
-       fill="url(#grad3_0)"
+       fill="#6a6a6a"
        id="path29" />
   </g>
 </svg>

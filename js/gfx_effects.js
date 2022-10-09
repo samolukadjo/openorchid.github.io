@@ -10,7 +10,7 @@
     document.onscroll = function() {
       animateOnView.forEach(function(element) {
         var y = root.scrollTop + element.getBoundingClientRect().top - window.innerHeight;
-        var height = element.getBoundingClientRect().height;
+        var height = element.getBoundingClientRect().height / 4;
 
         if (root.scrollTop >= (y + height)) {
           element.classList.add('visible');

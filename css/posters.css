@@ -1,6 +1,6 @@
 .ws--poster {
   width: 100%;
-  height: calc(100vw / 1.75);
+  height: calc(100vw / 1.5);
   background: #000;
   position: relative;
   overflow: hidden;
@@ -32,7 +32,7 @@ html[dir="rtl"] .ws--poster > div {
 }
 
 .ws--poster > div img {
-  height: 5rem;
+  height: 4rem;
 }
 
 .ws--poster > div h1 {
@@ -52,18 +52,22 @@ html[dir="rtl"] .ws--poster > div {
 .ws--poster > div a {
   font-size: 1.6rem;
   font-weight: normal;
-  color: var(--background-plus);
+  color: var(--accent-color-text);
   display: inline-block;
   text-align: start;
   text-decoration: none;
-  background: var(--text-color);
+  background: var(--accent-color);
   height: 3.4rem;
   line-height: 3.4rem;
-  border-radius: 2rem;
   font-size: 1.6rem;
   padding: 0 1.5rem;
   box-sizing: border-box;
   margin: 1rem 0 0;
+  border-radius: 1.7rem;
+}
+
+.ws--poster > div a:hover {
+  text-decoration: underline;
 }
 
 .ws--poster > div a:after {
@@ -72,7 +76,9 @@ html[dir="rtl"] .ws--poster > div {
   font-family: 'gaia-icons';
   -moz-margin-start: 0.5rem;
   margin-inline-start: 0.5rem;
-  transition: margin 0.3s cubic-bezier(0, 0, 0, 2);
+  position: relative;
+  display: inline-block;
+  transition: transform 0.2s ease;
 }
 html[dir="ltr"] .ws--poster > div a:after {
   content: 'forward';
@@ -81,10 +87,11 @@ html[dir="rtl"] .ws--poster > div a:after {
   content: 'back';
 }
 
-.ws--poster > div a:hover:after {
-  -moz-margin-start: 1rem;
-  margin-inline-start: 1rem;
-  font-weight: bold;
+html[dir="ltr"] .ws--poster > div a:hover:after {
+  transform: translateX(0.5rem);
+}
+html[dir="rtl"] .ws--poster > div a:hover:after {
+  transform: translateX(-0.5rem);
 }
 
 @media screen and (orientation: landscape) {
@@ -100,10 +107,9 @@ html[dir="rtl"] .ws--poster > div a:after {
 
 @media screen and (orientation: landscape) and (min-width: 1280px) {
   .ws--poster {
-    width: 90vw;
+    width: calc(100% - 128px);
     height: calc(90vh - 5rem);
-    margin: calc(5vh - (5rem / 2)) 5vw;
-    border-radius: 1.5rem;
+    margin: 0 64px 48px;
   }
 
   .ws--poster > div {
@@ -114,14 +120,11 @@ html[dir="rtl"] .ws--poster > div a:after {
     margin: 1rem 0 0;
     height: 4rem;
     line-height: 4rem;
+    border-radius: 2rem;
   }
 
   .ws--poster > div h1 {
     font-size: 5rem;
     font-weight: normal;
-  }
-
-  .ws--poster > div p {
-    font-size: 2.4rem;
   }
 }

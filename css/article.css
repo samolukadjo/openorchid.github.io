@@ -28,8 +28,27 @@
   font-weight: bold;
 }
 
-.ws--article img {
+.ws--article header {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 1rem 0 0;
+  padding: 1rem 0 0;
+  border-top: solid 0.1rem #d8dadd;
+}
+
+.ws--article p {
+  margin: 1rem 0;
+}
+
+.ws--article > img,
+.ws--article > video,
+.ws--article > audio {
   width: 100%;
-  border-radius: 1rem;
   background: var(--background-plus);
+}
+
+.ws--article .learn-more {
+  margin: 0;
+  padding: 0;
 }
