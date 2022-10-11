@@ -142,7 +142,7 @@
     });
 
     installButton.onclick = () => {
-      if (navigator.mozApps.mgmt) {
+      if (navigator.mozApps) {
         navigator.mozApps.mgmt.installPackage(data.download);
       } else {
         location.href = data.download;

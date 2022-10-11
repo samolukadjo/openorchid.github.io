@@ -10,7 +10,7 @@
 }
 
 :root {
-  --logo: url('/webstore/images/store.svg');
+  --logo: url('/webstore/images/store_256.png');
   --accent-color: #c00040;
   --accent-color-text: rgba(255,255,255,0.75);
   --background: #e7e9ec;
