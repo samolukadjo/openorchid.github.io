@@ -1,2 +1,1 @@
-locales/changelog.en-US.properties
-locales/main.en-US.properties
+webstore/locales/main.en-US.properties

@@ -13,6 +13,7 @@
     if (OrchidServices.isUserLoggedIn) {
       OrchidServices.getWithUpdate('profile/' + OrchidServices.userId(), function(data) {
         profileButton.title = data.username;
+        profileAvatar.alt = data.username;
         if (data.profile_picture !== '') {
           profileAvatar.src = data.profile_picture;
         } else {

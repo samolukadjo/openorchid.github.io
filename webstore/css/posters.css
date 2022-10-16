@@ -13,7 +13,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: #fff;
+  background: var(--background-plus);
   transform: none !important;
 }
 

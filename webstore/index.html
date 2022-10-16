@@ -36,9 +36,10 @@
   <link rel="stylesheet" href="css/webapps.css">
   <link rel="stylesheet" href="css/webapp_info.css">
   <link rel="stylesheet" href="/lib/orchid_ui/header.css">
-  <script defer src="/OrchidServices/script.js" type="module"></script>
+  <script defer src="/services/script.js" type="module"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/languages.js"></script>
+  <script defer src="js/dark_mode.js"></script>
   <script defer src="js/webapps.js"></script>
 
   <!-- Localization -->
@@ -72,31 +73,35 @@
   </header>
 
   <nav id="sidebar">
-    <a href="/?p=submit/webapp" id="upload-button" data-icon="add">Upload</a>
-
-    <header>Categories</header>
+    <a href="/?page=submit/webapp" id="upload-button" data-icon="add" data-l10n-id="nav-upload"></a>
     <ul>
-      <li><a href="#" data-icon="apps" aria-selected="true">Webapps</a></li>
-      <li><a href="#" data-icon="play">Games</a></li>
-      <li><a href="#" data-icon="addons">Add-Ons</a></li>
-      <li><a href="#" data-icon="library">Libraries</a></li>
-      <li><a href="#" data-icon="languages">Languages</a></li>
-      <li><a href="#" data-icon="wallpaper">Media</a></li>
-      <li><a href="#" data-icon="database">Cloud</a></li>
-      <li><a href="#" data-icon="auth">Security</a></li>
-      <li><a href="#" data-icon="folder">Filesystem</a></li>
+      <li><a href="#" data-icon="apps" data-l10n-id="nav-allWebapps" aria-selected="true"></a></li>
     </ul>
 
-    <header>Personal</header>
+    <header data-l10n-id="nav-categories"></header>
     <ul>
-      <li><a href="#" data-icon="download">Installed</a></li>
-      <li><a href="#" data-icon="settings">Settings</a></li>
+      <li><a href="#" data-icon="sms" data-l10n-id="category-communication"></a></li>
+      <li><a href="#" data-icon="help" data-l10n-id="category-education"></a></li>
+      <li><a href="#" data-icon="play" data-l10n-id="category-games"></a></li>
+      <li><a href="#" data-icon="heart" data-l10n-id="category-health"></a></li>
+      <li><a href="#" data-icon="video" data-l10n-id="category-multimedia"></a></li>
+      <li><a href="#" data-icon="tab-previews" data-l10n-id="category-news"></a></li>
+      <li><a href="#" data-icon="search" data-l10n-id="category-search"></a></li>
+      <li><a href="#" data-icon="user" data-l10n-id="category-social"></a></li>
+      <li><a href="#" data-icon="airplane" data-l10n-id="category-travel"></a></li>
+      <li><a href="#" data-icon="permissions" data-l10n-id="category-utility"></a></li>
+    </ul>
+
+    <header data-l10n-id="nav-personal"></header>
+    <ul>
+      <li><a href="#" data-icon="download" data-l10n-id="nav-installed"></a></li>
+      <li><a href="#" data-icon="settings" data-l10n-id="nav-settings"></a></li>
     </ul>
   </nav>
 
   <main id="content">
     <div class="poster">
-      <img src="/images/business-team-discussing-ideas-startup/4380.jpg" alt="">
+      <img src="/images/keyart/store.svg" alt="">
       <div>
         <h1>Use this</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo labore numquam accusamus aliquam, quis deserunt ducimus ipsa rerum pariatur iusto a laborum doloribus quidem harum eos iure quibusdam molestiae optio.</p>
@@ -107,7 +112,10 @@
   </main>
 
   <div id="webapp">
-    <div id="webapp-banner"></div>
+    <div class="banner-container">
+      <iframe src="" frameborder="0" id="webapp-banner"></iframe>
+    </div>
+
     <div class="container" id="webapp-card">
       <header class="app-header">
         <div class="app-header-info">
@@ -130,26 +138,36 @@
       </header>
 
       <div class="section">
-        <header>Screenshot</header>
-        <div class="rected-container">
-          <div id="webapp-screenshots"></div>
-        </div>
-        <header>Description</header>
-        <div class="rected-container">
-          <div id="webapp-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam, accusantium maxime voluptatem optio veritatis modi aspernatur cumque expedita obcaecati, quibusdam asperiores? Maiores porro qui saepe aspernatur suscipit fugit perferendis ipsa.</div>
-        </div>
-        <header>Patch Notes</header>
-        <div class="rected-container">
-          <div id="webapp-patch-notes">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt natus error earum harum, libero suscipit alias ipsum delectus atque, labore aliquam maiores beatae obcaecati velit assumenda minus at dignissimos ipsa!</div>
-        </div>
-        <header>Install Size</header>
-        <div class="rected-container">
-          <div id="webapp-install-size"></div>
-        </div>
-        <header>Supported Devices</header>
-        <div class="rected-container">
-          <div id="webapp-supported-devices"></div>
-        </div>
+        <header data-l10n-id="webapp-screenshots"></header>
+        <div id="webapp-screenshots"></div>
+
+        <header data-l10n-id="webapp-description"></header>
+        <ul>
+          <li id="webapp-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam, accusantium maxime voluptatem optio veritatis modi aspernatur cumque expedita obcaecati, quibusdam asperiores? Maiores porro qui saepe aspernatur suscipit fugit perferendis ipsa.</li>
+        </ul>
+
+        <header data-l10n-id="webapp-info"></header>
+        <ul>
+          <li id="webapp-size" data-l10n-id="webapp-size"></li>
+          <li id="webapp-downloads" data-l10n-id="webapp-downloads"></li>
+          <li id="webapp-has-ads" data-l10n-id="webapp-hasAds"></li>
+          <li id="webapp-has-tracking" data-l10n-id="webapp-hasTracking"></li>
+        </ul>
+
+        <header data-l10n-id="webapp-tags"></header>
+        <ul>
+          <li id="webapp-tags"></li>
+        </ul>
+
+        <header data-l10n-id="webapp-comments" id="webapp-comments-header"></header>
+        <form action="">
+          <input type="text" name="" id="" data-l10n-id="webapp-commentInput">
+          <button type="reset"></button>
+          <button type="submit"></button>
+        </form>
+        <ul>
+          <li id="webapp-tags"></li>
+        </ul>
       </div>
     </div>
   </div>

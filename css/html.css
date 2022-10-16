@@ -20,8 +20,8 @@
   --header-background: rgba(231, 233, 236, 0.5);
   --text-color: #333;
 
-  --href-hover: rgba(0,0,0,0.05);
-  --href-active: rgba(0,0,0,0.1);
+  --translucent: rgba(0,0,0,0.05);
+  --translucent-plus: rgba(0,0,0,0.1);
 
   --banner-background: linear-gradient(to right, #ffc0ff, #c0a0ff);
   --banner-text-color: #301040;
@@ -29,6 +29,24 @@
   --footer-background: #212121;
   --footer-header-color: #80b1e8;
   --footer-text-color: #e7e7e7;
+}
+
+[data-theme="dark"] {
+  --logo: url(images/logo_dark.svg);
+  --font-families: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
+
+  --accent-color: #00ddff;
+  --accent-color-text: rgba(0,0,0,0.75);
+  --background: #101214;
+  --background-plus: #212325;
+  --header-background: rgba(33, 35, 37, 0.5);
+  --text-color: #e7e7e7;
+
+  --translucent: rgba(255,255,255,0.05);
+  --translucent-plus: rgba(255,255,255,0.1);
+
+  --banner-background: linear-gradient(to right, #602050, #301040);
+  --banner-text-color: #ffc0ff;
 }
 
 :focus {
@@ -39,6 +57,10 @@
 ::-moz-selection {
   background: var(--accent-color);
   color: var(--accent-color-text);
+}
+
+html {
+  overflow-x: hidden;
 }
 
 html, body {

@@ -4,6 +4,7 @@
   display: flex;
   padding: 0 1rem;
   box-sizing: border-box;
+  background: var(--background);
 }
 
 .oui--header h1 {

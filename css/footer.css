@@ -160,12 +160,12 @@ html[dir="rtl"] .ws--footer ul li:after {
   min-width: 290px;
 }
 
-.ws--footer .bottom-wrapper > .languages {
+.ws--footer .bottom-wrapper > .options {
   width: 290px;
   position: relative;
 }
 
-.ws--footer .bottom-wrapper > .languages:before {
+.ws--footer .bottom-wrapper > .options:before {
   content: 'web';
   font-family: 'gaia-icons';
   position: absolute;
@@ -175,18 +175,18 @@ html[dir="rtl"] .ws--footer ul li:after {
   line-height: 4rem;
   font-size: 2rem;
   display: block;
-  padding: 0 1rem;
+  padding: 0 2rem;
   box-sizing: border-box;
   text-align: end;
   pointer-events: none;
   color: var(--footer-text-color);
 }
 
-.ws--footer .bottom-wrapper > .languages > p {
+.ws--footer .bottom-wrapper > .options > p {
   margin: 2rem 0 0.5rem;
 }
 
-.ws--footer .bottom-wrapper > .languages > select {
+.ws--footer .bottom-wrapper > .options > select {
   width: 100%;
   height: 4rem;
   line-height: 4rem;
@@ -194,12 +194,63 @@ html[dir="rtl"] .ws--footer ul li:after {
   border: none;
   background: var(--footer-background);
   border: solid 0.1rem #858585;
-  color: transparent;
+  color: var(--footer-text-color);
   padding: 0 1rem;
   box-sizing: border-box;
   font-size: 1.6rem;
   font-weight: normal;
-  text-shadow: 0 0 0 var(--footer-text-color);
+  margin: 0 0 1rem;
+}
+
+.ws--footer .bottom-wrapper > .options > label {
+  width: 100%;
+  height: 4rem;
+  line-height: 4rem;
+  padding: 0;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--footer-text-color);
+  display: flex;
+  margin: 0 0 1rem;
+}
+
+.ws--footer .bottom-wrapper > .options > label input[type="checkbox"] {
+  width: 5rem;
+  height: 2.4rem;
+  background: var(--footer-text-color);
+  border-radius: 1.5rem;
+  appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  margin: 0.75rem 0;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+.ws--footer .bottom-wrapper > .options > label input[type="checkbox"]:checked {
+  background: var(--accent-color);
+}
+
+.ws--footer .bottom-wrapper > .options > label input[type="checkbox"]:before {
+  content: '';
+  position: absolute;
+  left: 0.4rem;
+  top: 0.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 1rem;
+  background: var(--footer-background);
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+.ws--footer .bottom-wrapper > .options > label input[type="checkbox"]:hover:before {
+  transform: scale(0.9);
+}
+
+.ws--footer .bottom-wrapper > .options > label input[type="checkbox"]:checked:before {
+  left: 3rem;
+  background: var(--accent-color-text);
 }
 
 @media screen and (min-width: 800px) {

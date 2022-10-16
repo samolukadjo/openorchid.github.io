@@ -1,13 +1,31 @@
 (function (exports) {
   'use strict';
 
+  var data;
+  var currentApp;
   var webapps = document.getElementById('webapps');
 
   OrchidServices.getList('webapps', function (data, id) {
-    createIcon(data, id);
+    webapps.innerHTML = '';
+    createIcon(data, id, false);
   });
 
-  function createIcon(data, id) {
+  var client = new XMLHttpRequest();
+  client.open('GET', 'https://banana-hackers.gitlab.io/store-db/data.json');
+  client.onreadystatechange = () => {
+    data = JSON.parse(client.responseText);
+    data.apps.forEach((app) => {
+      createIcon(app, app.slug, true);
+      if (currentApp !== null) {
+        if (currentApp == app.slug) {
+          openInfo(app, app.slug, true);
+        }
+      }
+    });
+  };
+  client.send();
+
+  function createIcon(data, id, isBananaHackers) {
     var element = document.createElement('a');
     element.href = '?webapp=' + id;
     element.classList.add('webapp');
@@ -36,26 +54,40 @@
     context.appendChild(title);
 
     var author = document.createElement('a');
-    author.href = '#';
     author.classList.add('author');
     context.appendChild(author);
-    OrchidServices.getWithUpdate('profile/' + data.author_id, function (udata) {
-      author.textContent = udata.username;
-      author.href = '/account/?user=' + udata.username;
-    });
+
+    if (isBananaHackers) {
+      author.textContent = data.author;
+    } else {
+      OrchidServices.getWithUpdate('profile/' + data.author_id, function (udata) {
+        author.textContent = udata.username;
+        author.href = '/account/?user=' + udata.username;
+      });
+    }
 
     var categories = document.createElement('div');
     categories.classList.add('categories');
-    data.categories.forEach(item => {
-      var category = document.createElement('span');
-      category.textContent = item;
-      categories.appendChild(category);
-    });
+
+    if (isBananaHackers) {
+      data.meta.categories.forEach(item => {
+        var category = document.createElement('span');
+        category.dataset.l10nId = 'category-' + item;
+        categories.appendChild(category);
+      });
+    } else {
+      data.categories.forEach(item => {
+        var category = document.createElement('span');
+        category.dataset.l10nId = 'category-' + item;
+        categories.appendChild(category);
+      });
+    }
+
     context.appendChild(categories);
   }
 
 
-  function openInfo(data, id) {
+  function openInfo(data, id, isBananaHackers) {
     var sidebar = document.getElementById('sidebar');
     var toggleSidebarButton = document.getElementById('toggle-sidebar-button');
     var backButton = document.getElementById('back-button');
@@ -74,9 +106,12 @@
     var updateButton = document.getElementById('webapp-update-button');
     var webappScreenshots = document.getElementById('webapp-screenshots');
     var webappDescription = document.getElementById('webapp-description');
-    var webappPatchNotes = document.getElementById('webapp-patch-notes');
     var webappInstallSize = document.getElementById('webapp-install-size');
     var webappSupportedDevices = document.getElementById('webapp-supported-devices');
+
+    if (!isBananaHackers) {
+      webappBanner.src = data.trailer_url.replace('watch?v=', 'embed/') + '?controls=0&autoplay=1&loop=1';
+    }
 
     webappCard.classList.add('fade-in');
     webappCard.addEventListener('animationend', () => {
@@ -107,39 +142,56 @@
 
     webappIcon.src = data.icon;
     webappName.textContent = data.name;
-    OrchidServices.getWithUpdate('profile/' + data.author_id, function (udata) {
-      webappAuthor.textContent = udata.username;
-      webappAuthor.href = '/account/?user=' + udata.username;
-    });
 
-    var sum = 0;
-    for (var i = 0; i < data.comments.length; i++) {
-      sum += parseInt((data.comments[i].rating * 5), 10); //don't forget to add the base
+    if (isBananaHackers) {
+      webappAuthor.textContent = data.author;
+      webappAuthor.href = null;
+    } else {
+      OrchidServices.getWithUpdate('profile/' + data.author_id, function (udata) {
+        webappAuthor.textContent = udata.username;
+        webappAuthor.href = '/account/?user=' + udata.username;
+      });
     }
-    var avg = sum / data.comments.length;
 
-    webappAverageRating.textContent = Math.round(avg * 10) / 10;
+    if (data.comments) {
+      var sum = 0;
+      for (var i = 0; i < data.comments.length; i++) {
+        sum += parseInt((data.comments[i].rating * 5), 10); //don't forget to add the base
+      }
+      var avg = sum / data.comments.length;
 
-    webappStarRatings.innerHTML = '';
-    for (let index = 0; index < parseInt(avg); index++) {
-      var star = document.createElement('span');
-      star.classList.add('star');
-      star.dataset.icon = 'bookmarked';
-      webappStarRatings.appendChild(star);
-    }
-    for (let index = 0; index < (5 - parseInt(avg)); index++) {
-      var star = document.createElement('span');
-      star.classList.add('star');
-      star.dataset.icon = 'bookmark';
-      webappStarRatings.appendChild(star);
+      webappAverageRating.textContent = Math.round(avg * 10) / 10;
+
+      webappStarRatings.innerHTML = '';
+      for (let index = 0; index < parseInt(avg); index++) {
+        var star = document.createElement('span');
+        star.classList.add('star');
+        star.dataset.icon = 'bookmarked';
+        webappStarRatings.appendChild(star);
+      }
+      for (let index = 0; index < (5 - parseInt(avg)); index++) {
+        var star = document.createElement('span');
+        star.classList.add('star');
+        star.dataset.icon = 'bookmark';
+        webappStarRatings.appendChild(star);
+      }
     }
 
     webappCategories.innerHTML = '';
-    data.categories.forEach(item => {
-      var category = document.createElement('span');
-      category.textContent = item;
-      webappCategories.appendChild(category);
-    });
+
+    if (isBananaHackers) {
+      data.meta.categories.forEach(item => {
+        var category = document.createElement('span');
+        category.dataset.l10nId = 'category-' + item;
+        webappCategories.appendChild(category);
+      });
+    } else {
+      data.categories.forEach(item => {
+        var category = document.createElement('span');
+        category.dataset.l10nId = 'category-' + item;
+        webappCategories.appendChild(category);
+      });
+    }
 
     installButton.onclick = () => {
       if (navigator.mozApps) {
@@ -171,13 +223,12 @@
           OrchidServices.get('webapps/' + pair[1]).then(function(data) {
             openInfo(data, pair[1]);
           });
+          currentApp = pair[1];
           break;
 
         default:
           break;
       }
     }
-  } else {
-    loadContent('home');
   }
 })(window);

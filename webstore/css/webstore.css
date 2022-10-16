@@ -18,8 +18,30 @@
   --header-background: rgba(231, 233, 236, 0.5);
   --text-color: #333;
 
+  --button-normal: #fff;
+  --button-hover: #d8dadd;
+  --button-active: #c8cacd;
+
   --translucent: rgba(0,0,0,0.05);
   --translucent-plus: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+  --background: #101214;
+  --background-plus: #212325;
+  --header-background: rgba(33, 35, 37, 0.5);
+  --text-color: #e7e7e7;
+
+  --button-normal: #303234;
+  --button-hover: #383a3c;
+  --button-active: #404244;
+
+  --translucent: rgba(255,255,255,0.05);
+  --translucent-plus: rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 html, body {
@@ -30,15 +52,19 @@ html, body {
   background: var(--background);
 }
 
+.oui--header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
 #sidebar {
-  position: absolute;
+  position: fixed;
   top: 5rem;
   width: 320px;
   padding: 0.5rem 1.5rem;
   box-sizing: border-box;
   margin: 0;
-  -moz-border-end: solid 0.1rem rgba(0,0,0,0.125);
-  border-inline-end: solid 0.1rem rgba(0,0,0,0.125);
 }
 
 #sidebar > header {
@@ -46,7 +72,7 @@ html, body {
   font-weight: bold;
   color: var(--accent-color);
   text-transform: uppercase;
-  padding: 0 3rem;
+  padding: 0 1.5rem;
   box-sizing: border-box;
   height: 3rem;
   line-height: 3rem;
@@ -145,6 +171,7 @@ html[dir="rtl"] #content {
   font-size: 1.6rem;
   font-weight: normal;
   align-items: center;
+  margin: 0 0 1rem;
   transition: box-shadow 0.2s ease;
 }
 
@@ -164,12 +191,14 @@ html[dir="rtl"] #content {
 
 @media screen and (max-width: 767px) {
   .oui--header {
-    position: relative;
+    position: fixed;
+    top: 0;
     background: var(--background);
     z-index: 10;
   }
 
   #sidebar {
+    position: fixed;
     width: 80%;
     height: calc(100vh - 5rem);
     overflow-x: hidden;

@@ -20,6 +20,7 @@ html, body {
   height: 100vh;
   font-size: 10px;
   font-family: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
+  overflow: hidden;
 }
 
 div {

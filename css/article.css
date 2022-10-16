@@ -3,6 +3,7 @@
   max-width: 768px;
   margin: 0 auto;
   font-size: 1.6rem;
+  color: var(--text-color);
 }
 
 .ws--article .notice {

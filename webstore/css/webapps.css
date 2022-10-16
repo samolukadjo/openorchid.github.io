@@ -7,18 +7,25 @@
 }
 
 .webapp {
-  width: 10rem;
-  border-radius: 0.8rem;
-  background: var(--background-plus);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
-  margin: 0 0.5rem 1rem;
+  width: calc(100% / 3);
+  max-width: 12rem;
+  margin: 0;
   text-decoration: none;
-  transition: all 0.2s ease;
+  border-bottom: solid 0.1rem rgba(0,0,0,0.125);
+  box-sizing: border-box;
+}
+
+.webapp:not(:nth-child(3n)) {
+  -moz-border-end: solid 0.1rem rgba(0,0,0,0.125);
+  border-inline-end: solid 0.1rem rgba(0,0,0,0.125);
 }
 
 .webapp:hover {
-  box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
-  transform: translateY(-0.2rem);
+  background: var(--translucent);
+}
+
+.webapp:active {
+  background: var(--translucent-plus);
 }
 
 .webapp > .icon-holder {
@@ -93,7 +100,7 @@
   overflow: hidden;
 }
 
-.webapp > .context .author:hover {
+.webapp > .context .author[href]:hover {
   text-decoration: underline;
 }
 
@@ -104,6 +111,17 @@
 
   .webapp {
     width: 12rem;
+    border-radius: 0.8rem;
+    background: var(--background-plus) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    border: none;
+    margin: 0 0.5rem 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .webapp:hover {
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
+    transform: translateY(-0.2rem);
   }
 
   .webapp > .context .title {

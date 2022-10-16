@@ -5,6 +5,7 @@
   box-sizing: border-box;
   display: flex;
   z-index: 10;
+  position: relative;
 }
 
 .ws--header .home {
@@ -13,13 +14,15 @@
   width: 12rem;
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
+  color: var(--text-color);
+  position: relative;
 }
 
 .ws--header .tab-skip {
   background: #c00040;
   color: rgba(255,255,255,0.75);
   font-size: 1.6rem;
-  font-weight: bold;
+  font-weight: normal;
   border-radius: 0.4rem;
   height: 4rem;
   line-height: 4rem;
@@ -66,17 +69,18 @@
   border-radius: 2rem;
   color: var(--text-color);
   font-size: 1.6rem;
-  font-weight: bold;
+  font-weight: normal;
   text-decoration: none;
+  position: relative;
 }
 
 .ws--header ul li > a:hover {
-  background: var(--href-hover);
+  background: var(--translucent);
   text-decoration: underline;
 }
 
 .ws--header ul li > a:active {
-  background: var(--href-active);
+  background: var(--translucent-plus);
 }
 
 .ws--header [type="toolbar"] {
@@ -100,18 +104,30 @@
   font-weight: normal;
   text-decoration: none;
   box-sizing: border-box;
+  position: relative;
 }
 
 .ws--header [type="toolbar"] a:not(.ws--button):hover {
-  background: var(--href-hover);
+  background: var(--translucent);
 }
 
 .ws--header [type="toolbar"] a:not(.ws--button):active {
-  background: var(--href-active);
+  background: var(--translucent-plus);
 }
 
 .ws--header [type="toolbar"] a:not(.ws--button):before {
   font-size: 2rem;
+}
+
+.ws--header [type="toolbar"] a:not(.ws--button) img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0.3rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  background: #858585;
 }
 
 .ws--header [type="toolbar"] button,
