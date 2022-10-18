@@ -32,7 +32,7 @@
     element.title = data.name;
     element.onclick = (evt) => {
       evt.preventDefault();
-      openInfo(data, id, element);
+      openInfo(data, id, isBananaHackers);
     }
     webapps.appendChild(element);
 
@@ -105,6 +105,7 @@
     var uninstallButton = document.getElementById('webapp-uninstall-button');
     var updateButton = document.getElementById('webapp-update-button');
     var webappScreenshots = document.getElementById('webapp-screenshots');
+    var webappScreenshotsHolder = document.getElementById('webapp-screenshots-holder');
     var webappDescription = document.getElementById('webapp-description');
     var webappInstallSize = document.getElementById('webapp-install-size');
     var webappSupportedDevices = document.getElementById('webapp-supported-devices');
@@ -126,6 +127,9 @@
     window.history.pushState({"html":'',"pageTitle":''}, "", '?webapp=' + id);
 
     backButton.onclick = () => {
+      if (!isBananaHackers) {
+        webappBanner.src = '';
+      }
       webappCard.classList.add('fade-out');
 
       // This helps us avoid the page closing next time we open it again.
@@ -153,7 +157,10 @@
       });
     }
 
-    if (data.comments) {
+    if (isBananaHackers) {
+      webappAverageRating.textContent = '';
+      webappStarRatings.innerHTML = '';
+    } else {
       var sum = 0;
       for (var i = 0; i < data.comments.length; i++) {
         sum += parseInt((data.comments[i].rating * 5), 10); //don't forget to add the base
@@ -178,7 +185,6 @@
     }
 
     webappCategories.innerHTML = '';
-
     if (isBananaHackers) {
       data.meta.categories.forEach(item => {
         var category = document.createElement('span');
@@ -205,11 +211,16 @@
     updateButton.onclick = () => {};
 
     webappScreenshots.innerHTML = '';
-    data.screenshots.forEach(item => {
-      var screenshot = document.createElement('img');
-      screenshot.src = item;
-      webappScreenshots.appendChild(screenshot);
-    });
+    if (data.screenshots.length !== 0) {
+      data.screenshots.forEach(item => {
+        var screenshot = document.createElement('img');
+        screenshot.src = item;
+        webappScreenshots.appendChild(screenshot);
+      });
+      webappScreenshotsHolder.style.display = 'block';
+    } else {
+      webappScreenshotsHolder.style.display = 'none';
+    }
 
     webappDescription.textContent = data.description;
   }
@@ -221,7 +232,7 @@
       switch (pair[0]) {
         case 'webapp':
           OrchidServices.get('webapps/' + pair[1]).then(function(data) {
-            openInfo(data, pair[1]);
+            openInfo(data, pair[1], false);
           });
           currentApp = pair[1];
           break;

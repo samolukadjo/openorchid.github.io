@@ -29,7 +29,7 @@
 [data-theme="dark"] {
   --background: #101214;
   --background-plus: #212325;
-  --header-background: rgba(33, 35, 37, 0.5);
+  --header-background: rgba(16, 18, 20, 0.6);
   --text-color: #e7e7e7;
 
   --button-normal: #303234;
@@ -56,6 +56,14 @@ html, body {
   position: fixed;
   top: 0;
   z-index: 10;
+}
+
+@supports (backdrop-filter: saturate(180%) blur(20px)) {
+  .oui--header {
+    backdrop-filter: saturate(180%) blur(20px);
+    background: var(--header-background) !important;
+    border-bottom: solid 0.1rem var(--background);
+  }
 }
 
 #sidebar {

@@ -1,7 +1,7 @@
 (function(exports) {
   'use strict';
 
-  var darkModeEnabled = localStorage.getItem('ws.darkMode');
+  var darkModeEnabled = localStorage.getItem('ws.darkMode') == 'true';
   var darkModeCheckbox = document.getElementById('dark-mode');
   var root = document.querySelector(':root');
 

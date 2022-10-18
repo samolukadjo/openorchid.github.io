@@ -1,7 +1,7 @@
 .ws--poster {
   width: 100%;
   height: calc(100vw / 1.5);
-  background: #000;
+  background: var(--background-plus);
   position: relative;
   overflow: hidden;
 }
@@ -110,6 +110,7 @@ html[dir="rtl"] .ws--poster > div a:hover:after {
     width: calc(100% - 128px);
     height: calc(90vh - 5rem);
     margin: 0 64px 48px;
+    border-radius: 0.8rem;
   }
 
   .ws--poster > div {

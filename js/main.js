@@ -2,19 +2,29 @@
   'use strict';
 
   // Elastic Scrolling
-  // var root = document.querySelector(':root');
-  // var Scrollbar = window.Scrollbar;
-
-  // Scrollbar.use(window.OverscrollPlugin);
-  // Scrollbar.init(root, {
-  //   plugins: {
-  //     overscroll: true
-  //   },
-  // });
-
   var root = document.querySelector(':root');
-  var content = document.getElementById('content');
+  var contentHolder = document.querySelector('.content-container');
+  var header = document.querySelector('.content-container .ws--header');
+  var Scrollbar = window.Scrollbar;
 
+  Scrollbar.use(window.OverscrollPlugin);
+  window.elasticScrollbar = Scrollbar.init(contentHolder, {
+    plugins: {
+      overscroll: true
+    }
+  });
+
+  elasticScrollbar.addListener(() => {
+    if (elasticScrollbar.offset.y >= header.offsetTop) {
+      header.style.transform = 'translateY(' + (elasticScrollbar.offset.y - header.offsetTop) + 'px)';
+      header.classList.add('scrolling');
+    } else {
+      header.style.transform = 'translateY(0px)';
+      header.classList.remove('scrolling');
+    }
+  });
+
+  var content = document.getElementById('content');
   var optionsButton = document.getElementById('options-button');
   var profileButton = document.getElementById('profile-button');
   var profileAvatar = document.getElementById('profile-avatar');
@@ -49,7 +59,7 @@
   });
 
   window.addEventListener('load', function() {
-    if (OrchidServices.isUserLoggedIn) {
+    if (OrchidServices.isUserLoggedIn()) {
       OrchidServices.getWithUpdate('profile/' + OrchidServices.userId(), function(data) {
         profileTooltip.textContent = data.username;
         profileAvatar.alt = data.username;

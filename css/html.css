@@ -17,7 +17,7 @@
   --accent-color-text: rgba(255,255,255,0.75);
   --background: #e7e9ec;
   --background-plus: #fff;
-  --header-background: rgba(231, 233, 236, 0.5);
+  --header-background: rgba(231, 233, 236, 0.6);
   --text-color: #333;
 
   --translucent: rgba(0,0,0,0.05);
@@ -39,7 +39,7 @@
   --accent-color-text: rgba(0,0,0,0.75);
   --background: #101214;
   --background-plus: #212325;
-  --header-background: rgba(33, 35, 37, 0.5);
+  --header-background: rgba(16, 18, 20, 0.6);
   --text-color: #e7e7e7;
 
   --translucent: rgba(255,255,255,0.05);
@@ -53,14 +53,14 @@
   outline: dashed 0.1rem currentColor;
 }
 
+a:focus, button:focus {
+  font-weight: bold !important;
+}
+
 ::selection,
 ::-moz-selection {
   background: var(--accent-color);
   color: var(--accent-color-text);
-}
-
-html {
-  overflow-x: hidden;
 }
 
 html, body {
@@ -71,6 +71,7 @@ html, body {
   font-family: var(--font-families);
   accent-color: var(--accent-color);
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 button,
@@ -123,4 +124,33 @@ button, select, input {
 
 .pointerless {
   pointer-events: none;
+}
+
+/* Elastic Scrolling */
+.content-container {
+  position: absolute;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scrollbar-track-y {
+  width: 12px !important;
+  background: var(--header-background) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+html[dir="rtl"] .scrollbar-track-y {
+  right: unset !important;
+  left: 0 !important;
+}
+
+.scrollbar-thumb {
+  width: 6px !important;
+  border: 3px solid transparent !important;
+  background: var(--text-color) !important;
+  background-clip: content-box !important;
+  border-radius: 12px !important;
+  opacity: 0.5;
 }

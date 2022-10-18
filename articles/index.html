@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-l10n-id="articles">Articles</title>
+  <meta name="theme-color" content="var(--background, #e7e7e7)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Orchid" />
+  <meta property="og:title" content="Articles" />
+  <meta property="og:description" content="Check, Create and Share your blogs and articles anywhere." />
+  <meta property="og:url" content="https://orchidfoss.github.io/webstore/" />
+  <meta property="og:image" content="/images/thumbnail.svg" />
+  <meta name="title" content="Orchid Articles" />
+  <meta name="description" content="Check, Create and Share your blogs and articles anywhere." />
+  <meta name="keywords" content="MortCodesWeb, Orchid Articles, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0, Articles" />
+  <meta property="twitter:card" content="website">
+  <meta property="twitter:site" content="@orchid_webstore" />
+  <meta property="twitter:title" content="Orchid Articles" />
+  <meta property="twitter:description" content="Check, Create and Share your blogs and articles anywhere." />
+  <meta property="twitter:url" content="https://orchidfoss.github.io/webstore/" />
+  <meta property="twitter:image" content="images/thumbnail.svg" />
+  <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" href="css/ui.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/article.css">
+  <script src="services/script.js" type="module"></script>
+  <script defer src="lib/markdown-it.js"></script>
+  <script defer src="js/articles.js"></script>
+  <script defer src="js/create_article.js"></script>
+  <script defer src="js/languages.js"></script>
+  <script defer src="js/dark_mode.js"></script>
+</head>
+<body>
+  <nav class="ac--navbar">
+    <a href="#" class="home"></a>
+    <ul>
+      <li><a href="#" data-icon="library"></a></li>
+      <li><a href="#" data-icon="heart"></a></li>
+      <li><a href="#" data-icon="upload" id="create-article-button"></a></li>
+      <li><a href="#" data-icon="settings"></a></li>
+    </ul>
+    <a href="#" id="profile-button">
+      <img id="profile-avatar"></img>
+    </a>
+  </nav>
+
+  <main>
+    <div class="ac--articles" id="articles"></div>
+  </main>
+
+  <main class="ac--current-article" id="article">
+    <div class="container">
+      <h1 id="article-title"></h1>
+      <figure id="article-author">
+        <img src="" alt="" id="article-author-avatar">
+        <figcaption id="article-author-username"></figcaption>
+      </figure>
+      <div id="article-content"></div>
+    </div>
+  </main>
+
+  <form id="create-article">
+    <label for="">
+      <span>Article Title<em>*</em></span>
+      <input type="text" id="create-article-title-input" required>
+    </label>
+    <label for="">
+      <span>Article Content<em>*</em></span>
+      <textarea id="create-article-content-input" required></textarea>
+    </label>
+    <menu>
+      <button id="create-article-close-button" type="button">Close</button>
+      <button id="create-article-submit-button" type="submit" class="recommend">Submit</button>
+    </menu>
+  </form>
+</body>
+</html>

@@ -1,0 +1,221 @@
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url(/fonts/IBMPlexSansArabic-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-weight: bold;
+  src: url(/fonts/IBMPlexSansArabic-Bold.ttf);
+}
+
+:root {
+  --accent-color: #40a060;
+  --accent-color-text: rgba(255,255,255,0.75);
+  --background: #e7e9ec;
+  --background-plus: #fff;
+  --header-background: rgba(231, 233, 236, 0.5);
+  --text-color: #333;
+
+  --button-normal: #fff;
+  --button-hover: #d8dadd;
+  --button-active: #c8cacd;
+
+  --translucent: rgba(0,0,0,0.05);
+  --translucent-plus: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+  --background: #101214;
+  --background-plus: #212325;
+  --header-background: rgba(16, 18, 20, 0.6);
+  --text-color: #e7e7e7;
+
+  --button-normal: #303234;
+  --button-hover: #383a3c;
+  --button-active: #404244;
+
+  --translucent: rgba(255,255,255,0.05);
+  --translucent-plus: rgba(255,255,255,0.1);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  color: var(--text-color);
+  font-family: 'IBM Plex Sans Arabic', system-ui;
+}
+
+label {
+  color: var(--text-color);
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label > span {
+  color: var(--text-color);
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+label > span em {
+  color: #c00040;
+  font-style: normal;
+}
+
+label > input[type="text"] {
+  color: var(--text-color);
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  height: 4rem;
+  line-height: 4rem;
+  border: solid 0.1rem #858585;
+  border-radius: 0.4rem;
+  background: var(--background);
+}
+
+menu {
+  width: 100%;
+  height: 7rem;
+  background: var(--background);
+  margin: 0;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: end;
+}
+
+menu button {
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0 3rem;
+  border-radius: 2rem;
+  font-size: 1.6rem;
+  font-family: 'IBM Plex Sans', system-ui;
+  height: 4rem;
+  line-height: 4rem;
+  -moz-margin-start: 1rem;
+  margin-inline-start: 1rem;
+}
+
+menu button:hover {
+  background: var(--translucent);
+}
+
+menu button:active {
+  background: var(--translucent-plus);
+}
+
+menu button.recommend {
+  background: var(--accent-color);
+  color: var(--accent-color-text);
+}
+
+figure {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  margin: 0;
+}
+
+figure > img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #858585;
+  -moz-margin-end: 0.5rem;
+  margin-inline-end: 0.5rem;
+}
+
+figure > figcaption {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  flex: 1;
+  font-size: 1.6rem;
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 5rem;
+  width: 100%;
+  height: calc(100% - 5rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--background);
+}
+
+hr {
+  border: none;
+  height: 0.1rem;
+  width: 100%;
+  background: rgba(0,0,0,0.125);
+}
+
+#create-article {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 768px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 1.5rem;
+  background: var(--background-plus);
+  box-shadow: 0 0 0 calc(100vw + 100vh) rgba(127, 127, 127, 0.75);
+  transform: translate(-50%, -50%);
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: none;
+  z-index: 100;
+}
+
+#create-article.visible {
+  display: block;
+  animation: dialog-show 0.3s ease;
+}
+
+@keyframes dialog-show {
+  from {
+    transform: translate(-50%, calc(-50% + 32px));
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+#create-article label {
+  margin: 1.5rem;
+}
+
+#create-article textarea {
+  color: var(--text-color);
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+  height: 20rem;
+  min-height: 15rem;
+  max-height: 40rem;
+  line-height: 2.2rem;
+  border: solid 0.1rem #858585;
+  border-radius: 0.4rem;
+  resize: vertical;
+  background: var(--background);
+}

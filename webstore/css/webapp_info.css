@@ -253,12 +253,12 @@
   flex-wrap: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  height: 20rem;
   scrollbar-width: none;
   border-radius: 0.8rem;
   width: calc(100% - 3rem);
-  margin: 1rem auto;
+  margin: 1rem auto -1.5rem;
   max-width: 1024px;
+  padding: 0 0 1.5rem;
 }
 
 #webapp-screenshots::-webkit-scrollbar {
@@ -269,6 +269,8 @@
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
   border-radius: 0.8rem;
+  height: 20rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
 
 #webapp-description {

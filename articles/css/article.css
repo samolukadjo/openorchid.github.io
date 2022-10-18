@@ -1,0 +1,54 @@
+.ac--articles {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.ac--articles .article {
+  width: 100%;
+  max-width: 768px;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: var(--background-plus);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  border-radius: 0.8rem;
+  margin: 0 auto;
+}
+
+.ac--articles .article h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.ac--current-article {
+  padding: 1rem;
+  box-sizing: border-box;
+  display: none;
+  font-size: 160%;
+}
+
+.ac--current-article.visible {
+  display: block;
+  animation: article-show 1s cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+@keyframes article-show {
+  from {
+    transform: translateY(128px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.ac--current-article > .container {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+#article-title {
+  margin: 0;
+  font-weight: normal;
+}

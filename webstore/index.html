@@ -14,36 +14,36 @@
   <title data-l10n-id="title"></title>
   <meta name="theme-color" content="var(--background, #e7e7e7)">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Orchid Web Store" />
-  <meta property="og:title" content="Website" />
+  <meta property="og:site_name" content="Orchid" />
+  <meta property="og:title" content="Web Store" />
   <meta property="og:description" content="Explore to find your favorite webapps and games." />
   <meta property="og:url" content="https://orchidfoss.github.io/webstore/" />
   <meta property="og:image" content="/images/thumbnail.svg" />
   <meta name="title" content="Orchid Web Store" />
   <meta name="description" content="Explore to find your favorite webapps and games." />
-  <meta name="keywords" content="MortCodesWeb, Orchid Web Store, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0" />
+  <meta name="keywords" content="MortCodesWeb, Orchid Web Store, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0, Store" />
   <meta property="twitter:card" content="website">
   <meta property="twitter:site" content="@orchid_webstore" />
   <meta property="twitter:title" content="Orchid Web Store" />
   <meta property="twitter:description" content="Explore to find your favorite webapps and games." />
   <meta property="twitter:url" content="https://orchidfoss.github.io/webstore/" />
-  <meta property="twitter:image" content="/images/thumbnail.svg" />
-  <link rel="stylesheet" href="/lib/gaia-icons/gaia-icons.css">
-  <link rel="stylesheet" href="/lib/gaia-icons/bidi-helper.css">
+  <meta property="twitter:image" content="images/thumbnail.svg" />
+  <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" href="lib/gaia-icons/bidi-helper.css">
   <link rel="stylesheet" href="css/splashscreen.css">
   <link rel="stylesheet" href="css/webstore.css">
   <link rel="stylesheet" href="css/posters.css">
   <link rel="stylesheet" href="css/webapps.css">
   <link rel="stylesheet" href="css/webapp_info.css">
   <link rel="stylesheet" href="/lib/orchid_ui/header.css">
-  <script defer src="/services/script.js" type="module"></script>
+  <script defer src="services/script.js" type="module"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/languages.js"></script>
   <script defer src="js/dark_mode.js"></script>
   <script defer src="js/webapps.js"></script>
 
   <!-- Localization -->
-  <script src="/js/l10n.js"></script>
+  <script src="js/l10n.js"></script>
   <meta name="defaultLanguage" content="en-US">
   <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
   <link rel="localization" href="locales/main.{locale}.properties">
@@ -138,12 +138,14 @@
       </header>
 
       <div class="section">
-        <header data-l10n-id="webapp-screenshots"></header>
-        <div id="webapp-screenshots"></div>
+        <div id="webapp-screenshots-holder">
+          <header data-l10n-id="webapp-screenshots"></header>
+          <div id="webapp-screenshots"></div>
+        </div>
 
         <header data-l10n-id="webapp-description"></header>
         <ul>
-          <li id="webapp-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam, accusantium maxime voluptatem optio veritatis modi aspernatur cumque expedita obcaecati, quibusdam asperiores? Maiores porro qui saepe aspernatur suscipit fugit perferendis ipsa.</li>
+          <li id="webapp-description"></li>
         </ul>
 
         <header data-l10n-id="webapp-info"></header>
