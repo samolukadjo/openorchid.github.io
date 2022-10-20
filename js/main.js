@@ -15,7 +15,7 @@
   });
 
   elasticScrollbar.addListener(() => {
-    if (elasticScrollbar.offset.y >= header.offsetTop) {
+    if (elasticScrollbar.offset.y >= (header.offsetTop + 1)) {
       header.style.transform = 'translateY(' + (elasticScrollbar.offset.y - header.offsetTop) + 'px)';
       header.classList.add('scrolling');
     } else {

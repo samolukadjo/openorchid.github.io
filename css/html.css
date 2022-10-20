@@ -1,23 +1,17 @@
 @font-face {
-  font-family: 'IBM Plex Sans Arabic';
-  src: url(/fonts/IBMPlexSansArabic-Regular.ttf);
-}
-
-@font-face {
-  font-family: 'IBM Plex Sans Arabic';
-  font-weight: bold;
-  src: url(/fonts/IBMPlexSansArabic-Bold.ttf);
+  font-family: 'Readex Pro';
+  src: url(/fonts/Readex_Pro/ReadexPro-VariableFont_wght.ttf);
 }
 
 :root {
   --logo: url(images/logo.svg);
-  --font-families: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
+  --font-families: 'Readex Pro', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
 
   --accent-color: #0061e0;
-  --accent-color-text: rgba(255,255,255,0.6);
+  --accent-color-text: rgba(255,255,255,0.75);
   --background: #e7e9ec;
   --background-plus: #fff;
-  --header-background: rgba(231, 233, 236, 0.6);
+  --header-background: rgba(231, 233, 236, 0.5);
   --text-color: #333;
 
   --translucent: rgba(0,0,0,0.05);
@@ -40,7 +34,7 @@
   --accent-color-text: rgba(0,0,0,0.75);
   --background: #101214;
   --background-plus: #212325;
-  --header-background: rgba(16, 18, 20, 0.6);
+  --header-background: rgba(16, 18, 20, 0.5);
   --text-color: #e7e7e7;
 
   --translucent: rgba(255,255,255,0.05);

@@ -1,6 +1,6 @@
 .ws--poster {
   width: 100%;
-  height: calc(100vw / 1.5);
+  height: 100vw;
   background: var(--background-plus);
   position: relative;
   overflow: hidden;
@@ -15,14 +15,21 @@
   object-fit: contain;
   background: var(--background-plus);
   opacity: 0.75;
+  object-fit: cover;
 }
 
 .ws--poster > div {
   position: absolute;
-  bottom: 0;
-  margin: 1rem;
+  top: 0;
+  height: 100%;
+  padding: 2.5vw 5vw;
+  box-sizing: border-box;
   font-size: 1.6rem;
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 html[dir="ltr"] .ws--poster > div {
   left: 0;
@@ -97,7 +104,7 @@ html[dir="rtl"] .ws--poster > div a:hover:after {
 @media screen and (orientation: landscape) {
   .ws--poster {
     width: 100%;
-    height: calc(100vh - 5rem);
+    height: 100vh;
   }
 
   .ws--poster > div {
@@ -106,17 +113,6 @@ html[dir="rtl"] .ws--poster > div a:hover:after {
 }
 
 @media screen and (orientation: landscape) and (min-width: 1280px) {
-  .ws--poster {
-    width: calc(100% - 128px);
-    height: calc(90vh - 5rem);
-    margin: 0 64px 48px;
-    border-radius: 0.8rem;
-  }
-
-  .ws--poster > div {
-    margin: 64px;
-  }
-
   .ws--poster > div a {
     margin: 1rem 0 0;
     height: 4rem;

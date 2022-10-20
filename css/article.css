@@ -4,6 +4,7 @@
   margin: 0 auto;
   font-size: 1.6rem;
   color: var(--text-color);
+  margin-top: calc(5rem + 5vw);
 }
 
 .ws--article .notice {

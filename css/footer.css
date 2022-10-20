@@ -23,6 +23,7 @@
   color: var(--footer-text-color);
   margin: 3rem 0 1rem;
   width: 100%;
+  line-height: 2.2rem;
 }
 
 .ws--footer .row {
@@ -169,7 +170,7 @@ html[dir="rtl"] .ws--footer ul li:after {
   content: 'web';
   font-family: 'gaia-icons';
   position: absolute;
-  top: 5rem;
+  top: 4.7rem;
   width: 290px;
   height: 4rem;
   line-height: 4rem;
