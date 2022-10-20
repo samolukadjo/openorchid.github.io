@@ -392,19 +392,36 @@ var OrchidServices = {
 
   custom: {
     createStoreApp: async function os_createStoreApp(data) {
-      OrchidServices.set('webstore/' + generateUUID(), {
+      var id = generateUUID();
+      OrchidServices.set('webstore/' + id, {
+        token: id,
+        author_id: OrchidServices.userId(),
+        teaser_url: data.teaser_url,
+        icon: data.icon,
+        keyart: data.keyart,
         name: data.name,
         description: data.description,
-        published_at: Date.now()
+        published_at: Date.now(),
+        download: data.download,
+        has_ads: data.has_ads,
+        has_tracking: data.has_tracking,
+        categories: data.categories,
+        tags: data.tags,
+        comments: []
       });
     },
 
     publishArticle: async function os_publishArticle(title, markdown) {
-      OrchidServices.set('articles/' + generateUUID(), {
+      var id = generateUUID();
+      OrchidServices.set('articles/' + id, {
+        token: id,
         author_id: OrchidServices.userId(),
         published_at: Date.now(),
         title: title,
-        content: markdown
+        content: markdown,
+        likes: [],
+        dislikes: [],
+        comments: []
       });
     }
   }

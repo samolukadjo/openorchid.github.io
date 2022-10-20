@@ -35,7 +35,7 @@
   text-transform: uppercase;
   margin: 1rem 0 0;
   padding: 1rem 0 0;
-  border-top: solid 0.1rem #d8dadd;
+  border-top: solid 0.1rem rgba(0,0,0,0.125);
 }
 
 .ws--article p {

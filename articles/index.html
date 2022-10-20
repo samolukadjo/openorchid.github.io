@@ -24,13 +24,23 @@
   <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
   <link rel="stylesheet" href="css/ui.css">
   <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/tooltips.css">
   <link rel="stylesheet" href="css/article.css">
+  <link rel="stylesheet" href="/css/comments.css">
   <script src="services/script.js" type="module"></script>
   <script defer src="lib/markdown-it.js"></script>
+  <script defer src="js/main.js"></script>
   <script defer src="js/articles.js"></script>
   <script defer src="js/create_article.js"></script>
   <script defer src="js/languages.js"></script>
   <script defer src="js/dark_mode.js"></script>
+
+  <!-- Localization -->
+  <script src="js/l10n.js"></script>
+  <meta name="defaultLanguage" content="en-US">
+  <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+  <link rel="localization" href="locales/main.{locale}.properties">
+  <link rel="localization" href="locales/changelog.{locale}.properties">
 </head>
 <body>
   <nav class="ac--navbar">
@@ -42,7 +52,8 @@
       <li><a href="#" data-icon="settings"></a></li>
     </ul>
     <a href="#" id="profile-button">
-      <img id="profile-avatar"></img>
+      <img src="" alt="" id="profile-avatar"></img>
+      <div role="title" class="start" id="profile-tooltip"></div>
     </a>
   </nav>
 
@@ -57,7 +68,47 @@
         <img src="" alt="" id="article-author-avatar">
         <figcaption id="article-author-username"></figcaption>
       </figure>
+      <nav>
+        <ul>
+          <li><a href="#" data-icon="like" id="like-button">69</a></li>
+          <li><a href="#" data-icon="dislike" id="dislike-button">42</a></li>
+          <li><a href="#" data-icon="share" id="share-button"></a></li>
+          <li><a href="#" data-icon="sms" id="comment-button"></a></li>
+        </ul>
+      </nav>
       <div id="article-content"></div>
+    </div>
+
+    <div class="comments-wrapper">
+      <form action="">
+        <textarea id="webapp-comment-input" data-l10n-id="webapp-commentInput"></textarea>
+        <button type="reset" data-icon="close"></button>
+        <button type="submit" data-icon="send"></button>
+      </form>
+      <ul id="webapp-comments">
+        <li>
+          <figure>
+            <img src="/images/profile_pictures/avatar_default.svg" alt="">
+            <figcaption class="author">MortCodesWeb</figcaption>
+          </figure>
+          <p>This article is trash.</p>
+          <menu>
+            <button data-icon="like" class="like-button enabled">1</button>
+            <button data-icon="dislike" class="dislike-button">0</button>
+          </menu>
+        </li>
+        <li>
+          <figure>
+            <img src="/images/profile_pictures/avatar_green.svg" alt="">
+            <figcaption>MortCodesWeb's Alt</figcaption>
+          </figure>
+          <p>This article is trashier.</p>
+          <menu>
+            <button data-icon="like" class="like-button enabled">1</button>
+            <button data-icon="dislike" class="dislike-button">0</button>
+          </menu>
+        </li>
+      </ul>
     </div>
   </main>
 

@@ -41,7 +41,7 @@
   console.log('Last month was at ' + lastMonth);
 
   var client = new XMLHttpRequest();
-  client.open('GET', 'https://newsapi.org/v2/everything?q=news&from=' + lastMonth + '&language=en&sortBy=publishedAt&apiKey=4930e7035f9e4bcca838a594141153f9');
+  client.open('GET', 'https://newsapi.org/v2/everything?q=news&from=' + lastMonth + '&language=' + navigator.language + '&sortBy=publishedAt&apiKey=4930e7035f9e4bcca838a594141153f9');
   client.onreadystatechange = function() {
     data = JSON.parse(client.responseText);
     init();

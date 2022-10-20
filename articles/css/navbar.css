@@ -71,6 +71,7 @@
   display: block;
   text-decoration: none;
   margin: 0.5rem 0;
+  position: relative;
 }
 
 #profile-avatar {

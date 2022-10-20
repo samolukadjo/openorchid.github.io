@@ -81,48 +81,15 @@ label > input[type="text"] {
   box-sizing: border-box;
   height: 4rem;
   line-height: 4rem;
-  border: solid 0.1rem #858585;
-  border-radius: 0.4rem;
-  background: var(--background);
-}
-
-menu {
-  width: 100%;
-  height: 7rem;
-  background: var(--background);
-  margin: 0;
-  padding: 1.5rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: end;
-}
-
-menu button {
   border: none;
-  background: transparent;
-  color: var(--text-color);
-  margin: 0;
-  padding: 0 3rem;
-  border-radius: 2rem;
-  font-size: 1.6rem;
-  font-family: 'IBM Plex Sans', system-ui;
-  height: 4rem;
-  line-height: 4rem;
-  -moz-margin-start: 1rem;
-  margin-inline-start: 1rem;
+  border-bottom: solid 0.2rem #858585;
+  border-radius: 0.2rem;
+  background: var(--background);
+  outline: none;
 }
 
-menu button:hover {
-  background: var(--translucent);
-}
-
-menu button:active {
-  background: var(--translucent-plus);
-}
-
-menu button.recommend {
-  background: var(--accent-color);
-  color: var(--accent-color-text);
+label > input[type="text"]:focus {
+  border-bottom: solid 0.3rem var(--accent-color);
 }
 
 figure {
@@ -176,7 +143,7 @@ hr {
   max-height: 100%;
   border-radius: 1.5rem;
   background: var(--background-plus);
-  box-shadow: 0 0 0 calc(100vw + 100vh) rgba(127, 127, 127, 0.75);
+  box-shadow: 0 0 0 calc(100vw + 100vh) rgba(0, 0, 0, 0.3);
   transform: translate(-50%, -50%);
   overflow-x: hidden;
   overflow-y: auto;
@@ -214,8 +181,57 @@ hr {
   min-height: 15rem;
   max-height: 40rem;
   line-height: 2.2rem;
-  border: solid 0.1rem #858585;
-  border-radius: 0.4rem;
+  border: none;
+  border-bottom: solid 0.2rem #858585;
+  border-radius: 0.2rem;
   resize: vertical;
   background: var(--background);
+  outline: none;
+}
+
+#create-article textarea:focus {
+  border-bottom: solid 0.3rem var(--accent-color);
+}
+
+#create-article menu {
+  width: 100%;
+  height: 7rem;
+  background: var(--background);
+  margin: 0;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: end;
+}
+
+#create-article menu button {
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0 3rem;
+  border-radius: 2rem;
+  font-size: 1.6rem;
+  font-family: 'IBM Plex Sans', system-ui;
+  height: 4rem;
+  line-height: 4rem;
+  -moz-margin-start: 1rem;
+  margin-inline-start: 1rem;
+}
+
+#create-article menu button:hover {
+  background: var(--translucent);
+}
+
+#create-article menu button:active {
+  background: var(--translucent-plus);
+}
+
+#create-article menu button.recommend {
+  background: var(--accent-color);
+  color: var(--accent-color-text);
+}
+
+.comments-wrapper {
+  max-width: 768px !important;
 }

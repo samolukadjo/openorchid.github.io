@@ -6,25 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-l10n-id="auth"></title>
   <meta name="theme-color" content="#40a060">
-  <link rel="stylesheet" href="/lib/orchid_ui/dialog.css">
   <link rel="stylesheet" href="css/auth.css">
+
+  <!-- Localization -->
+  <script src="js/l10n.js"></script>
+  <meta name="defaultLanguage" content="en-US">
+  <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+  <link rel="localization" href="locales/auth.{locale}.properties">
 </head>
 <body>
-  <div class="oui--dialog">
+  <div class="auth-screen">
     <div class="container">
       <h1 data-l10n-id="login"></h1>
       <div class="content">
         <label for="">
-          <p data-l10n-id="login-email"></p>
-          <input type="text" id="login-email">
+          <span data-l10n-id="login-email"></span>
+          <input type="text" id="login-email" data-l10n-id="login-email-input">
         </label>
         <label for="">
-          <p data-l10n-id="login-password"></p>
-          <input type="text" id="login-password">
+          <span data-l10n-id="login-password"></span>
+          <input type="text" id="login-password" data-l10n-id="login-password-input">
         </label>
+        <a href="signup.html" data-l10n-id="signUp-option"></a>
       </div>
       <menu>
-        <button data-l10n-id="confirm" id="login-confirm-button"></button>
+        <button data-l10n-id="cancel" id="login-cancel-button"></button>
+        <button data-l10n-id="login" id="login-confirm-button"></button>
       </menu>
     </div>
   </div>

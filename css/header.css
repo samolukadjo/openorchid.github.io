@@ -188,7 +188,7 @@
 .ws--header ul li > a,
 .ws--header menu[type="toolbar"] > a {
   opacity: 0;
-  animation: header-link-appear 0.5s cubic-bezier(0, 0, 0, 2) forwards;
+  animation: header-link-appear 0.5s cubic-bezier(0, 0, 0, 1.5) forwards;
 }
 
 @keyframes header-link-appear {
@@ -203,7 +203,7 @@
 }
 
 .ws--header ul li:nth-child(1) > a,
-.ws-header menu[type="toolbar"] > a:nth-child(1) {
+.ws--header menu[type="toolbar"] > a:nth-child(1) {
   animation-delay: 0.5s !important;
 }
 .ws--header ul li:nth-child(2) > a,

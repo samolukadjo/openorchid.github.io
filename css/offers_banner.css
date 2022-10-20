@@ -32,6 +32,42 @@
   flex: 1;
 }
 
+.ws--offers-banner > div > * {
+  opacity: 0;
+}
+html[dir="ltr"] .ws--offers-banner > div > * {
+  animation: offers-appear 0.3s ease forwards 0.5s;
+}
+html[dir="rtl"] .ws--offers-banner > div > * {
+  animation: offers-appear-rtl 0.3s ease forwards 0.5s;
+}
+
+.ws--offers-banner > div:first-child > * {
+  animation-delay: 0.55s !important;
+}
+
+@keyframes offers-appear {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes offers-appear-rtl {
+  from {
+    transform: translateX(-32px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .ws--offers-banner h1 {
   font-size: 2.4rem;
   font-weight: bold;

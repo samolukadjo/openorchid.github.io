@@ -35,7 +35,8 @@
   <link rel="stylesheet" href="css/posters.css">
   <link rel="stylesheet" href="css/webapps.css">
   <link rel="stylesheet" href="css/webapp_info.css">
-  <link rel="stylesheet" href="/lib/orchid_ui/header.css">
+  <link rel="stylesheet" href="/css/comments.css">
+  <link rel="stylesheet" href="lib/orchid_ui/header.css">
   <script defer src="services/script.js" type="module"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/languages.js"></script>
@@ -162,14 +163,51 @@
         </ul>
 
         <header data-l10n-id="webapp-comments" id="webapp-comments-header"></header>
-        <form action="">
-          <input type="text" name="" id="" data-l10n-id="webapp-commentInput">
-          <button type="reset"></button>
-          <button type="submit"></button>
-        </form>
-        <ul>
-          <li id="webapp-tags"></li>
-        </ul>
+        <div class="comments-wrapper">
+          <form action="">
+            <textarea id="webapp-comment-input" data-l10n-id="webapp-commentInput"></textarea>
+            <button type="reset" data-icon="close"></button>
+            <button type="submit" data-icon="send"></button>
+          </form>
+          <ul id="webapp-comments">
+            <li>
+              <figure>
+                <img src="/images/profile_pictures/avatar_default.svg" alt="">
+                <figcaption>MortCodesWeb</figcaption>
+              </figure>
+              <div class="stars">
+                <div class="star active"></div>
+                <div class="star active"></div>
+                <div class="star active"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+              </div>
+              <p>This app is trash.</p>
+              <menu>
+                <button data-icon="like" class="like-button enabled">1</button>
+                <button data-icon="dislike" class="dislike-button">0</button>
+              </menu>
+            </li>
+            <li>
+              <figure>
+                <img src="/images/profile_pictures/avatar_green.svg" alt="">
+                <figcaption>MortCodesWeb's Alt</figcaption>
+              </figure>
+              <div class="stars">
+                <div class="star active"></div>
+                <div class="star active"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+              </div>
+              <p>This app is trashier.</p>
+              <menu>
+                <button data-icon="like" class="like-button enabled">1</button>
+                <button data-icon="dislike" class="dislike-button">0</button>
+              </menu>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

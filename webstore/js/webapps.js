@@ -5,8 +5,7 @@
   var currentApp;
   var webapps = document.getElementById('webapps');
 
-  OrchidServices.getList('webapps', function (data, id) {
-    webapps.innerHTML = '';
+  OrchidServices.getList('webstore', function (data, id) {
     createIcon(data, id, false);
   });
 
@@ -110,8 +109,8 @@
     var webappInstallSize = document.getElementById('webapp-install-size');
     var webappSupportedDevices = document.getElementById('webapp-supported-devices');
 
-    if (!isBananaHackers) {
-      webappBanner.src = data.trailer_url.replace('watch?v=', 'embed/') + '?controls=0&autoplay=1&loop=1';
+    if (!isBananaHackers || data.teaser_url) {
+      webappBanner.src = data.teaser_url.replace('watch?v=', 'embed/') + '?controls=0&autoplay=1&loop=1';
     }
 
     webappCard.classList.add('fade-in');
@@ -157,7 +156,7 @@
       });
     }
 
-    if (isBananaHackers) {
+    if (isBananaHackers || data.comments.length == 0) {
       webappAverageRating.textContent = '';
       webappStarRatings.innerHTML = '';
     } else {
@@ -192,18 +191,27 @@
         webappCategories.appendChild(category);
       });
     } else {
-      data.categories.forEach(item => {
-        var category = document.createElement('span');
-        category.dataset.l10nId = 'category-' + item;
-        webappCategories.appendChild(category);
-      });
+      if (data.categories.length == 0) {
+        data.categories.forEach(item => {
+          var category = document.createElement('span');
+          category.dataset.l10nId = 'category-' + item;
+          webappCategories.appendChild(category);
+        });
+      }
     }
 
     installButton.onclick = () => {
       if (navigator.mozApps) {
         navigator.mozApps.mgmt.installPackage(data.download);
       } else {
-        location.href = data.download;
+        if (isBananaHackers) {
+          location.href = data.download;
+        } else {
+          var a = document.createElement('a');
+          a.href = data.download
+          a.download = 'webapp.orchidpkg.zip';
+          a.click();
+        }
       }
     };
 

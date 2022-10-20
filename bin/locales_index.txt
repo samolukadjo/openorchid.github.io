@@ -1,1 +1,7 @@
 webstore/locales/main.en-US.properties
+cloud/locales/main.en-US.properties
+locales/main.en-US.properties
+locales/changelog.en-US.properties
+widgets/locales/widgets.en-US.properties
+start/locales/widgets.en-US.properties
+auth/locales/auth.en-US.properties

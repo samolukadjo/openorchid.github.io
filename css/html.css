@@ -14,7 +14,7 @@
   --font-families: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
 
   --accent-color: #0061e0;
-  --accent-color-text: rgba(255,255,255,0.75);
+  --accent-color-text: rgba(255,255,255,0.6);
   --background: #e7e9ec;
   --background-plus: #fff;
   --header-background: rgba(231, 233, 236, 0.6);
@@ -29,11 +29,12 @@
   --footer-background: #212121;
   --footer-header-color: #80b1e8;
   --footer-text-color: #e7e7e7;
+
+  color-scheme: light;
 }
 
 [data-theme="dark"] {
   --logo: url(images/logo_dark.svg);
-  --font-families: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
 
   --accent-color: #00ddff;
   --accent-color-text: rgba(0,0,0,0.75);
@@ -47,6 +48,8 @@
 
   --banner-background: linear-gradient(to right, #602050, #301040);
   --banner-text-color: #ffc0ff;
+
+  color-scheme: dark;
 }
 
 :focus {
@@ -122,8 +125,106 @@ button, select, input {
   font-family: var(--font-families);
 }
 
+select {
+  width: 100%;
+  height: 4rem;
+  line-height: 4rem;
+  border-radius: 1rem;
+  border: none;
+  background: var(--background-plus);
+  border: solid 0.1rem #858585;
+  color: var(--text-color);
+  padding: 0 1rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-weight: normal;
+  margin: 0 0 1rem;
+}
+
 .pointerless {
   pointer-events: none;
+}
+
+label {
+  margin: 0 0 1.5rem;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+label + p {
+  opacity: 0.5;
+  margin: -2rem 0 1.5rem !important;
+  line-height: 2.2rem;
+}
+
+label.vertical {
+  flex-direction: column;
+}
+
+label > span {
+  font-size: 1.6rem;
+  font-weight: normal;
+  width: 100%;
+  flex: 1;
+}
+
+label > span em {
+  font-style: normal;
+  color: #c00040;
+}
+
+label button {
+  margin: 0 0 1rem;
+}
+
+label input:not([type="checkbox"]) {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+label input[type="text"] {
+  width: 100%;
+  height: 4rem;
+  line-height: 4rem;
+  margin: 0 0 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0.4rem;
+  background: var(--background-plus);
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+label textarea {
+  width: 100%;
+  height: 15rem;
+  max-height: 30rem;
+  line-height: 2.2rem;
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0.4rem;
+  background: var(--background-plus);
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+  resize: vertical;
+  font-family: var(--font-families);
+}
+
+pre {
+  font-size: 1.4rem;
+  width: 100%;
+  overflow: auto;
 }
 
 /* Elastic Scrolling */

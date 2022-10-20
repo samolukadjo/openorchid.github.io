@@ -10,4 +10,23 @@
   z-index: 10;
   padding: 0.4rem 1rem;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+.ws--note > span {
+  position: relative;
+  display: block;
+  opacity: 0;
+  animation: note-appear 0.3s ease forwards 0.5s;
+}
+
+@keyframes note-appear {
+  from {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
