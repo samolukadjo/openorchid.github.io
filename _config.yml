@@ -1,3 +1,14 @@
-url: https://orchidfoss.github.io/
+logo: favicon.svg
+locale: en_US
 title: Orchid
 description: Discover new things.
+search: true
+env: dev
+
+config:
+  dev:
+    url: http://127.0.0.1:5500/
+  prod:
+    url: https://orchidfoss.github.io/
+
+url: site.config[site.env].url
