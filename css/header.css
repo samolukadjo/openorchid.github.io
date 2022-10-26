@@ -1,7 +1,7 @@
 .ws--header {
   width: 100%;
-  height: calc(5rem + 2.5vw);
-  padding: 2.5vw 5vw 0;
+  height: calc(5rem + 2vw);
+  padding: 2vw 4vw 0;
   box-sizing: border-box;
   display: flex;
   z-index: 10;
@@ -156,6 +156,11 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .ws--header {
+    padding: 48px 64px 0;
+    height: calc(5rem + 48px);
+  }
+
   .ws--header [type="toolbar"] button,
   .ws--header [type="toolbar"] .ws--button {
     display: block;

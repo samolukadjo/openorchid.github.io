@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
-  <title data-l10n-id="brandName"></title>
+  <title data-l10n-id="brandName">Orchid</title>
   <meta name="theme-color" content="var(--background, #e7e7e7)">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Orchid" />
@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="css/html.css">
   <link rel="stylesheet" href="css/offers_banner.css">
   <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/header_dropdown.css">
   <link rel="stylesheet" href="css/notifications.css">
   <link rel="stylesheet" href="css/content.css">
   <link rel="stylesheet" href="css/posters.css">
@@ -87,7 +88,21 @@
       </a>
       <a href="#content" class="tab-skip" data-l10n-id="header-skipToContent"></a>
       <ul>
-        <li><a href="#" data-l10n-id="header-products"></a></li>
+        <li>
+          <a href="#" data-l10n-id="header-products"></a>
+          <div class="dropdown">
+            <div class="dropdown-col">
+              <h4 data-l10n-id="footer-products"></h4>
+              <ul>
+                <li><a href="?page=products/os" data-l10n-id="footer-products-os"></a></li>
+                <li><a href="/webstore/index.html" data-l10n-id="footer-products-webstore"></a></li>
+                <li><a href="#" data-l10n-id="footer-products-weather"></a></li>
+                <li><a href="#" data-l10n-id="footer-products-newspaper"></a></li>
+                <li><a href="#" data-l10n-id="footer-products-maps"></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
         <li><a href="#" data-l10n-id="header-services"></a></li>
         <li><a href="/webstore/index.html" data-l10n-id="header-store"></a></li>
         <li><a href="#" data-l10n-id="header-contacts"></a></li>

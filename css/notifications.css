@@ -17,12 +17,12 @@
   visibility: hidden;
 }
 html[dir="ltr"] .ws--notifications {
-  left: 0;
-  transform: translateX(-100%);
-}
-html[dir="rtl"] .ws--notifications {
   right: 0;
   transform: translateX(100%);
+}
+html[dir="rtl"] .ws--notifications {
+  left: 0;
+  transform: translateX(-100%);
 }
 
 .ws--notifications.visible {

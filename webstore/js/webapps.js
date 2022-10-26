@@ -110,7 +110,7 @@
     var webappSupportedDevices = document.getElementById('webapp-supported-devices');
 
     if (!isBananaHackers || data.teaser_url) {
-      webappBanner.src = data.teaser_url.replace('watch?v=', 'embed/') + '?controls=0&autoplay=1&loop=1';
+      webappBanner.src = data.teaser_url.replace('watch?v=', 'embed/') + '?controls=0&autoplay=1&loop=1&ref=0&fs=0&modestbranding=0';
     }
 
     webappCard.classList.add('fade-in');
