@@ -27,6 +27,9 @@ function Comments(path, element) {
         element.appendChild(figure);
 
         var figureAvatar = document.createElement('img');
+        figureAvatar.onerror = function() {
+          figureAvatar.src = '/images/profile_pictures/avatar_default.svg';
+        };
         figure.appendChild(figureAvatar);
 
         var figCaption = document.createElement('figcaption');
@@ -36,8 +39,10 @@ function Comments(path, element) {
           figureAvatar.src = udata.profile_picture;
           figureAvatar.alt = udata.username;
           figCaption.textContent = udata.username;
+        });
 
-          if (udata.token == comment.author_id) {
+        OrchidServices.get(path).then(function(udata) {
+          if (udata.author_id == comment.author_id) {
             figCaption.classList.add('author');
           }
         });

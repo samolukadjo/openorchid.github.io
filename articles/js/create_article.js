@@ -10,7 +10,7 @@
   var submitButton = document.getElementById('create-article-submit-button');
 
   if (!OrchidServices.isUserLoggedIn()) {
-    dialogButton.style.display = 'none';
+    dialogButton.parentElement.style.display = 'none';
   }
 
   dialogButton.addEventListener('click', function() {
