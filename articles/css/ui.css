@@ -225,4 +225,5 @@ hr {
 
 .comments-wrapper {
   max-width: 768px !important;
+  width: calc(100% - 1rem) !important;
 }

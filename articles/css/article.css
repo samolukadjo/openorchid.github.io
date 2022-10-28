@@ -44,7 +44,7 @@
 }
 
 .ac--current-article > .container {
-  width: 100%;
+  width: calc(100% - 1rem);
   max-width: 768px;
   margin: 0 auto;
 }
@@ -55,13 +55,14 @@
 }
 
 .ac--current-article nav {
-  width: calc(100% - 1rem);
+  width: 100%;
   height: 5rem;
   display: flex;
   border-radius: 1rem;
-  margin: 1rem 0.5rem;
+  margin: 1rem 0;
   padding: 0;
   background: var(--background-plus);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
 
 .ac--current-article nav ul {
