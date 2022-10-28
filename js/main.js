@@ -1,27 +1,23 @@
 (function(exports) {
   'use strict';
 
-  // Elastic Scrolling
   var root = document.querySelector(':root');
-  var contentHolder = document.querySelector('.content-container');
-  var header = document.querySelector('.content-container .ws--header');
-  var Scrollbar = window.Scrollbar;
+  var header = document.querySelector('.ws--header');
 
-  Scrollbar.use(window.OverscrollPlugin);
-  window.elasticScrollbar = Scrollbar.init(contentHolder, {
-    plugins: {
-      overscroll: true
+  var previousY = 0;
+  document.addEventListener('scroll', () => {
+    if (root.scrollTop <= previousY || root.scrollTop <= 51) {
+      header.classList.add('visible');
+    } else if (root.scrollTop >= previousY) {
+      header.classList.remove('visible');
     }
-  });
 
-  elasticScrollbar.addListener(() => {
-    if (elasticScrollbar.offset.y >= (header.offsetTop + 1)) {
-      header.style.transform = 'translateY(' + (elasticScrollbar.offset.y - header.offsetTop) + 'px)';
+    if (root.scrollTop >= 5) {
       header.classList.add('scrolling');
     } else {
-      header.style.transform = 'translateY(0px)';
       header.classList.remove('scrolling');
     }
+    previousY = root.scrollTop;
   });
 
   var content = document.getElementById('content');
@@ -121,4 +117,40 @@
   // loginButton.addEventListener('click', () => {
   //   var win = window.open('/auth/index.html', '_blank', 'width=854,height=480');
   // });
+
+  // Ripple effect
+  function createRipple(button) {
+    const circle = document.createElement("span");
+
+    button.addEventListener("mousedown", (event) => {
+      const diameter = Math.max(button.getBoundingClientRect().width, button.getBoundingClientRect().height);
+      const radius = diameter / 2;
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+      circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+      circle.classList.add("ripple");
+      circle.classList.add("active");
+
+      button.appendChild(circle);
+      button.style.overflow = 'hidden';
+    });
+
+    button.addEventListener("mouseup", () => {
+      circle.classList.remove("ripple");
+      circle.classList.remove("active");
+      setTimeout(() => {
+        circle.classList.add("ripple");
+      });
+      circle.addEventListener('animationend', () => {
+        circle.remove();
+        button.style.overflow = '';
+      });
+    });
+  }
+
+  const buttons = document.querySelectorAll("a[href], button, #notifications-list li");
+  for (const button of buttons) {
+    createRipple(button);
+  }
 })(window);

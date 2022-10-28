@@ -30,6 +30,7 @@
   <script src="services/script.js" type="module"></script>
   <script defer src="lib/markdown-it.js"></script>
   <script defer src="js/main.js"></script>
+  <script defer src="/js/comments.js"></script>
   <script defer src="js/articles.js"></script>
   <script defer src="js/create_article.js"></script>
   <script defer src="js/languages.js"></script>
@@ -39,16 +40,17 @@
   <script src="js/l10n.js"></script>
   <meta name="defaultLanguage" content="en-US">
   <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
-  <link rel="localization" href="locales/main.{locale}.properties">
-  <link rel="localization" href="locales/changelog.{locale}.properties">
+  <link rel="localization" href="locales/articles.{locale}.properties">
 </head>
 <body>
   <nav class="ac--navbar">
-    <a href="#" class="home"></a>
+    <a href="#" class="home" id="home-button"></a>
     <ul>
       <li><a href="#" data-icon="library"></a></li>
       <li><a href="#" data-icon="heart"></a></li>
-      <li><a href="#" data-icon="upload" id="create-article-button"></a></li>
+      <li><a href="#" data-icon="upload" id="create-article-button">
+        <div role="title" class="bottom" data-l10n-id="navbar-create"></div>
+      </a></li>
       <li><a href="#" data-icon="settings"></a></li>
     </ul>
     <a href="#" id="profile-button">
@@ -70,55 +72,44 @@
       </figure>
       <nav>
         <ul>
-          <li><a href="#" data-icon="like" id="like-button">69</a></li>
-          <li><a href="#" data-icon="dislike" id="dislike-button">42</a></li>
-          <li><a href="#" data-icon="share" id="share-button"></a></li>
-          <li><a href="#" data-icon="sms" id="comment-button"></a></li>
+          <li><a href="#" data-icon="like" id="like-button">
+            <span></span>
+            <div role="title" class="bottom" data-l10n-id="article-like"></div>
+          </a></li>
+          <li><a href="#" data-icon="dislike" id="dislike-button">
+            <span></span>
+            <div role="title" class="bottom" data-l10n-id="article-dislike"></div>
+          </a></li>
+          <li><a href="#" data-icon="share" id="share-button">
+            <span></span>
+            <div role="title" class="bottom" data-l10n-id="article-share"></div>
+          </a></li>
+          <li><a href="#" data-icon="sms" id="comment-button">
+            <span></span>
+            <div role="title" class="bottom" data-l10n-id="article-comment"></div>
+          </a></li>
         </ul>
       </nav>
       <div id="article-content"></div>
     </div>
 
-    <div class="comments-wrapper">
+    <div id="comments" class="comments-wrapper">
       <form action="">
-        <textarea id="webapp-comment-input" data-l10n-id="webapp-commentInput"></textarea>
+        <textarea data-l10n-id="article-commentInput"></textarea>
         <button type="reset" data-icon="close"></button>
         <button type="submit" data-icon="send"></button>
       </form>
-      <ul id="webapp-comments">
-        <li>
-          <figure>
-            <img src="/images/profile_pictures/avatar_default.svg" alt="">
-            <figcaption class="author">MortCodesWeb</figcaption>
-          </figure>
-          <p>This article is trash.</p>
-          <menu>
-            <button data-icon="like" class="like-button enabled">1</button>
-            <button data-icon="dislike" class="dislike-button">0</button>
-          </menu>
-        </li>
-        <li>
-          <figure>
-            <img src="/images/profile_pictures/avatar_green.svg" alt="">
-            <figcaption>MortCodesWeb's Alt</figcaption>
-          </figure>
-          <p>This article is trashier.</p>
-          <menu>
-            <button data-icon="like" class="like-button enabled">1</button>
-            <button data-icon="dislike" class="dislike-button">0</button>
-          </menu>
-        </li>
-      </ul>
+      <ul id="webapp-comments"></ul>
     </div>
   </main>
 
   <form id="create-article">
     <label for="">
-      <span>Article Title<em>*</em></span>
+      <span><span data-l10n-id="article-title"></span><em>*</em></span>
       <input type="text" id="create-article-title-input" required>
     </label>
     <label for="">
-      <span>Article Content<em>*</em></span>
+      <span><span data-l10n-id="article-content"></span><em>*</em></span>
       <textarea id="create-article-content-input" required></textarea>
     </label>
     <menu>

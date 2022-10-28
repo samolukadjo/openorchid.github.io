@@ -13,6 +13,7 @@
   client.open('GET', 'https://banana-hackers.gitlab.io/store-db/data.json');
   client.onreadystatechange = () => {
     data = JSON.parse(client.responseText);
+    console.log(data);
     data.apps.forEach((app) => {
       createIcon(app, app.slug, true);
       if (currentApp !== null) {
@@ -109,6 +110,10 @@
     var webappInstallSize = document.getElementById('webapp-install-size');
     var webappSupportedDevices = document.getElementById('webapp-supported-devices');
 
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
     if (!isBananaHackers || data.teaser_url) {
       webappBanner.src = data.teaser_url.replace('watch?v=', 'embed/') + '?controls=0&autoplay=1&loop=1&ref=0&fs=0&modestbranding=0';
     }
@@ -202,13 +207,13 @@
 
     installButton.onclick = () => {
       if (navigator.mozApps) {
-        navigator.mozApps.mgmt.installPackage(data.download);
+        navigator.mozApps.mgmt.installPackage(data.download.url);
       } else {
         if (isBananaHackers) {
-          location.href = data.download;
+          location.href = data.download.url;
         } else {
           var a = document.createElement('a');
-          a.href = data.download
+          a.href = data.download;
           a.download = 'webapp.orchidpkg.zip';
           a.click();
         }

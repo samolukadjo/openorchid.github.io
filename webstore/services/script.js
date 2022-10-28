@@ -14,7 +14,8 @@ import {
   getStorage,
   uploadBytes,
   deleteObject,
-  listAll
+  listAll,
+  ref
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -282,11 +283,32 @@ var OrchidServices = {
 
   storage: {
     /**
-     * Creates a storage file using a blob and a path.
+     * Gets a storage file using a blob and a path.
+     * @param {string} path
+     * @param {function} callback
+     */
+    get: function os_storage_get(path, callback) {
+      var client = new XMLHttpRequest();
+      client.open('GET', 'https://firebasestorage.googleapis.com/v0/b/orchid-f39a9.appspot.com/o/' + path);
+      client.onreadystatechange = () => {
+        var metadata = JSON.parse(client.responseText);
+
+        var client1 = new XMLHttpRequest();
+        client1.open('GET', 'https://firebasestorage.googleapis.com/v0/b/orchid-f39a9.appspot.com/o/' + path + '?alt=media&token=' + metadata.downloadTokens);
+        client1.onreadystatechange = () => {
+          callback({ meta: client.responseText, response: client1.responseText });
+        };
+        client1.send();
+      };
+      client.send();
+    },
+
+    /**
+     * Creates or sets a storage file using a blob and a path.
      * @param {string} path
      * @param {string} blob
      */
-    add: function os_storage_add(path, blob) {
+    set: function os_storage_set(path, blob) {
       const storageRef = ref(storage, path);
 
       // 'blob' comes from the Blob or File API
@@ -396,7 +418,9 @@ var OrchidServices = {
       OrchidServices.set('webstore/' + id, {
         token: id,
         author_id: OrchidServices.userId(),
+        teaser_url: data.teaser_url,
         icon: data.icon,
+        keyart: data.keyart,
         name: data.name,
         description: data.description,
         published_at: Date.now(),
@@ -405,8 +429,6 @@ var OrchidServices = {
         has_tracking: data.has_tracking,
         categories: data.categories,
         tags: data.tags,
-        likes: [],
-        dislikes: [],
         comments: []
       });
     },

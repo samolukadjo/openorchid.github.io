@@ -9,6 +9,10 @@
   var closeButton = document.getElementById('create-article-close-button');
   var submitButton = document.getElementById('create-article-submit-button');
 
+  if (!OrchidServices.isUserLoggedIn()) {
+    dialogButton.style.display = 'none';
+  }
+
   dialogButton.addEventListener('click', function() {
     dialog.classList.add('visible');
   });

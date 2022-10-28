@@ -1,23 +1,23 @@
 .ws--header {
   width: 100%;
-  height: calc(5rem + 2vw);
-  padding: 2vw 4vw 0;
+  height: 5rem;
+  padding: 0 4vw;
   box-sizing: border-box;
   display: flex;
   z-index: 10;
-  position: absolute;
-  transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease, background 0.3s ease;
+  position: sticky;
+  top: -5rem;
+  transition: all 0.3s ease, transform 0ms;
 }
 
 .ws--header.scrolling {
   background: var(--background);
+  box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
 }
 
-@supports (backdrop-filter: saturate(180%) blur(20px)) {
-  .ws--header.scrolling {
-    backdrop-filter: saturate(180%) blur(20px);
-    background: var(--header-background);
-  }
+.ws--header.visible,
+.ws--header:hover {
+  top: 0;
 }
 
 .ws--header .home {
@@ -28,6 +28,7 @@
   margin-inline-end: 1rem;
   color: var(--text-color);
   position: relative;
+  border-radius: 0.6rem;
 }
 
 .ws--header .tab-skip {
@@ -35,7 +36,7 @@
   color: rgba(255,255,255,0.75);
   font-size: 1.6rem;
   font-weight: normal;
-  border-radius: 0.4rem;
+  border-radius: 1rem;
   height: 4rem;
   line-height: 4rem;
   padding: 0 1rem;
@@ -88,7 +89,6 @@
 
 .ws--header ul li > a:hover {
   background: var(--translucent);
-  text-decoration: underline;
 }
 
 .ws--header ul li > a:active {
@@ -157,8 +157,8 @@
 
 @media screen and (min-width: 1280px) {
   .ws--header {
-    padding: 48px 64px 0;
-    height: calc(5rem + 48px);
+    padding: 0 64px;
+    height: 5rem;
   }
 
   .ws--header [type="toolbar"] button,

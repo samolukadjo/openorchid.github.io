@@ -4,7 +4,6 @@
   margin: 0 auto;
   font-size: 1.6rem;
   color: var(--text-color);
-  margin-top: calc(5rem + 5vw);
 }
 
 .ws--article .notice {
@@ -47,10 +46,16 @@
 .ws--article > video,
 .ws--article > audio {
   width: 100%;
+  max-height: 600px;
+  object-fit: contain;
   background: var(--background-plus);
 }
 
 .ws--article .learn-more {
   margin: 0;
   padding: 0;
+}
+
+.ws--article span[data-icon]:before {
+  font-size: 1.6rem;
 }

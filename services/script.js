@@ -14,7 +14,8 @@ import {
   getStorage,
   uploadBytes,
   deleteObject,
-  listAll
+  listAll,
+  ref
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -193,6 +194,8 @@ function MD5(inputString) {
 }
 
 var OrchidServices = {
+  DEBUG: (location.href === 'http://localhost:5500' || location.href === 'http://127.0.0.1:5500/'),
+
   init: function os_init() {
     window.addEventListener('load', () => {
       if (this.isUserLoggedIn) {
@@ -235,11 +238,15 @@ var OrchidServices = {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log("Document data: ", docSnap.data());
+      if (this.DEBUG) {
+        console.log("Document data: ", docSnap.data());
+      }
       return docSnap.data();
     } else {
       // doc.data() will be undefined in this case
-      console.log("No such document!");
+      if (this.DEBUG) {
+        console.log("No such document!");
+      }
     }
   },
 
@@ -250,7 +257,9 @@ var OrchidServices = {
    */
   getWithUpdate: function os_getWithUpdate(path, callback) {
     onSnapshot(doc(db, path), (doc) => {
-      console.log("Document data: ", doc.data());
+      if (this.DEBUG) {
+        console.log("Document data: ", doc.data());
+      }
       callback(doc.data());
     });
   },
@@ -265,7 +274,9 @@ var OrchidServices = {
     const querySnapshot = await getDocs(collection(db, path));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+      if (this.DEBUG) {
+        console.log(doc.id, " => ", doc.data());
+      }
       callback(doc.data(), doc.id);
     });
   },
@@ -291,7 +302,9 @@ var OrchidServices = {
 
       // 'blob' comes from the Blob or File API
       uploadBytes(storageRef, blob).then((snapshot) => {
-        console.log("Uploaded a blob or file!");
+        if (this.DEBUG) {
+          console.log("Uploaded a blob or file!");
+        }
       });
     },
 
@@ -309,7 +322,9 @@ var OrchidServices = {
         })
         .catch((error) => {
           // Uh-oh, an error occurred!
-          console.log(error);
+          if (this.DEBUG) {
+            console.log(error);
+          }
         });
     },
 
@@ -338,7 +353,23 @@ var OrchidServices = {
   },
 
   auth: {
-    login: function os_auth_login() {},
+    login: function os_auth_login(username, password) {
+      OrchidServices.getList('profile', (user) => {
+        if (user.username == username || user.email == username || user.phone_number == username) {
+          if (user.password == MD5(password)) {
+            OrchidServices.auth.loginWithToken(user.token);
+          } else {
+            if (this.DEBUG) {
+              console.error('[' + user.token + '] Password does not match.');
+            }
+          }
+        } else {
+          if (this.DEBUG) {
+            console.error('[' + user.token + '] User does not exist');
+          }
+        }
+      });
+    },
 
     /**
      * Logs in using a specified existing user token.
@@ -348,44 +379,45 @@ var OrchidServices = {
       localStorage.setItem("ws.login.userId", token);
     },
 
-  },
+    /**
+     * Helps create a user account easily for you.
+     * @param {string} username
+     * @param {string} email
+     * @param {string} password
+     * @param {string} birthDate
+     */
+    signUp: async function os_auth_signUp(username, email, password, birthDate) {
+      var token = generateUUID();
+      OrchidServices.set('profile/' + token, {
+        username: username,
+        email: email,
+        password: MD5(password),
+        profile_picture: "",
+        phone_number: "",
+        birth_date: birthDate,
+        token: token,
+        badges: [],
+        description: "",
+        orchid_points: 0,
+        time_created: Date.now(),
+        last_active: Date.now(),
+        state: "online",
+        notifications: [],
+        browser_bookmarks: [],
+        devices: [],
+        achievements: [],
+        preferences: {
+          wallpaper: "",
+          accent_color: "",
+          dark_mode: false,
+        }
+      });
+      localStorage.setItem("ws.login.userId", token);
 
-  /**
-   * Helps create a user account easily for you.
-   * @param {string} username
-   * @param {string} email
-   * @param {string} password
-   * @param {string} birthDate
-   */
-  signUp: async function os_auth_signUp(username, email, password, birthDate) {
-    var token = generateUUID();
-    const res = await db.collection('profile').add({
-      username: username,
-      email: email,
-      password: MD5(password),
-      profile_picture: "",
-      phone_number: "",
-      birth_date: birthDate,
-      token: token,
-      badges: [],
-      description: "",
-      orchid_points: 0,
-      time_created: Date.now(),
-      last_active: Date.now(),
-      state: "online",
-      notifications: [],
-      browser_bookmarks: [],
-      devices: [],
-      achievements: [],
-      preferences: {
-        wallpaper: "",
-        accent_color: "",
-        dark_mode: false,
+      if (this.DEBUG) {
+        console.log('Added document with ID: ', token);
       }
-    });
-    localStorage.setItem("ws.login.userId", res.id);
-
-    console.log('Added document with ID: ', res.id);
+    },
   },
 
   authUi: function os_authUi() {},

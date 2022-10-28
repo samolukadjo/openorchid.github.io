@@ -17,6 +17,7 @@
   top: 0;
   width: 100%;
   height: calc(100vw / 1.75);
+  max-height: 60vh;
   overflow: hidden;
 }
 
@@ -311,6 +312,7 @@
     height: calc(100vh - 5rem);
     position: fixed;
     top: 5rem;
+    max-height: unset;
   }
 
   #webapp-banner {

@@ -5,8 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-l10n-id="auth"></title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon">
   <meta name="theme-color" content="#40a060">
   <link rel="stylesheet" href="css/auth.css">
+  <script type="module" src="/services/script.js"></script>
+  <script defer src="js/signup.js"></script>
 
   <!-- Localization -->
   <script src="js/l10n.js"></script>
@@ -16,32 +19,37 @@
 </head>
 <body>
   <div class="auth-screen">
-    <div class="container">
+    <form action="" class="container" id="signup">
       <h1 data-l10n-id="signUp"></h1>
       <div class="content">
+        <div class="error" id="signup-error"></div>
         <label for="">
           <span data-l10n-id="signUp-username"></span>
-          <input type="text" id="signup-username" data-l10n-id="signUp-username-input">
+          <input type="text" id="signup-username" data-l10n-id="signUp-username-input" required>
         </label>
         <label for="">
           <span data-l10n-id="signUp-email"></span>
-          <input type="text" id="signup-email" data-l10n-id="signUp-email-input">
+          <input type="text" id="signup-email" data-l10n-id="signUp-email-input" required>
         </label>
         <label for="">
           <span data-l10n-id="signUp-password"></span>
-          <input type="text" id="signup-password" data-l10n-id="signUp-password-input">
+          <input type="text" id="signup-password" data-l10n-id="signUp-password-input" required>
         </label>
         <label for="">
           <span data-l10n-id="signUp-passwordConfirm"></span>
-          <input type="text" id="signup-confirm-password" data-l10n-id="signUp-passwordConfirm-input">
+          <input type="text" id="signup-confirm-password" data-l10n-id="signUp-passwordConfirm-input" required>
+        </label>
+        <label for="">
+          <span data-l10n-id="signUp-birthDate"></span>
+          <input type="date" id="signup-birth-date" required>
         </label>
         <a href="index.html" data-l10n-id="login-option"></a>
       </div>
       <menu>
-        <button data-l10n-id="cancel" id="signup-cancel-button"></button>
-        <button data-l10n-id="signUp" id="signup-confirm-button"></button>
+        <button data-l10n-id="cancel" type="button" id="signup-cancel-button"></button>
+        <button data-l10n-id="signUp" type="submit"></button>
       </menu>
-    </div>
+    </form>
   </div>
 </body>
 </html>

@@ -1,9 +1,14 @@
 .ws--poster {
   width: 100%;
   height: 100vw;
-  background: var(--background-plus);
+  background: #000;
   position: relative;
   overflow: hidden;
+  --text-color: #fff;
+}
+
+.ws--poster.light {
+  --text-color: #000;
 }
 
 .ws--poster > img {
@@ -13,8 +18,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: var(--background-plus);
-  opacity: 0.75;
+  background: #858585;
   object-fit: cover;
 }
 
@@ -31,15 +35,38 @@
   align-items: flex-start;
   justify-content: center;
 }
-html[dir="ltr"] .ws--poster > div {
+html[dir="ltr"] .ws--poster > div:not(.keyart-container) {
   left: 0;
 }
-html[dir="rtl"] .ws--poster > div {
+html[dir="rtl"] .ws--poster > div:not(.keyart-container) {
   right: 0;
+}
+
+.ws--poster > .keyart-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+}
+html[dir="ltr"] .ws--poster > .keyart-container {
+  right: 0;
+}
+html[dir="rtl"] .ws--poster > .keyart-container {
+  left: 0;
 }
 
 .ws--poster > div img {
   height: 4rem;
+}
+
+.ws--poster > .keyart-container img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  border-radius: 1rem;
+  filter: drop-shadow(0 0.5rem 1rem rgba(0,0,0,0.4));
 }
 
 .ws--poster > div h1 {
@@ -47,6 +74,7 @@ html[dir="rtl"] .ws--poster > div {
   font-weight: bold;
   margin: 0;
   max-width: 400px;
+  font-family: 'Readex Pro', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
 }
 
 .ws--poster > div p {
@@ -71,6 +99,11 @@ html[dir="rtl"] .ws--poster > div {
   box-sizing: border-box;
   margin: 1rem 0 0;
   border-radius: 1.7rem;
+}
+
+.ws--poster.visible-links > div a {
+  color: #0061e0;
+  background: var(--text-color);
 }
 
 .ws--poster > div a:hover {
@@ -108,11 +141,29 @@ html[dir="rtl"] .ws--poster > div a:hover:after {
   }
 
   .ws--poster > div {
+    width: 50%;
     margin: 32px 48px;
+  }
+
+  .ws--poster > .keyart-container {
+    display: flex;
   }
 }
 
 @media screen and (orientation: landscape) and (min-width: 1280px) {
+  .ws--poster {
+    margin: 0 64px 48px;
+    width: calc(100% - 128px);
+    height: calc(100vh - 5rem - 48px);
+    border-radius: 1.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  }
+
+  .ws--poster > div,
+  .ws--poster > .keyart-container {
+    height: calc(100% - 64px);
+  }
+
   .ws--poster > div a {
     margin: 1rem 0 0;
     height: 4rem;

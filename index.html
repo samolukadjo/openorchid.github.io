@@ -60,186 +60,194 @@
   <link rel="localization" href="locales/changelog.{locale}.properties">
 </head>
 <body>
-  <div class="content-container">
-    <div class="ws--offers-banner" id="service-worker-dialog">
-      <div>
-        <h1 data-l10n-id="sw-title"></h1>
-        <p data-l10n-id="sw-detail"></p>
-        <ul>
-          <li data-l10n-id="sw-feature1"></li>
-          <li data-l10n-id="sw-feature2"></li>
-          <li data-l10n-id="sw-feature3"></li>
-        </ul>
-        <menu>
-          <a href="#" class="ws--button" data-l10n-id="privacyPolicy"></a>
-        </menu>
-      </div>
-      <div>
-        <menu>
-          <button class="recommend" id="service-worker-dialog-allow" data-l10n-id="yes"></button>
-          <button id="service-worker-dialog-deny" data-l10n-id="no"></button>
-        </menu>
-      </div>
-    </div>
-
-    <header class="ws--header">
-      <a href="/" class="home">
-        <div role="title" class="bottom" data-l10n-id="header-home"></div>
+  <header class="ws--header">
+    <a href="/" class="home">
+      <div role="title" class="bottom" data-l10n-id="header-home"></div>
+    </a>
+    <a href="#content" class="tab-skip" data-l10n-id="header-skipToContent"></a>
+    <ul>
+      <li>
+        <a href="?page=products" data-l10n-id="header-products"></a>
+        <div class="dropdown">
+          <div class="dropdown-col">
+            <h4 data-l10n-id="headerDropdown-products"></h4>
+            <ul>
+              <li><a href="?page=products/os" data-l10n-id="headerDropdown-products-os"></a></li>
+              <li><a href="/webstore/index.html" data-l10n-id="headerDropdown-products-webstore"></a></li>
+              <li><a href="#" data-l10n-id="headerDropdown-products-weather"></a></li>
+              <li><a href="#" data-l10n-id="headerDropdown-products-newspaper"></a></li>
+              <li><a href="/articles/index.html" data-l10n-id="headerDropdown-products-articles"></a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4 data-l10n-id="headerDropdown-usedLibs"></h4>
+            <ul>
+              <li><a href="https://www.github.com/kaiosrt/gecko-b2g/tree/b2g48" data-l10n-id="headerDropdown-usedLibs-gecko"></a></li>
+              <li><a href="https://www.github.com/mozilla-b2g/tree/v2.6" data-l10n-id="headerDropdown-usedLibs-gaia"></a></li>
+            </ul>
+            <h4 data-l10n-id="headerDropdown-developer"></h4>
+            <ul>
+              <li><a href="https://www.github.com/kaiosrt/gecko-b2g" data-l10n-id="headerDropdown-developer-gecko"></a></li>
+              <li><a href="https://www.github.com/capyloon/api-daemon" data-l10n-id="headerDropdown-developer-apiDaemon"></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="?page=services" data-l10n-id="header-services"></a></li>
+      <li><a href="/webstore/index.html" data-l10n-id="header-store"></a></li>
+      <li>
+        <a href="#" data-l10n-id="header-contacts"></a>
+        <div class="dropdown">
+          <div class="dropdown-col">
+            <h4 data-l10n-id="headerDropdown-contacts"></h4>
+            <ul>
+              <li><a href="mailto:mortcodesweb+bugreport@gmail.com" data-l10n-id="headerDropdown-contacts-bugReport"></a></li>
+              <li><a href="https://www.twitter.com/MortCodesWeb" data-l10n-id="headerDropdown-contacts-twitter"></a></li>
+              <li><a href="https://discord.gg/QZvZFUgVhh" data-l10n-id="headerDropdown-contacts-discord"></a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4 data-l10n-id="headerDropdown-contacts-mail"></h4>
+            <ul>
+              <li><a href="mailto:mortcodesweb+support@gmail.com">mortcodesweb+support@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="#" data-l10n-id="header-about"></a></li>
+    </ul>
+    <menu type="toolbar">
+      <a href="?page=products/os" class="ws--button recommend" data-l10n-id="header-getOS"></a>
+      <a href="#" data-icon="shopping-cart">
+        <div role="title" class="bottom" data-l10n-id="header-wishlist"></div>
       </a>
-      <a href="#content" class="tab-skip" data-l10n-id="header-skipToContent"></a>
-      <ul>
-        <li>
-          <a href="#" data-l10n-id="header-products"></a>
-          <div class="dropdown">
-            <div class="dropdown-col">
-              <h4 data-l10n-id="footer-products"></h4>
+      <a href="#" id="notifications-button">
+        <svg viewBox="0 0 16 16" width="20" height="40" xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-opacity="1">
+          <path d="M7 0 9 0 9 2 7 2 7 0M3 6Q4 1 8 1 12 1 13 6L14.25 12 15.25 12 15.25 13 .75 13 .75 12 1.75 12 3 6M13.25 12 12 6Q11 2 8 2 5 2 4 6L2.75 12 13.25 12" class="bell-bowl"></path>
+          <path d="M6 14 10 14Q10 16 8 16 6 16 6 14L6 14" class="bell-nub"></path>
+        </svg>
+        <div role="title" class="bottom" data-l10n-id="header-notifications"></div>
+      </a>
+      <a href="#quick-search" data-icon="search">
+        <div role="title" class="bottom" data-l10n-id="header-quickSearch"></div>
+      </a>
+      <a href="#" id="profile-button">
+        <img src="" alt="" id="profile-avatar">
+        <div role="title" class="bottom" id="profile-tooltip"></div>
+      </a>
+      <a href="#" id="options-button" data-icon="options">
+        <div role="title" class="bottom" data-l10n-id="header-options"></div>
+      </a>
+    </menu>
+  </header>
+
+  <div class="ws--header-dropdown"></div>
+
+  <main class="ws--content" id="content"></main>
+
+  <div class="ws--quick-search" id="quick-search">
+    <div class="spacer">
+      <h1 data-icon="search" data-l10n-id="quick-search"></h1>
+      <form action="" id="quick-search-form">
+        <input type="text" data-l10n-id="type-here-to-search" id="quick-search-input" />
+        <menu id="quick-search-results"></menu>
+      </form>
+    </div>
+  </div>
+
+  <ul class="ws--notices">
+    <li data-l10n-id="notice-doNotSteal"></li>
+    <li data-l10n-id="notice-doNotMessWithTheCode"></li>
+    <li data-l10n-id="notice-doNotPirate"></li>
+    <li data-l10n-id="notice-bewareOfScammers"></li>
+    <li data-l10n-id="notice-bewareOfMalware"></li>
+    <li data-l10n-id="notice-blockTrolls"></li>
+    <li data-l10n-id="notice-notTwitter"></li>
+  </ul>
+
+  <footer class="ws--footer">
+    <div class="container">
+      <div class="row">
+        <img src="images/logo_monochrome.svg" alt="">
+      </div>
+      <div class="row center">
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-products"></h4>
+          <ul>
+            <li><a href="?page=products/os" data-l10n-id="footer-products-os"></a></li>
+            <li><a href="/webstore/index.html" data-l10n-id="footer-products-webstore"></a></li>
+            <li><a href="#" data-l10n-id="footer-products-weather"></a></li>
+            <li><a href="#" data-l10n-id="footer-products-newspaper"></a></li>
+            <li><a href="/articles/index.html" data-l10n-id="footer-products-articles"></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-llc"></h4>
+          <ul>
+            <li><a href="#" data-l10n-id="footer-llc-joinUs"></a></li>
+            <li><a href="#" data-l10n-id="footer-llc-contactUs"></a></li>
+            <li><a href="#" data-l10n-id="footer-llc-donate"></a></li>
+            <li><a href="#" data-l10n-id="footer-llc-credits"></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-support"></h4>
+          <ul>
+            <li><a href="#" data-l10n-id="footer-support-getHelp"></a></li>
+            <li><a href="#" data-l10n-id="footer-support-sendFeedback"></a></li>
+            <li><a href="#" data-l10n-id="footer-support-reportBugs"></a></li>
+            <li><a href="#" data-l10n-id="footer-support-tour"></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-developers"></h4>
+          <ul>
+            <li><a href="#" data-l10n-id="footer-developers-badge"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-betas"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-nightly"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-libraries"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-tools"></a></li>
+            <li><a href="#" data-l10n-id="footer-developers-sdk"></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-l10n-id="footer-socialMedia"></h4>
+          <div class="social-media">
+            <a href="#" data-icon="youtube"></a>
+            <a href="#" data-icon="twitter" data-l10n-id="footer-socialMedia-twitter"></a>
+            <a href="#" data-icon="discord"></a>
+            <a href="#" data-icon="facebook"></a>
+          </div>
+        </div>
+      </div>
+      <div class="row horizontal">
+        <div class="bottom-wrapper">
+          <div class="links">
+            <p data-l10n-id="copyright"></p>
+            <p data-l10n-id="location-notice"></p>
+            <div class="footer-row">
               <ul>
-                <li><a href="?page=products/os" data-l10n-id="footer-products-os"></a></li>
-                <li><a href="/webstore/index.html" data-l10n-id="footer-products-webstore"></a></li>
-                <li><a href="#" data-l10n-id="footer-products-weather"></a></li>
-                <li><a href="#" data-l10n-id="footer-products-newspaper"></a></li>
-                <li><a href="#" data-l10n-id="footer-products-maps"></a></li>
+                <li><a href="/articles/?article=a9712cea-f3e8-4777-a35f-e7f6f115a02e" data-l10n-id="termsOfService"></a></li>
+                <li><a href="/articles/?article=c10fb552-276c-44c9-adfe-2d69eeffe6cd" data-l10n-id="privacyPolicy"></a></li>
+                <li><a href="?page=legal-licenses" data-l10n-id="legalLicenses"></a></li>
               </ul>
             </div>
           </div>
-        </li>
-        <li><a href="#" data-l10n-id="header-services"></a></li>
-        <li><a href="/webstore/index.html" data-l10n-id="header-store"></a></li>
-        <li><a href="#" data-l10n-id="header-contacts"></a></li>
-        <li><a href="#" data-l10n-id="header-about"></a></li>
-      </ul>
-      <menu type="toolbar">
-        <a href="?page=products/os" class="ws--button recommend" data-l10n-id="header-getOS"></a>
-        <a href="#" data-icon="shopping-cart">
-          <div role="title" class="bottom" data-l10n-id="header-wishlist"></div>
-        </a>
-        <a href="#" id="notifications-button">
-          <svg viewBox="0 0 16 16" width="20" height="40" xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-opacity="1">
-            <path d="M7 0 9 0 9 2 7 2 7 0M3 6Q4 1 8 1 12 1 13 6L14.25 12 15.25 12 15.25 13 .75 13 .75 12 1.75 12 3 6M13.25 12 12 6Q11 2 8 2 5 2 4 6L2.75 12 13.25 12" class="bell-bowl"></path>
-            <path d="M6 14 10 14Q10 16 8 16 6 16 6 14L6 14" class="bell-nub"></path>
-          </svg>
-          <div role="title" class="bottom" data-l10n-id="header-notifications"></div>
-        </a>
-        <a href="#quick-search" data-icon="search">
-          <div role="title" class="bottom" data-l10n-id="header-quickSearch"></div>
-        </a>
-        <a href="#" id="profile-button">
-          <img src="" alt="" id="profile-avatar">
-          <div role="title" class="bottom" id="profile-tooltip"></div>
-        </a>
-        <a href="#" id="options-button" data-icon="options">
-          <div role="title" class="bottom" data-l10n-id="header-options"></div>
-        </a>
-      </menu>
-    </header>
-
-    <div class="ws--header-dropdown"></div>
-
-    <main class="ws--content" id="content"></main>
-
-    <div class="ws--quick-search" id="quick-search">
-      <div class="spacer">
-        <h1 data-icon="search" data-l10n-id="quick-search"></h1>
-        <form action="" id="quick-search-form">
-          <input type="text" data-l10n-id="type-here-to-search" id="quick-search-input" />
-          <menu id="quick-search-results"></menu>
-        </form>
+          <div class="options">
+            <p data-l10n-id="footer-languages"></p>
+            <select name="" id="languages"></select>
+            <label>
+              <input type="checkbox" name="" id="dark-mode">
+              <span data-l10n-id="footer-darkMode"></span>
+            </label>
+          </div>
+        </div>
+        <div class="footer-row">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7034928554835327" crossorigin="anonymous"></script>
+        </div>
       </div>
     </div>
-
-    <ul class="ws--notices">
-      <li data-l10n-id="notice-doNotSteal"></li>
-      <li data-l10n-id="notice-doNotMessWithTheCode"></li>
-      <li data-l10n-id="notice-doNotPirate"></li>
-      <li data-l10n-id="notice-bewareOfScammers"></li>
-      <li data-l10n-id="notice-bewareOfMalware"></li>
-      <li data-l10n-id="notice-blockTrolls"></li>
-      <li data-l10n-id="notice-notTwitter"></li>
-    </ul>
-
-    <footer class="ws--footer">
-      <div class="container">
-        <div class="row">
-          <img src="images/logo_monochrome.svg" alt="">
-        </div>
-        <div class="row center">
-          <div class="footer-col">
-            <h4 data-l10n-id="footer-products"></h4>
-            <ul>
-              <li><a href="?page=products/os" data-l10n-id="footer-products-os"></a></li>
-              <li><a href="/webstore/index.html" data-l10n-id="footer-products-webstore"></a></li>
-              <li><a href="#" data-l10n-id="footer-products-weather"></a></li>
-              <li><a href="#" data-l10n-id="footer-products-newspaper"></a></li>
-              <li><a href="#" data-l10n-id="footer-products-maps"></a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4 data-l10n-id="footer-llc"></h4>
-            <ul>
-              <li><a href="#" data-l10n-id="footer-llc-joinUs"></a></li>
-              <li><a href="#" data-l10n-id="footer-llc-contactUs"></a></li>
-              <li><a href="#" data-l10n-id="footer-llc-donate"></a></li>
-              <li><a href="#" data-l10n-id="footer-llc-credits"></a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4 data-l10n-id="footer-support"></h4>
-            <ul>
-              <li><a href="#" data-l10n-id="footer-support-getHelp"></a></li>
-              <li><a href="#" data-l10n-id="footer-support-sendFeedback"></a></li>
-              <li><a href="#" data-l10n-id="footer-support-reportBugs"></a></li>
-              <li><a href="#" data-l10n-id="footer-support-tour"></a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4 data-l10n-id="footer-developers"></h4>
-            <ul>
-              <li><a href="#" data-l10n-id="footer-developers-badge"></a></li>
-              <li><a href="#" data-l10n-id="footer-developers-betas"></a></li>
-              <li><a href="#" data-l10n-id="footer-developers-nightly"></a></li>
-              <li><a href="#" data-l10n-id="footer-developers-libraries"></a></li>
-              <li><a href="#" data-l10n-id="footer-developers-tools"></a></li>
-              <li><a href="#" data-l10n-id="footer-developers-sdk"></a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4 data-l10n-id="footer-socialMedia"></h4>
-            <div class="social-media">
-              <a href="#" data-icon="youtube"></a>
-              <a href="#" data-icon="twitter" data-l10n-id="footer-socialMedia-twitter"></a>
-              <a href="#" data-icon="discord"></a>
-              <a href="#" data-icon="facebook"></a>
-            </div>
-          </div>
-        </div>
-        <div class="row horizontal">
-          <div class="bottom-wrapper">
-            <div class="links">
-              <p data-l10n-id="copyright"></p>
-              <div class="footer-row">
-                <ul>
-                  <li><a href="?page=terms-of-service" data-l10n-id="termsOfService"></a></li>
-                  <li><a href="?page=privacy-policy" data-l10n-id="privacyPolicy"></a></li>
-                  <li><a href="?page=legal-licenses" data-l10n-id="legalLicenses"></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="options">
-              <p data-l10n-id="footer-languages"></p>
-              <select name="" id="languages"></select>
-              <label>
-                <input type="checkbox" name="" id="dark-mode">
-                <span data-l10n-id="footer-darkMode"></span>
-              </label>
-            </div>
-          </div>
-          <div class="footer-row">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7034928554835327" crossorigin="anonymous"></script>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
+  </footer>
 
   <div class="ws--notifications" id="notifications">
     <div class="oui--header">
@@ -259,6 +267,29 @@
       <source src="" type="video/mp4" id="video-player-source">
     </video>
     <button id="video-player-close" data-icon="close"></button>
+  </div>
+
+  <div class="ws--offers-dialog" id="service-worker-dialog">
+    <div class="ws--offers-banner">
+      <div>
+        <h1 data-l10n-id="sw-title"></h1>
+        <p data-l10n-id="sw-detail"></p>
+        <ul>
+          <li data-l10n-id="sw-feature1"></li>
+          <li data-l10n-id="sw-feature2"></li>
+          <li data-l10n-id="sw-feature3"></li>
+        </ul>
+        <menu>
+          <a href="/articles/?article=c10fb552-276c-44c9-adfe-2d69eeffe6cd" class="ws--button" data-l10n-id="privacyPolicy"></a>
+        </menu>
+      </div>
+      <div>
+        <menu>
+          <button class="recommend" id="service-worker-dialog-allow" data-l10n-id="yes"></button>
+          <button id="service-worker-dialog-deny" data-l10n-id="no"></button>
+        </menu>
+      </div>
+    </div>
   </div>
 </body>
 </html>

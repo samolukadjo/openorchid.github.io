@@ -90,6 +90,7 @@
   font-weight: normal;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .ac--current-article nav ul li > a:hover {

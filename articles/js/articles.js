@@ -1,57 +1,98 @@
 (function(exports) {
   'use strict';
 
+  function EnglishToArabicNumerals(numberString) {
+    var arabicNumerals = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    if (document.dir == 'rtl') {
+      return numberString.toString().replace(/[0-9]/g, function(w) {
+        return arabicNumerals[+w];
+      });
+    } else {
+      return numberString;
+    }
+  }
+
+  var articlesList = [];
   var articleContainer = document.getElementById('articles');
 
+  var homeButton = document.getElementById('home-button');
+  var articles = document.getElementById('articles');
   var article = document.getElementById('article');
   var articleTitle = document.getElementById('article-title');
   var articleAuthorAvatar = document.getElementById('article-author-avatar');
   var articleAuthorUsername = document.getElementById('article-author-username');
   var articleContent = document.getElementById('article-content');
+  var articleComments = document.getElementById('comments');
+
+  homeButton.addEventListener('click', () => {
+    article.classList.remove('visible');
+    window.history.pushState({"html":'',"pageTitle":''}, "", '/articles/');
+    articles.style.display = '';
+  });
 
   var likeButton = document.getElementById('like-button');
   var dislikeButton = document.getElementById('dislike-button');
 
   OrchidServices.getList('articles', function(article) {
-    var element = document.createElement('article');
-    element.classList.add('article');
-    element.addEventListener('click', function() {
-      openArticle(article);
+    articlesList.push(article);
+    articlesList.sort((a, b) => {
+      if (a.likes < b.likes) {
+        return 1;
+      }
+      if (a.likes > b.likes) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
     });
-    articleContainer.appendChild(element);
 
-    var title = document.createElement('h1');
-    title.textContent = article.title;
-    element.appendChild(title);
+    articleContainer.innerHTML = '';
+    articlesList.forEach(function(article) {
+      var element = document.createElement('article');
+      element.classList.add('article');
+      element.addEventListener('click', function() {
+        openArticle(article);
+      });
+      articleContainer.appendChild(element);
 
-    var figure = document.createElement('figure');
-    element.appendChild(figure);
+      var title = document.createElement('h1');
+      title.textContent = article.title;
+      element.appendChild(title);
 
-    var figIcon = document.createElement('img');
-    figIcon.onerror = function() {
-      figIcon.src = '/images/profile_pictures/avatar_default.svg';
-    };
-    figure.appendChild(figIcon);
+      var figure = document.createElement('figure');
+      element.appendChild(figure);
 
-    var figcaption = document.createElement('figcaption');
-    figure.appendChild(figcaption);
+      var figIcon = document.createElement('img');
+      figIcon.onerror = function() {
+        figIcon.src = '/images/profile_pictures/avatar_default.svg';
+      };
+      figure.appendChild(figIcon);
 
-    OrchidServices.get('profile/' + article.author_id).then(function(udata) {
-      figIcon.src = udata.profile_picture;
-      figIcon.alt = udata.username;
-      figcaption.textContent = udata.username;
+      var figcaption = document.createElement('figcaption');
+      figure.appendChild(figcaption);
+
+      OrchidServices.get('profile/' + article.author_id).then(function(udata) {
+        figIcon.src = udata.profile_picture;
+        figIcon.alt = udata.username;
+        figcaption.textContent = udata.username;
+      });
     });
   });
 
   function openArticle(data) {
+    articles.style.display = 'none';
     article.classList.add('visible');
     articleTitle.textContent = data.title;
     articleContent.innerHTML = markdownit().render(data.content);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
 
     window.history.pushState({"html":'',"pageTitle":''}, "", '?article=' + data.token);
 
-    likeButton.textContent = data.likes.length;
-    dislikeButton.textContent = data.dislikes.length;
+    likeButton.children[0].textContent = EnglishToArabicNumerals(data.likes.length);
+    dislikeButton.children[0].textContent = EnglishToArabicNumerals(data.dislikes.length);
 
     if (data.likes.indexOf(OrchidServices.userId()) !== -1) {
       likeButton.classList.add('enabled');
@@ -73,11 +114,11 @@
       }
 
       data.dislikes.splice(OrchidServices.userId());
-      dislikeButton.textContent = data.dislikes.length;
+      dislikeButton.children[0].textContent = EnglishToArabicNumerals(data.dislikes.length);
       dislikeButton.classList.remove('enabled');
 
       OrchidServices.set('articles/' + data.token, { likes: data.likes, dislikes: data.dislikes });
-      likeButton.textContent = data.likes.length;
+      likeButton.children[0].textContent = EnglishToArabicNumerals(data.likes.length);
       likeButton.classList.toggle('enabled');
     });
 
@@ -89,11 +130,11 @@
       }
 
       data.likes.splice(OrchidServices.userId());
-      likeButton.textContent = data.likes.length;
+      likeButton.children[0].textContent = EnglishToArabicNumerals(data.likes.length);
       likeButton.classList.remove('enabled');
 
       OrchidServices.set('articles/' + data.token, { likes: data.likes, dislikes: data.dislikes });
-      dislikeButton.textContent = data.dislikes.length;
+      dislikeButton.children[0].textContent = EnglishToArabicNumerals(data.dislikes.length);
       dislikeButton.classList.toggle('enabled');
     });
 
@@ -106,6 +147,8 @@
       articleAuthorAvatar.alt = udata.username;
       articleAuthorUsername.textContent = udata.username;
     });
+
+    Comments('articles/' + data.token, articleComments);
   }
 
   var paramString = location.search.substring(1);

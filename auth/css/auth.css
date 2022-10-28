@@ -14,7 +14,6 @@
   --accent-color-text: rgba(255,255,255,0.6);
   --background: #e7e9ec;
   --background-plus: #fff;
-  --background-plus-translucent: rgba(255, 255, 255, 0.6);
   --text-color: #333;
 
   --translucent: rgba(0,0,0,0.05);
@@ -26,7 +25,6 @@
   --accent-color-text: rgba(0,0,0,0.75);
   --background: #101214;
   --background-plus: #212325;
-  --background-plus-translucent: rgba(33, 35, 37, 0.6);
   --text-color: #e7e7e7;
 
   --translucent: rgba(255,255,255,0.05);
@@ -45,12 +43,18 @@ html, body {
 }
 
 .auth-screen {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background: var(--background) url(https://source.unsplash.com/featured/854x480) no-repeat center / cover;
+  scrollbar-width: none;
+  overflow: auto;
+}
+
+.auth-screen::-webkit-scrollbar {
+  display: none;
 }
 
 .auth-screen > .container {
@@ -58,13 +62,14 @@ html, body {
   top: 0;
   width: 50%;
   height: 100%;
-  background: var(--background-plus);
+  background: var(--background);
   padding: 1.5rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 html[dir="ltr"] .auth-screen > .container {
   right: 0;
@@ -79,11 +84,15 @@ html[dir="rtl"] .auth-screen > .container {
   margin: 0 0 1.5rem;
 }
 
+.auth-screen .content {
+  width: 100%;
+}
+
 .auth-screen label {
   margin: 0 0 1.5rem;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  width: calc(100% - 3rem);
+  width: 100%;
   max-width: 320px;
 }
 
@@ -97,7 +106,7 @@ html[dir="rtl"] .auth-screen > .container {
   font-size: 1.6rem;
   font-weight: normal;
   color: var(--text-color);
-  background: var(--background);
+  background: var(--background-plus);
   border-radius: 0.6rem;
   border: none;
   margin: 0;
@@ -108,7 +117,7 @@ html[dir="rtl"] .auth-screen > .container {
 }
 
 .auth-screen menu {
-  background: var(--background);
+  background: var(--background-plus);
   height: 4rem;
   border-radius: 2rem;
   margin: 0;
@@ -163,13 +172,42 @@ html[dir="rtl"] .auth-screen > .container {
   display: block;
 }
 
-@supports (backdrop-filter: saturate(180%) blur(20px)) {
-  .auth-screen > .container {
-    background: var(--background-plus-translucent);
-    backdrop-filter: saturate(180%) blur(20px);
-  }
+.auth-screen .error {
+  width: 100%;
+  height: 4rem;
+  border-radius: 1rem;
+  line-height: 4rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background: #c00040;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  max-width: 320px;
+  font-size: 1.6rem;
+  font-weight: normal;
 
-  .auth-screen label input, .auth-screen menu {
-    background: rgba(0,0,0,0.075);
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  margin: -2rem 0;
+  transform: scale(0.75);
+  opacity: 0;
+}
+
+.auth-screen .error.visible {
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1), transform 0.3s cubic-bezier(0.2, 0.9, 0.1, 1.25);
+  margin: 0 0 1rem;
+  transform: scale(1);
+  opacity: 1;
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .auth-screen .container {
+    width: 100%;
+    top: 50%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: block;
   }
 }

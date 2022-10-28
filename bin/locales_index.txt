@@ -3,4 +3,5 @@ locales/main.en-US.properties
 locales/changelog.en-US.properties
 widgets/locales/widgets.en-US.properties
 start/locales/widgets.en-US.properties
+articles/locales/articles.en-US.properties
 auth/locales/auth.en-US.properties
