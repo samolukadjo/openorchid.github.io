@@ -41,6 +41,7 @@
   <script defer src="js/main.js"></script>
   <script defer src="js/languages.js"></script>
   <script defer src="js/dark_mode.js"></script>
+  <script defer src="/js/comments.js"></script>
   <script defer src="js/webapps.js"></script>
 
   <!-- Localization -->
@@ -163,50 +164,17 @@
         </ul>
 
         <header data-l10n-id="webapp-comments" id="webapp-comments-header"></header>
-        <div class="comments-wrapper">
+        <div class="comments-wrapper" id="webapp-comments">
+          <label for="" class="star-rating">
+            <span data-l10n-id="webapp-starRating"></span>
+            <input type="number" min="1" max="5" value="5">
+          </label>
           <form action="">
-            <textarea id="webapp-comment-input" data-l10n-id="webapp-commentInput"></textarea>
+            <textarea data-l10n-id="webapp-commentInput"></textarea>
             <button type="reset" data-icon="close"></button>
             <button type="submit" data-icon="send"></button>
           </form>
-          <ul id="webapp-comments">
-            <li>
-              <figure>
-                <img src="/images/profile_pictures/avatar_default.svg" alt="">
-                <figcaption>MortCodesWeb</figcaption>
-              </figure>
-              <div class="stars">
-                <div class="star active"></div>
-                <div class="star active"></div>
-                <div class="star active"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-              </div>
-              <p>This app is trash.</p>
-              <menu>
-                <button data-icon="like" class="like-button enabled">1</button>
-                <button data-icon="dislike" class="dislike-button">0</button>
-              </menu>
-            </li>
-            <li>
-              <figure>
-                <img src="/images/profile_pictures/avatar_green.svg" alt="">
-                <figcaption>MortCodesWeb's Alt</figcaption>
-              </figure>
-              <div class="stars">
-                <div class="star active"></div>
-                <div class="star active"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-              </div>
-              <p>This app is trashier.</p>
-              <menu>
-                <button data-icon="like" class="like-button enabled">1</button>
-                <button data-icon="dislike" class="dislike-button">0</button>
-              </menu>
-            </li>
-          </ul>
+          <ul></ul>
         </div>
       </div>
     </div>

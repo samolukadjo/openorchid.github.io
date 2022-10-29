@@ -1,7 +1,7 @@
 (function (exports) {
   'use strict';
 
-  var data;
+  var legacyResponseJson;
   var currentApp;
   var webapps = document.getElementById('webapps');
 
@@ -12,9 +12,9 @@
   var client = new XMLHttpRequest();
   client.open('GET', 'https://banana-hackers.gitlab.io/store-db/data.json');
   client.onreadystatechange = () => {
-    data = JSON.parse(client.responseText);
-    console.log(data);
-    data.apps.forEach((app) => {
+    legacyResponseJson = JSON.parse(client.responseText);
+    console.log(legacyResponseJson);
+    legacyResponseJson.apps.forEach((app) => {
       createIcon(app, app.slug, true);
       if (currentApp !== null) {
         if (currentApp == app.slug) {
@@ -87,7 +87,7 @@
   }
 
 
-  function openInfo(data, id, isBananaHackers) {
+  function openInfo(webappData, id, isBananaHackers) {
     var sidebar = document.getElementById('sidebar');
     var toggleSidebarButton = document.getElementById('toggle-sidebar-button');
     var backButton = document.getElementById('back-button');
@@ -109,13 +109,16 @@
     var webappDescription = document.getElementById('webapp-description');
     var webappInstallSize = document.getElementById('webapp-install-size');
     var webappSupportedDevices = document.getElementById('webapp-supported-devices');
+    var webappTags = document.getElementById('webapp-tags');
+    var webappComments = document.getElementById('webapp-comments');
+    var webappCommentsHeader = document.getElementById('webapp-comments-header');
 
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
-    })
-    if (!isBananaHackers || data.teaser_url) {
-      webappBanner.src = data.teaser_url.replace('watch?v=', 'embed/') + '?controls=0&autoplay=1&loop=1&ref=0&fs=0&modestbranding=0';
+    });
+    if (!isBananaHackers && webappData.teaser_url) {
+      webappBanner.src = webappData.teaser_url.replace('watch?v=', 'embed/') + '?controls=0&autoplay=1&loop=1&ref=0&fs=0&modestbranding=0';
     }
 
     webappCard.classList.add('fade-in');
@@ -148,56 +151,71 @@
       }, 300);
     };
 
-    webappIcon.src = data.icon;
-    webappName.textContent = data.name;
+    webappIcon.src = webappData.icon;
+    webappName.textContent = webappData.name;
 
     if (isBananaHackers) {
-      webappAuthor.textContent = data.author;
+      webappAuthor.textContent = webappData.author;
       webappAuthor.href = null;
     } else {
-      OrchidServices.getWithUpdate('profile/' + data.author_id, function (udata) {
+      OrchidServices.getWithUpdate('profile/' + webappData.author_id, function (udata) {
         webappAuthor.textContent = udata.username;
         webappAuthor.href = '/account/?user=' + udata.username;
       });
     }
 
-    if (isBananaHackers || data.comments.length == 0) {
-      webappAverageRating.textContent = '';
-      webappStarRatings.innerHTML = '';
+    function initializeRating(commentsArray) {
+      if (commentsArray.length == 0) {
+        webappAverageRating.textContent = '';
+        webappStarRatings.innerHTML = '';
+      } else {
+        var sum = 0;
+        for (var i = 0; i < commentsArray.length; i++) {
+          sum += parseInt((commentsArray[i].rating * 5), 10); //don't forget to add the base
+        }
+        var avg = sum / commentsArray.length;
+
+        webappAverageRating.textContent = Math.round(avg * 10) / 10;
+
+        webappStarRatings.innerHTML = '';
+        for (let index = 0; index < parseInt(avg); index++) {
+          var star = document.createElement('span');
+          star.classList.add('star');
+          star.dataset.icon = 'bookmarked';
+          webappStarRatings.appendChild(star);
+        }
+        for (let index = 0; index < (5 - parseInt(avg)); index++) {
+          var star = document.createElement('span');
+          star.classList.add('star');
+          star.dataset.icon = 'bookmark';
+          webappStarRatings.appendChild(star);
+        }
+      }
+    }
+
+    if (webappData.comments) {
+      initializeRating(webappData.comments);
     } else {
-      var sum = 0;
-      for (var i = 0; i < data.comments.length; i++) {
-        sum += parseInt((data.comments[i].rating * 5), 10); //don't forget to add the base
-      }
-      var avg = sum / data.comments.length;
-
-      webappAverageRating.textContent = Math.round(avg * 10) / 10;
-
-      webappStarRatings.innerHTML = '';
-      for (let index = 0; index < parseInt(avg); index++) {
-        var star = document.createElement('span');
-        star.classList.add('star');
-        star.dataset.icon = 'bookmarked';
-        webappStarRatings.appendChild(star);
-      }
-      for (let index = 0; index < (5 - parseInt(avg)); index++) {
-        var star = document.createElement('span');
-        star.classList.add('star');
-        star.dataset.icon = 'bookmark';
-        webappStarRatings.appendChild(star);
-      }
+      OrchidServices.get('webstore_legacy/' + id).then((data) => {
+        if (data) {
+          initializeRating(data.comments);
+        } else {
+          webappStarRatings.innerHTML = '';
+          webappAverageRating.innerHTML = '';
+        }
+      });
     }
 
     webappCategories.innerHTML = '';
     if (isBananaHackers) {
-      data.meta.categories.forEach(item => {
+      webappData.meta.categories.forEach(item => {
         var category = document.createElement('span');
         category.dataset.l10nId = 'category-' + item;
         webappCategories.appendChild(category);
       });
     } else {
-      if (data.categories.length == 0) {
-        data.categories.forEach(item => {
+      if (webappData.categories.length == 0) {
+        webappData.categories.forEach(item => {
           var category = document.createElement('span');
           category.dataset.l10nId = 'category-' + item;
           webappCategories.appendChild(category);
@@ -207,13 +225,13 @@
 
     installButton.onclick = () => {
       if (navigator.mozApps) {
-        navigator.mozApps.mgmt.installPackage(data.download.url);
+        navigator.mozApps.mgmt.installPackage(webappData.download.url);
       } else {
         if (isBananaHackers) {
-          location.href = data.download.url;
+          location.href = webappData.download.url;
         } else {
           var a = document.createElement('a');
-          a.href = data.download;
+          a.href = webappData.download;
           a.download = 'webapp.orchidpkg.zip';
           a.click();
         }
@@ -224,18 +242,42 @@
     updateButton.onclick = () => {};
 
     webappScreenshots.innerHTML = '';
-    if (data.screenshots.length !== 0) {
-      data.screenshots.forEach(item => {
-        var screenshot = document.createElement('img');
-        screenshot.src = item;
-        webappScreenshots.appendChild(screenshot);
-      });
-      webappScreenshotsHolder.style.display = 'block';
-    } else {
-      webappScreenshotsHolder.style.display = 'none';
+    if (webappData.screenshots) {
+      if (webappData.screenshots.length !== 0) {
+        webappData.screenshots.forEach(item => {
+          var screenshot = document.createElement('img');
+          screenshot.src = item;
+          webappScreenshots.appendChild(screenshot);
+        });
+        webappScreenshotsHolder.style.display = 'block';
+      } else {
+        webappScreenshotsHolder.style.display = 'none';
+      }
     }
 
-    webappDescription.textContent = data.description;
+    webappDescription.textContent = webappData.description;
+
+    if (!isBananaHackers) {
+      webappTags.textContent = webappData.tags.join(', ');
+    } else {
+      webappTags.textContent = webappData.meta.tags.split(';').filter(String).join(', ');
+    }
+
+    if (!isBananaHackers) {
+      Comments('webstore/' + id, webappComments, true);
+      OrchidServices.getWithUpdate('webstore/' + id, (data) => {
+        webappCommentsHeader.dataset.l10nArgs = '{"n":"' + data.comments.length + '"}';
+      });
+    } else {
+      OrchidServices.getWithUpdate('webstore_legacy/' + id, (data) => {
+        if (data) {
+          webappCommentsHeader.dataset.l10nArgs = '{"n":"' + data.comments.length + '"}';
+          Comments('webstore_legacy/' + id, webappComments, true);
+        } else {
+          OrchidServices.set('webstore_legacy/' + id, { comments: [] });
+        }
+      });
+    }
   }
 
   var paramString = location.search.substring(1);
@@ -244,9 +286,13 @@
     for (let pair of queryString.entries()) {
       switch (pair[0]) {
         case 'webapp':
-          OrchidServices.get('webapps/' + pair[1]).then(function(data) {
-            openInfo(data, pair[1], false);
-          });
+          setTimeout(() => {
+            OrchidServices.get('webapps/' + pair[1]).then(function(data) {
+              if (data) {
+                openInfo(data, pair[1], false);
+              }
+            });
+          }, 1000);
           currentApp = pair[1];
           break;
 

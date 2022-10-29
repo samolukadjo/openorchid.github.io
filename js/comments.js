@@ -1,4 +1,4 @@
-function Comments(path, element) {
+function Comments(path, element, hasStars = false) {
   function EnglishToArabicNumerals(numberString) {
     var arabicNumerals = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
     if (document.dir == 'rtl') {
@@ -15,6 +15,14 @@ function Comments(path, element) {
   var form = element.querySelector('form');
   var inputbox = element.querySelector('form textarea');
   var comments = element.querySelector('ul');
+  var starRatingInput = element.querySelector('.star-rating input');
+
+  if (!OrchidServices.isUserLoggedIn()) {
+    form.style.display = 'none';
+    if (starRatingInput) {
+      starRatingInput.style.display = 'none';
+    }
+  }
 
   function refreshComments() {
     OrchidServices.getWithUpdate(path, (data) => {
@@ -46,6 +54,24 @@ function Comments(path, element) {
             figCaption.classList.add('author');
           }
         });
+
+        if (hasStars && comment.rating) {
+          var starRating = document.createElement('div');
+          starRating.classList.add('stars');
+          element.appendChild(starRating);
+
+          for (let index = 0; index < parseInt(comment.rating * 5); index++) {
+            var star = document.createElement('span');
+            star.classList.add('star');
+            star.classList.add('active');
+            starRating.appendChild(star);
+          }
+          for (let index = 0; index < (5 - parseInt(comment.rating * 5)); index++) {
+            var star = document.createElement('span');
+            star.classList.add('star');
+            starRating.appendChild(star);
+          }
+        }
 
         var content = document.createElement('p');
         content.textContent = comment.content;
@@ -89,7 +115,7 @@ function Comments(path, element) {
           dislikeButton.textContent = EnglishToArabicNumerals(comment.dislikes.length);
           dislikeButton.classList.remove('enabled');
 
-          OrchidServices.get(path).then((data) => {
+          OrchidServices.getWithUpdate(path, (data) => {
             data.comments[index].likes = comment.likes;
             data.comments[index].dislikes = comment.dislikes;
             OrchidServices.set(path, { comments: data.comments });
@@ -131,14 +157,30 @@ function Comments(path, element) {
     evt.preventDefault();
 
     OrchidServices.get(path).then((data) => {
-      data.comments.push({
-        author_id: OrchidServices.userId(),
-        content: inputbox.value,
-        likes: [],
-        dislikes: []
-      });
+      if (hasStars) {
+        data.comments.push({
+          author_id: OrchidServices.userId(),
+          content: inputbox.value,
+          likes: [],
+          dislikes: [],
+          rating: (starRatingInput.value / 5)
+        });
+      } else {
+        data.comments.push({
+          author_id: OrchidServices.userId(),
+          content: inputbox.value,
+          likes: [],
+          dislikes: []
+        });
+      }
       OrchidServices.set(path, { comments: data.comments });
       refreshComments();
+      setTimeout(() => {
+        inputbox.value = '';
+        if (starRatingInput) {
+          starRatingInput.value = 5;
+        }
+      }, 300);
     });
   });
 }

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
+import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js';
 import {
   getFirestore,
   doc,
@@ -9,26 +9,26 @@ import {
   onSnapshot,
   setDoc,
   collection
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 import {
   getStorage,
   uploadBytes,
   deleteObject,
   listAll,
   ref
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
+} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDuUDH9IFazrQC0-09LpdgGc_kr246VShg",
-  authDomain: "orchid-f39a9.firebaseapp.com",
-  projectId: "orchid-f39a9",
-  storageBucket: "orchid-f39a9.appspot.com",
-  messagingSenderId: "486189992784",
-  appId: "1:486189992784:web:00481e697a3525bc2d3a55",
-  measurementId: "G-VSQHXGH6Y8",
+  apiKey: 'AIzaSyDuUDH9IFazrQC0-09LpdgGc_kr246VShg',
+  authDomain: 'orchid-f39a9.firebaseapp.com',
+  projectId: 'orchid-f39a9',
+  storageBucket: 'orchid-f39a9.appspot.com',
+  messagingSenderId: '486189992784',
+  appId: '1:486189992784:web:00481e697a3525bc2d3a55',
+  measurementId: 'G-VSQHXGH6Y8',
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -40,11 +40,11 @@ function generateUUID() {
   // Public Domain/MIT
   var d = new Date().getTime(); //Timestamp
   var d2 =
-    (typeof performance !== "undefined" &&
+    (typeof performance !== 'undefined' &&
       performance.now &&
       performance.now() * 1000) ||
     0; //Time in microseconds since page-load or 0 if unsupported
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     var r = Math.random() * 16; //random number between 0 and 16
     if (d > 0) {
       //Use timestamp until depleted
@@ -55,7 +55,7 @@ function generateUUID() {
       r = (d2 + r) % 16 | 0;
       d2 = Math.floor(d2 / 16);
     }
-    return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
   });
 }
 
@@ -63,10 +63,10 @@ function generateUUID() {
 // Original copyright (c) Paul Johnston & Greg Holt.
 // The function itself is now 42 lines long.
 function MD5(inputString) {
-  var hc = "0123456789abcdef";
+  var hc = '0123456789abcdef';
   function rh(n) {
     var j,
-      s = "";
+      s = '';
     for (j = 0; j <= 3; j++)
       s +=
         hc.charAt((n >> (j * 8 + 4)) & 0x0f) + hc.charAt((n >> (j * 8)) & 0x0f);
@@ -220,12 +220,12 @@ var OrchidServices = {
    * @returns {boolean}
    */
   isUserLoggedIn: function os_isUserLoggedIn() {
-    var data = localStorage.hasOwnProperty("ws.login.userId");
+    var data = localStorage.hasOwnProperty('ws.login.userId');
     return data;
   },
 
   userId: function os_userId() {
-    return localStorage.getItem("ws.login.userId");
+    return localStorage.getItem('ws.login.userId');
   },
 
   /**
@@ -239,13 +239,13 @@ var OrchidServices = {
 
     if (docSnap.exists()) {
       if (this.DEBUG) {
-        console.log("Document data: ", docSnap.data());
+        console.log('Document data: ', docSnap.data());
       }
       return docSnap.data();
     } else {
       // doc.data() will be undefined in this case
       if (this.DEBUG) {
-        console.log("No such document!");
+        console.log('No such document!');
       }
     }
   },
@@ -258,7 +258,7 @@ var OrchidServices = {
   getWithUpdate: function os_getWithUpdate(path, callback) {
     onSnapshot(doc(db, path), (doc) => {
       if (this.DEBUG) {
-        console.log("Document data: ", doc.data());
+        console.log('Document data: ', doc.data());
       }
       callback(doc.data());
     });
@@ -275,7 +275,7 @@ var OrchidServices = {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       if (this.DEBUG) {
-        console.log(doc.id, " => ", doc.data());
+        console.log(doc.id, ' => ', doc.data());
       }
       callback(doc.data(), doc.id);
     });
@@ -303,7 +303,7 @@ var OrchidServices = {
       // 'blob' comes from the Blob or File API
       uploadBytes(storageRef, blob).then((snapshot) => {
         if (this.DEBUG) {
-          console.log("Uploaded a blob or file!");
+          console.log('Uploaded a blob or file!');
         }
       });
     },
@@ -333,7 +333,7 @@ var OrchidServices = {
      * @param {string} path
      */
     list: function os_storage_list(path) {
-      const listRef = ref(storage, "files/uid");
+      const listRef = ref(storage, 'files/uid');
 
       // Find all the prefixes and items.
       listAll(listRef)
@@ -376,7 +376,7 @@ var OrchidServices = {
      * @param {string} token
      */
     loginWithToken: function os_auth_loginWithToken(token) {
-      localStorage.setItem("ws.login.userId", token);
+      localStorage.setItem('ws.login.userId', token);
     },
 
     /**
@@ -392,27 +392,31 @@ var OrchidServices = {
         username: username,
         email: email,
         password: MD5(password),
-        profile_picture: "",
-        phone_number: "",
+        profile_picture: '',
+        phone_number: '',
         birth_date: birthDate,
         token: token,
-        badges: [],
-        description: "",
+        custom_badges: [],
+        description: '',
         orchid_points: 0,
         time_created: Date.now(),
         last_active: Date.now(),
-        state: "online",
+        state: 'online',
         notifications: [],
         browser_bookmarks: [],
         devices: [],
         achievements: [],
-        preferences: {
-          wallpaper: "",
-          accent_color: "",
-          dark_mode: false,
-        }
+        wallpaper: '',
+        accent_color: '',
+        dark_mode: false,
+        installed_apps: [],
+        is_verified: false,
+        is_moderator: false,
+        is_developer: false,
+        last_search: '',
+        last_visited_site: ''
       });
-      localStorage.setItem("ws.login.userId", token);
+      localStorage.setItem('ws.login.userId', token);
 
       if (this.DEBUG) {
         console.log('Added document with ID: ', token);
