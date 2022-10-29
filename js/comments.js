@@ -20,7 +20,7 @@ function Comments(path, element, hasStars = false) {
   if (!OrchidServices.isUserLoggedIn()) {
     form.style.display = 'none';
     if (starRatingInput) {
-      starRatingInput.style.display = 'none';
+      starRatingInput.preventDefault.style.display = 'none';
     }
   }
 

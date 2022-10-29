@@ -10,7 +10,7 @@
 }
 
 :root {
-  --logo: url('/webstore/images/store_256.png');
+  --logo: url(/webstore/images/store.svg);
   --accent-color: #c00040;
   --accent-color-text: rgba(255,255,255,0.75);
   --background: #e7e9ec;
@@ -35,6 +35,35 @@
   --button-normal: #303234;
   --button-hover: #383a3c;
   --button-active: #404244;
+
+  --translucent: rgba(255,255,255,0.05);
+  --translucent-plus: rgba(255,255,255,0.1);
+}
+
+[data-season="halloween"] {
+  --logo: url(/webstore/images/halloween/store.svg);
+
+  --accent-color: #ff6040;
+  --accent-color-text: rgba(255,255,255,0.75);
+  --background: #ffe0d0;
+  --background-plus: #fff;
+  --header-background: rgba(255, 240, 234, 0.6);
+  --text-color: #532;
+
+  --button-normal: #343230;
+  --button-hover: #3c3a38;
+  --button-active: #444240;
+
+  --translucent: rgba(0,0,0,0.05);
+  --translucent-plus: rgba(0,0,0,0.1);
+}
+
+[data-season="halloween"][data-theme="dark"] {
+  --accent-color-text: rgba(0,0,0,0.75);
+  --background: #141210;
+  --background-plus: #252321;
+  --header-background: rgba(20, 18, 16, 0.6);
+  --text-color: #ffc080;
 
   --translucent: rgba(255,255,255,0.05);
   --translucent-plus: rgba(255,255,255,0.1);
