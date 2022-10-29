@@ -86,6 +86,7 @@ html, body {
   font-size: 10px;
   font-family: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
   background: var(--background);
+  scroll-behavior: smooth;
 }
 
 .oui--header {

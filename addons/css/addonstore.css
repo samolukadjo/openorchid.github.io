@@ -10,7 +10,7 @@
 }
 
 :root {
-  --logo: url(/addonstore/images/store.svg);
+  --logo: url(/addons/images/store.svg);
   --accent-color: #40a060;
   --accent-color-text: rgba(255,255,255,0.75);
   --background: #e7e9ec;
@@ -49,7 +49,7 @@
 }
 
 [data-season="halloween"] {
-  --logo: url(/addonstore/images/halloween/store.svg);
+  --logo: url(/addons/images/halloween/store.svg);
 
   --accent-color: #ff6040;
   --accent-color-text: rgba(0,0,0,0.75);
