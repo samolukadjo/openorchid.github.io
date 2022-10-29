@@ -44,7 +44,7 @@
   --logo: url(/webstore/images/halloween/store.svg);
 
   --accent-color: #ff6040;
-  --accent-color-text: rgba(255,255,255,0.75);
+  --accent-color-text: rgba(0,0,0,0.75);
   --background: #ffe0d0;
   --background-plus: #fff;
   --header-background: rgba(255, 240, 234, 0.6);
@@ -59,7 +59,6 @@
 }
 
 [data-season="halloween"][data-theme="dark"] {
-  --accent-color-text: rgba(0,0,0,0.75);
   --background: #141210;
   --background-plus: #252321;
   --header-background: rgba(20, 18, 16, 0.6);
