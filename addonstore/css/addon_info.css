@@ -1,0 +1,339 @@
+#addon {
+  position: absolute;
+  left: 0;
+  top: 5rem;
+  background: var(--background);
+  display: none;
+  width: 100%;
+}
+
+#addon.visible {
+  display: block;
+}
+
+#addon .banner-container {
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: calc(100vw / 1.75);
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+#addon .banner-container:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--background), transparent);
+  pointer-events: none;
+}
+
+#addon-banner {
+  background: linear-gradient(to bottom, #a6a6a6, #6a6a6a) no-repeat center / cover;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: calc(100vw / 1.75);
+}
+
+#addon .app-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+#addon .app-header .app-header-info {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+#addon .app-header img {
+  width: 7rem;
+  height: 7rem;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
+}
+
+#addon .app-header .context {
+  color: var(--text-color, #333);
+  font-size: 1.6rem;
+  flex: 1;
+  width: 100%;
+}
+
+#addon-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#addon-author {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+#addon-author[href]:hover {
+  text-decoration: underline;
+}
+
+#addon-average-rating {
+  color: #e0a000;
+  font-weight: bold;
+}
+
+#addon-categories {
+  display: flex;
+  overflow: hidden;
+  border-radius: 0.6rem;
+}
+
+#addon-categories > span {
+  font-size: 1.6rem;
+  font-weight: normal;
+  margin: 0;
+  color: var(--text-color);
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 3rem;
+  overflow: hidden;
+  height: 3rem;
+  background: var(--background-plus);
+  border-radius: 0.6rem;
+  -moz-margin-end: 0.6rem;
+  margin-inline-end: 0.6rem;
+  padding: 0 0.6rem;
+  box-sizing: border-box;
+  flex: none;
+}
+
+.ratings {
+  display: flex;
+}
+
+#addon-star-ratings {
+  display: flex;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
+}
+
+#addon-star-ratings > .star {
+  flex: none;
+}
+
+#addon-star-ratings > .star:before {
+  font-size: 2rem;
+}
+
+#addon .app-header .options {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+#addon .app-header .options button {
+  border: none;
+  background: var(--button-normal);
+  border-radius: 2rem;
+  padding: 0 3rem;
+  box-sizing: border-box;
+  height: 4rem;
+  line-height: 3.6rem;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+  width: 100%;
+  margin: 1rem 0 0;
+}
+
+#addon .app-header .options button:hover {
+  background: var(--button-hover);
+}
+
+#addon .app-header .options button:active {
+  background: var(--button-active);
+}
+
+/* Content */
+#addon .container {
+  position: relative;
+  z-index: 5;
+  background: var(--background);
+}
+
+#addon .container.fade-in {
+  animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#addon .container.fade-out {
+  animation: fade-out 0.3s ease;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-32px);
+  }
+}
+
+#addon .section ul {
+  width: calc(100% - 3rem);
+  margin: 1rem auto;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  max-width: 1024px;
+  background: var(--background-plus);
+  padding: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+#addon .section ul.hidden {
+  background: none;
+  box-shadow: none;
+}
+
+#addon .section ul li {
+  width: calc(100% - 3rem);
+  margin: 0 1.5rem;
+  border-bottom: solid 0.1rem rgba(0,0,0,0.125);
+  list-style: none;
+  display: block;
+  min-height: 4.8rem;
+  padding: 1.1rem 1.5rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+#addon .section header {
+  width: 100%;
+  padding: 0 3rem;
+  box-sizing: border-box;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin: 1rem auto -1rem;
+  max-width: 1054px;
+  text-transform: uppercase;
+}
+
+#addon-screenshots {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  border-radius: 0.8rem;
+  width: calc(100% - 3rem);
+  margin: 1rem auto -1.5rem;
+  max-width: 1024px;
+  padding: 0 0 1.5rem;
+}
+
+#addon-screenshots::-webkit-scrollbar {
+  display: none;
+}
+
+#addon-screenshots > img {
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
+  border-radius: 0.8rem;
+  height: 20rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+#addon-description {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+  padding: 1rem;
+  border-top: solid 0.1rem rgba(0,0,0,0.125);
+}
+
+#addon-patch-notes {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+  padding: 1rem;
+  border-top: solid 0.1rem rgba(0,0,0,0.125);
+}
+
+@media screen and (min-width: 768px) {
+  #addon .app-header {
+    flex-direction: row;
+  }
+
+  #addon .app-header .options {
+    flex-direction: row;
+    width: unset;
+  }
+
+  #addon .app-header .options button {
+    width: unset;
+    margin: 0;
+    -moz-margin-start: 1rem;
+    margin-inline-start: 1rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #addon .banner-container {
+    height: calc(100vh - 5rem);
+    position: fixed;
+    top: 5rem;
+    max-height: unset;
+  }
+
+  #addon-banner {
+    background: var(--background) linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
+    height: calc(100vw / 1.75);
+  }
+
+  #addon .container {
+    width: calc(100% - 128px);
+    margin: 50vh 64px 48px;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: 5rem;
+    display: block;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  }
+
+  #addon .container.transitioning {
+    transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
+  }
+}

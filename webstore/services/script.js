@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
+import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js';
 import {
   getFirestore,
   doc,
@@ -9,26 +9,26 @@ import {
   onSnapshot,
   setDoc,
   collection
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 import {
   getStorage,
   uploadBytes,
   deleteObject,
   listAll,
   ref
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
+} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDuUDH9IFazrQC0-09LpdgGc_kr246VShg",
-  authDomain: "orchid-f39a9.firebaseapp.com",
-  projectId: "orchid-f39a9",
-  storageBucket: "orchid-f39a9.appspot.com",
-  messagingSenderId: "486189992784",
-  appId: "1:486189992784:web:00481e697a3525bc2d3a55",
-  measurementId: "G-VSQHXGH6Y8",
+  apiKey: 'AIzaSyDuUDH9IFazrQC0-09LpdgGc_kr246VShg',
+  authDomain: 'orchid-f39a9.firebaseapp.com',
+  projectId: 'orchid-f39a9',
+  storageBucket: 'orchid-f39a9.appspot.com',
+  messagingSenderId: '486189992784',
+  appId: '1:486189992784:web:00481e697a3525bc2d3a55',
+  measurementId: 'G-VSQHXGH6Y8',
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -40,11 +40,11 @@ function generateUUID() {
   // Public Domain/MIT
   var d = new Date().getTime(); //Timestamp
   var d2 =
-    (typeof performance !== "undefined" &&
+    (typeof performance !== 'undefined' &&
       performance.now &&
       performance.now() * 1000) ||
     0; //Time in microseconds since page-load or 0 if unsupported
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     var r = Math.random() * 16; //random number between 0 and 16
     if (d > 0) {
       //Use timestamp until depleted
@@ -55,7 +55,7 @@ function generateUUID() {
       r = (d2 + r) % 16 | 0;
       d2 = Math.floor(d2 / 16);
     }
-    return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
   });
 }
 
@@ -63,10 +63,10 @@ function generateUUID() {
 // Original copyright (c) Paul Johnston & Greg Holt.
 // The function itself is now 42 lines long.
 function MD5(inputString) {
-  var hc = "0123456789abcdef";
+  var hc = '0123456789abcdef';
   function rh(n) {
     var j,
-      s = "";
+      s = '';
     for (j = 0; j <= 3; j++)
       s +=
         hc.charAt((n >> (j * 8 + 4)) & 0x0f) + hc.charAt((n >> (j * 8)) & 0x0f);
@@ -194,6 +194,8 @@ function MD5(inputString) {
 }
 
 var OrchidServices = {
+  DEBUG: (location.href === 'http://localhost:5500' || location.href === 'http://127.0.0.1:5500/'),
+
   init: function os_init() {
     window.addEventListener('load', () => {
       if (this.isUserLoggedIn) {
@@ -218,12 +220,12 @@ var OrchidServices = {
    * @returns {boolean}
    */
   isUserLoggedIn: function os_isUserLoggedIn() {
-    var data = localStorage.hasOwnProperty("ws.login.userId");
+    var data = localStorage.hasOwnProperty('ws.login.userId');
     return data;
   },
 
   userId: function os_userId() {
-    return localStorage.getItem("ws.login.userId");
+    return localStorage.getItem('ws.login.userId');
   },
 
   /**
@@ -236,11 +238,15 @@ var OrchidServices = {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log("Document data: ", docSnap.data());
+      if (this.DEBUG) {
+        console.log('Document data: ', docSnap.data());
+      }
       return docSnap.data();
     } else {
       // doc.data() will be undefined in this case
-      console.log("No such document!");
+      if (this.DEBUG) {
+        console.log('No such document!');
+      }
     }
   },
 
@@ -251,7 +257,9 @@ var OrchidServices = {
    */
   getWithUpdate: function os_getWithUpdate(path, callback) {
     onSnapshot(doc(db, path), (doc) => {
-      console.log("Document data: ", doc.data());
+      if (this.DEBUG) {
+        console.log('Document data: ', doc.data());
+      }
       callback(doc.data());
     });
   },
@@ -266,9 +274,22 @@ var OrchidServices = {
     const querySnapshot = await getDocs(collection(db, path));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+      if (this.DEBUG) {
+        console.log(doc.id, ' => ', doc.data());
+      }
       callback(doc.data(), doc.id);
     });
+  },
+
+  /**
+   * Gets a array value from specified database collection and returns it with a callback.
+   * @param {string} path
+   * @param {function} callback
+   * @returns {object}
+   */
+  getArrayList: async function os_getList(path, callback) {
+    const querySnapshot = await getDocs(collection(db, path));
+    callback(querySnapshot);
   },
 
   /**
@@ -283,37 +304,18 @@ var OrchidServices = {
 
   storage: {
     /**
-     * Gets a storage file using a blob and a path.
-     * @param {string} path
-     * @param {function} callback
-     */
-    get: function os_storage_get(path, callback) {
-      var client = new XMLHttpRequest();
-      client.open('GET', 'https://firebasestorage.googleapis.com/v0/b/orchid-f39a9.appspot.com/o/' + path);
-      client.onreadystatechange = () => {
-        var metadata = JSON.parse(client.responseText);
-
-        var client1 = new XMLHttpRequest();
-        client1.open('GET', 'https://firebasestorage.googleapis.com/v0/b/orchid-f39a9.appspot.com/o/' + path + '?alt=media&token=' + metadata.downloadTokens);
-        client1.onreadystatechange = () => {
-          callback({ meta: client.responseText, response: client1.responseText });
-        };
-        client1.send();
-      };
-      client.send();
-    },
-
-    /**
-     * Creates or sets a storage file using a blob and a path.
+     * Creates a storage file using a blob and a path.
      * @param {string} path
      * @param {string} blob
      */
-    set: function os_storage_set(path, blob) {
+    add: function os_storage_add(path, blob) {
       const storageRef = ref(storage, path);
 
       // 'blob' comes from the Blob or File API
       uploadBytes(storageRef, blob).then((snapshot) => {
-        console.log("Uploaded a blob or file!");
+        if (this.DEBUG) {
+          console.log('Uploaded a blob or file!');
+        }
       });
     },
 
@@ -331,7 +333,9 @@ var OrchidServices = {
         })
         .catch((error) => {
           // Uh-oh, an error occurred!
-          console.log(error);
+          if (this.DEBUG) {
+            console.log(error);
+          }
         });
     },
 
@@ -340,7 +344,7 @@ var OrchidServices = {
      * @param {string} path
      */
     list: function os_storage_list(path) {
-      const listRef = ref(storage, "files/uid");
+      const listRef = ref(storage, 'files/uid');
 
       // Find all the prefixes and items.
       listAll(listRef)
@@ -360,54 +364,75 @@ var OrchidServices = {
   },
 
   auth: {
-    login: function os_auth_login() {},
+    login: function os_auth_login(username, password) {
+      OrchidServices.getList('profile', (user) => {
+        if (user.username == username || user.email == username || user.phone_number == username) {
+          if (user.password == MD5(password)) {
+            OrchidServices.auth.loginWithToken(user.token);
+          } else {
+            if (this.DEBUG) {
+              console.error('[' + user.token + '] Password does not match.');
+            }
+          }
+        } else {
+          if (this.DEBUG) {
+            console.error('[' + user.token + '] User does not exist');
+          }
+        }
+      });
+    },
 
     /**
      * Logs in using a specified existing user token.
      * @param {string} token
      */
     loginWithToken: function os_auth_loginWithToken(token) {
-      localStorage.setItem("ws.login.userId", token);
+      localStorage.setItem('ws.login.userId', token);
     },
 
-  },
-
-  /**
-   * Helps create a user account easily for you.
-   * @param {string} username
-   * @param {string} email
-   * @param {string} password
-   * @param {string} birthDate
-   */
-  signUp: async function os_auth_signUp(username, email, password, birthDate) {
-    var token = generateUUID();
-    const res = await db.collection('profile').add({
-      username: username,
-      email: email,
-      password: MD5(password),
-      profile_picture: "",
-      phone_number: "",
-      birth_date: birthDate,
-      token: token,
-      badges: [],
-      description: "",
-      orchid_points: 0,
-      time_created: Date.now(),
-      last_active: Date.now(),
-      state: "online",
-      notifications: [],
-      browser_bookmarks: [],
-      devices: [],
-      achievements: [],
-      preferences: {
-        wallpaper: "",
-        accent_color: "",
+    /**
+     * Helps create a user account easily for you.
+     * @param {string} username
+     * @param {string} email
+     * @param {string} password
+     * @param {string} birthDate
+     */
+    signUp: async function os_auth_signUp(username, email, password, birthDate) {
+      var token = generateUUID();
+      OrchidServices.set('profile/' + token, {
+        username: username,
+        email: email,
+        password: MD5(password),
+        profile_picture: '',
+        phone_number: '',
+        birth_date: birthDate,
+        token: token,
+        custom_badges: [],
+        description: '',
+        orchid_points: 0,
+        time_created: Date.now(),
+        last_active: Date.now(),
+        state: 'online',
+        notifications: [],
+        browser_bookmarks: [],
+        devices: [],
+        achievements: [],
+        wallpaper: '',
+        accent_color: '',
         dark_mode: false,
-      }
-    });
-    localStorage.setItem("ws.login.userId", res.id);
+        installed_apps: [],
+        is_verified: false,
+        is_moderator: false,
+        is_developer: false,
+        last_search: '',
+        last_visited_site: ''
+      });
+      localStorage.setItem('ws.login.userId', token);
 
-    console.log('Added document with ID: ', res.id);
+      if (this.DEBUG) {
+        console.log('Added document with ID: ', token);
+      }
+    },
   },
 
   authUi: function os_authUi() {},
@@ -420,7 +445,6 @@ var OrchidServices = {
         author_id: OrchidServices.userId(),
         teaser_url: data.teaser_url,
         icon: data.icon,
-        keyart: data.keyart,
         name: data.name,
         description: data.description,
         published_at: Date.now(),

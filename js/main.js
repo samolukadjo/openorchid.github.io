@@ -122,7 +122,7 @@
   function createRipple(button) {
     const circle = document.createElement("span");
 
-    button.addEventListener("mousedown", (event) => {
+    button.onmousedown = (event) => {
       const diameter = Math.max(button.getBoundingClientRect().width, button.getBoundingClientRect().height);
       const radius = diameter / 2;
 
@@ -134,23 +134,25 @@
 
       button.appendChild(circle);
       button.style.overflow = 'hidden';
-    });
+    };
 
-    button.addEventListener("mouseup", () => {
+    button.onmouseup = () => {
       circle.classList.remove("ripple");
       circle.classList.remove("active");
       setTimeout(() => {
         circle.classList.add("ripple");
       });
-      circle.addEventListener('animationend', () => {
+      setTimeout(() => {
         circle.remove();
         button.style.overflow = '';
-      });
-    });
+      }, 501);
+    };
   }
 
-  const buttons = document.querySelectorAll("a[href], button, #notifications-list li");
-  for (const button of buttons) {
-    createRipple(button);
-  }
+  setInterval(() => {
+    const buttons = document.querySelectorAll("a[href], button");
+    for (const button of buttons) {
+      createRipple(button);
+    }
+  }, 1000);
 })(window);

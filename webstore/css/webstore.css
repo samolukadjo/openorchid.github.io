@@ -24,6 +24,10 @@
 
   --translucent: rgba(0,0,0,0.05);
   --translucent-plus: rgba(0,0,0,0.1);
+
+  --ripple-color: rgba(0, 0, 0, 0.5);
+
+  color-scheme: light;
 }
 
 [data-theme="dark"] {
@@ -38,6 +42,10 @@
 
   --translucent: rgba(255,255,255,0.05);
   --translucent-plus: rgba(255,255,255,0.1);
+
+  --ripple-color: rgba(255, 255, 255, 0.5);
+
+  color-scheme: dark;
 }
 
 [data-season="halloween"] {
@@ -50,9 +58,9 @@
   --header-background: rgba(255, 240, 234, 0.6);
   --text-color: #532;
 
-  --button-normal: #343230;
-  --button-hover: #3c3a38;
-  --button-active: #444240;
+  --button-normal: #fff;
+  --button-hover: #dddad8;
+  --button-active: #cdcac8;
 
   --translucent: rgba(0,0,0,0.05);
   --translucent-plus: rgba(0,0,0,0.1);
@@ -64,12 +72,12 @@
   --header-background: rgba(20, 18, 16, 0.6);
   --text-color: #ffc080;
 
+  --button-normal: #343230;
+  --button-hover: #3c3a38;
+  --button-active: #444240;
+
   --translucent: rgba(255,255,255,0.05);
   --translucent-plus: rgba(255,255,255,0.1);
-}
-
-::-webkit-scrollbar {
-  display: none;
 }
 
 html, body {
@@ -84,13 +92,6 @@ html, body {
   position: fixed;
   top: 0;
   z-index: 10;
-}
-
-@supports (backdrop-filter: saturate(180%) blur(20px)) {
-  .oui--header {
-    backdrop-filter: saturate(180%) blur(20px);
-    background: var(--header-background) !important;
-  }
 }
 
 #sidebar {
@@ -137,6 +138,7 @@ html, body {
   color: var(--text-color);
   font-size: 1.6rem;
   font-weight: normal;
+  transition: box-shadow 0.2s ease;
 }
 
 #sidebar > ul li a:hover {
@@ -151,7 +153,6 @@ html, body {
   background: var(--background-plus);
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   font-weight: bold;
-  transition: box-shadow 0.2s ease;
 }
 
 #sidebar > ul li a[aria-selected="true"]:hover {
@@ -176,6 +177,28 @@ html[dir="ltr"] #sidebar > ul li a[data-icon]:before {
 }
 html[dir="rtl"] #sidebar > ul li a[data-icon]:before {
   right: 0;
+}
+
+#sidebar > ul li a > em {
+  position: absolute;
+  top: 0.8rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-style: normal;
+  background: var(--accent-color);
+  color: var(--accent-color-text);
+  margin: 0 1rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  border-radius: 1.2rem;
+}
+html[dir="ltr"] #sidebar > ul li a > em {
+  right: 0;
+}
+html[dir="rtl"] #sidebar > ul li a > em {
+  left: 0;
 }
 
 #content {

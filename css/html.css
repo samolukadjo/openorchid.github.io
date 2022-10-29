@@ -284,35 +284,6 @@ pre {
   overflow: auto;
 }
 
-/* Elastic Scrolling */
-.content-container {
-  position: absolute;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.scrollbar-track-y {
-  width: 12px !important;
-  background: var(--header-background) !important;
-  backdrop-filter: saturate(180%) blur(20px);
-}
-
-html[dir="rtl"] .scrollbar-track-y {
-  right: unset !important;
-  left: 0 !important;
-}
-
-.scrollbar-thumb {
-  width: 6px !important;
-  border: 3px solid transparent !important;
-  background: var(--text-color) !important;
-  background-clip: content-box !important;
-  border-radius: 12px !important;
-  opacity: 0.5;
-}
-
 /* Ripple */
 a, button {
   display: inline-block;

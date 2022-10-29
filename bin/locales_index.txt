@@ -5,3 +5,4 @@ widgets/locales/widgets.en-US.properties
 start/locales/widgets.en-US.properties
 articles/locales/articles.en-US.properties
 auth/locales/auth.en-US.properties
+addonstore/locales/main.en-US.properties

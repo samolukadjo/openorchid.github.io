@@ -12,6 +12,7 @@
   <link rel="shortcut icon" href="images/store_256.png" type="image/x-icon" sizes="256x256">
   <link rel="shortcut icon" href="images/store.svg" type="image/x-icon" sizes="284x284 512x512">
   <title data-l10n-id="title">Orchid | Web Store</title>
+  <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="var(--background, #e7e7e7)">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Orchid" />
@@ -32,6 +33,7 @@
   <link rel="stylesheet" href="lib/gaia-icons/bidi-helper.css">
   <link rel="stylesheet" href="css/splashscreen.css">
   <link rel="stylesheet" href="css/webstore.css">
+  <link rel="stylesheet" href="css/warning.css">
   <link rel="stylesheet" href="css/posters.css">
   <link rel="stylesheet" href="css/webapps.css">
   <link rel="stylesheet" href="css/webapp_info.css">
@@ -77,31 +79,32 @@
   <nav id="sidebar">
     <a href="/?page=submit/webapp" id="upload-button" data-icon="add" data-l10n-id="nav-upload"></a>
     <ul>
-      <li><a href="#" data-icon="apps" data-l10n-id="nav-allWebapps" aria-selected="true"></a></li>
+      <li><a href="#" data-icon="apps" data-l10n-id="nav-allWebapps" id="sidebar-allapps" aria-selected="true"></a></li>
     </ul>
 
     <header data-l10n-id="nav-categories"></header>
-    <ul>
-      <li><a href="#" data-icon="sms" data-l10n-id="category-communication"></a></li>
-      <li><a href="#" data-icon="help" data-l10n-id="category-education"></a></li>
-      <li><a href="#" data-icon="play" data-l10n-id="category-games"></a></li>
-      <li><a href="#" data-icon="heart" data-l10n-id="category-health"></a></li>
-      <li><a href="#" data-icon="video" data-l10n-id="category-multimedia"></a></li>
-      <li><a href="#" data-icon="tab-previews" data-l10n-id="category-news"></a></li>
-      <li><a href="#" data-icon="search" data-l10n-id="category-search"></a></li>
-      <li><a href="#" data-icon="user" data-l10n-id="category-social"></a></li>
-      <li><a href="#" data-icon="airplane" data-l10n-id="category-travel"></a></li>
-      <li><a href="#" data-icon="permissions" data-l10n-id="category-utility"></a></li>
+    <ul id="categories">
     </ul>
 
     <header data-l10n-id="nav-personal"></header>
     <ul>
-      <li><a href="#" data-icon="download" data-l10n-id="nav-installed"></a></li>
+      <li><a href="#" data-icon="download">
+        <span data-l10n-id="nav-installed"></span>
+        <em>41</em>
+      </a></li>
       <li><a href="#" data-icon="settings" data-l10n-id="nav-settings"></a></li>
     </ul>
   </nav>
 
   <main id="content">
+    <div class="warning">
+      <div class="message">
+        <img src="images/store.svg" alt="">
+        <div data-l10n-id="use-store-app"></div>
+      </div>
+      <a href="app://webstore.gaiamobile.org/index.html" target="_blank" data-l10n-id="open-store"></a>
+    </div>
+
     <div class="poster">
       <img src="/images/keyart/store.svg" alt="">
       <div>
@@ -110,6 +113,7 @@
         <a href="#">Learn More</a>
       </div>
     </div>
+
     <div id="webapps"></div>
   </main>
 

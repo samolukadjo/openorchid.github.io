@@ -1,29 +1,132 @@
 (function (exports) {
   "use strict";
 
+  var categoryIcons = {
+    'communication': 'sms',
+    'education': 'help',
+    'games': 'play',
+    'health': 'heart',
+    'multimedia': 'video',
+    'news': 'tab-previews',
+    'search': 'search',
+    'social': 'user',
+    'travel': 'airplane',
+    'utility': 'permissions'
+  };
+
   var legacyResponseJson;
+  var isListEnabled = false;
   var currentApp;
   var webapps = document.getElementById("webapps");
+  var categories = document.getElementById("categories");
+  var allAppsButton = document.getElementById('sidebar-allapps');
+
+  allAppsButton.onclick = () => {
+    var selected = document.querySelector('[aria-selected="true"]');
+    selected.setAttribute('aria-selected', null);
+    allAppsButton.setAttribute('aria-selected', true);
+  };
 
   OrchidServices.getList("webstore", function (data, id) {
-    createIcon(data, id, false);
+    createIcon(app, id, false);
   });
 
   var client = new XMLHttpRequest();
   client.open("GET", "https://banana-hackers.gitlab.io/store-db/data.json");
   client.onreadystatechange = () => {
-    legacyResponseJson = JSON.parse(client.responseText);
-    console.log(legacyResponseJson);
-    legacyResponseJson.apps.forEach((app) => {
-      createIcon(app, app.slug, true);
-      if (currentApp !== null) {
-        if (currentApp == app.slug) {
-          openInfo(app, app.slug, true);
+    if (!legacyResponseJson) {
+      legacyResponseJson = JSON.parse(client.responseText);
+      console.log(legacyResponseJson);
+      legacyResponseJson.apps.forEach((app) => {
+        createIcon(app, app.slug, true);
+        if (currentApp !== null) {
+          if (currentApp == app.slug) {
+            openInfo(app, app.slug, true);
+          }
         }
-      }
-    });
+      });
+    }
   };
   client.send();
+
+  function setCategory(id, app) {
+    if (document.querySelector('[data-category="' + id + '"]')) {
+      var container = document.querySelector(
+        '[data-category="' + id + '"] > .webapps'
+      );
+      container.appendChild(app);
+    } else {
+      var listItem = document.createElement("li");
+      categories.appendChild(listItem);
+
+      var link = document.createElement("a");
+      link.href = '#category-' + id;
+      link.dataset.l10nId = "category-" + id;
+      link.dataset.icon = categoryIcons[id];
+      link.onclick = () => {
+        var selected = document.querySelector('[aria-selected="true"]');
+        selected.setAttribute('aria-selected', null);
+        link.setAttribute('aria-selected', true);
+      };
+      listItem.appendChild(link);
+
+      var element = document.createElement("div");
+      element.id = 'category-' + id;
+      element.dataset.category = id;
+      element.classList.add("webapps-group");
+      webapps.appendChild(element);
+
+      document.addEventListener('wheel', () => {
+        if (element.getBoundingClientRect().top <= (window.innerHeight - (element.getBoundingClientRect().height - 1))) {
+          var selected = document.querySelector('[aria-selected="true"]');
+          selected.setAttribute('aria-selected', null);
+          link.setAttribute('aria-selected', true);
+        }
+      });
+      document.addEventListener('touchmove', () => {
+        if (element.getBoundingClientRect().top <= (window.innerHeight - (element.getBoundingClientRect().height - 1))) {
+          var selected = document.querySelector('[aria-selected="true"]');
+          selected.setAttribute('aria-selected', null);
+          link.setAttribute('aria-selected', true);
+        }
+      });
+
+      var header = document.createElement("header");
+      element.appendChild(header);
+
+      var title = document.createElement("h1");
+      title.dataset.l10nId = "category-" + id;
+      header.appendChild(title);
+
+      var expandButton = document.createElement("a");
+      expandButton.href = "#";
+      expandButton.dataset.icon = "expand-chevron";
+      expandButton.dataset.l10nId = "show-more";
+      expandButton.onclick = (evt) => {
+        evt.preventDefault();
+        element.classList.toggle("expanded");
+        if (element.classList.contains("expanded")) {
+          expandButton.dataset.icon = "collapse-chevron";
+          expandButton.dataset.l10nId = "show-less";
+        } else {
+          expandButton.dataset.icon = "expand-chevron";
+          expandButton.dataset.l10nId = "show-more";
+        }
+      };
+      header.appendChild(expandButton);
+
+      var container = document.createElement("div");
+      container.classList.add("webapps");
+      if (isListEnabled) {
+        container.classList.add("list");
+      }
+      element.appendChild(container);
+
+      container.appendChild(app);
+
+      isListEnabled = !isListEnabled;
+    }
+  }
 
   function createIcon(data, id, isBananaHackers) {
     var element = document.createElement("a");
@@ -34,7 +137,12 @@
       evt.preventDefault();
       openInfo(data, id, isBananaHackers);
     };
-    webapps.appendChild(element);
+
+    if (isBananaHackers) {
+      setCategory(data.meta.categories[0], element);
+    } else {
+      setCategory(data.categories[0], element);
+    }
 
     var iconHolder = document.createElement("div");
     iconHolder.classList.add("icon-holder");
@@ -42,6 +150,9 @@
 
     var icon = document.createElement("img");
     icon.src = data.icon;
+    icon.onerror = () => {
+      icon.src = "images/default.svg";
+    };
     iconHolder.appendChild(icon);
 
     var context = document.createElement("div");
@@ -162,6 +273,10 @@
     };
 
     webappIcon.src = webappData.icon;
+    webappIcon.onerror = () => {
+      webappIcon.src = "images/default.svg";
+    };
+
     webappName.textContent = webappData.name;
 
     if (isBananaHackers) {
@@ -189,6 +304,15 @@
         var avg = sum / commentsArray.length;
 
         webappAverageRating.textContent = Math.round(avg * 10) / 10;
+        if (isBananaHackers) {
+          OrchidServices.set("webstore_legacy/" + id, {
+            rating_average: Math.round(avg * 10) / 10,
+          });
+        } else {
+          OrchidServices.set("webstore/" + id, {
+            rating_average: Math.round(avg * 10) / 10,
+          });
+        }
 
         webappStarRatings.innerHTML = "";
         for (let index = 0; index < parseInt(avg); index++) {
