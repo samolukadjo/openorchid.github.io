@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moderation</title>
+  <script type="module">
+    import { ref, onValue } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
+    import { database, getDBItem, setDBItem, loginId } from './js/firebase.js';
+
+    getDBItem('users/' + loginId + '/is_moderator', function(data) {
+      if (data) {
+        document.body.innerHTML = `
+          <h1>Moderator List</h1>
+          <table style="width:100%">
+            <tr>
+              <th>Avatar</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Verified</th>
+              <th>Moderator</th>
+              <th>Supporter</th>
+              <th>Developer</th>
+            </tr>
+          </table>
+          <table id="modlist" style="width:100%"></table>
+        `;
+        var modlist = document.getElementById('modlist');
+
+        onValue(ref(database, 'users'), function(snapshot) {
+          const data = snapshot.val();
+          var entries = Object.entries(data);
+
+          modlist.innerHTML = '';
+          entries.forEach(function(entry) {
+            var user = document.createElement('tr');
+            modlist.appendChild(user);
+
+            var avatar = document.createElement('td');
+            avatar.style.backgroundColor = entry[1].is_online ? '#40a060' : '#c00040';
+            var avatarImg = document.createElement('img');
+            avatarImg.src = entry[1].profile_picture;
+            avatarImg.width = 32;
+            avatar.appendChild(avatarImg);
+            user.appendChild(avatar);
+
+            var username = document.createElement('td');
+            username.innerText = entry[1].username || '...';
+            user.appendChild(username);
+
+            var email = document.createElement('td');
+            email.innerText = entry[1].email || '...';
+            user.appendChild(email);
+
+            var phoneNumber = document.createElement('td');
+            phoneNumber.innerText = entry[1].phone_number || '...';
+            user.appendChild(phoneNumber);
+
+            var verified = document.createElement('td');
+            verified.innerText = entry[1].is_verified;
+            verified.onclick = function() {
+              setDBItem('users/' + entry[0] + '/is_verified', !entry[1].is_verified);
+            };
+            user.appendChild(verified);
+
+            var moderator = document.createElement('td');
+            moderator.innerText = entry[1].is_moderator;
+            if (loginId !== entry[0]) {
+              moderator.onclick = function() {
+                setDBItem('users/' + entry[0] + '/is_moderator', !entry[1].is_moderator);
+              };
+            } else {
+              moderator.style.opacity = 0.3;
+            }
+            user.appendChild(moderator);
+
+            var developer = document.createElement('td');
+            developer.innerText = entry[1].is_developer;
+            developer.onclick = function() {
+              setDBItem('users/' + entry[0] + '/is_developer', !entry[1].is_developer);
+            };
+            user.appendChild(developer);
+
+            var supporter = document.createElement('td');
+            supporter.innerText = entry[1].is_supporter;
+            supporter.onclick = function() {
+              setDBItem('users/' + entry[0] + '/is_supporter', !entry[1].is_supporter);
+            };
+            user.appendChild(supporter);
+          });
+        });
+      } else {
+        document.body.innerHTML = 'ERROR: Access denied.';
+      }
+    });
+  </script>
+  <style type="text/css">
+    th, td {
+      border: 1px solid #f4f4f4;
+    }
+    tr {
+      display: flex;
+      width: 100%;
+      text-align: center;
+    }
+    tr > * {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Moderator List</h1>
+  <table style="width:100%">
+    <tr>
+      <th>Avatar</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Verified</th>
+      <th>Moderator</th>
+      <th>Developer</th>
+      <th>Supporter</th>
+    </tr>
+  </table>
+  <table id="modlist" style="width:100%"></table>
+</body>
+</html>

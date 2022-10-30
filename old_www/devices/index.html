@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Devices</title>
+
+    <!-- Building Blocks -->
+    <link rel="stylesheet" type="text/css" href="/components/elements/gaia-icons/gaia-icons.css">
+    <link rel="stylesheet" type="text/css" href="/components/style/headers.css">
+    <link rel="stylesheet" type="text/css" href="/components/style/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/devices.css">
+
+    <!-- Localization -->
+    <meta name="defaultLanguage" content="en-US">
+    <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+    <link rel="localization" href="locales/devices.{locale}.properties">
+    <script type="text/javascript" defer src="js/l10n.js"></script>
+
+    <!-- Javascript -->
+    <script type="module" defer src="js/devices.js"></script>
+  </head>
+  <body class="skin-organic">
+    <section role="region" id="sidebar">
+    </section>
+    <section role="region" id="content">
+      <header>
+        <a href="#" class="icon icon-menu"></a>
+        <h1 data-l10n-id="paired-devices">Paired Devices</h1>
+      </header>
+      <section>
+        <div id="devices"></div>
+      </section>
+    </section>
+  </body>
+</html>

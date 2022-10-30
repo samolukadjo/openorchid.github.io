@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+
+    <!-- Building Blocks -->
+    <link type="text/css" rel="stylesheet" href="/components/elements/gaia-icons/gaia-icons.css">
+    <link type="text/css" rel="stylesheet" href="/components/elements/gaia-theme/gaia-theme.css">
+    <link type="text/css" rel="stylesheet" href="/components/style/layout.css">
+    <link type="text/css" rel="stylesheet" href="/components/style/headers.css">
+    <link type="text/css" rel="stylesheet" href="/components/style/switches.css">
+    <link type="text/css" rel="stylesheet" href="style/account.css">
+
+    <!-- Localization -->
+    <meta name="defaultLanguage" content="en-US">
+    <meta name="availableLanguages" content="ar, en-US">
+    <link rel="localization" href="locales/account.{locale}.properties">
+    <script type="text/javascript" defer src="/js/l10n.js"></script>
+
+    <!-- Web Components -->
+    <script type="text/javascript" defer src="js/image_resizer.js"></script>
+    <script type="module" defer src="js/account.js"></script>
+  </head>
+  <body class="skin-organic">
+    <section role="region" id="root" class="vbox">
+      <header>
+        <a href="/" class="icon icon-back"></a>
+        <h1 data-l10n-id="my-account">My Account</h1>
+      </header>
+      <section class="gaia-list active fit">
+        <ul>
+          <li data-open="personal" data-l10n-id="personal">Personal</li>
+          <li data-open="profile-pictures" data-l10n-id="profile-pictures">Profile Pictures</li>
+          <li data-open="settings" data-l10n-id="settings">Settings</li>
+        </ul>
+      </section>
+    </section>
+
+    <section role="region" id="personal" class="vbox">
+      <header>
+        <a href="#" data-open="root" class="icon icon-back"></a>
+        <h1 data-l10n-id="personal">Personal</h1>
+      </header>
+
+      <section class="gaia-list fit">
+        <div class="hbox user-profile">
+          <div class="avatar-icon">
+            <img src="" id="avatar">
+            <span></span>
+          </div>
+          <p class="fit" id="username"></p>
+          <div id="badges"></div>
+        </div>
+
+        <header data-l10n-id="personal">Description</header>
+        <ul>
+          <li class="vbox">
+            <p data-l10n-id="date-created">Date Created</p>
+            <p id="date-created"></p>
+          </li>
+          <li class="vbox active">
+            <p data-l10n-id="phone-number">Phone Number</p>
+            <p id="phone-number"></p>
+          </li>
+        </ul>
+
+        <header data-l10n-id="description">Description</header>
+        <ul>
+          <li class="active" id="description">
+            <p></p>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section role="region" id="profile-pictures" class="vbox">
+      <header>
+        <a href="#" data-open="root" class="icon icon-back"></a>
+        <h1 data-l10n-id="profile-pictures">Profile Pictures</h1>
+      </header>
+      <section class="gaia-list fit">
+        <header data-l10n-id="default">Default</header>
+        <ul>
+          <li>
+            <img src="images/avatars/custom.png" id="custom-avatar">
+            <img src="images/avatars/defaultuser0_256.png">
+            <img src="images/avatars/defaultuser1_256.png">
+            <img src="images/avatars/defaultuser2_256.png">
+            <img src="images/avatars/defaultuser3_256.png">
+            <img src="images/avatars/defaultuser4_256.png">
+            <img src="images/avatars/defaultuser5_256.png">
+            <img src="images/avatars/defaultuser6_256.png">
+          </li>
+        </ul>
+        <header>
+          <img src="images/avatars/minecraft/logo.png" height="30">
+        </header>
+        <ul>
+          <li>
+            <img src="images/avatars/minecraft/creeper.png">
+            <img src="images/avatars/minecraft/steve.png">
+            <img src="images/avatars/minecraft/alex.png">
+            <img src="images/avatars/minecraft/technoblade.jpeg">
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section role="region" id="settings" class="vbox">
+      <header>
+        <a href="#" data-open="root" class="icon icon-back"></a>
+        <h1 data-l10n-id="settings">Settings</h1>
+      </header>
+      <section class="gaia-list fit"></section>
+    </section>
+  </body>
+</html>

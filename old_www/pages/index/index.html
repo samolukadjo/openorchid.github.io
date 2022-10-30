@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="/components/elements/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="/css/posters.css">
+
+  <!-- Localization -->
+  <meta name="defaultLanguage" content="en-US">
+  <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+  <link rel="localization" href="/locales/website.{locale}.properties">
+  <link rel="localization" href="locales/main.{locale}.properties">
+  <script type="text/javascript" defer src="/js/l10n.js"></script>
+
+  <!-- Javascript -->
+  <script type="text/javascript" src="js/index.js"></script>
+  <script defer type="text/javascript" src="/js/posters.js"></script>
+  <script defer type="text/javascript" src="/js/color_picker.js"></script>
+  <script type="text/javascript" src="/js/light_or_dark.js"></script>
+</head>
+<body>
+    <div class="safezone">
+    <div id="posters">
+      <div class="container">
+        <a href="#" class="poster current">
+          <img src="/images/bg.png" alt="">
+          <h1>Test Poster 1</h1>
+          <p>Test Paragraph 1</p>
+          <span data-l10n-id="learnMore"></span>
+        </a>
+        <a href="#" class="poster next">
+          <img src="/images/bg_red.png" alt="">
+          <h1>Test Poster 2</h1>
+          <p>Test Paragraph 2</p>
+          <span data-l10n-id="learnMore"></span>
+        </a>
+        <a href="#" class="poster previous">
+          <img src="/images/bg_green.png" alt="">
+          <h1>Test Poster 3</h1>
+          <p>Test Paragraph 3</p>
+          <span data-l10n-id="learnMore"></span>
+        </a>
+        <a href="#" class="poster previous">
+          <img src="/images/bg_blue.png" alt="">
+          <h1>Test Poster 4</h1>
+          <p>Test Paragraph 4</p>
+          <span data-l10n-id="learnMore"></span>
+        </a>
+      </div>
+      <button data-icon="back" class="back"></button>
+      <button data-icon="forward" class="forward"></button>
+      <div class="dots">
+        <div class="current"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <header class="page-header" data-l10n-id="blogs">Blogs</header>
+    <div class="cards">
+      <a href="#" class="card">
+        <img src="/images/bg.png">
+        <h1>Test Blog</h1>
+        <p>Test Blog Summary</p>
+        <span data-l10n-id="poster-learnMore">Learn More</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="info-panel">
+    <div>
+      <img src="/images/info/trash.svg">
+    </div>
+    <div>
+      <h1>Trash</h1>
+      <p>WOS is guarranteed to be as useless and unsupported as possible to help you to avoid using it.</p>
+    </div>
+  </div>
+  <div class="info-panel">
+    <div>
+      <img src="/images/info/style.svg">
+    </div>
+    <div>
+      <h1>Customizable</h1>
+      <p>WOS can be customized using themes and addons to your likings.</p>
+    </div>
+  </div>
+  <div class="info-panel">
+    <div>
+      <img src="/images/info/config.svg">
+    </div>
+    <div>
+      <h1>User Friendly</h1>
+      <p>It's just reskinned Firefox OS. No big deal.</p>
+    </div>
+  </div>
+  <div class="info-panel">
+    <div>
+      <img src="/images/info/text.svg">
+    </div>
+    <div>
+      <h1>No Languages</h1>
+      <p>Only english. Just incase you didnt avoid it enough.</p>
+    </div>
+  </div>
+</body>
+</html>

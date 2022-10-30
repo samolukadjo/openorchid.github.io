@@ -1,0 +1,244 @@
+.footer {
+  padding: 1rem;
+  box-sizing: border-box;
+  background: #f4f4f4;
+  box-shadow: 0 -0.1rem 0 rgba(127, 127, 127, 0.125);
+}
+.dark-mode-enabled .footer {
+  background-color: #282828;
+}
+
+.footer > section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto 1rem;
+  border-bottom: solid 0.1rem rgba(0,0,0,0.125);
+  position: relative;
+}
+
+.footer > section:last-child {
+  margin: 0 auto;
+  border-bottom: none;
+}
+
+.footer img {
+  width: 10rem;
+  height: 10rem;
+  margin: 0 1.5rem;
+}
+
+.footer p {
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 1.4rem;
+  color: #333;
+  opacity: 0.5;
+  width: 100%;
+}
+.dark-mode-enabled .footer p {
+  color: #fff;
+}
+
+.footer p:first-child,
+.footer ul p {
+  opacity: 1;
+  font-size: 1.6rem;
+}
+
+.footer header {
+  height: 3rem;
+  line-height: 3rem;
+  color: #a6a6a6;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.6rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.footer ul {
+  width: 25%;
+  min-width: 300px;
+  max-width: 320px;
+  margin: 1rem auto;
+  padding: 0;
+}
+
+.footer ul li {
+  height: 4rem;
+  line-height: 4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 2rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  list-style: none;
+  transition: background-color 0.2s;
+}
+
+.footer ul li:hover {
+  background: rgba(0,0,0,0.05);
+  transition: none;
+}
+
+.footer ul li:hover a {
+  text-decoration: underline;
+  transition: text-indent 0.3s ease;
+}
+
+.footer ul li a:hover {
+  text-indent: 1.4rem;
+}
+
+.footer ul li a:after {
+  left: 0;
+  width: 0.4rem;
+  height: 0;
+  top: 50%;
+}
+html[dir="rtl"] .footer ul li a:after {
+  left: unset;
+  right: 0;
+}
+
+.footer ul li a:hover:after {
+  left: 0;
+  top: 25%;
+  height: 50%;
+  width: 0.4rem;
+}
+html[dir="rtl"] .footer ul li a:hover:after {
+  left: unset;
+  right: 0;
+}
+
+.footer ul li:active {
+  background: rgba(0,0,0,0.1);
+  transition: none;
+}
+
+.footer ul li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  height: 4rem;
+  line-height: 4rem;
+}
+html[dir="ltr"] .footer ul li a {
+  background: url(images/right.svg) no-repeat right center / 2rem;
+}
+html[dir="rtl"] .footer ul li a {
+  background: url(images/left.svg) no-repeat left center / 2rem;
+}
+
+.footer .toolbar {
+  width: 100%;
+  display: flex;
+  padding: 0 1rem;
+  height: 5rem;
+}
+
+.footer .toolbar > a {
+  height: 4rem;
+  min-width: 4rem;
+  width: fit-content;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  display: block;
+  font-size: 1.6rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  line-height: 4rem;
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  transition: border-color 1s ease, background 0.2s ease;
+}
+
+.footer .toolbar > a:hover {
+  background-color: rgba(0,0,0,0.05);
+  transition: none;
+}
+
+.footer .toolbar > a:active {
+  background-color: #e0e0e0;
+  transition: none;
+}
+
+.footer select {
+  width: 100%;
+  height: 4rem;
+  background: #fff;
+  color: #333;
+  font-size: 1.6rem;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  border: none;
+}
+
+.footer label {
+  height: 4rem;
+  padding: 0 1.5rem;
+  line-height: 4rem;
+  color: #333;
+  font-size: 1.6rem;
+}
+
+.dark-mode-enabled .footer ul li:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.dark-mode-enabled .footer ul li:active {
+  background-color: rgba(0,0,0,0.15);
+}
+
+.dark-mode-enabled .footer ul li a {
+  color: #fff;
+}
+
+.dark-mode-enabled .footer .toolbar > a {
+  color: #fff;
+}
+
+.dark-mode-enabled .footer .toolbar > a:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.dark-mode-enabled .footer .toolbar > a:active {
+  background-color: rgba(0,0,0,0.15);
+}
+
+.dark-mode-enabled .footer select {
+  background-color: #303030;
+  color: #fff;
+}
+
+.dark-mode-enabled .footer label {
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .footer > section {
+    max-width: 90%;
+  }
+
+  .footer .toolbar {
+    position: absolute;
+    top: -0.3rem;
+    width: auto;
+  }
+  html[dir="ltr"] .footer .toolbar {
+    right: 0;
+    flex-direction: row;
+  }
+  html[dir="rtl"] .footer .toolbar {
+    left: 0;
+    flex-direction: row-reverse;
+  }
+}
