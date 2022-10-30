@@ -80,6 +80,10 @@
   --translucent-plus: rgba(255,255,255,0.1);
 }
 
+:focus {
+  outline: dashed 0.1rem currentColor;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -102,6 +106,9 @@ html, body {
   padding: 0.5rem 1.5rem;
   box-sizing: border-box;
   margin: 0;
+  height: calc(100% - 5rem);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #sidebar > header {

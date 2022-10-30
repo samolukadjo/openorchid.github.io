@@ -6,3 +6,4 @@ start/locales/widgets.en-US.properties
 articles/locales/articles.en-US.properties
 auth/locales/auth.en-US.properties
 addons/locales/main.en-US.properties
+newspaper/locales/main.en-US.properties

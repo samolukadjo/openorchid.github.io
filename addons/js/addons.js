@@ -2,31 +2,31 @@
   "use strict";
 
   var categoryIcons = {
-    'communication': 'sms',
-    'education': 'help',
-    'games': 'play',
-    'health': 'heart',
-    'multimedia': 'video',
-    'news': 'tab-previews',
-    'search': 'search',
-    'social': 'user',
-    'travel': 'airplane',
-    'utility': 'permissions'
+    communication: "sms",
+    education: "help",
+    games: "play",
+    health: "heart",
+    multimedia: "video",
+    news: "tab-previews",
+    search: "search",
+    social: "user",
+    travel: "airplane",
+    utility: "permissions",
   };
 
   var isListEnabled = false;
   var addons = document.getElementById("addons");
   var categories = document.getElementById("categories");
-  var allAppsButton = document.getElementById('sidebar-allapps');
+  var allAppsButton = document.getElementById("sidebar-allapps");
 
   allAppsButton.onclick = () => {
     var selected = document.querySelector('[aria-selected="true"]');
-    selected.setAttribute('aria-selected', null);
-    allAppsButton.setAttribute('aria-selected', true);
+    selected.setAttribute("aria-selected", null);
+    allAppsButton.setAttribute("aria-selected", true);
   };
 
-  OrchidServices.getList("webstore", function (data, id) {
-    createIcon(app, id, false);
+  OrchidServices.getList("addons", function (data, id) {
+    createIcon(app, id);
   });
 
   function setCategory(id, app) {
@@ -40,34 +40,40 @@
       categories.appendChild(listItem);
 
       var link = document.createElement("a");
-      link.href = '#category-' + id;
+      link.href = "#category-" + id;
       link.dataset.l10nId = "category-" + id;
       link.dataset.icon = categoryIcons[id];
       link.onclick = () => {
         var selected = document.querySelector('[aria-selected="true"]');
-        selected.setAttribute('aria-selected', null);
-        link.setAttribute('aria-selected', true);
+        selected.setAttribute("aria-selected", null);
+        link.setAttribute("aria-selected", true);
       };
       listItem.appendChild(link);
 
       var element = document.createElement("div");
-      element.id = 'category-' + id;
+      element.id = "category-" + id;
       element.dataset.category = id;
       element.classList.add("addons-group");
       addons.appendChild(element);
 
-      document.addEventListener('wheel', () => {
-        if (element.getBoundingClientRect().top <= (window.innerHeight - (element.getBoundingClientRect().height - 1))) {
+      document.addEventListener("wheel", () => {
+        if (
+          element.getBoundingClientRect().top <=
+          window.innerHeight - (element.getBoundingClientRect().height - 1)
+        ) {
           var selected = document.querySelector('[aria-selected="true"]');
-          selected.setAttribute('aria-selected', null);
-          link.setAttribute('aria-selected', true);
+          selected.setAttribute("aria-selected", null);
+          link.setAttribute("aria-selected", true);
         }
       });
-      document.addEventListener('touchmove', () => {
-        if (element.getBoundingClientRect().top <= (window.innerHeight - (element.getBoundingClientRect().height - 1))) {
+      document.addEventListener("touchmove", () => {
+        if (
+          element.getBoundingClientRect().top <=
+          window.innerHeight - (element.getBoundingClientRect().height - 1)
+        ) {
           var selected = document.querySelector('[aria-selected="true"]');
-          selected.setAttribute('aria-selected', null);
-          link.setAttribute('aria-selected', true);
+          selected.setAttribute("aria-selected", null);
+          link.setAttribute("aria-selected", true);
         }
       });
 
@@ -108,21 +114,16 @@
     }
   }
 
-  function createIcon(data, id, isBananaHackers) {
+  function createIcon(data, id) {
     var element = document.createElement("a");
     element.href = "?addon=" + id;
     element.classList.add("addon");
     element.title = data.name;
     element.onclick = (evt) => {
       evt.preventDefault();
-      openInfo(data, id, isBananaHackers);
+      openInfo(data, id);
     };
-
-    if (isBananaHackers) {
-      setCategory(data.meta.categories[0], element);
-    } else {
-      setCategory(data.categories[0], element);
-    }
+    setCategory(data.categories[0], element);
 
     var iconHolder = document.createElement("div");
     iconHolder.classList.add("icon-holder");
@@ -148,39 +149,23 @@
     author.classList.add("author");
     context.appendChild(author);
 
-    if (isBananaHackers) {
-      author.textContent = data.author;
-    } else {
-      OrchidServices.getWithUpdate(
-        "profile/" + data.author_id,
-        function (udata) {
-          author.textContent = udata.username;
-          author.href = "/account/?user=" + udata.username;
-        }
-      );
-    }
+    OrchidServices.getWithUpdate("profile/" + data.author_id, function (udata) {
+      author.textContent = udata.username;
+      author.href = "/account/?user=" + udata.username;
+    });
 
     var categories = document.createElement("div");
     categories.classList.add("categories");
 
-    if (isBananaHackers) {
-      data.meta.categories.forEach((item) => {
-        var category = document.createElement("span");
-        category.dataset.l10nId = "category-" + item;
-        categories.appendChild(category);
-      });
-    } else {
-      data.categories.forEach((item) => {
-        var category = document.createElement("span");
-        category.dataset.l10nId = "category-" + item;
-        categories.appendChild(category);
-      });
-    }
-
+    data.categories.forEach((item) => {
+      var category = document.createElement("span");
+      category.dataset.l10nId = "category-" + item;
+      categories.appendChild(category);
+    });
     context.appendChild(categories);
   }
 
-  function openInfo(addonData, id, isBananaHackers) {
+  function openInfo(addonData, id) {
     var sidebar = document.getElementById("sidebar");
     var toggleSidebarButton = document.getElementById("toggle-sidebar-button");
     var backButton = document.getElementById("back-button");
@@ -208,9 +193,7 @@
     );
     var addonTags = document.getElementById("addon-tags");
     var addonComments = document.getElementById("addon-comments");
-    var addonCommentsHeader = document.getElementById(
-      "addon-comments-header"
-    );
+    var addonCommentsHeader = document.getElementById("addon-comments-header");
 
     window.scrollTo({
       top: 0,
@@ -235,9 +218,7 @@
     window.history.pushState({ html: "", pageTitle: "" }, "", "?addon=" + id);
 
     backButton.onclick = () => {
-      if (!isBananaHackers) {
-        addonBanner.src = "";
-      }
+      addonBanner.src = "";
       addonCard.classList.add("fade-out");
 
       // This helps us avoid the page closing next time we open it again.
@@ -248,7 +229,7 @@
         toggleSidebarButton.style.display = "block";
         backButton.style.display = "none";
         content.style.display = "block";
-        window.history.pushState({ html: "", pageTitle: "" }, "", "/webstore/");
+        window.history.pushState({ html: "", pageTitle: "" }, "", "/addons/");
       }, 300);
     };
 
@@ -258,19 +239,13 @@
     };
 
     addonName.textContent = addonData.name;
-
-    if (isBananaHackers) {
-      addonAuthor.textContent = addonData.author;
-      addonAuthor.href = null;
-    } else {
-      OrchidServices.getWithUpdate(
-        "profile/" + addonData.author_id,
-        function (udata) {
-          addonAuthor.textContent = udata.username;
-          addonAuthor.href = "/account/?user=" + udata.username;
-        }
-      );
-    }
+    OrchidServices.getWithUpdate(
+      "profile/" + addonData.author_id,
+      function (udata) {
+        addonAuthor.textContent = udata.username;
+        addonAuthor.href = "/account/?user=" + udata.username;
+      }
+    );
 
     function initializeRating(commentsArray) {
       if (commentsArray.length == 0) {
@@ -285,11 +260,11 @@
 
         addonAverageRating.textContent = Math.round(avg * 10) / 10;
         if (isBananaHackers) {
-          OrchidServices.set("webstore_legacy/" + id, {
+          OrchidServices.set("addons_legacy/" + id, {
             rating_average: Math.round(avg * 10) / 10,
           });
         } else {
-          OrchidServices.set("webstore/" + id, {
+          OrchidServices.set("addons/" + id, {
             rating_average: Math.round(avg * 10) / 10,
           });
         }
@@ -313,7 +288,7 @@
     if (addonData.comments) {
       initializeRating(addonData.comments);
     } else {
-      OrchidServices.get("webstore_legacy/" + id).then((data) => {
+      OrchidServices.get("addons_legacy/" + id).then((data) => {
         if (data) {
           initializeRating(data.comments);
         } else {
@@ -324,37 +299,24 @@
     }
 
     addonCategories.innerHTML = "";
-    if (isBananaHackers) {
-      addonData.meta.categories.forEach((item) => {
+    if (addonData.categories.length == 0) {
+      addonData.categories.forEach((item) => {
         var category = document.createElement("span");
         category.dataset.l10nId = "category-" + item;
         addonCategories.appendChild(category);
       });
-    } else {
-      if (addonData.categories.length == 0) {
-        addonData.categories.forEach((item) => {
-          var category = document.createElement("span");
-          category.dataset.l10nId = "category-" + item;
-          addonCategories.appendChild(category);
-        });
-      }
     }
 
     installButton.onclick = () => {
       if (navigator.mozApps) {
         navigator.mozApps.mgmt.installPackage(addonData.download.url);
       } else {
-        if (isBananaHackers) {
-          location.href = addonData.download.url;
-        } else {
-          var a = document.createElement("a");
-          a.href = addonData.download;
-          a.download = "addon.orchidpkg.zip";
-          a.click();
-        }
+        var a = document.createElement("a");
+        a.href = addonData.download;
+        a.download = "addon.orchidpkg.zip";
+        a.click();
       }
     };
-
     uninstallButton.onclick = () => {};
     updateButton.onclick = () => {};
 
@@ -373,33 +335,13 @@
     }
 
     addonDescription.textContent = addonData.description;
+    addonTags.textContent = addonData.tags.join(", ");
 
-    if (!isBananaHackers) {
-      addonTags.textContent = addonData.tags.join(", ");
-    } else {
-      addonTags.textContent = addonData.meta.tags
-        .split(";")
-        .filter(String)
-        .join(", ");
-    }
-
-    if (!isBananaHackers) {
-      Comments("webstore/" + id, addonComments, true);
-      OrchidServices.getWithUpdate("webstore/" + id, (data) => {
-        addonCommentsHeader.dataset.l10nArgs =
-          '{"n":"' + data.comments.length + '"}';
-      });
-    } else {
-      OrchidServices.getWithUpdate("webstore_legacy/" + id, (data) => {
-        if (data) {
-          addonCommentsHeader.dataset.l10nArgs =
-            '{"n":"' + data.comments.length + '"}';
-          Comments("webstore_legacy/" + id, addonComments, true);
-        } else {
-          OrchidServices.set("webstore_legacy/" + id, { comments: [] });
-        }
-      });
-    }
+    Comments("addons/" + id, addonComments, true);
+    OrchidServices.getWithUpdate("addons/" + id, (data) => {
+      addonCommentsHeader.dataset.l10nArgs =
+        '{"n":"' + data.comments.length + '"}';
+    });
   }
 
   var paramString = location.search.substring(1);

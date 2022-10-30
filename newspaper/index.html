@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-season="halloween">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/store_16.png" type="image/x-icon" sizes="16x16">
+  <link rel="shortcut icon" href="images/store_32.png" type="image/x-icon" sizes="24x24 32x32">
+  <link rel="shortcut icon" href="images/store_48.png" type="image/x-icon" sizes="40x40 48x48">
+  <link rel="shortcut icon" href="images/store_64.png" type="image/x-icon" sizes="56x56 64x64">
+  <link rel="shortcut icon" href="images/store_128.png" type="image/x-icon" sizes="84x84 98x98 100x100 112x112 126x126 128x128">
+  <link rel="shortcut icon" href="images/store_256.png" type="image/x-icon" sizes="256x256">
+  <link rel="shortcut icon" href="images/store.svg" type="image/x-icon" sizes="284x284 512x512">
+  <title data-l10n-id="title">Orchid | Newspaper</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="var(--background, #e7e7e7)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Orchid" />
+  <meta property="og:title" content="Newspaper" />
+  <meta property="og:description" content="Explore to find your favorite webapps and games." />
+  <meta property="og:url" content="https://orchidfoss.github.io/newspaper/" />
+  <meta property="og:image" content="/images/thumbnail.svg" />
+  <meta name="title" content="Orchid Newspaper" />
+  <meta name="description" content="Explore to find your favorite webapps and games." />
+  <meta name="keywords" content="MortCodesWeb, Orchid Newspaper, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0, Store" />
+  <meta property="twitter:card" content="website">
+  <meta property="twitter:site" content="@orchid_newspaper" />
+  <meta property="twitter:title" content="Orchid Newspaper" />
+  <meta property="twitter:description" content="Explore to find your favorite webapps and games." />
+  <meta property="twitter:url" content="https://orchidfoss.github.io/newspaper/" />
+  <meta property="twitter:image" content="images/thumbnail.svg" />
+  <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" href="lib/gaia-icons/bidi-helper.css">
+  <link rel="stylesheet" href="css/splashscreen.css">
+  <link rel="stylesheet" href="css/newspaper.css">
+  <link rel="stylesheet" href="css/warning.css">
+  <link rel="stylesheet" href="css/filters.css">
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/news_info.css">
+  <link rel="stylesheet" href="/css/comments.css">
+  <link rel="stylesheet" href="lib/orchid_ui/header.css">
+  <script defer src="services/script.js" type="module"></script>
+  <script defer src="/lib/moment-with-locales.min.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/languages.js"></script>
+  <script defer src="js/dark_mode.js"></script>
+  <script defer src="/js/comments.js"></script>
+  <script defer src="js/news.js"></script>
+
+  <!-- Localization -->
+  <script src="js/l10n.js"></script>
+  <meta name="defaultLanguage" content="en-US">
+  <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+  <link rel="localization" href="locales/main.{locale}.properties">
+</head>
+<body>
+  <div id="splashscreen">
+    <div class="progress"></div>
+  </div>
+
+  <header class="oui--header">
+    <a href="#" id="back-button" data-icon="back"></a>
+    <a href="#" id="toggle-sidebar-button" data-icon="menu"></a>
+    <a href="#" class="logo"></a>
+    <h1></h1>
+    <form action="" id="searchbox">
+      <input type="text" data-l10n-id="type-here-to-search">
+      <button type="reset" data-icon="close"></button>
+    </form>
+    <a href="#" data-icon="help"></a>
+    <a href="#" id="profile-button">
+      <img src="" alt="" id="profile-avatar">
+    </a>
+    <a href="#" id="options-button" data-icon="options"></a>
+  </header>
+
+  <nav id="sidebar">
+    <ul>
+      <li><a href="#" data-icon="tab-previews" data-l10n-id="nav-allNews" id="sidebar-allnews" aria-selected="true"></a></li>
+    </ul>
+
+    <header data-l10n-id="nav-sources"></header>
+    <ul id="sources"></ul>
+  </nav>
+
+  <main id="content">
+    <div id="news"></div>
+  </main>
+
+  <div id="news-article">
+    <img src="" alt="" id="news-article-banner" class="banner">
+    <article>
+      <h1 id="news-article-title"></h1>
+      <p id="news-article-summary"></p>
+      <div id="news-article-content"></div>
+    </article>
+    <nav class="options">
+      <a href="#" id="news-article-link" data-l10n-id="learn-more"></a>
+    </nav>
+  </div>
+</body>
+</html>

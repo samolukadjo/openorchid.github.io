@@ -36,29 +36,6 @@ const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-function generateUUID() {
-  // Public Domain/MIT
-  var d = new Date().getTime(); //Timestamp
-  var d2 =
-    (typeof performance !== 'undefined' &&
-      performance.now &&
-      performance.now() * 1000) ||
-    0; //Time in microseconds since page-load or 0 if unsupported
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = Math.random() * 16; //random number between 0 and 16
-    if (d > 0) {
-      //Use timestamp until depleted
-      r = (d + r) % 16 | 0;
-      d = Math.floor(d / 16);
-    } else {
-      //Use microseconds since page-load if supported
-      r = (d2 + r) % 16 | 0;
-      d2 = Math.floor(d2 / 16);
-    }
-    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
-  });
-}
-
 // A formatted version of a popular md5 implementation.
 // Original copyright (c) Paul Johnston & Greg Holt.
 // The function itself is now 42 lines long.
@@ -194,6 +171,29 @@ function MD5(inputString) {
 }
 
 var OrchidServices = {
+  _generateUUID: function os__generateUUID() {
+    // Public Domain/MIT
+    var d = new Date().getTime(); //Timestamp
+    var d2 =
+      (typeof performance !== 'undefined' &&
+        performance.now &&
+        performance.now() * 1000) ||
+      0; //Time in microseconds since page-load or 0 if unsupported
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16; //random number between 0 and 16
+      if (d > 0) {
+        //Use timestamp until depleted
+        r = (d + r) % 16 | 0;
+        d = Math.floor(d / 16);
+      } else {
+        //Use microseconds since page-load if supported
+        r = (d2 + r) % 16 | 0;
+        d2 = Math.floor(d2 / 16);
+      }
+      return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+    });
+  },
+
   DEBUG: (location.href === 'http://localhost:5500' || location.href === 'http://127.0.0.1:5500/'),
 
   init: function os_init() {
@@ -398,7 +398,7 @@ var OrchidServices = {
      * @param {string} birthDate
      */
     signUp: async function os_auth_signUp(username, email, password, birthDate) {
-      var token = generateUUID();
+      var token = OrchidServices._generateUUID();
       OrchidServices.set('profile/' + token, {
         username: username,
         email: email,
@@ -439,7 +439,7 @@ var OrchidServices = {
 
   custom: {
     createStoreApp: async function os_createStoreApp(data) {
-      var id = generateUUID();
+      var id = OrchidServices._generateUUID();
       OrchidServices.set('webstore/' + id, {
         token: id,
         author_id: OrchidServices.userId(),
@@ -458,7 +458,7 @@ var OrchidServices = {
     },
 
     publishArticle: async function os_publishArticle(title, markdown) {
-      var id = generateUUID();
+      var id = OrchidServices._generateUUID();
       OrchidServices.set('articles/' + id, {
         token: id,
         author_id: OrchidServices.userId(),

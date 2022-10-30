@@ -34,7 +34,8 @@
   <link rel="stylesheet" href="css/splashscreen.css">
   <link rel="stylesheet" href="css/webstore.css">
   <link rel="stylesheet" href="css/warning.css">
-  <link rel="stylesheet" href="css/posters.css">
+  <link rel="stylesheet" href="css/slideshow.css">
+  <link rel="stylesheet" href="css/filters.css">
   <link rel="stylesheet" href="css/webapps.css">
   <link rel="stylesheet" href="css/webapp_info.css">
   <link rel="stylesheet" href="/css/comments.css">
@@ -45,6 +46,7 @@
   <script defer src="js/dark_mode.js"></script>
   <script defer src="/js/comments.js"></script>
   <script defer src="js/webapps.js"></script>
+  <script defer src="js/slideshow.js"></script>
 
   <!-- Localization -->
   <script src="js/l10n.js"></script>
@@ -105,13 +107,33 @@
       <a href="app://webstore.gaiamobile.org/index.html" target="_blank" data-l10n-id="open-store"></a>
     </div>
 
-    <div class="poster">
-      <img src="images/poster_bg.svg" alt="">
-      <div>
-        <img src="images/poster_wordmark.svg" alt="">
-        <p data-l10n-id="poster-detail"></p>
-        <a href="#" data-l10n-id="learn-more"></a>
+    <div class="slideshow-container" id="slideshow">
+      <div class="holder"></div>
+
+      <div class="controls">
+        <button class="back" data-icon="back"></button>
+        <button class="forward" data-icon="forward"></button>
       </div>
+      <div class="dots"></div>
+    </div>
+
+    <div class="filters">
+      <label for="">
+        <span>Database</span>
+        <select name="" id="">
+          <option value="">Option 1</option>
+          <option value="">Option 2</option>
+          <option value="">Option 3</option>
+        </select>
+      </label>
+      <label for="">
+        <span>Platform</span>
+        <select name="" id="">
+          <option value="">Option 1</option>
+          <option value="">Option 2</option>
+          <option value="">Option 3</option>
+        </select>
+      </label>
     </div>
 
     <div id="webapps"></div>

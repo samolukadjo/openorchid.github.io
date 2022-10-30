@@ -1,0 +1,59 @@
+#splash-screen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background: var(--background-color-primary);
+  z-index: 100;
+  transition: opacity 0.3s ease 1s;
+}
+
+#splash-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#splash-screen .sprite {
+  position: absolute;
+  left: calc(50% - 5rem);
+  top: calc(50% - 5rem);
+  width: 10rem;
+  height: 10rem;
+  opacity: 0;
+  background: no-repeat center / cover;
+}
+
+#splash-screen .sprite:nth-child(1) {
+  background-image: url(images/icon_sprite0.svg);
+  animation: sprite0 1s cubic-bezier(.2, .9, .1, 1.25) forwards 0.5s;
+}
+
+#splash-screen .sprite:nth-child(2) {
+  background-image: url(images/icon_sprite1.svg);
+  animation: sprite1 1s cubic-bezier(.2, .9, .1, 1.25) forwards 0.75s;
+}
+
+@keyframes sprite0 {
+  from {
+    transform: translateX(-32px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sprite1 {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -167,7 +167,7 @@ html[dir="rtl"] #searchbox {
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgb(51,51,51));
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.75));
   color: #fff;
   text-shadow: 0 0.3rem 0.6rem #333, 0 0.1rem 0 #333;
   padding: 1rem;

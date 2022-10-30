@@ -1,0 +1,247 @@
+#messages {
+  height: calc(100% - 10rem);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5rem;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#messages > .message {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#messages > .message:hover {
+  background: var(--list-hover-color);
+}
+
+#messages > .message .avatar {
+  position: absolute;
+  top: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #858585;
+}
+html[dir="ltr"] #messages > .message:not(.yours) .avatar,
+html[dir="rtl"] #messages > .message.yours .avatar {
+  left: 1rem;
+}
+html[dir="ltr"] #messages > .message.yours .avatar,
+html[dir="rtl"] #messages > .message:not(.yours) .avatar {
+  right: 1rem;
+}
+
+html[dir="ltr"] #messages > .message:not(.yours) .content,
+html[dir="rtl"] #messages > .message.yours .content {
+  margin-left: 5.5rem;
+}
+html[dir="ltr"] #messages > .message.yours .content,
+html[dir="rtl"] #messages > .message:not(.yours) .content {
+  margin-right: 5.5rem;
+}
+
+#messages > .message .content > .info {
+  color: var(--text-color-secondary);
+  font-size: 1.2rem;
+  display: flex;
+}
+
+#messages > .message.yours .content > .info {
+  flex-direction: row-reverse;
+}
+
+#messages > .message .content > .info .username {
+  font-weight: bold;
+}
+html[dir="ltr"] #messages > .message:not(.yours) .content > .info :not(:last-of-type),
+html[dir="rtl"] #messages > .message.yours .content > .info :not(:last-of-type) {
+  margin-right: 1rem;
+}
+html[dir="ltr"] #messages > .message.yours .content > .info :not(:last-of-type),
+html[dir="rtl"] #messages > .message:not(.yours) .content > .info :not(:last-of-type) {
+  margin-left: 1rem;
+}
+
+#messages > .message .context {
+  background: var(--background-color-secondary);
+  margin: 0.4rem 0;
+  padding: 1rem;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  display: block;
+  font-size: 1.6rem;
+  color: var(--text-color-primary);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+html[dir="ltr"] #messages > .message:not(.yours) .context,
+html[dir="rtl"] #messages > .message.yours .context {
+  border-radius: 0.4rem 2rem 2rem 2rem;
+  margin-right: auto;
+}
+html[dir="ltr"] #messages > .message.yours .context,
+html[dir="rtl"] #messages > .message:not(.yours) .context {
+  border-radius: 2rem 0.4rem 2rem 2rem;
+  margin-left: auto;
+}
+
+#messages > .message .context a {
+  color: #0061e0;
+  width: 100%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#messages > .message.yours .context a {
+  color: rgba(255,255,255,0.75) !important;
+}
+
+#messages > .message .context mark {
+  border-radius: 0.4rem;
+}
+
+#messages > .message .context iframe {
+  border: none;
+  border-radius: 1rem;
+  width: 300px;
+  height: 170px;
+}
+
+#messages > .message.yours .context {
+  background: #40a060;
+  color: #fff;
+}
+
+#messages > .message .viewers {
+  position: absolute;
+  bottom: 1rem;
+  max-width: 7.5rem;
+  border-radius: 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.3s ease;
+}
+html[dir="ltr"] #messages > .message:not(.yours) .viewers,
+html[dir="rtl"] #messages > .message.yours .viewers {
+  right: 1rem;
+}
+html[dir="ltr"] #messages > .message.yours .viewers,
+html[dir="rtl"] #messages > .message:not(.yours) .viewers {
+  left: 1rem;
+}
+
+#messages > .message .viewers:hover {
+  max-width: calc(100% - 2rem);
+  background: var(--background-color-primary);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.3);
+  border-radius: 2.1rem;
+  padding: 0.2rem;
+  z-index: 5;
+}
+
+#messages > .message .viewers > div {
+  background: #858585 no-repeat center / cover;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin: 0.2rem;
+  transition: all 0.3s ease;
+}
+
+#messages > .message .viewers:hover > div {
+  width: 3rem;
+  height: 3rem;
+}
+
+#messages > .message .image-attachment {
+  max-width: calc(100% - 7.5rem);
+  background: #000;
+  border-radius: 1rem;
+  margin: 0.4rem 0;
+  display: block;
+  max-height: 320px;
+}
+html[dir="ltr"] #messages > .message:not(.yours) .image-attachment,
+html[dir="rtl"] #messages > .message.yours .image-attachment {
+  border-radius: 0.4rem 2rem 2rem 2rem;
+  margin-right: auto;
+}
+html[dir="ltr"] #messages > .message.yours .image-attachment,
+html[dir="rtl"] #messages > .message:not(.yours) .image-attachment {
+  border-radius: 2rem 0.4rem 2rem 2rem;
+  margin-left: auto;
+}
+
+#messages > .message .toolbar {
+  z-index: 15;
+  position: absolute;
+  top: -0.5rem;
+  border-radius: 0.4rem;
+  height: 3rem;
+  background: var(--background-color-primary);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.3);
+  overflow: hidden;
+
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.75);
+  transition: all 0.3s cubic-bezier(0, 0, 0, 1.5);
+}
+html[dir="ltr"] #messages > .message .toolbar {
+  right: 1rem;
+}
+html[dir="ltr"] #messages > .message .toolbar  {
+  left: 1rem;
+}
+
+#messages > .message:hover .toolbar {
+  pointer-events: all;
+  opacity: 1;
+  transform: scale(1.0);
+}
+
+#messages > .message .toolbar button {
+  height: 3rem;
+  width: 3rem;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color-primary);
+  background: transparent;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+#messages > .message .toolbar button:hover {
+  background: var(--list-hover-color);
+  transition: none;
+}
+
+#messages > .message .toolbar button:active {
+  background: var(--list-active-color);
+  transition: none;
+}
+
+#messages > .message .toolbar button.danger {
+  color: #c00040;
+}
+
+#messages > .message .toolbar button[data-icon]:before {
+  font-size: 2rem;
+}
+
+.dark-mode-enabled #messages > .message .context a {
+  color: #00ddff;
+}
+
+@media (min-width: 768px) {
+  #messages > .message .content > .info {
+    font-size: 1.4rem;
+  }
+}
