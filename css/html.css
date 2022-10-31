@@ -63,49 +63,6 @@
   color-scheme: dark;
 }
 
-[data-season="halloween"] {
-  --logo: url(images/halloween/logo.svg);
-
-  --accent-color: #ff6040;
-  --accent-color-text: rgba(0,0,0,0.75);
-  --background: #ffe0d0;
-  --background-plus: #fff;
-  --header-background: rgba(255, 240, 234, 0.6);
-  --text-color: #532;
-
-  --translucent: rgba(0,0,0,0.05);
-  --translucent-plus: rgba(0,0,0,0.1);
-
-  --banner-background: linear-gradient(to right, #ffc0ff, #c0a0ff);
-  --banner-text-color: #301040;
-
-  --footer-background: #301808;
-  --footer-header-color: #ff6040;
-  --footer-text-color: #e7e7e7;
-
-  --ripple-color: rgba(32, 16, 0, 0.5);
-  --border-color: rgba(0,0,0,0.125);
-
-  color-scheme: light;
-}
-
-[data-season="halloween"][data-theme="dark"] {
-  --logo: url(images/halloween/logo_dark.svg);
-
-  --background: #141210;
-  --background-plus: #252321;
-  --header-background: rgba(20, 18, 16, 0.6);
-  --text-color: #ffc080;
-
-  --translucent: rgba(255,255,255,0.05);
-  --translucent-plus: rgba(255,255,255,0.1);
-
-  --ripple-color: rgba(255,240,234,0.5);
-  --border-color: rgba(255,255,255,0.125);
-
-  color-scheme: dark;
-}
-
 :focus-visible {
   outline: dashed 0.1rem currentColor;
 }

@@ -150,9 +150,7 @@
 
     element.appendChild(textHolder);
 
-    var dateString = new Date(data.publishedAt).yyyymmdd();
-
-    timestamp.textContent = moment(dateString, "YYYYMMDD").fromNow();
+    timestamp.textContent = moment(data.publishedAt, "YYYYMMDD").fromNow();
     timestamp.classList.add("date");
     textHolder.appendChild(timestamp);
 

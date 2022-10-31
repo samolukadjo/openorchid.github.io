@@ -48,38 +48,6 @@
   color-scheme: dark;
 }
 
-[data-season="halloween"] {
-  /* --logo: url(/newspaper/images/halloween/newspaper.svg); */
-
-  --accent-color: #ff6040;
-  --accent-color-text: rgba(0,0,0,0.75);
-  --background: #ffe0d0;
-  --background-plus: #fff;
-  --header-background: rgba(255, 240, 234, 0.6);
-  --text-color: #532;
-
-  --button-normal: #fff;
-  --button-hover: #dddad8;
-  --button-active: #cdcac8;
-
-  --translucent: rgba(0,0,0,0.05);
-  --translucent-plus: rgba(0,0,0,0.1);
-}
-
-[data-season="halloween"][data-theme="dark"] {
-  --background: #141210;
-  --background-plus: #252321;
-  --header-background: rgba(20, 18, 16, 0.6);
-  --text-color: #ffc080;
-
-  --button-normal: #343230;
-  --button-hover: #3c3a38;
-  --button-active: #444240;
-
-  --translucent: rgba(255,255,255,0.05);
-  --translucent-plus: rgba(255,255,255,0.1);
-}
-
 :focus {
   outline: dashed 0.1rem currentColor;
 }

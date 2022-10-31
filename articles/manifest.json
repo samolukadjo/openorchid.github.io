@@ -1,0 +1,15 @@
+{
+  "short_name": "Articles",
+  "name": "Orchid Articles",
+  "icons": [
+    {
+      "src": "icons/articles.svg",
+      "sizes": "16x16 32x32 48x48 64x64 128x128 256x256",
+      "type": "image/svg"
+    }
+  ],
+  "start_url": "/articles/index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme-color": "#e7e9ec"
+}
