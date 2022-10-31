@@ -56,7 +56,6 @@
   height: 4rem;
   display: flex;
   background: var(--list-hover-color);
-  overflow: hidden;
   flex-wrap: wrap;
 }
 
@@ -81,6 +80,7 @@
   padding: 0;
   width: 4rem;
   color: var(--text-color-primary);
+  position: relative;
 }
 
 #content footer form > button:hover {

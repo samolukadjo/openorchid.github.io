@@ -469,6 +469,47 @@ var OrchidServices = {
         dislikes: [],
         comments: []
       });
+    },
+
+    createChatGroup: async function os_createChatGroup(title, avatar) {
+      var token = OrchidServices._generateUUID();
+      OrchidServices.set('chat_groups/' + token, {
+        token: token,
+        published_at: Date.now(),
+        owner: OrchidServices.userId(),
+        name: title,
+        icon: avatar,
+        messages: {},
+        channels: {
+          0: {
+            name: "Chatting",
+            type: "header"
+          },
+          1: {
+            name: "General",
+            type: "text_chat"
+          },
+          2: {
+            name: "Off Topic",
+            type: "text_chat"
+          },
+          3: {
+            name: "Playing Games",
+            type: "header"
+          },
+          4: {
+            name: "Minecraft",
+            type: "text_chat"
+          },
+          5: {
+            name: "Fortnite",
+            type: "text_chat"
+          },
+        }
+      });
+      OrchidServices.set("profile/" + OrchidServices.userId(), {
+        chat_groups: { [token]: "" },
+      });
     }
   }
 };

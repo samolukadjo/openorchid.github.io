@@ -1,6 +1,6 @@
 "use strict";
 
-export function profile(id) {
+function profile(id) {
   var dialog = document.getElementById("profile");
   var avatar = document.getElementById("profile-avatar");
   var username = document.getElementById("profile-username");

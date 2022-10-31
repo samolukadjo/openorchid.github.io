@@ -2,7 +2,7 @@
   --accent-color: #0061e0;
   --accent-color-text: rgba(255,255,255,0.75);
   --background-color-primary: #fff;
-  --background-color-secondary: #e0e2e5;
+  --background-color-secondary: #e7e9ec;
   --background-color-sidebar: #e7e9ec;
   --background-color-transparent: rgba(231, 233, 236, 0.5);
   --list-hover-color: rgba(0,0,0,0.05);
@@ -18,7 +18,7 @@
   --accent-color-text: rgba(0,0,0,0.75);
   --background-color-primary: #212325;
   --background-color-secondary: #101214;
-  --background-color-sidebar: #181a1c;
+  --background-color-sidebar: #101214;
   --background-color-transparent: rgba(33, 35, 37, 0.5);
   --list-hover-color: rgba(255,255,255,0.05);
   --list-active-color: rgba(0,0,0,0.15);
@@ -168,7 +168,7 @@ html[dir="rtl"] #sidebar {
   line-height: 5rem;
   font-weight: normal;
   font-size: 2.4rem;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   box-sizing: border-box;
   background: var(--background-color-sidebar);
   color: var(--text-color-primary);
@@ -199,7 +199,7 @@ html[dir="rtl"] #sidebar > #server-title {
   line-height: 3rem;
   margin: 0;
   padding: 0;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   box-sizing: border-box;
   color: var(--text-color-secondary);
   font-size: 1.6rem;

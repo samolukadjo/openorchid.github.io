@@ -2,7 +2,7 @@
 // Code copy-pasted from:
 // https://code.tutsplus.com/tutorials/how-to-crop-or-resize-an-image-with-javascript--cms-40446
 
-export function resizeImage(imagePath, callback) {
+function resizeImage(imagePath, callback) {
   var image = new Image();
   image.src = imagePath;
 

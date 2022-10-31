@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/splashscreen.css">
     <link rel="stylesheet" type="text/css" href="css/toolbar.css">
     <link rel="stylesheet" type="text/css" href="css/dialog.css">
+    <link rel="stylesheet" type="text/css" href="css/tooltips.css">
 
     <!-- Localization -->
     <meta name="defaultLanguage" content="en-US">
@@ -24,7 +25,10 @@
 
     <!-- Javascript -->
     <script type="module" src="/services/script.js"></script>
-    <script type="module" defer src="js/chat.js"></script>
+    <script type="text/javascript" defer src="js/attachment/image.js"></script>
+    <script type="text/javascript" defer src="js/profile.js"></script>
+    <script type="text/javascript" defer src="js/create_group.js"></script>
+    <script defer src="js/chat.js"></script>
     <script type="text/javascript" defer src="js/touch.js"></script>
     <script type="text/javascript" defer src="js/lib/vanillaEmojiPicker.js"></script>
   </head>
@@ -55,11 +59,19 @@
       <div id="messages"></div>
       <footer id="chat-footer">
         <form id="chat-footer-form">
-          <button data-icon="emojis" id="emojis-button" type="button" data-l10n-id="message-emojis"></button>
-          <button data-icon="stickers" type="button" data-l10n-id="message-stickers"></button>
+          <button data-icon="emojis" id="emojis-button" type="button">
+            <div role="title" class="top" data-l10n-id="message-emojis"></div>
+          </button>
+          <button data-icon="stickers" type="button">
+            <div role="title" class="top" data-l10n-id="message-stickers"></div>
+          </button>
           <input type="text" id="text-input" data-l10n-id="textInput"></input>
-          <button data-icon="attachments" id="attachments-button" type="button" data-l10n-id="message-attach"></button>
-          <button data-icon="send" id="send-button" type="submit" data-l10n-id="message-send"></button>
+          <button data-icon="attachments" id="attachments-button" type="button">
+            <div role="title" class="top" data-l10n-id="message-attach"></div>
+          </button>
+          <button data-icon="send" id="send-button" type="submit">
+            <div role="title" class="top" data-l10n-id="message-send"></div>
+          </button>
         </form>
       </footer>
     </div>
@@ -82,7 +94,7 @@
       </div>
     </div>
 
-    <div id="create-dialog" class="dialog visible">
+    <div id="create-dialog" class="dialog">
       <div>
         <div class="group-creation">
           <label for="">
@@ -93,7 +105,7 @@
           </label>
           <label for="">
             <span>Group Name</span>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="create-dialog-name">
           </label>
         </div>
         <menu>

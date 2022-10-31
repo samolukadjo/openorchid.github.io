@@ -1,8 +1,5 @@
 "use strict";
 
-import { resizeImage } from "./attachment/image.js";
-import { profile } from "./profile.js";
-
 document.addEventListener("DOMContentLoaded", function () {
   var navbarAvatar = document.getElementById("toolbar-avatar");
   var navbarUsername = document.getElementById("toolbar-username");
@@ -17,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Chat functionality
   var isDarkMode = localStorage.getItem("ws.darkMode") === "true";
-  document.querySelector(':root').dataset.theme = isDarkMode ? 'dark' : 'light';
+  document.querySelector(":root").dataset.theme = isDarkMode ? "dark" : "light";
 
   var NOTIFICATION_SOUND = new Audio("resources/notifier_wos.wav");
   var WOS_MSG_SENT = new Audio("resources/wos_msg_sent.wav");
@@ -76,54 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
   friendsButton.click();
 
   joinGroupButton.addEventListener("click", function () {
-    var joinPrompt = prompt(
-      "Add a friend by typing their email or number using #\nAnd create a server path using @"
-    );
-    if (joinPrompt.startsWith("#")) {
-      OrchidServices.getWithUpdate("profile/", function (data) {
-        var entries = Object.entries(data);
-        entries.forEach(function (entry) {
-          if (
-            joinPrompt.substring(1) == entry[1].email ||
-            joinPrompt.substring(1) == entry[1].phone_number
-          ) {
-            OrchidServices.set(
-              "profile/" + OrchidServices.userId() + "/friends/" + entry[0],
-              {
-                messages: {},
-              }
-            );
-          }
-        });
-      });
-    } else if (joinPrompt.startsWith("@")) {
-      var uuid = OrchidServices._generateUUID();
-      OrchidServices.set("chat_groups/" + uuid, {
-        name: joinPrompt.substring(1),
-        icon:
-          "https://ui-avatars.com/api/?name=" +
-          joinPrompt.substring(1) +
-          "&background=random",
-        channels: {
-          0: {
-            name: "Chatting",
-            type: "header",
-          },
-          1: {
-            name: "General",
-            type: "text_chat",
-          },
-          2: {
-            name: "Off Topic",
-            type: "text_chat",
-          },
-        },
-        messages: {},
-      });
-      OrchidServices.set("profile/" + OrchidServices.userId(), {
-        chat_groups: { [uuid]: "" },
-      });
-    }
+    createGroup();
   });
 
   var content = document.getElementById("content");
@@ -194,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
           OrchidServices.getWithUpdate(
             "chat_groups/" + entry[0],
             function (data) {
-              if (data !== null) {
+              if (data) {
                 var serverExists = serverGroups.querySelector(
                   '[data-origin="' + entry[0] + '"]'
                 );
@@ -215,48 +165,35 @@ document.addEventListener("DOMContentLoaded", function () {
                   pings.innerText = 0;
                   server.appendChild(pings);
 
-                  OrchidServices.getWithUpdate(
-                    "chat_groups/" + entry[0],
-                    function (data) {
-                      if (data) {
-                        var entries = Object.entries(data.channels);
-                        entries.forEach(function (entry1) {
-                          OrchidServices.getWithUpdate(
-                            "chat_groups/" + entry[0],
-                            function (data) {
-                              if (data.messages[entry1[0]]) {
-                                pings.style.display = "none";
-                                pingAmount = 0;
-                                pings.innerText = pingAmount;
+                  if (data) {
+                    var entries = Object.entries(data.channels);
+                    entries.forEach(function (entry1) {
+                      if (data.messages[entry1[0]]) {
+                        pings.style.display = "none";
+                        pingAmount = 0;
+                        pings.innerText = pingAmount;
 
-                                var entries = Object.entries(
-                                  data.messages[entry1[0]]
-                                );
-                                entries.forEach(function (entry, index) {
-                                  OrchidServices.getWithUpdate(
-                                    "chat_groups/" + id,
-                                    function (data2) {
-                                      if (
-                                        !data2.messages[entry1[0]][entry[0]]
-                                          .seen_by[OrchidServices.userId()]
-                                      ) {
-                                        pings.style.display = "block";
-                                        pingAmount++;
-                                        pings.innerText = pingAmount;
-                                      }
-                                    }
-                                  );
-                                });
+                        var entries = Object.entries(data.messages[entry1[0]]);
+                        entries.forEach(function (entry, index) {
+                          OrchidServices.getWithUpdate(
+                            "chat_groups/" + id,
+                            function (data2) {
+                              if (!data2.messages[entry1[0]][entry[0]].seen_by[
+                                OrchidServices.userId()
+                              ]) {
+                                pings.style.display = "block";
+                                pingAmount++;
+                                pings.innerText = pingAmount;
                               }
                             }
                           );
                         });
                       }
-                    }
-                  );
-
-                  serverGroups.appendChild(server);
+                    });
+                  }
                 }
+
+                serverGroups.appendChild(server);
               }
             }
           );
@@ -355,9 +292,11 @@ document.addEventListener("DOMContentLoaded", function () {
           messages.innerHTML = "";
           if (data) {
             var messageEntries = Object.entries(data.messages[directMessageId]);
-            messageEntries = messageEntries.sort(function(a, b) {
-              return parseFloat(b[1].date_sent) - parseFloat(a[1].date_sent);
-            }).reverse();
+            messageEntries = messageEntries
+              .sort(function (a, b) {
+                return parseFloat(b[1].date_sent) - parseFloat(a[1].date_sent);
+              })
+              .reverse();
 
             messageEntries.forEach(function (messageEntry) {
               var date = new Date(messageEntry[1].date_sent);
@@ -412,43 +351,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
             var entries = Object.entries(data.messages[directMessageId]);
             entries.forEach(function (entry, index) {
-              OrchidServices.getWithUpdate(
-                "chat_groups/" + directMessageId,
-                function (data1) {
-                  if (
-                    !data1.messages[directMessageId][entry[0]].seen_by[
-                      OrchidServices.userId()
-                    ]
-                  ) {
-                    pings.style.display = "block";
-                    pingAmount++;
-                    pings.innerText = pingAmount;
-                    if (index == 0) {
-                      if (document.visibilityState !== "visible") {
+              if (!data.messages[directMessageId][entry[0]].seen_by[
+                OrchidServices.userId()
+              ]) {
+                pings.style.display = "block";
+                pingAmount++;
+                pings.innerText = pingAmount;
+                if (index == 0) {
+                  if (document.visibilityState !== "visible") {
+                    OrchidServices.getWithUpdate(
+                      "profile/" + messageEntry[1].sender_id,
+                      function (udata) {
                         OrchidServices.getWithUpdate(
-                          "profile/" + messageEntry[1].sender_id,
-                          function (udata) {
-                            OrchidServices.getWithUpdate(
-                              "chat_groups/" + directMessageId,
-                              function (cdata) {
-                                if (!wasSeen) {
-                                  sendNotification(
-                                    udata.profile_picture,
-                                    udata.username,
-                                    cdata.messages[directMessageId][
-                                      messageEntry[0]
-                                    ].seen_by[OrchidServices.userId()]
-                                  );
-                                }
-                              }
-                            );
+                          "chat_groups/" + directMessageId,
+                          function (cdata) {
+                            if (!wasSeen) {
+                              sendNotification(
+                                udata.profile_picture,
+                                udata.username,
+                                cdata.messages[directMessageId][messageEntry[0]]
+                                  .seen_by[OrchidServices.userId()]
+                              );
+                            }
                           }
                         );
                       }
-                    }
+                    );
                   }
                 }
-              );
+              }
             });
           }
         }
@@ -509,8 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
               textChat.addEventListener("click", function () {
                 select();
                 OrchidServices.set(
-                  "profile/" + OrchidServices.userId() + "/chat_groups/" + id,
-                  { selected_channel: currentChannel }
+                  "profile/" + OrchidServices.userId() + "/chat_groups/" + id, { selected_channel: currentChannel }
                 );
               });
               serverList.appendChild(textChat);
@@ -531,43 +461,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     var entries = Object.entries(data.messages[channelName]);
                     entries.forEach(function (entry, index) {
-                      OrchidServices.getWithUpdate(
-                        "chat_groups/" + id,
-                        function (data2) {
-                          if (
-                            !data.messages[channelName][entry[0]].seen_by[
-                              OrchidServices.userId()
-                            ]
-                          ) {
-                            pings.style.display = "block";
-                            pingAmount++;
-                            pings.innerText = pingAmount;
-                            if (index == 0) {
-                              if (document.visibilityState !== "visible") {
+                      if (!data.messages[channelName][entry[0]].seen_by[
+                        OrchidServices.userId()
+                      ]) {
+                        pings.style.display = "block";
+                        pingAmount++;
+                        pings.innerText = pingAmount;
+                        if (index == 0) {
+                          if (document.visibilityState !== "visible") {
+                            OrchidServices.getWithUpdate(
+                              "profile/" + messageEntry[1].sender_id,
+                              function (udata) {
                                 OrchidServices.getWithUpdate(
-                                  "profile/" + messageEntry[1].sender_id,
-                                  function (udata) {
-                                    OrchidServices.getWithUpdate(
-                                      "chat_groups/" + directMessageId,
-                                      function (cdata) {
-                                        if (!wasSeen) {
-                                          sendNotification(
-                                            udata.profile_picture,
-                                            udata.username,
-                                            cdata.messages[directMessageId][
-                                              messageEntry[0]
-                                            ].seen_by[OrchidServices.userId()]
-                                          );
-                                        }
-                                      }
-                                    );
+                                  "chat_groups/" + directMessageId,
+                                  function (cdata) {
+                                    if (!wasSeen) {
+                                      sendNotification(
+                                        udata.profile_picture,
+                                        udata.username,
+                                        cdata.messages[directMessageId][
+                                          messageEntry[0]
+                                        ].seen_by[OrchidServices.userId()]
+                                      );
+                                    }
                                   }
                                 );
                               }
-                            }
+                            );
                           }
                         }
-                      );
+                      }
                     });
                   }
                 }
@@ -575,11 +498,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
               if (currentId == id) {
                 OrchidServices.getWithUpdate(
-                  "profile/" + OrchidServices.userId() + "/chat_groups/" + id,
+                  "profile/" + OrchidServices.userId(),
                   function (data) {
                     if (channel == channelName) {
                       select();
-                    } else if (data.selected_channel == channelName) {
+                    } else if (
+                      data.chat_groups[id].selected_channel == channelName
+                    ) {
                       select();
                     }
                   }
@@ -588,8 +513,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               function select() {
                 currentChannel = channelName;
-                window.history.pushState(
-                  {},
+                window.history.pushState({},
                   "",
                   "?group=" + id + "&channel=" + currentChannel
                 );
@@ -611,9 +535,14 @@ document.addEventListener("DOMContentLoaded", function () {
                       var messageEntries = Object.entries(
                         data2.messages[currentChannel]
                       );
-                      messageEntries = messageEntries.sort(function(a, b) {
-                        return parseFloat(b[1].date_sent) - parseFloat(a[1].date_sent);
-                      }).reverse();
+                      messageEntries = messageEntries
+                        .sort(function (a, b) {
+                          return (
+                            parseFloat(b[1].date_sent) -
+                            parseFloat(a[1].date_sent)
+                          );
+                        })
+                        .reverse();
 
                       messageEntries.forEach(function (messageEntry) {
                         var date = new Date(messageEntry[1].date_sent);
@@ -670,6 +599,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var messageY = 0;
+
   function drawMessage(data) {
     var message = document.createElement("div");
     message.classList.add("message");
@@ -680,7 +610,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var avatar = document.createElement("img");
     avatar.classList.add("avatar");
-    avatar.loading = 'lazy';
+    avatar.loading = "lazy";
     OrchidServices.getWithUpdate("profile/" + data.sender_id, function (udata) {
       avatar.src = udata.profile_picture;
     });
@@ -718,7 +648,7 @@ document.addEventListener("DOMContentLoaded", function () {
       case "image":
         var imageAttachment = document.createElement("img");
         imageAttachment.classList.add("image-attachment");
-        imageAttachment.loading = 'lazy';
+        imageAttachment.loading = "lazy";
         imageAttachment.src = data.data;
         content.appendChild(imageAttachment);
         break;
@@ -812,7 +742,7 @@ document.addEventListener("DOMContentLoaded", function () {
         OrchidServices.set("chat_groups/" + currentId, {
           messages: {
             [currentChannel]: {
-              [data.id]: null
+              [data.id]: null,
             },
           },
         });
@@ -901,10 +831,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function groupInvite(id, channel) {
     OrchidServices.set(
-      "profile/" + OrchidServices.userId() + "/chat_groups/" + id,
-      {
-        selected_channel: channel,
-      }
+      "profile/" + OrchidServices.userId() + "/chat_groups/" + id, {
+      selected_channel: channel,
+    }
     );
   }
 
@@ -933,12 +862,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   new EmojiPicker({
-    trigger: [
-      {
-        selector: "#emojis-button",
-        insertInto: "#text-input",
-      },
-    ],
+    trigger: [{
+      selector: "#emojis-button",
+      insertInto: "#text-input",
+    },],
     closeButton: true,
     //specialButtons: green
   });
