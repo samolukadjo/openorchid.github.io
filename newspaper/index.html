@@ -29,8 +29,8 @@
   <meta property="twitter:description" content="Explore to find your favorite webapps and games." />
   <meta property="twitter:url" content="https://orchidfoss.github.io/newspaper/" />
   <meta property="twitter:image" content="images/thumbnail.svg" />
-  <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
-  <link rel="stylesheet" href="lib/gaia-icons/bidi-helper.css">
+  <link rel="stylesheet" href="/lib/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" href="/lib/gaia-icons/bidi-helper.css">
   <link rel="stylesheet" href="css/splashscreen.css">
   <link rel="stylesheet" href="css/newspaper.css">
   <link rel="stylesheet" href="css/warning.css">
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="css/news.css">
   <link rel="stylesheet" href="css/news_info.css">
   <link rel="stylesheet" href="/css/comments.css">
-  <link rel="stylesheet" href="lib/orchid_ui/header.css">
-  <script defer src="services/script.js" type="module"></script>
+  <link rel="stylesheet" href="/lib/orchid_ui/header.css">
+  <script defer src="/services/script.js" type="module"></script>
   <script defer src="/lib/moment-with-locales.min.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/languages.js"></script>
@@ -62,11 +62,20 @@
     <a href="#" id="back-button" data-icon="back"></a>
     <a href="#" id="toggle-sidebar-button" data-icon="menu"></a>
     <a href="#" class="logo"></a>
-    <h1></h1>
     <form action="" id="searchbox">
-      <input type="text" data-l10n-id="type-here-to-search">
-      <button type="reset" data-icon="close"></button>
+      <div class="search">
+        <input type="text" data-l10n-id="type-here-to-search">
+        <button type="reset" data-icon="close"></button>
+      </div>
+      <ul class="results">
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+        <li>List Item 4</li>
+        <li>List Item 5</li>
+      </ul>
     </form>
+    <h1></h1>
     <a href="#" data-icon="help"></a>
     <a href="#" id="profile-button">
       <img src="" alt="" id="profile-avatar">

@@ -119,24 +119,62 @@
   // });
 
   // Ripple effect
-  function createRipple(button) {
-    const circle = document.createElement("span");
+  function createGlare(clickable) {
+    var circle;
 
-    button.onmousedown = (event) => {
-      const diameter = Math.max(button.getBoundingClientRect().width, button.getBoundingClientRect().height);
+    clickable.onmouseenter = (event) => {
+      var lastglareElement = clickable.querySelector('span.glare');
+      if (lastglareElement) {
+        circle = lastglareElement;
+      } else {
+        circle = document.createElement("span")
+      }
+
+      const diameter = Math.max(clickable.getBoundingClientRect().width, clickable.getBoundingClientRect().height);
       const radius = diameter / 2;
 
       circle.style.width = circle.style.height = `${diameter}px`;
-      circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
-      circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+      clickable.onmousemove = (evt) => {
+        circle.style.left = `${evt.clientX - clickable.getBoundingClientRect().left - radius}px`;
+        circle.style.top = `${evt.clientY - clickable.getBoundingClientRect().top - radius}px`;
+      };
+      circle.classList.add("glare");
+
+      clickable.appendChild(circle);
+      clickable.style.overflow = 'hidden';
+    };
+
+    clickable.onmouseleave = () => {
+      clickable.onmousemove = null;
+      circle.remove();
+    };
+  }
+
+  function createRipple(clickable) {
+    var circle;
+
+    clickable.onmousedown = (event) => {
+      var lastRippleElement = clickable.querySelector('span.ripple');
+      if (lastRippleElement) {
+        circle = lastRippleElement;
+      } else {
+        circle = document.createElement("span")
+      }
+
+      const diameter = Math.max(clickable.getBoundingClientRect().width, clickable.getBoundingClientRect().height);
+      const radius = diameter / 2;
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${event.clientX - clickable.getBoundingClientRect().left - radius}px`;
+      circle.style.top = `${event.clientY - clickable.getBoundingClientRect().top - radius}px`;
       circle.classList.add("ripple");
       circle.classList.add("active");
 
-      button.appendChild(circle);
-      button.style.overflow = 'hidden';
+      clickable.appendChild(circle);
+      clickable.style.overflow = 'hidden';
     };
 
-    button.onmouseup = () => {
+    clickable.onmouseup = () => {
       circle.classList.remove("ripple");
       circle.classList.remove("active");
       setTimeout(() => {
@@ -144,15 +182,20 @@
       });
       setTimeout(() => {
         circle.remove();
-        button.style.overflow = '';
+        clickable.style.overflow = '';
       }, 501);
     };
   }
 
   setInterval(() => {
-    const buttons = document.querySelectorAll("a[href], button");
+    const clickables = document.querySelectorAll("a[href], button, .bb-button, .ws--button");
+    for (const clickable of clickables) {
+      createRipple(clickable);
+    }
+
+    const buttons = document.querySelectorAll("button, .bb-button, .ws--button");
     for (const button of buttons) {
-      createRipple(button);
+      createGlare(button);
     }
   }, 1000);
 })(window);

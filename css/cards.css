@@ -95,7 +95,7 @@ html[dir="rtl"] .ws--cards > a > div span:after {
 
   .ws--cards > a:hover {
     background: var(--background-plus);
-    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+    box-shadow: 0 1rem 2rem rgba(0,8,16,0.1);
     transform: translateY(-0.2rem);
   }
 

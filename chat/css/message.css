@@ -82,7 +82,7 @@ html[dir="rtl"] #messages > .message:not(.yours) .content > .info :not(:last-of-
   display: block;
   font-size: 1.6rem;
   color: var(--text-color-primary);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0,8,16,0.1);
 }
 html[dir="ltr"] #messages > .message:not(.yours) .context,
 html[dir="rtl"] #messages > .message.yours .context {

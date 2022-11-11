@@ -9,7 +9,7 @@
   padding: 1rem;
   box-sizing: border-box;
   background: var(--background-plus);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0,8,16,0.1);
   border-radius: 0.8rem;
   margin: 0 auto 1rem;
 }
@@ -62,7 +62,7 @@
   margin: 1rem 0;
   padding: 0;
   background: var(--background-plus);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0,8,16,0.1);
 }
 
 .ac--current-article nav ul {

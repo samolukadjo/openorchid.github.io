@@ -1,4 +1,4 @@
-// Omit this line if loading form a CDN
+#!/bin/node
 const fs = require('fs');
 const translate = require('translate');
 

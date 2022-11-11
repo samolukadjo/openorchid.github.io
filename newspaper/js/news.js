@@ -112,12 +112,11 @@
         evt.preventDefault();
         element.classList.toggle("expanded");
         if (element.classList.contains("expanded")) {
-          expandButton.dataset.icon = "collapse-chevron";
           expandButton.dataset.l10nId = "show-less";
         } else {
-          expandButton.dataset.icon = "expand-chevron";
           expandButton.dataset.l10nId = "show-more";
         }
+        expandButton.classList.toggle('active');
       };
       header.appendChild(expandButton);
 
@@ -133,7 +132,6 @@
     var element = document.createElement("li");
     var image = document.createElement("img");
     var textHolder = document.createElement("div");
-    var timestamp = document.createElement("span");
     var title = document.createElement("h1");
     var author = document.createElement("span");
     var source = document.createElement("p");
@@ -150,15 +148,11 @@
 
     element.appendChild(textHolder);
 
-    timestamp.textContent = moment(data.publishedAt, "YYYYMMDD").fromNow();
-    timestamp.classList.add("date");
-    textHolder.appendChild(timestamp);
-
     title.textContent = data.title;
     title.classList.add("title");
     textHolder.appendChild(title);
 
-    author.textContent = data.author;
+    author.textContent = (data.author || data.source.name) + ' - ' + moment(data.publishedAt, "YYYYMMDD").fromNow();
     author.classList.add("author");
     textHolder.appendChild(author);
 

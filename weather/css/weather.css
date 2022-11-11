@@ -14,9 +14,15 @@
   src: url(/fonts/IBMPlexSansArabic-Bold.ttf);
 }
 
+:root {
+  --background: #80c0ff;
+  --background-plus: #a0d0ff;
+  --text-color: #203040;
+}
+
 html, body {
-  background: #80c0ff;
-  color: #203040;
+  background: var(--background);
+  color: var(--text-color);
   font-size: 10px;
   font-family: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
   margin: 0;
@@ -51,11 +57,20 @@ html, body {
   font-size: 2rem;
   line-height: 2.6rem;
   font-weight: normal;
-  font-family: 'Readex Pro', 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
 }
 
 .content {
   width: 100%;
+  padding-bottom: 1.5rem;
+}
+
+#maps {
+  width: 100%;
+  height: calc(100vh / 3);
+  border-radius: 0.8rem;
+  margin: 0;
+  display: block;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
 
 .content-grid {
@@ -64,11 +79,25 @@ html, body {
   justify-content: space-between;
 }
 
-.content-grid #hourly-forecast,
-.content-grid #daily-forecast {
-  width: calc(50% - 0.5rem);
-  min-width: 290px;
-  background: rgba(0,0,0,0.125);
-  border-radius: 1.5rem;
-  height: 10rem;
+.content-grid ul {
+  width: 100%;
+  background: var(--background-plus);
+  border-radius: 0.8rem;
+  margin: 1rem 0 0;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+.content-grid ul li {
+  width: 100%;
+  margin: 0;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  height: 4.8rem;
+  line-height: 4.8rem;
+  border-bottom: solid 0.1rem rgba(0,0,0,0.1);
+  list-style: none;
+  color: var(--text-color);
 }

@@ -71,7 +71,7 @@
 
 .ws--footer ul li {
   list-style: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   text-align: start;
   pointer-events: none;
 }

@@ -74,7 +74,7 @@ function Comments(path, element, hasStars = false) {
         }
 
         var content = document.createElement('p');
-        content.textContent = comment.content;
+        content.innerText = comment.content;
         element.appendChild(content);
 
         var menu = document.createElement('menu');
@@ -146,14 +146,11 @@ function Comments(path, element, hasStars = false) {
       });
     });
   }
+  if (location.href == currentUrl) {
+    refreshComments();
+  }
 
-  setTimeout(() => {
-    if (location.href == currentUrl) {
-      refreshComments();
-    }
-  }, 100);
-
-  form.addEventListener('submit', (evt) => {
+  form.onsubmit = (evt) => {
     evt.preventDefault();
 
     OrchidServices.get(path).then((data) => {
@@ -174,7 +171,6 @@ function Comments(path, element, hasStars = false) {
         });
       }
       OrchidServices.set(path, { comments: data.comments });
-      refreshComments();
       setTimeout(() => {
         inputbox.value = '';
         if (starRatingInput) {
@@ -182,5 +178,5 @@ function Comments(path, element, hasStars = false) {
         }
       }, 300);
     });
-  });
+  };
 }

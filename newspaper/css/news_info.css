@@ -14,10 +14,14 @@
 
 #news-article .banner {
   width: 100%;
-  height: calc(100vw / 1.75);
+  aspect-ratio: 16 / 9;
   background: #858585;
   display: block;
   object-fit: cover;
+}
+
+#news-article .banner.animate {
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
 }
 
 #news-article article {
@@ -68,7 +72,7 @@
 
 @media screen and (orientation: landscape) {
   #news-article .banner {
-    height: 60vh;
+    aspect-ratio: 21 / 9;
     max-width: 1024px;
     margin: 1rem auto;
     border-radius: 1.5rem;

@@ -14,9 +14,8 @@
     'utility': 'permissions'
   };
 
-  var legacyResponseJson;
   var isListEnabled = false;
-  var currentApp;
+  var currentWebapp = '';
   var webapps = document.getElementById("webapps");
   var categories = document.getElementById("categories");
   var allAppsButton = document.getElementById('sidebar-allapps');
@@ -27,27 +26,14 @@
     allAppsButton.setAttribute('aria-selected', true);
   };
 
-  OrchidServices.getList("webstore", function (data, id) {
-    createIcon(app, id, false);
-  });
-
-  var client = new XMLHttpRequest();
-  client.open("GET", "https://banana-hackers.gitlab.io/store-db/data.json");
-  client.onreadystatechange = () => {
-    if (!legacyResponseJson) {
-      legacyResponseJson = JSON.parse(client.responseText);
-      console.log(legacyResponseJson);
-      legacyResponseJson.apps.forEach((app) => {
-        createIcon(app, app.slug, true);
-        if (currentApp !== null) {
-          if (currentApp == app.slug) {
-            openInfo(app, app.slug, true);
-          }
-        }
-      });
-    }
-  };
-  client.send();
+  if (navigator.onLine) {
+    OrchidServices.getList("webstore", function (data, id) {
+      createIcon(data, id, false);
+      if (currentWebapp == id) {
+        openInfo(data, id, false);
+      }
+    });
+  }
 
   function setCategory(id, app) {
     if (document.querySelector('[data-category="' + id + '"]')) {
@@ -106,12 +92,11 @@
         evt.preventDefault();
         element.classList.toggle("expanded");
         if (element.classList.contains("expanded")) {
-          expandButton.dataset.icon = "collapse-chevron";
           expandButton.dataset.l10nId = "show-less";
         } else {
-          expandButton.dataset.icon = "expand-chevron";
           expandButton.dataset.l10nId = "show-more";
         }
+        expandButton.classList.toggle('active');
       };
       header.appendChild(expandButton);
 
@@ -168,39 +153,26 @@
     author.classList.add("author");
     context.appendChild(author);
 
-    if (isBananaHackers) {
-      author.textContent = data.author;
-    } else {
-      OrchidServices.getWithUpdate(
-        "profile/" + data.author_id,
-        function (udata) {
-          author.textContent = udata.username;
-          author.href = "/account/?user=" + udata.username;
-        }
-      );
-    }
+    OrchidServices.getWithUpdate(
+      "profile/" + data.author_id,
+      function (udata) {
+        author.textContent = udata.username;
+        author.href = "/account/?user=" + udata.username;
+      }
+    );
 
     var categories = document.createElement("div");
     categories.classList.add("categories");
-
-    if (isBananaHackers) {
-      data.meta.categories.forEach((item) => {
-        var category = document.createElement("span");
-        category.dataset.l10nId = "category-" + item;
-        categories.appendChild(category);
-      });
-    } else {
-      data.categories.forEach((item) => {
-        var category = document.createElement("span");
-        category.dataset.l10nId = "category-" + item;
-        categories.appendChild(category);
-      });
-    }
+    data.categories.forEach((item) => {
+      var category = document.createElement("span");
+      category.dataset.l10nId = "category-" + item;
+      categories.appendChild(category);
+    });
 
     context.appendChild(categories);
   }
 
-  function openInfo(webappData, id, isBananaHackers) {
+  function openInfo(data, id, isBananaHackers) {
     var sidebar = document.getElementById("sidebar");
     var toggleSidebarButton = document.getElementById("toggle-sidebar-button");
     var backButton = document.getElementById("back-button");
@@ -222,7 +194,7 @@
       "webapp-screenshots-holder"
     );
     var webappDescription = document.getElementById("webapp-description");
-    var webappInstallSize = document.getElementById("webapp-install-size");
+    var webappInstallSize = document.getElementById("webapp-size");
     var webappSupportedDevices = document.getElementById(
       "webapp-supported-devices"
     );
@@ -231,14 +203,16 @@
     var webappCommentsHeader = document.getElementById(
       "webapp-comments-header"
     );
+    var webappPricing = document.getElementById("webapp-pricing");
+    var webappAgeRating = document.getElementById("webapp-age-rating");
 
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-    if (!isBananaHackers && webappData.teaser_url) {
+    if (data.teaser_url) {
       webappBanner.src =
-        webappData.teaser_url.replace("watch?v=", "embed/") +
+        data.teaser_url.replace("watch?v=", "embed/") +
         "?controls=0&autoplay=1&loop=1&ref=0&fs=0&modestbranding=0";
     }
 
@@ -255,9 +229,7 @@
     window.history.pushState({ html: "", pageTitle: "" }, "", "?webapp=" + id);
 
     backButton.onclick = () => {
-      if (!isBananaHackers) {
-        webappBanner.src = "";
-      }
+      webappBanner.src = "";
       webappCard.classList.add("fade-out");
 
       // This helps us avoid the page closing next time we open it again.
@@ -272,25 +244,19 @@
       }, 300);
     };
 
-    webappIcon.src = webappData.icon;
+    webappIcon.src = data.icon;
     webappIcon.onerror = () => {
       webappIcon.src = "images/default.svg";
     };
 
-    webappName.textContent = webappData.name;
-
-    if (isBananaHackers) {
-      webappAuthor.textContent = webappData.author;
-      webappAuthor.href = null;
-    } else {
-      OrchidServices.getWithUpdate(
-        "profile/" + webappData.author_id,
-        function (udata) {
-          webappAuthor.textContent = udata.username;
-          webappAuthor.href = "/account/?user=" + udata.username;
-        }
-      );
-    }
+    webappName.textContent = data.name;
+    OrchidServices.getWithUpdate(
+      "profile/" + data.author_id,
+      function (udata) {
+        webappAuthor.textContent = udata.username;
+        webappAuthor.href = "/account/?user=" + udata.username;
+      }
+    );
 
     function initializeRating(commentsArray) {
       if (commentsArray.length == 0) {
@@ -304,15 +270,9 @@
         var avg = sum / commentsArray.length;
 
         webappAverageRating.textContent = Math.round(avg * 10) / 10;
-        if (isBananaHackers) {
-          OrchidServices.set("webstore_legacy/" + id, {
-            rating_average: Math.round(avg * 10) / 10,
-          });
-        } else {
-          OrchidServices.set("webstore/" + id, {
-            rating_average: Math.round(avg * 10) / 10,
-          });
-        }
+        OrchidServices.set("webstore/" + id, {
+          rating_average: Math.round(avg * 10) / 10,
+        });
 
         webappStarRatings.innerHTML = "";
         for (let index = 0; index < parseInt(avg); index++) {
@@ -329,59 +289,33 @@
         }
       }
     }
-
-    if (webappData.comments) {
-      initializeRating(webappData.comments);
-    } else {
-      OrchidServices.get("webstore_legacy/" + id).then((data) => {
-        if (data) {
-          initializeRating(data.comments);
-        } else {
-          webappStarRatings.innerHTML = "";
-          webappAverageRating.innerHTML = "";
-        }
-      });
-    }
+    initializeRating(data.comments);
 
     webappCategories.innerHTML = "";
-    if (isBananaHackers) {
-      webappData.meta.categories.forEach((item) => {
-        var category = document.createElement("span");
-        category.dataset.l10nId = "category-" + item;
-        webappCategories.appendChild(category);
-      });
-    } else {
-      if (webappData.categories.length == 0) {
-        webappData.categories.forEach((item) => {
-          var category = document.createElement("span");
-          category.dataset.l10nId = "category-" + item;
-          webappCategories.appendChild(category);
-        });
-      }
-    }
+    data.categories.forEach((item) => {
+      var category = document.createElement("span");
+      category.dataset.l10nId = "category-" + item;
+      webappCategories.appendChild(category);
+    });
 
     installButton.onclick = () => {
       if (navigator.mozApps) {
-        navigator.mozApps.mgmt.installPackage(webappData.download.url);
+        navigator.mozApps.mgmt.installPackage(data.download.url);
       } else {
-        if (isBananaHackers) {
-          location.href = webappData.download.url;
-        } else {
-          var a = document.createElement("a");
-          a.href = webappData.download;
-          a.download = "webapp.orchidpkg.zip";
-          a.click();
-        }
+        var a = document.createElement("a");
+        a.href = data.download;
+        a.download = "webapp.orchidpkg.zip";
+        a.click();
       }
     };
-
     uninstallButton.onclick = () => {};
+    uninstallButton.style.display = 'none';
     updateButton.onclick = () => {};
 
     webappScreenshots.innerHTML = "";
-    if (webappData.screenshots) {
-      if (webappData.screenshots.length !== 0) {
-        webappData.screenshots.forEach((item) => {
+    if (data.screenshots) {
+      if (data.screenshots.length !== 0) {
+        data.screenshots.forEach((item) => {
           var screenshot = document.createElement("img");
           screenshot.src = item;
           webappScreenshots.appendChild(screenshot);
@@ -392,34 +326,27 @@
       }
     }
 
-    webappDescription.textContent = webappData.description;
+    webappDescription.innerText = data.description;
+    webappTags.textContent = data.tags.join(", ");
 
-    if (!isBananaHackers) {
-      webappTags.textContent = webappData.tags.join(", ");
+    Comments("webstore/" + id, webappComments, true);
+    OrchidServices.getWithUpdate("webstore/" + id, (data) => {
+      webappCommentsHeader.dataset.l10nArgs =
+        '{"n":"' + data.comments.length + '"}';
+    });
+
+    if (data.price == 0) {
+      webappPricing.dataset.l10nId = 'pricing-free';
+      webappPricing.dataset.l10nArgs = '';
     } else {
-      webappTags.textContent = webappData.meta.tags
-        .split(";")
-        .filter(String)
-        .join(", ");
+      webappPricing.dataset.l10nId = 'pricing-paid';
+      webappPricing.dataset.l10nArgs = '{"n": "' + data.price + '"}';
     }
 
-    if (!isBananaHackers) {
-      Comments("webstore/" + id, webappComments, true);
-      OrchidServices.getWithUpdate("webstore/" + id, (data) => {
-        webappCommentsHeader.dataset.l10nArgs =
-          '{"n":"' + data.comments.length + '"}';
-      });
-    } else {
-      OrchidServices.getWithUpdate("webstore_legacy/" + id, (data) => {
-        if (data) {
-          webappCommentsHeader.dataset.l10nArgs =
-            '{"n":"' + data.comments.length + '"}';
-          Comments("webstore_legacy/" + id, webappComments, true);
-        } else {
-          OrchidServices.set("webstore_legacy/" + id, { comments: [] });
-        }
-      });
-    }
+    webappAgeRating.children[0].src = 'images/rating/' + data.age_rating + '.svg';
+    webappAgeRating.children[1].dataset.l10nId = 'ageRating-' + data.age_rating;
+
+    webappInstallSize.dataset.l10nArgs = '{"n": "' + ((data.download.length / 1024) / 1024).toFixed(2) + 'MB"}';
   }
 
   var paramString = location.search.substring(1);
@@ -428,14 +355,7 @@
     for (let pair of queryString.entries()) {
       switch (pair[0]) {
         case "webapp":
-          setTimeout(() => {
-            OrchidServices.get("webapps/" + pair[1]).then(function (data) {
-              if (data) {
-                openInfo(data, pair[1], false);
-              }
-            });
-          }, 1000);
-          currentApp = pair[1];
+          currentWebapp = pair[1];
           break;
 
         default:

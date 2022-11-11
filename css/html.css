@@ -20,7 +20,7 @@
 
   --accent-color: #0061e0;
   --accent-color-text: rgba(255,255,255,0.75);
-  --background: #f4f6f9;
+  --background: #e7e9ec;
   --background-plus: #fff;
   --header-background: rgba(244, 246, 249, 0.6);
   --text-color: #333;
@@ -245,6 +245,20 @@ pre {
 a, button {
   display: inline-block;
   position: relative;
+}
+
+span.glare {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at center, var(--translucent-plus), transparent 75%);
+
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
+:hover > span.glare {
+  opacity: 1;
 }
 
 span.ripple {

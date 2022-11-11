@@ -444,15 +444,18 @@ var OrchidServices = {
         token: id,
         author_id: OrchidServices.userId(),
         teaser_url: data.teaser_url,
+        published_at: Date.now(),
         icon: data.icon,
         name: data.name,
         description: data.description,
-        published_at: Date.now(),
+        screenshots: data.screenshots,
         download: data.download,
         has_ads: data.has_ads,
         has_tracking: data.has_tracking,
         categories: data.categories,
         tags: data.tags,
+        age_rating: data.age_rating,
+        price: data.price,
         comments: []
       });
     },
@@ -479,33 +482,32 @@ var OrchidServices = {
         owner: OrchidServices.userId(),
         name: title,
         icon: avatar,
+        roles: [],
         messages: {},
-        channels: {
-          0: {
+        channels: [
+          {
             name: "Chatting",
-            type: "header"
+            rooms: [
+              {
+                type: 'text',
+                name: 'General'
+              },
+              {
+                type: 'text',
+                name: 'Off Topic'
+              }
+            ]
           },
-          1: {
-            name: "General",
-            type: "text_chat"
-          },
-          2: {
-            name: "Off Topic",
-            type: "text_chat"
-          },
-          3: {
-            name: "Playing Games",
-            type: "header"
-          },
-          4: {
-            name: "Minecraft",
-            type: "text_chat"
-          },
-          5: {
-            name: "Fortnite",
-            type: "text_chat"
-          },
-        }
+          {
+            name: "Talking",
+            rooms: [
+              {
+                type: 'voice',
+                name: 'Voice Chat'
+              }
+            ]
+          }
+        ]
       });
       OrchidServices.set("profile/" + OrchidServices.userId(), {
         chat_groups: { [token]: "" },

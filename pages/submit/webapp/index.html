@@ -25,7 +25,7 @@
 
   <label for="" class="vertical">
     <span>Screenshots</span>
-    <input type="file" name="" id="swa-screenshots">
+    <input type="file" name="" id="swa-screenshots" multiple>
   </label>
   <p>Screenshots help show users what your app looks like.</p>
 
@@ -55,6 +55,24 @@
     <input type="text" name="" id="swa-tags">
   </label>
   <p>It's like Google keywords. If your tags match with what the user searched. Your app shows. Seperate with semicolons (;)</p>
+
+  <label for="" class="vertical">
+    <span>Age Rating<em>*</em></span>
+    <select id="swa-esrb">
+      <option value="e">Everyone</option>
+      <option value="e10plus">Everyone (10+)</option>
+      <option value="t">Teen</option>
+      <option value="m">Mature (17+)</option>
+      <option value="ao">Adult Only</option>
+    </select>
+  </label>
+  <p>A rating that specifies what age of people should or shouldn't see this app.</p>
+
+  <label for="" class="vertical">
+    <span>App Price (USD)</span>
+    <input type="number" name="" id="swa-price">
+  </label>
+  <p>The price people are going to pay to get your app.</p>
 
   <header>JSON Upload Data</header>
   <pre id="swa-json"></pre>

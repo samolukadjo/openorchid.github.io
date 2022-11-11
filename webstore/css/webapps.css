@@ -30,14 +30,14 @@
   font-size: 1.6rem;
   font-weight: bold;
   color: var(--accent-color);
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   height: 4rem;
   line-height: 4rem;
   box-sizing: border-box;
   margin: 0;
   text-transform: uppercase;
   display: inline-block;
-  padding-inline-end: 4.8rem;
+  padding-inline-end: 4rem;
   position: relative;
 }
 
@@ -54,12 +54,17 @@
   text-decoration: none;
   height: 4rem;
   line-height: 4rem;
+  transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
 }
 html[dir="ltr"] .webapps-group header a[data-icon]:before {
-  right: 1.5rem;
+  right: 1rem;
 }
 html[dir="rtl"] .webapps-group header a[data-icon]:before {
-  left: 1.5rem;
+  left: 1rem;
+}
+
+.webapps-group header a.active[data-icon]:before {
+  transform: rotate(180deg);
 }
 
 .webapps-group:not(.expanded) .webapps > .webapp {
@@ -124,6 +129,9 @@ html[dir="rtl"] .webapps-group header a[data-icon]:before {
   aspect-ratio: 1/1;
   margin: 0 auto;
   display: block;
+  /* border-radius: 25%;
+  background: #fff;
+  box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.3); */
 }
 
 .webapp > .context {
@@ -215,13 +223,14 @@ html[dir="rtl"] .webapps-group header a[data-icon]:before {
   .webapps {
     padding: 0 1.5rem 1.5rem;
     max-width: 1024px;
+    box-sizing: border-box;
   }
 
   .webapp {
-    width: 11.8rem;
+    width: 11.425rem;
     border-radius: 0.8rem;
     background: var(--background-plus) !important;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0,8,16,0.1);
     border: none;
     margin: 0 0.5rem 1rem;
     transition: all 0.2s ease;
@@ -247,7 +256,6 @@ html[dir="rtl"] .webapps-group header a[data-icon]:before {
 
 @media screen and (min-width: 1024px) {
   .webapp {
-    width: 11.8rem;
     max-width: unset;
   }
 

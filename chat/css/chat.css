@@ -322,12 +322,12 @@ html[dir="rtl"] #sidebar > #server-list li[data-status]:after {
 
 #sidebar > #server-list li.selected {
   background: var(--background-color-primary);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0,8,16,0.1);
   transition: box-shadow 0.2s ease;
 }
 
 #sidebar > #server-list li.selected:hover {
-  box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+  box-shadow: 0 1rem 2rem rgba(0,8,16,0.1);
 }
 
 #sidebar > #server-list li em {

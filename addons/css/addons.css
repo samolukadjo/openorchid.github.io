@@ -215,7 +215,7 @@ html[dir="rtl"] .addons-group header a[data-icon]:before {
     width: 11.8rem;
     border-radius: 0.8rem;
     background: var(--background-plus) !important;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0,8,16,0.1);
     border: none;
     margin: 0 0.5rem 1rem;
     transition: all 0.2s ease;
