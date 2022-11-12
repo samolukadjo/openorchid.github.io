@@ -5,6 +5,7 @@
   background: var(--background);
   display: none;
   width: 100%;
+  perspective: 100vh;
 }
 
 #webapp.visible {
@@ -65,7 +66,7 @@
   height: 7rem;
   /* background: #fff;
   border-radius: 25%;
-  box-shadow: 0 0.2rem 0.4rem rgba(0,8,16,0.3); */
+  box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.3); */
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
 }
@@ -159,7 +160,7 @@
   font-weight: normal;
   color: var(--text-color);
   width: calc(100% - 1rem);
-  margin: 1rem 0.5rem 0;
+  margin: 0 0.5rem 1rem;
 }
 
 #webapp .app-header .options button:hover {
@@ -183,13 +184,14 @@
 }
 
 #webapp .container.fade-in {
-  animation: fade-in 0.3s ease;
+  transform-origin: top;
+  animation: fade-in 0.5s cubic-bezier(0.2, 0.9, 0.1, 1.125);
 }
 
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(128px);
   }
   to {
     opacity: 1;
@@ -198,7 +200,7 @@
 }
 
 #webapp .container.fade-out {
-  animation: fade-out 0.3s ease;
+  animation: fade-out 0.5s cubic-bezier(0.2, 0.9, 0.1, 1.0);
 }
 
 @keyframes fade-out {
@@ -208,7 +210,7 @@
   }
   to {
     opacity: 0;
-    transform: translateY(-32px);
+    transform: translateY(-128px);
   }
 }
 
@@ -277,7 +279,7 @@
   margin-inline-end: 1rem;
   border-radius: 0.8rem;
   height: 20rem;
-  box-shadow: 0 0.5rem 1rem rgba(0,8,16,0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   background: #fff;
 }
 
@@ -303,7 +305,7 @@
 }
 
 .app-header-actions > p {
-  margin: 0 0 0.5rem;
+  margin: 1.5rem 0 0.5rem;
   padding: 0 1rem;
   box-sizing: border-box;
   font-size: 1.6rem;
@@ -354,6 +356,10 @@
     margin: 0;
     -moz-margin-start: 1rem;
     margin-inline-start: 1rem;
+  }
+
+  .app-header-actions > p {
+    margin: 0 0 0.5rem;
   }
 }
 

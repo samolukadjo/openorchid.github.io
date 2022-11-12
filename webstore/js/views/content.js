@@ -1,6 +1,24 @@
 (function (exports) {
   "use strict";
 
+  exports.viewFunction['content'] = () => {
+    if (navigator.onLine) {
+      setTimeout(() => {
+        openContentView('loading-screen', false);
+      });
+      webapps.innerHTML = '';
+      categories.innerHTML = '';
+
+      OrchidServices.getList("webstore", function (data, id) {
+        openContentView('content', false);
+        createIcon(data, id, false);
+        if (currentWebapp == id) {
+          openInfo(data, id, false);
+        }
+      });
+    }
+  };
+
   var categoryIcons = {
     'communication': 'sms',
     'education': 'help',
@@ -16,24 +34,9 @@
 
   var isListEnabled = false;
   var currentWebapp = '';
+  var allAppsButton = document.getElementById('sidebar-allapps');
   var webapps = document.getElementById("webapps");
   var categories = document.getElementById("categories");
-  var allAppsButton = document.getElementById('sidebar-allapps');
-
-  allAppsButton.onclick = () => {
-    var selected = document.querySelector('[aria-selected="true"]');
-    selected.setAttribute('aria-selected', null);
-    allAppsButton.setAttribute('aria-selected', true);
-  };
-
-  if (navigator.onLine) {
-    OrchidServices.getList("webstore", function (data, id) {
-      createIcon(data, id, false);
-      if (currentWebapp == id) {
-        openInfo(data, id, false);
-      }
-    });
-  }
 
   function setCategory(id, app) {
     if (document.querySelector('[data-category="' + id + '"]')) {
@@ -50,9 +53,14 @@
       link.dataset.l10nId = "category-" + id;
       link.dataset.icon = categoryIcons[id];
       link.onclick = () => {
-        var selected = document.querySelector('[aria-selected="true"]');
-        selected.setAttribute('aria-selected', null);
+        var selected = document.querySelector('#sidebar [aria-selected="true"]');
+        if (selected) {
+          selected.setAttribute('aria-selected', null);
+        } else {
+          allAppsButton.setAttribute('aria-selected', null);
+        }
         link.setAttribute('aria-selected', true);
+        openContentView('content', false);
       };
       listItem.appendChild(link);
 
@@ -63,17 +71,25 @@
       webapps.appendChild(element);
 
       document.addEventListener('wheel', () => {
-        if (element.getBoundingClientRect().top <= (window.innerHeight - (element.getBoundingClientRect().height - 1))) {
-          var selected = document.querySelector('[aria-selected="true"]');
-          selected.setAttribute('aria-selected', null);
-          link.setAttribute('aria-selected', true);
+        if (exports.selectedView == 'content') {
+          if (element.getBoundingClientRect().top <= (window.innerHeight - (element.getBoundingClientRect().height - 1))) {
+            var selected = document.querySelector('#sidebar [aria-selected="true"]');
+            if (selected && link.isConnected) {
+              selected.setAttribute('aria-selected', null);
+              link.setAttribute('aria-selected', true);
+            }
+          }
         }
       });
       document.addEventListener('touchmove', () => {
-        if (element.getBoundingClientRect().top <= (window.innerHeight - (element.getBoundingClientRect().height - 1))) {
-          var selected = document.querySelector('[aria-selected="true"]');
-          selected.setAttribute('aria-selected', null);
-          link.setAttribute('aria-selected', true);
+        if (exports.selectedView == 'content') {
+          if (element.getBoundingClientRect().top <= (window.innerHeight - (element.getBoundingClientRect().height - 1))) {
+            var selected = document.querySelector('#sidebar [aria-selected="true"]');
+            if (selected && link.isConnected) {
+              selected.setAttribute('aria-selected', null);
+              link.setAttribute('aria-selected', true);
+            }
+          }
         }
       });
 
@@ -176,7 +192,7 @@
     var sidebar = document.getElementById("sidebar");
     var toggleSidebarButton = document.getElementById("toggle-sidebar-button");
     var backButton = document.getElementById("back-button");
-    var content = document.getElementById("content");
+    var content = document.getElementById(exports.selectedView);
     var webapp = document.getElementById("webapp");
     var webappCard = document.getElementById("webapp-card");
     var webappBanner = document.getElementById("webapp-banner");
@@ -225,7 +241,7 @@
     sidebar.style.display = "none";
     toggleSidebarButton.style.display = "none";
     backButton.style.display = "block";
-    content.style.display = "none";
+    content.classList.remove('visible');
     window.history.pushState({ html: "", pageTitle: "" }, "", "?webapp=" + id);
 
     backButton.onclick = () => {
@@ -239,7 +255,7 @@
         sidebar.style.display = "block";
         toggleSidebarButton.style.display = "block";
         backButton.style.display = "none";
-        content.style.display = "block";
+        content.classList.add('visible');
         window.history.pushState({ html: "", pageTitle: "" }, "", "/webstore/");
       }, 300);
     };

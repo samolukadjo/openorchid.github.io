@@ -45,6 +45,7 @@
   width: 0;
   height: 1rem;
   background: var(--text-color);
+  border-radius: 0.5rem;
   animation: splashscreen-progress 1s cubic-bezier(1, 0, 0, 1) infinite;
 }
 

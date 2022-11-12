@@ -46,9 +46,30 @@
     }
 
     splashscreen.classList.add("hidden");
+    openContentView('content');
   });
 
   toggleSidebarButton.addEventListener("click", () => {
     sidebar.classList.toggle("visible");
   });
+
+  // Side Tabs
+  var allAppsButton = document.getElementById('sidebar-allapps');
+  var installedAppsButton = document.getElementById('sidebar-installed-apps');
+  var settingsButton = document.getElementById('sidebar-settings');
+
+  allAppsButton.onclick = () => {
+    var selected = document.querySelector('[aria-selected="true"]');
+    selected.setAttribute('aria-selected', null);
+    allAppsButton.setAttribute('aria-selected', true);
+    openContentView('content', true);
+  };
+
+  installedAppsButton.onclick = () => {
+    openContentView('installed-apps', true);
+  };
+
+  settingsButton.onclick = () => {
+    openContentView('settings', true);
+  };
 })(window);
