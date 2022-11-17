@@ -97,7 +97,7 @@ html[dir="rtl"] .news-group header a[data-icon]:before {
   display: inline-block;
   margin-bottom: 1rem;
   border-radius: 0.8rem;
-  box-shadow: 0 0.5rem 1rem rgba(0,8,16,0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   transition: all 0.2s ease;
 }
 

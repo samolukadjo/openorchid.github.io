@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="images/store_16.png" type="image/x-icon" sizes="16x16">
-  <link rel="shortcut icon" href="images/store_32.png" type="image/x-icon" sizes="24x24 32x32">
-  <link rel="shortcut icon" href="images/store_48.png" type="image/x-icon" sizes="40x40 48x48">
-  <link rel="shortcut icon" href="images/store_64.png" type="image/x-icon" sizes="56x56 64x64">
-  <link rel="shortcut icon" href="images/store_128.png" type="image/x-icon" sizes="84x84 98x98 100x100 112x112 126x126 128x128">
-  <link rel="shortcut icon" href="images/store_256.png" type="image/x-icon" sizes="256x256">
-  <link rel="shortcut icon" href="images/store.svg" type="image/x-icon" sizes="284x284 512x512">
+  <link rel="shortcut icon" href="icons/store_16.png" type="image/x-icon" sizes="16x16">
+  <link rel="shortcut icon" href="icons/store_32.png" type="image/x-icon" sizes="24x24 32x32">
+  <link rel="shortcut icon" href="icons/store_48.png" type="image/x-icon" sizes="40x40 48x48">
+  <link rel="shortcut icon" href="icons/store_64.png" type="image/x-icon" sizes="56x56 64x64">
+  <link rel="shortcut icon" href="icons/store_128.png" type="image/x-icon" sizes="84x84 98x98 100x100 112x112 126x126 128x128">
+  <link rel="shortcut icon" href="icons/store_256.png" type="image/x-icon" sizes="256x256">
+  <link rel="shortcut icon" href="icons/store.svg" type="image/x-icon" sizes="284x284 512x512">
   <title data-l10n-id="title">Orchid | Web Store</title>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="var(--background, #e7e7e7)">
@@ -40,21 +40,33 @@
   <link rel="stylesheet" href="css/webapp_info.css">
   <link rel="stylesheet" href="css/comments.css">
   <link rel="stylesheet" href="lib/orchid_ui/header.css">
-  <link rel="stylesheet" href="css/settings.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/switches.css">
   <link rel="stylesheet" href="css/seekbars.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/rating_graphs.css">
+
+  <!-- View Styles -->
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/history.css">
+
   <script defer src="services/script.js" type="module"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/languages.js"></script>
   <script defer src="js/dark_mode.js"></script>
   <script defer src="js/comments.js"></script>
   <script defer src="js/views.js"></script>
-  <script defer src="js/views/content.js"></script>
-  <script defer src="js/views/installed.js"></script>
-  <script defer src="js/views/settings.js"></script>
   <script defer src="js/file_data.js"></script>
   <script defer src="js/slideshow.js"></script>
+  <script defer src="js/search_results.js"></script>
+  <script defer src="js/webapps.js"></script>
+
+  <!-- View Scripts -->
+  <script defer src="js/views/content.js"></script>
+  <script defer src="js/views/featured.js"></script>
+  <script defer src="js/views/history.js"></script>
+  <script defer src="js/views/installed.js"></script>
+  <script defer src="js/views/settings.js"></script>
 
   <!-- Localization -->
   <script src="js/l10n.js"></script>
@@ -81,20 +93,21 @@
   <header class="oui--header" id="header">
     <a href="#" id="back-button" data-icon="back"></a>
     <a href="#" id="toggle-sidebar-button" data-icon="menu"></a>
-    <a href="#" class="logo"></a>
-    <form action="" id="searchbox">
-      <div class="search">
-        <input type="text" data-l10n-id="type-here-to-search">
-        <button type="reset" data-icon="close"></button>
-      </div>
-      <ul class="results">
-        <li>List Item 1</li>
-        <li>List Item 2</li>
-        <li>List Item 3</li>
-        <li>List Item 4</li>
-        <li>List Item 5</li>
-      </ul>
-    </form>
+    <div id="home-header">
+      <a href="#" class="logo"></a>
+      <form action="" id="searchbox" autocomplete="off">
+        <div class="search">
+          <input type="text" data-l10n-id="type-here-to-search" id="searchbox-input">
+          <button type="reset" data-icon="close"></button>
+        </div>
+        <ul class="results" id="search-results"></ul>
+      </form>
+      <h1></h1>
+    </div>
+    <div id="app-header">
+      <a href="#" class="logo" id="app-header-icon"></a>
+      <h1 id="app-header-name"></h1>
+    </div>
     <h1></h1>
     <a href="#" data-icon="help"></a>
     <a href="#" id="profile-button">
@@ -107,6 +120,8 @@
     <a href="/?page=submit/webapp" id="upload-button" data-icon="add" data-l10n-id="nav-upload"></a>
     <ul>
       <li><a href="#" data-icon="apps" data-l10n-id="nav-allWebapps" id="sidebar-allapps" aria-selected="true"></a></li>
+      <li><a href="#" data-icon="auto-enhance-spark" data-l10n-id="nav-featured" id="sidebar-featured"></a></li>
+      <li><a href="#" data-icon="history" data-l10n-id="nav-history" id="sidebar-history"></a></li>
     </ul>
 
     <header data-l10n-id="nav-categories"></header>
@@ -126,8 +141,11 @@
   <main id="content" class="content">
     <div class="warning">
       <div class="message">
-        <img src="images/store.svg" alt="">
-        <div data-l10n-id="use-store-app"></div>
+        <img src="icons/store.svg" alt="">
+        <div>
+          <span data-l10n-id="title"></span>
+          <span data-l10n-id="use-store-app"></span>
+        </div>
       </div>
       <a href="app://webstore.gaiamobile.org/index.html" target="_blank" data-l10n-id="open-store"></a>
     </div>
@@ -164,13 +182,19 @@
     <div id="webapps"></div>
   </main>
 
+  <main id="featured" class="content"></main>
+
+  <main id="history" class="content">
+    <id id="history-timeline"></id>
+  </main>
+
   <main id="installed-apps" class="content"></main>
 
   <main id="settings" class="content">
     <h1 data-l10n-id="settings"></h1>
-    <div class="gaia-list active">
-      <ul id="profile">
-        <li>
+    <div class="gaia-list">
+      <ul id="settings-profile">
+        <li class="active">
           <img src="" alt="" id="settings-profile-avatar">
           <div class="vbox">
             <p id="settings-profile-username"></p>
@@ -178,24 +202,43 @@
           </div>
         </li>
       </ul>
+
       <header data-l10n-id="settings-general"></header>
       <ul>
-        <li>
+        <li class="active">
           <label class="pack-switch reverse">
             <input type="checkbox" id="settings-dark-mode">
             <span data-l10n-id="settings-darkMode"></span>
           </label>
         </li>
-        <li>
+        <li class="active">
           <label class="pack-checkbox reverse">
             <input type="checkbox" id="settings-auto-update">
             <span data-l10n-id="settings-autoUpdate"></span>
           </label>
         </li>
+        <li>
+          <label class="vbox">
+            <p data-l10n-id="settings-language"></p>
+            <select name="" id="settings-languages"></select>
+          </label>
+        </li>
       </ul>
+
+      <header data-l10n-id="settings-history"></header>
+      <ul>
+        <li class="active">
+          <label class="pack-switch reverse">
+            <input type="checkbox" id="settings-history">
+            <span data-l10n-id="settings-enableHistory"></span>
+          </label>
+        </li>
+        <li class="active" id="settings-history-clear" data-l10n-id="settings-clearHistory"></li>
+      </ul>
+
       <header data-l10n-id="settings-orchid"></header>
       <ul>
-        <li>
+        <li class="active">
           <label class="pack-switch reverse">
             <input type="checkbox" id="settings-limit-apps">
             <span data-l10n-id="settings-limitApps"></span>
@@ -203,6 +246,7 @@
         </li>
       </ul>
     </div>
+
     <div class="copyright" data-l10n-id="copyright"></div>
     <div class="copyright" data-l10n-id="copyright-notice"></div>
   </main>
@@ -253,7 +297,7 @@
             <div id="webapp-author"></div>
             <div class="ratings">
               <div id="webapp-star-ratings"></div>
-              <div id="webapp-average-rating"></div>
+              <div id="webapp-average-rating" data-l10n-id="starRating-outOf"></div>
             </div>
             <div id="webapp-categories"></div>
           </div>
@@ -273,43 +317,76 @@
       </header>
 
       <div class="section">
-        <div id="webapp-screenshots-holder">
-          <header data-l10n-id="webapp-screenshots"></header>
-          <div id="webapp-screenshots"></div>
+        <div class="content-col">
+          <div id="webapp-screenshots-holder">
+            <header data-l10n-id="webapp-screenshots"></header>
+            <div id="webapp-screenshots"></div>
+          </div>
+
+          <header data-l10n-id="webapp-info"></header>
+          <ul>
+            <li id="webapp-size" data-l10n-id="webapp-size"></li>
+            <li id="webapp-downloads" data-l10n-id="webapp-downloads"></li>
+            <li id="webapp-has-ads" data-l10n-id="webapp-hasAds"></li>
+            <li id="webapp-has-tracking" data-l10n-id="webapp-hasTracking"></li>
+          </ul>
+
+          <header data-l10n-id="webapp-tags"></header>
+          <ul>
+            <li id="webapp-tags"></li>
+          </ul>
         </div>
 
-        <header data-l10n-id="webapp-description"></header>
-        <ul>
-          <li id="webapp-description"></li>
-        </ul>
+        <div class="content-col">
+          <header data-l10n-id="webapp-description"></header>
+          <ul>
+            <li id="webapp-description"></li>
+          </ul>
 
-        <header data-l10n-id="webapp-info"></header>
-        <ul>
-          <li id="webapp-size" data-l10n-id="webapp-size"></li>
-          <li id="webapp-downloads" data-l10n-id="webapp-downloads"></li>
-          <li id="webapp-has-ads" data-l10n-id="webapp-hasAds"></li>
-          <li id="webapp-has-tracking" data-l10n-id="webapp-hasTracking"></li>
-        </ul>
-
-        <header data-l10n-id="webapp-tags"></header>
-        <ul>
-          <li id="webapp-tags"></li>
-        </ul>
-
-        <header data-l10n-id="webapp-comments" id="webapp-comments-header"></header>
-        <div class="comments-wrapper" id="webapp-comments">
-          <label for="" class="star-rating">
-            <span data-l10n-id="webapp-starRating"></span>
-            <input type="number" min="1" max="5" value="5">
-          </label>
-          <form action="">
-            <textarea data-l10n-id="webapp-commentInput"></textarea>
-            <button type="reset" data-icon="close"></button>
-            <button type="submit" data-icon="send"></button>
-          </form>
-          <ul></ul>
+          <header data-l10n-id="webapp-comments" id="webapp-comments-header"></header>
+          <ul class="rating-graphs" id="webapp-rating-graphs">
+            <li class="graph-1">
+              <span class="rating">5</span>
+              <div class="progress" style="--progress: 50%;"></div>
+              <span class="users">50</span>
+            </li>
+            <li class="graph-2">
+              <span class="rating">4</span>
+              <div class="progress" style="--progress: 25%;"></div>
+              <span class="users">25</span>
+            </li>
+            <li class="graph-3">
+              <span class="rating">3</span>
+              <div class="progress" style="--progress: 25%;"></div>
+              <span class="users">25</span>
+            </li>
+            <li class="graph-4">
+              <span class="rating">2</span>
+              <div class="progress" style="--progress: 15%;"></div>
+              <span class="users">15</span>
+            </li>
+            <li class="graph-5">
+              <span class="rating">1</span>
+              <div class="progress" style="--progress: 10%;"></div>
+              <span class="users">10</span>
+            </li>
+          </ul>
+          <div class="comments-wrapper" id="webapp-comments">
+            <label for="" class="star-rating">
+              <span data-l10n-id="webapp-starRating"></span>
+              <input type="number" min="1" max="5" value="5">
+            </label>
+            <form action="">
+              <textarea data-l10n-id="webapp-commentInput"></textarea>
+              <button type="reset" data-icon="close"></button>
+              <button type="submit" data-icon="send"></button>
+            </form>
+            <a href="#" class="expand-button" data-icon="expand-chevron">
+              <span data-l10n-id="show-more"></span>
+            </a>
+            <ul></ul>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </body>

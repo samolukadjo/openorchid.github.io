@@ -78,7 +78,7 @@
   font-weight: normal;
   position: relative;
   text-decoration: none;
-  box-shadow: 0 0.3rem 0.6rem rgba(0,8,16,0.1);
+  box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
 

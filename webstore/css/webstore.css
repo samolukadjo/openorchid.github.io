@@ -1,21 +1,20 @@
 @font-face {
   font-family: 'Readex Pro';
-  src: url(/fonts/Readex_Pro/ReadexPro-VariableFont_wght.ttf);
+  src: url(../fonts/Readex_Pro/ReadexPro-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: 'IBM Plex Sans Arabic';
-  src: url(/fonts/IBMPlexSansArabic-Regular.ttf);
+  src: url(../fonts/IBMPlexSansArabic-Regular.ttf);
 }
 
 @font-face {
   font-family: 'IBM Plex Sans Arabic';
   font-weight: bold;
-  src: url(/fonts/IBMPlexSansArabic-Bold.ttf);
+  src: url(../fonts/IBMPlexSansArabic-Bold.ttf);
 }
 
 :root {
-  --logo: url(/webstore/images/store.svg);
   --accent-color: #c00040;
   --accent-color-text: rgba(255,255,255,0.75);
   --background: #e7e9ec;
@@ -24,7 +23,8 @@
   --header-background: rgba(231, 233, 236, 0.5);
   --text-color: #333;
 
-  --button-normal: #fff;
+  --button-normal: #e7e9ec;
+  --button-plus: #fff;
   --button-hover: #d8dadd;
   --button-active: #c8cacd;
 
@@ -39,11 +39,12 @@
 [data-theme="dark"] {
   --background: #101214;
   --background-plus: #212325;
-  --background-minus: #304050;
+  --background-minus: #181a1c;
   --header-background: rgba(16, 18, 20, 0.6);
   --text-color: #e7e7e7;
 
   --button-normal: #303234;
+  --button-plus: var(--button-normal);
   --button-hover: #383a3c;
   --button-active: #404244;
 
@@ -286,6 +287,57 @@ html[dir="rtl"] .content {
 
 #back-button {
   display: none;
+}
+
+/* Headers */
+#home-header {
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+  flex: 1;
+  width: calc(100% - 14rem);
+}
+
+#app-header {
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transform: scale(0.75);
+  visibility: hidden;
+  opacity: 0;
+  transform-origin: bottom;
+}
+
+#home-header,
+#app-header {
+  height: 5rem;
+  position: absolute;
+  top: 0;
+  display: flex;
+}
+html[dir="ltr"] #home-header,
+html[dir="ltr"] #app-header {
+  left: 5rem;
+}
+html[dir="rtl"] #home-header,
+html[dir="rtl"] #app-header {
+  right: 5rem;
+}
+
+.app-header-shown #home-header {
+  transform: translateY(-5rem);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.app-header-shown #app-header {
+  transform: scale(1);
+  visibility: visible;
+  opacity: 1;
+}
+
+#app-header h1 {
+  padding: 0;
 }
 
 @media screen and (max-width: 767px) {

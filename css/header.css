@@ -15,7 +15,7 @@
 }
 
 .ws--header.visible.scrolling {
-  box-shadow: 0 0.3rem 0.6rem rgba(0,8,16,0.1);
+  box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
 }
 
 .ws--header.visible,

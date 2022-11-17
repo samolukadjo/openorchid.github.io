@@ -82,32 +82,40 @@
 .oui--header form {
   width: 100%;
   max-width: 400px;
-  background: var(--background-plus, #fff);
+  background: var(--background-minus, #b0d0ff);
   height: 3.6rem;
   margin: 0.7rem 0.5rem;
   border-radius: 1.8rem;
   display: inline-flex;
   flex-direction: column;
   position: relative;
-  -moz-padding-start: 4rem;
-  padding-inline-start: 4rem;
-  box-sizing: border-box;
-}
-html[dir="ltr"] .oui--header form {
-  background: var(--background-plus, #fff) url(images/search.svg) no-repeat left 1rem center / 2rem;
-}
-html[dir="rtl"] .oui--header form {
-  background: var(--background-plus, #fff) url(images/search.svg) no-repeat right 1rem center / 2rem;
 }
 
 .oui--header form:focus-within {
-  outline: solid 0.2rem var(--accent-color, #0061e0);
+  background: var(--background-plus, #fff);
   z-index: 10;
   height: unset;
+  border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .oui--header form .search {
   display: inline-flex;
+  position: relative;
+  -moz-padding-start: 4rem;
+  padding-inline-start: 4rem;
+  box-sizing: border-box;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+html[dir="ltr"] .oui--header form .search {
+  background: url(images/search.svg) no-repeat left 1rem center / 2rem;
+}
+html[dir="rtl"] .oui--header form .search {
+  background: url(images/search.svg) no-repeat right 1rem center / 2rem;
+}
+
+.oui--header form:focus-within .search {
+  background-color: var(--background-plus) !important;
+  z-index: 1;
 }
 
 .oui--header form .search > input[type="text"] {
@@ -147,10 +155,10 @@ html[dir="rtl"] .oui--header form {
   top: 100%;
   width: 100%;
   background: var(--background-plus);
-  margin: 1rem 0 0;
+  margin: 0;
   padding: 0.4rem;
   box-sizing: border-box;
-  border-radius: 1.5rem;
+  border-radius: 0 0 1.5rem 1.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.25);
 
   transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
@@ -191,67 +199,7 @@ html[dir="rtl"] .oui--header form {
     width: calc(100% - 1rem);
     border-radius: 0.6rem;
     height: 4rem;
-  }
-  html[dir="ltr"] .oui--header form:focus-within {
-    transform-origin: left;
-    animation: header-form-open 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
-  }
-  html[dir="rtl"] .oui--header form:focus-within {
-    transform-origin: right;
-    animation: header-form-open-rtl 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
-  }
-
-  @keyframes header-form-open {
-    from {
-      transform: scaleX(0.5) translateX(50%);
-      border-radius: 1.8rem;
-    }
-    to {
-      transform: scaleX(1) translateX(0);
-      border-radius: 0.4rem;
-    }
-  }
-
-  @keyframes header-form-open-rtl {
-    from {
-      transform: scaleX(0.5) translateX(-50%);
-      border-radius: 1.8rem;
-    }
-    to {
-      transform: scaleX(1) translateX(0);
-      border-radius: 0.4rem;
-    }
-  }
-
-  html[dir="ltr"] .oui--header form {
-    transform-origin: left;
-    animation: header-form-close 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
-  }
-  html[dir="rtl"] .oui--header form {
-    transform-origin: right;
-    animation: header-form-close-rtl 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
-  }
-
-  @keyframes header-form-close {
-    from {
-      transform: scaleX(2) translateX(-25%);
-      border-radius: 0.4rem;
-    }
-    to {
-      transform: scaleX(1) translateX(0);
-      border-radius: 1.8rem;
-    }
-  }
-
-  @keyframes header-form-close-rtl {
-    from {
-      transform: scaleX(2) translateX(25%);
-      border-radius: 0.4rem;
-    }
-    to {
-      transform: scaleX(1) translateX(0);
-      border-radius: 1.8rem;
-    }
+    max-width: unset;
   }
 
   .oui--header form:focus-within .search > input[type="text"] {

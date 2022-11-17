@@ -3,6 +3,8 @@
 
   exports.viewFunction['settings'] = () => {};
 
+  var root = document.querySelector(':root');
+
   var profile = document.getElementById("settings-profile");
   var profileAvatar = document.getElementById("settings-profile-avatar");
   var profileUsername = document.getElementById("settings-profile-username");
@@ -10,7 +12,7 @@
 
   // Profile
   function initializeUser() {
-    if (OrchidServices.isUserLoggedIn) {
+    if (OrchidServices.isUserLoggedIn()) {
       OrchidServices.getWithUpdate(
         "profile/" + OrchidServices.userId(),
         function (data) {
@@ -36,13 +38,12 @@
   }
 
   // Dark Mode
-  var darkModeEnabled = localStorage.getItem('ws.webstore.darkMode') == 'true';
+  var darkModeEnabled = (localStorage.getItem('ws.webstore.darkMode') == 'true') || false;
   var darkModeCheckbox = document.getElementById('settings-dark-mode');
-  var root = document.querySelector(':root');
 
   darkModeCheckbox.checked = darkModeEnabled;
   darkModeCheckbox.addEventListener('change', function() {
-    localStorage.setItem('ws.darkMode', darkModeCheckbox.checked);
+    localStorage.setItem('ws.webstore.darkMode', darkModeCheckbox.checked);
     root.classList.add('transition');
     root.addEventListener('transitionend', () => {
       root.classList.remove('transition');
@@ -51,12 +52,57 @@
   });
 
   // Auto Update (Service Worker Needed)
-  var autoUpdateEnabled = localStorage.getItem('ws.webstore.autoUpdate') == 'true';
+  var autoUpdateEnabled = (localStorage.getItem('ws.webstore.autoUpdate') == 'true') || true;
   var autoUpdateCheckbox = document.getElementById('settings-auto-update');
-  var root = document.querySelector(':root');
 
   autoUpdateCheckbox.checked = autoUpdateEnabled;
   autoUpdateCheckbox.addEventListener('change', function() {
     localStorage.setItem('ws.webstore.autoUpdate', autoUpdateCheckbox.checked);
+  });
+
+  // Language
+  var selectedLanguage = localStorage.getItem("ws.webstore.language") || navigator.language;
+  var languagesDropdown = document.getElementById('settings-languages');
+
+  window.addEventListener('load', () => {
+    languagesDropdown.value = selectedLanguage;
+  });
+  languagesDropdown.addEventListener('change', function() {
+    localStorage.setItem('ws.webstore.language', languagesDropdown.value);
+    navigator.mozL10n.language.code = languagesDropdown.value;
+  });
+
+  var client = new XMLHttpRequest();
+  client.open('GET', '/locales.json');
+  client.onreadystatechange = function() {
+    languagesDropdown.innerHTML = '';
+    var entries = Object.entries(JSON.parse(client.responseText));
+    entries.forEach(entry => {
+      var option = document.createElement('option');
+      option.value = entry[0];
+      option.textContent = entry[1];
+      languagesDropdown.appendChild(option);
+    });
+  };
+  client.send();
+
+  // History
+  var historyEnabled = (localStorage.getItem('ws.webstore.historyEnabled') == 'true') || true;
+  var historyCheckbox = document.getElementById('settings-history');
+  var historyClearButton = document.getElementById('settings-history-clear');
+  var historyButton = document.getElementById("sidebar-history");
+
+  historyCheckbox.checked = historyEnabled;
+  historyCheckbox.addEventListener('change', function() {
+    localStorage.setItem('ws.webstore.historyEnabled', historyCheckbox.checked);
+    if (historyCheckbox.checked) {
+      historyButton.style.display = 'block';
+    } else {
+      historyButton.style.display = 'none';
+    }
+  });
+
+  historyCheckbox.addEventListener('click', function() {
+    localStorage.setItem('ws.webstore.history', '[]');
   });
 })(window);

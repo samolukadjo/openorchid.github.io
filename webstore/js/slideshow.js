@@ -3,7 +3,7 @@
 
   var slideshowList = [
     {
-      background: '/images/keyart/orchid_start.png',
+      background: 'images/unified.png',
       title: 'slideshow-store-title',
       detail: 'slideshow-store-detail',
       linkTo: '#'
@@ -23,7 +23,7 @@
       linkText: 'visit-website'
     },
     {
-      background: '/images/keyart/orchid_1.1.png',
+      background: 'images/purple.png',
       wordmark: 'images/firefox.svg',
       detail: 'slideshow-firefox-detail',
       linkTo: 'https://www.mozilla.org/',
@@ -73,6 +73,7 @@
     if (slideshow.linkTo) {
       var link = document.createElement('a');
       link.href = slideshow.linkTo;
+      link.target = '_blank';
       if (slideshow.linkText) {
         link.dataset.l10nId = slideshow.linkText;
       } else {
@@ -125,7 +126,7 @@
     } else {
       slideshowDots.children[0].classList.add('active');
     }
-  }, 3000);
+  }, 4000);
 
   backButton.addEventListener('click', () => {
     var selectedSlideshow = slideshowPosters.querySelector('.slideshow.current');
