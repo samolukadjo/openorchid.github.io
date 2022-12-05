@@ -56,5 +56,5 @@
 
 .ws--sub-plans > .card:hover .ws--button {
   --accent-color: #000;
-  --accent-color-text: #e7e7e7;
+  --accent-text-color: #e7e7e7;
 }

@@ -72,10 +72,12 @@ window.addEventListener('load', function() {
         download: base64.download,
         has_ads: appHasAds.checked,
         has_tracking: appHasTracking.checked,
-        categories: appCategories.value.split(';'),
-        tags: appTags.value.split(';'),
+        categories: appCategories.value.split(','),
+        tags: appTags.value.split(','),
         age_rating: appAgeRating.value,
         price: appPrice.value,
+        languages: appLanguages.value.split(','),
+        contacts: [...appContactEmails.value.split(';'), ...appContactNumbers.value.split(';')],
         comments: []
       };
       appJsonData.textContent = JSON.stringify(object, undefined, 2);

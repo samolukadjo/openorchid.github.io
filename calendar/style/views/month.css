@@ -86,7 +86,7 @@
   background: var(--accent-color);
   border-radius: 9999px;
   pointer-events: none;
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
   font-size: calc(var(--width) / 2);
   font-weight: bold;
   text-align: center;

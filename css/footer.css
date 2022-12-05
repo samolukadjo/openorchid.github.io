@@ -1,4 +1,7 @@
 .ws--footer {
+  --footer-background: #212121;
+  --footer-text-color: #e7e7e7;
+  --footer-header-color: #80c0ff;
   margin: 0;
   padding: 1.5rem 0;
   width: 100%;
@@ -7,7 +10,6 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  --ripple-color: rgba(255,255,255,0.5);
 }
 
 .ws--footer > .container {
@@ -104,15 +106,17 @@ html[dir="rtl"] .ws--footer ul li:after {
 .ws--footer ul li > a {
   font-size: 1.6rem;
   font-weight: normal;
+  line-height: 2.2rem;
   color: var(--footer-text-color);
   text-decoration: none;
   display: inline-block;
   pointer-events: all;
   position: relative;
+  transition: all 0.2s ease;
 }
 
 .ws--footer ul li > a:hover {
-  text-decoration: underline;
+  box-shadow: 0 0.2rem 0 currentColor;
 }
 
 .ws--footer .social-media {
@@ -243,7 +247,7 @@ html[dir="rtl"] .ws--footer ul li:after {
 
 .ws--footer .bottom-wrapper > .options > label input[type="checkbox"]:checked:before {
   left: 3rem;
-  background: var(--accent-color-text);
+  background: var(--accent-text-color);
 }
 
 @media screen and (min-width: 800px) {

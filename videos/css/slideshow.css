@@ -277,17 +277,17 @@ html[dir="rtl"] .slideshow > div a:hover:after {
 
   .slideshow-container .controls button {
     border-radius: 2rem;
-    background: var(--button-normal);
+    background: var(--button-background);
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.25);
     color: var(--text-color);
   }
 
   .slideshow-container .controls button:hover {
-    background: var(--button-hover);
+    background: var(--button-background-plus);
   }
 
   .slideshow-container .controls button:active {
-    background: var(--button-active);
+    background: var(--button-background-minus);
   }
 
   .slideshow {

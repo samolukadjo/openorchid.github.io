@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-l10n-id="title">Orchid Account</title>
+  <link rel="stylesheet" href="/lib/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/tooltips.css">
+  <script defer type="module" src="services/script.js"></script>
+  <script defer src="js/image_compressor.js"></script>
+  <script defer src="js/profile.js"></script>
+  <script defer src="js/dark_mode.js"></script>
+
+  <!-- Localization -->
+  <script src="js/l10n.js"></script>
+  <meta name="defaultLanguage" content="en-US">
+  <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+  <link rel="localization" href="locales/main.{locale}.properties">
+</head>
+<body>
+  <div id="banner"></div>
+  <main class="container">
+    <header id="header">
+      <div id="avatar">
+        <img src="" alt="" class="main">
+        <img src="" alt="" class="shadow">
+        <div role="title" class="bottom" data-l10n-id="change-avatar"></div>
+      </div>
+      <div class="vbox left">
+        <p id="username"></p>
+        <div id="badges"></div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="content-col gaia-list">
+        <header data-l10n-id="personal"></header>
+        <ul>
+          <li class="hbox active">
+            <div class="vbox fit">
+              <p data-l10n-id="email"></p>
+              <p id="email"></p>
+            </div>
+            <span data-icon="edit"></span>
+          </li>
+          <li class="hbox active">
+            <div class="vbox fit">
+              <p data-l10n-id="phoneNumber"></p>
+              <p id="phone-number"></p>
+            </div>
+            <span data-icon="edit"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="content-col gaia-list">
+        <header data-l10n-id="description"></header>
+        <ul>
+          <li>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore magnam, numquam error temporibus labore quos pariatur possimus quis aliquam veniam explicabo eum illo esse similique itaque provident at velit assumenda!</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

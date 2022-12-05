@@ -48,13 +48,13 @@
     <span>Categories<em>*</em></span>
     <input type="text" name="" id="swa-categories" required>
   </label>
-  <p>Helps the store decide where to put your app. Seperate with semicolons (;)</p>
+  <p>Helps the store decide where to put your app. Seperate with commas (,)</p>
 
   <label for="" class="vertical">
     <span>Tags</span>
     <input type="text" name="" id="swa-tags">
   </label>
-  <p>It's like Google keywords. If your tags match with what the user searched. Your app shows. Seperate with semicolons (;)</p>
+  <p>It's like Google keywords. If your tags match with what the user searched. Your app shows. Seperate with commas (,)</p>
 
   <label for="" class="vertical">
     <span>Age Rating<em>*</em></span>
@@ -70,9 +70,19 @@
 
   <label for="" class="vertical">
     <span>App Price (USD)</span>
-    <input type="number" name="" id="swa-price">
+    <input type="number" name="" id="swa-price" value="0.00">
   </label>
   <p>The price people are going to pay to get your app.</p>
+
+  <label for="" class="vertical">
+    <span>Languages<em>*</em></span>
+    <input type="" name="" id="swa-languages" value="en-US" required>
+  </label>
+
+  <label for="" class="vertical">
+    <span>Contact Emails<em>*</em></span>
+    <input type="email" name="" id="swa-emails" required>
+  </label>
 
   <header>JSON Upload Data</header>
   <pre id="swa-json"></pre>

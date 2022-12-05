@@ -1,0 +1,11 @@
+webstore/locales/main.en-US.properties
+locales/main.en-US.properties
+locales/changelog.en-US.properties
+widgets/locales/widgets.en-US.properties
+start/locales/widgets.en-US.properties
+weather/locales/main.en-US.properties
+chat/locales/chat.en-US.properties
+articles/locales/articles.en-US.properties
+auth/locales/auth.en-US.properties
+addons/locales/main.en-US.properties
+newspaper/locales/main.en-US.properties

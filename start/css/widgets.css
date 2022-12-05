@@ -1,6 +1,6 @@
 :root {
   --accent-color: #0061e0;
-  --accent-color-text: rgba(255,255,255,0.75);
+  --accent-text-color: rgba(255,255,255,0.75);
   --background: #e7e9ec;
   --background-plus: #fff;
   --header-background: rgba(231, 233, 236, 0.5);

@@ -59,7 +59,7 @@ html[dir="rtl"] .poster > div {
 .poster > div a {
   font-size: 1.6rem;
   font-weight: normal;
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
   display: inline-block;
   text-align: start;
   text-decoration: none;

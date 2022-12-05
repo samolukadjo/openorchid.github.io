@@ -1,0 +1,107 @@
+.ws--quick-search {
+  width: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.ws--quick-search .spacer {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.ws--quick-search h1 {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  color: #a6a6a6;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 3rem;
+}
+
+.ws--quick-search h1:before {
+  line-height: 3rem;
+  margin-top: 0.4rem;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
+  font-size: 2.4rem;
+}
+
+.ws--quick-search form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ws--quick-search form > input[type="text"] {
+  width: 100%;
+  height: 4rem;
+  line-height: 4rem;
+  border: none;
+  background: var(--background-plus);
+  margin: 0;
+  padding: 0 1.5rem;
+  border-radius: 2rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ws--quick-search form > input[type="text"]:focus {
+  outline: solid 0.2rem var(--accent-color);
+}
+
+.ws--quick-search form > menu {
+  margin: 0;
+  padding: 1.5rem 0 0;
+  font-size: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.ws--quick-search form > menu a {
+  display: inline-block;
+  padding: 0 1.5rem;
+  background: var(--background-plus);
+  height: 3.4rem;
+  line-height: 3.4rem;
+  border-radius: 1.7rem;
+  margin: 0 0 1rem;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
+  color: var(--text-color);
+  font-weight: normal;
+  position: relative;
+  text-decoration: none;
+  box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.ws--quick-search form > menu a:hover {
+  font-weight: bold;
+  box-shadow: 0 0.6rem 1.2rem rgba(0,0,0,0.25);
+  z-index: 1;
+  transform: translateY(-0.2rem);
+}
+
+.ws--quick-search form > menu a[data-icon] {
+  -moz-padding-start: 4rem;
+  padding-inline-start: 4rem;
+}
+
+.ws--quick-search form > menu a[data-icon]:before {
+  position: absolute;
+  top: 0;
+  font-size: 2rem;
+}
+html[dir="ltr"] .ws--quick-search form > menu a[data-icon]:before {
+  left: 1rem;
+}
+html[dir="rtl"] .ws--quick-search form > menu a[data-icon]:before {
+  right: 1rem;
+}

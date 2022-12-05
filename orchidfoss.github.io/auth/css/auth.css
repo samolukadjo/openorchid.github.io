@@ -1,0 +1,213 @@
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url(/fonts/IBMPlexSansArabic-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-weight: bold;
+  src: url(/fonts/IBMPlexSansArabic-Bold.ttf);
+}
+
+:root {
+  --accent-color: #0061e0;
+  --accent-color-text: rgba(255,255,255,0.6);
+  --background: #e7e9ec;
+  --background-plus: #fff;
+  --text-color: #333;
+
+  --translucent: rgba(0,0,0,0.05);
+  --translucent-plus: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+  --accent-color: #00ddff;
+  --accent-color-text: rgba(0,0,0,0.75);
+  --background: #101214;
+  --background-plus: #212325;
+  --text-color: #e7e7e7;
+
+  --translucent: rgba(255,255,255,0.05);
+  --translucent-plus: rgba(255,255,255,0.1);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  background: linear-gradient(to bottom, #40a060, #00a0e8);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: 'IBM Plex Sans Arabic', system-ui;
+}
+
+.auth-screen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background) url(https://source.unsplash.com/featured/854x480) no-repeat center / cover;
+  scrollbar-width: none;
+  overflow: auto;
+}
+
+.auth-screen::-webkit-scrollbar {
+  display: none;
+}
+
+.auth-screen > .container {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--background);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+html[dir="ltr"] .auth-screen > .container {
+  right: 0;
+}
+html[dir="rtl"] .auth-screen > .container {
+  left: 0;
+}
+
+.auth-screen h1 {
+  font-size: 2.4rem;
+  font-weight: normal;
+  margin: 0 0 1.5rem;
+}
+
+.auth-screen .content {
+  width: 100%;
+}
+
+.auth-screen label {
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+}
+
+.auth-screen label span {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+.auth-screen label input {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+  background: var(--background-plus);
+  border-radius: 0.6rem;
+  border: none;
+  margin: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  height: 4rem;
+  line-height: 4rem;
+}
+
+.auth-screen menu {
+  background: var(--background-plus);
+  height: 4rem;
+  border-radius: 2rem;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.auth-screen menu button {
+  height: 4rem;
+  line-height: 4rem;
+  border-radius: 0;
+  margin: 0;
+  padding: 0 3rem;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+.auth-screen menu button:hover {
+  background: var(--translucent);
+}
+
+.auth-screen menu button:active {
+  background: var(--translucent-plus);
+}
+
+.auth-screen menu button:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 100%;
+  height: calc(100% - 1rem);
+  -moz-border-end: solid 0.1rem rgba(0,0,0,0.125);
+  border-inline-end: solid 0.1rem rgba(0,0,0,0.125);
+}
+
+.auth-screen menu button:last-child:after {
+  border: none;
+}
+
+.auth-screen a {
+  color: var(--accent-color);
+  margin: 0 0 1.5rem;
+  font-size: 1.6rem;
+  font-weight: normal;
+  display: block;
+}
+
+.auth-screen .error {
+  width: 100%;
+  height: 4rem;
+  border-radius: 1rem;
+  line-height: 4rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background: #c00040;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  max-width: 320px;
+  font-size: 1.6rem;
+  font-weight: normal;
+
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  margin: -2rem 0;
+  transform: scale(0.75);
+  opacity: 0;
+}
+
+.auth-screen .error.visible {
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1), transform 0.3s cubic-bezier(0.2, 0.9, 0.1, 1.25);
+  margin: 0 0 1rem;
+  transform: scale(1);
+  opacity: 1;
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .auth-screen .container {
+    width: 100%;
+    top: 50%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: block;
+  }
+}

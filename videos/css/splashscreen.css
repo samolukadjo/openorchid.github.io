@@ -118,7 +118,7 @@
   border-radius: 2rem;
   height: 4rem;
   line-height: 4rem;
-  background: var(--button-normal);
+  background: var(--button-background);
   font-size: 1.6rem;
   font-weight: normal;
   white-space: nowrap;
@@ -129,7 +129,7 @@
 
 #offline-message .container menu button.recommend {
   background: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
 }
 
 @media screen and (min-width: 600px) {

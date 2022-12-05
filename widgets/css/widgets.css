@@ -1,6 +1,6 @@
 :root {
   --accent-color: #0061e0;
-  --accent-color-text: rgba(255,255,255,0.75);
+  --accent-text-color: rgba(255,255,255,0.75);
   --background: #e7e9ec;
   --background-plus: #fff;
   --header-background: rgba(231, 233, 236, 0.5);
@@ -13,7 +13,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --accent-color: #00ddff;
-    --accent-color-text: rgba(0,0,0,0.75);
+    --accent-text-color: rgba(0,0,0,0.75);
     --background: #101214;
     --background-plus: #212325;
     --header-background: rgba(32, 34, 36, 0.5);

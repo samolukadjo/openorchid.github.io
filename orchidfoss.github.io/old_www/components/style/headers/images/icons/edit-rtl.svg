@@ -1,0 +1,8 @@
+<svg viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .ac-color {
+      fill: #fff;
+    }
+  </style>
+  <path d="M.75 7.25 4 10.5 9.25 4.25 10 5 4 12 0 8 .75 7.25M15 7A1 1 0 0015 9 1 1 0 0015 7M15 2A1 1 0 0015 4 1 1 0 0015 2M15 12A1 1 0 0015 14 1 1 0 0015 12" class="ac-color"></path>
+</svg>

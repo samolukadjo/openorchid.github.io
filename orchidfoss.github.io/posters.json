@@ -1,0 +1,18 @@
+[
+  {
+    "image": "images/thumbnail.svg",
+    "title": "Smorten",
+    "description": "lorem ipsum",
+    "links_to": "#"
+  },
+  {
+    "image": "images/thumbnail.svg",
+    "title": "Smortern",
+    "description": "lorem ipsumer"
+  },
+  {
+    "image": "images/thumbnail.svg",
+    "title": "Samo",
+    "description": "bonez"
+  }
+]

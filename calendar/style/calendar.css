@@ -1,24 +1,28 @@
 :root {
   --accent-color: #0061e0;
-  --accent-color-text: rgba(255,255,255,0.75);
+  --accent-text-color: rgba(255,255,255,0.75);
   --background: #e7e9ec;
   --background-plus: #fff;
   --events-background: #f4f4f4;
   --text-color: #333;
   --transparent: rgba(0,0,0,0.05);
   --transparent-plus: rgba(0,0,0,0.1);
+
+  color-scheme: light;
 }
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
     --accent-color: #00ddff;
-    --accent-color-text: rgba(0,0,0,0.75);
+    --accent-text-color: rgba(0,0,0,0.75);
     --background: #101214;
     --background-plus: #212325;
     --events-background: #181a1c;
     --text-color: #e7e7e7;
     --transparent: rgba(255,255,255,0.05);
     --transparent-plus: rgba(255,255,255,0.1);
+
+    color-scheme: dark;
   }
 }
 
@@ -156,10 +160,14 @@ main {
 
 .actions > button.recommend {
   background: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
   box-shadow: 0 0.25rem 1rem -0.5rem var(--accent-color);
 }
 
 .actions > button:last-child {
   margin: 0;
+}
+
+.actions > button[data-icon]:before {
+  font-size: 2.4rem;
 }

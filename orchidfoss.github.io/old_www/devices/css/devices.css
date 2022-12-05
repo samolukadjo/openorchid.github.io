@@ -1,0 +1,164 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  overflow: hidden;
+}
+
+#sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #e0e0e0;
+  overflow: hidden;
+}
+
+#content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+#content > section {
+  height: calc(100% - 5rem);
+}
+
+#devices {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+#devices > .device {
+  min-width: 250px;
+  max-width: 400px;
+  flex: 1;
+  margin: 0.5rem;
+  box-sizing: border-box;
+  border: solid 0.1rem rgba(0,0,0,0.125);
+  border-radius: 1.2rem;
+  padding: 1rem;
+  position: relative;
+  transition: all 0.15s ease;
+}
+html[dir="ltr"] #devices > .device {
+  padding-left: 10rem;
+}
+html[dir="rtl"] #devices > .device {
+  padding-right: 10rem;
+}
+
+#devices > .device.current {
+  border-color: #0061e0;
+  border-width: 0.2rem;
+}
+
+#devices > .device:hover {
+  background: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1), 0 0.3rem 0.6rem rgba(0,0,0,0.2), 0 0.1rem 0.2rem rgba(0,0,0,0.1);
+  border-color: transparent;
+  transition: all 0.15s ease;
+}
+
+#devices > .device:active {
+  background: rgba(0,0,0,0.125);
+  box-shadow: none;
+  border-color: transparent;
+  transition: none;
+}
+
+#devices > .device img {
+  position: absolute;
+  top: calc(50% - 4rem);
+  height: 8rem;
+  width: 8rem;
+}
+html[dir="ltr"] #devices > .device img {
+  left: 1rem;
+}
+html[dir="rtl"] #devices > .device img {
+  right: 1rem;
+}
+
+#devices > .device h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+#devices > .device p {
+  margin: 0;
+  font-size: 1.6rem;
+  opacity: 0.5;
+}
+
+#devices > .device .icons {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+#devices > .device .icons [data-icon] {
+  margin: 0 0 0 0.4rem;
+}
+
+#devices > .device .icons [data-icon]:before {
+  font-size: 2.4rem;
+  width: 3rem;
+  height: 3rem;
+  line-height: 3.5rem;
+}
+
+.dark-mode-enabled #sidebar {
+  background-color: #282828;
+}
+
+.dark-mode-enabled #content {
+  background-color: #303030;
+}
+
+.dark-mode-enabled #devices > .device.current {
+  border-color: #00ddff;
+}
+
+.dark-mode-enabled #devices > .device:hover {
+  background-color: #303030;
+}
+
+.dark-mode-enabled #devices > .device:active {
+  background-color: rgba(0,0,0,0.15);
+}
+
+@media screen and (min-width: 768px) {
+  #sidebar {
+    width: 320px;
+  }
+  html[dir="ltr"] #sidebar {
+    left: 0;
+  }
+  html[dir="rtl"] #sidebar {
+    left: unset;
+    right: 0;
+  }
+
+  #content {
+    width: calc(100% - 320px);
+  }
+  html[dir="ltr"] #content {
+    left: unset;
+    right: 0;
+  }
+  html[dir="rtl"] #content {
+    left: 0;
+  }
+}

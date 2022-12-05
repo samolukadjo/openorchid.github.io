@@ -7,13 +7,13 @@
   flex-wrap: wrap;
   font-size: 1.6rem;
   --accent-color: var(--banner-text-color);
-  --accent-color-text: rgba(255,255,255,0.75);
+  --accent-text-color: rgba(255,255,255,0.75);
   overflow: hidden;
   position: relative;
 }
 
 [data-theme="dark"] .ws--offers-banner {
-  --accent-color-text: rgba(0,0,0,0.75);
+  --accent-text-color: rgba(0,0,0,0.75);
 }
 
 

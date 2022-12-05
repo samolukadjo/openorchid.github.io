@@ -1,0 +1,105 @@
+.ws--cards {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ws--cards > a {
+  width: 310px;
+  display: block;
+  font-size: 1.6rem;
+  font-weight: normal;
+  text-decoration: none;
+  color: var(--text-color);
+  margin: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.ws--cards > a > img {
+  width: 310px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.ws--cards > a:hover > img {
+  opacity: 0.8;
+}
+
+.ws--cards > a > div h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 1rem;
+}
+
+.ws--cards > a > div p {
+  font-size: 1.6rem;
+  font-weight: normal;
+  margin: 0 1rem;
+}
+
+.ws--cards > a > div span {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--accent-color);
+  display: inline-block;
+  text-align: start;
+  margin: 0 1rem;
+}
+
+.ws--cards > a > div span:after {
+  content: '';
+  font-size: 1.6rem;
+  font-family: 'gaia-icons';
+  -moz-margin-start: 0.5rem;
+  margin-inline-start: 0.5rem;
+  transition: margin 0.2s ease;
+}
+html[dir="ltr"] .ws--cards > a > div span:after {
+  content: 'forward';
+}
+html[dir="rtl"] .ws--cards > a > div span:after {
+  content: 'back';
+}
+
+.ws--cards > a:hover > div span:after {
+  -moz-margin-start: 1rem;
+  margin-inline-start: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .ws--cards > a {
+    width: 292px;
+  }
+
+  .ws--cards > a > img {
+    width: 292px;
+    height: 192px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .ws--cards {
+    width: calc(100% - 128px);
+    margin: 48px 64px;
+  }
+
+  .ws--cards > a {
+    width: 320px;
+    margin: 1rem;
+    background: var(--background-plus);
+    border-radius: 0.8rem;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .ws--cards > a:hover {
+    background: var(--background-plus);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+    transform: translateY(-0.2rem);
+  }
+
+  .ws--cards > a > img {
+    width: 320px;
+  }
+}

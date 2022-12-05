@@ -28,7 +28,7 @@
 
 .learn-more.visible > img,
 .learn-more:not([data-scroll-animate]) > img {
-  transition: all 1s cubic-bezier(1, 0, 0, 1) 0.5s, opacity 0.5s ease 0.5s;
+  transition: all 1s cubic-bezier(0.2, 0.9, 0.1, 1) 0.5s, opacity 0.3s ease;
   opacity: 1;
   transform: translateX(0);
 }
@@ -50,7 +50,7 @@
 
 .learn-more.visible > p,
 .learn-more:not([data-scroll-animate]) > p {
-  transition: all 1s cubic-bezier(1, 0, 0, 1) 0.5s;
+  transition: all 1s cubic-bezier(0.2, 0.9, 0.1, 1) 0.5s;
   transform: translateX(0);
   mask-position: calc(100%);
   -webkit-mask-position: calc(100%);

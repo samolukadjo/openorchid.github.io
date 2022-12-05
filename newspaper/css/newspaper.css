@@ -12,15 +12,15 @@
 :root {
   --logo: url(/newspaper/images/newspaper.svg);
   --accent-color: #40a060;
-  --accent-color-text: rgba(255,255,255,0.75);
+  --accent-text-color: rgba(255,255,255,0.75);
   --background: #e7e9ec;
   --background-plus: #fff;
   --header-background: rgba(231, 233, 236, 0.5);
   --text-color: #333;
 
-  --button-normal: #fff;
-  --button-hover: #d8dadd;
-  --button-active: #c8cacd;
+  --button-background: #fff;
+  --button-background-plus: #d8dadd;
+  --button-background-minus: #c8cacd;
 
   --translucent: rgba(0,0,0,0.05);
   --translucent-plus: rgba(0,0,0,0.1);
@@ -36,9 +36,9 @@
   --header-background: rgba(16, 18, 20, 0.6);
   --text-color: #e7e7e7;
 
-  --button-normal: #303234;
-  --button-hover: #383a3c;
-  --button-active: #404244;
+  --button-background: #303234;
+  --button-background-plus: #383a3c;
+  --button-background-minus: #404244;
 
   --translucent: rgba(255,255,255,0.05);
   --translucent-plus: rgba(255,255,255,0.1);
@@ -164,7 +164,7 @@ html[dir="rtl"] #sidebar > ul li a[data-icon]:before {
   font-weight: normal;
   font-style: normal;
   background: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
   margin: 0 1rem;
   padding: 0 0.5rem;
   box-sizing: border-box;
@@ -193,7 +193,7 @@ html[dir="rtl"] #content {
 
 #upload-button {
   background: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
   min-width: 5rem;
   height: 5rem;
   line-height: 5rem;

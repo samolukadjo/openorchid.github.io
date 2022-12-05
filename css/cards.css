@@ -13,7 +13,6 @@
   text-decoration: none;
   color: var(--text-color);
   margin: 0.5rem;
-  padding-bottom: 1rem;
 }
 
 .ws--cards > a > img {
@@ -30,12 +29,18 @@
   font-size: 2rem;
   font-weight: bold;
   margin: 0 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .ws--cards > a > div p {
   font-size: 1.6rem;
   font-weight: normal;
   margin: 0 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .ws--cards > a > div span {
@@ -45,6 +50,9 @@
   display: inline-block;
   text-align: start;
   margin: 0 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .ws--cards > a > div span:after {

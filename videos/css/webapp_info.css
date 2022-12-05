@@ -149,7 +149,7 @@
 
 #webapp .app-header .options button {
   border: none;
-  background: var(--button-normal);
+  background: var(--button-background);
   border-radius: 2rem;
   padding: 0 3rem;
   box-sizing: border-box;
@@ -163,16 +163,16 @@
 }
 
 #webapp .app-header .options button:hover {
-  background: var(--button-hover);
+  background: var(--button-background-plus);
 }
 
 #webapp .app-header .options button:active {
-  background: var(--button-active);
+  background: var(--button-background-minus);
 }
 
 #webapp .app-header .options button.recommend {
   background: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
 }
 
 /* Content */

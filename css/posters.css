@@ -1,10 +1,10 @@
 .ws--poster {
   width: 100%;
-  height: 100vw;
   background: #000;
   position: relative;
   overflow: hidden;
   --text-color: #fff;
+  aspect-ratio: 4 / 3;
 }
 
 .ws--poster.light {
@@ -87,7 +87,7 @@ html[dir="rtl"] .ws--poster > .keyart-container {
 .ws--poster > div a {
   font-size: 1.6rem;
   font-weight: normal;
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
   display: inline-block;
   text-align: start;
   text-decoration: none;
@@ -137,7 +137,7 @@ html[dir="rtl"] .ws--poster > div a:hover:after {
 @media screen and (orientation: landscape) {
   .ws--poster {
     width: 100%;
-    height: 100vh;
+    aspect-ratio: 16 / 9;
   }
 
   .ws--poster > div {
@@ -154,9 +154,9 @@ html[dir="rtl"] .ws--poster > div a:hover:after {
   .ws--poster {
     margin: 0 64px 48px;
     width: calc(100% - 128px);
-    height: calc(100vh - 5rem - 48px);
     border-radius: 1.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    aspect-ratio: 2.1 / 1;
   }
 
   .ws--poster > div,

@@ -1,6 +1,6 @@
 :root {
   --accent-color: #0061e0;
-  --accent-color-text: rgba(255,255,255,0.75);
+  --accent-text-color: rgba(255,255,255,0.75);
   --background-color-primary: #fff;
   --background-color-secondary: #e7e9ec;
   --background-color-sidebar: #e7e9ec;
@@ -15,7 +15,7 @@
 
 [data-theme="dark"] {
   --accent-color: #00ddff;
-  --accent-color-text: rgba(0,0,0,0.75);
+  --accent-text-color: rgba(0,0,0,0.75);
   --background-color-primary: #212325;
   --background-color-secondary: #101214;
   --background-color-sidebar: #101214;
@@ -73,7 +73,7 @@ html[dir="rtl"] #groups {
 
 #groups > button:hover {
   background-color: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
   border-radius: calc(100% / 3);
 }
 
@@ -107,7 +107,7 @@ html[dir="rtl"] #groups {
 
 #groups #servers li:hover {
   background-color: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
   border-radius: calc(100% / 3);
 }
 

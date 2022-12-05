@@ -1,0 +1,29 @@
+.forecast {
+  width: calc(50% - 0.5rem) !important;
+  min-width: 290px;
+  background: var(--background-plus);
+  border-radius: 0.8rem;
+  height: 15rem;
+  padding: 0 !important;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+.forecast li {
+  width: calc(100% / 5);
+  min-width: calc(290px / 3);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.forecast .icon-holder {
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.forecast .icon-holder > img {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto;
+}
