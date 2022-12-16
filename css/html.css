@@ -1,37 +1,25 @@
 @font-face {
-  font-family: 'Readex Pro';
-  src: url(/fonts/Readex_Pro/ReadexPro-VariableFont_wght.ttf);
-}
-
-@font-face {
-  font-family: 'IBM Plex Sans Arabic';
-  src: url(/fonts/IBMPlexSansArabic-Regular.ttf);
-}
-
-@font-face {
-  font-family: 'IBM Plex Sans Arabic';
-  font-weight: bold;
-  src: url(/fonts/IBMPlexSansArabic-Bold.ttf);
+  font-family: 'Jali';
+  src: url(/fonts/Jali_Arabic_Regular.ttf);
 }
 
 :root {
-  --logo: url(images/logo.png);
-  --font-families: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
+  --logo: url(images/logo_light.png);
 
   /** Accent Color
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --accent-color: #0061e0;
   --accent-text-color: rgba(255,255,255,0.75);
   --focus-outline: 0.2rem solid var(--accent-color);
 
   /** Statusbar Filter
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --statusbar-filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='invert'><feColorMatrix in='SourceGraphic' color-interpolation-filters='sRGB' type='matrix' values='1 -1 0.3019 0 0 0 0.3019 0 0 0 0 0 0.3019 0 0 0 0 0 1 0'/></filter></svg>#invert");
 
   /** Grey Colors
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --color-alpha: #333333;
   --color-beta: #ffffff;
@@ -44,7 +32,7 @@
   --color-iota: #f4f6f8;
 
   /** Brand Colors
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --color-darkblue: #0061e0;
   --color-blue: #00a0e8;
@@ -59,51 +47,55 @@
   --color-preffered: #40a060;
 
   /** Background
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --background: #e7e9ec;
   --background-plus: #fff;
   --background-minus: #a6a8ab;
 
+  --list-background: #f4f4f4;
+  --list-background-shadow: inset 0 0 0.5rem #fff, 0 0.5rem 1rem rgba(0,0,0,0.1);
+
   /** Borders
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --border-color: var(--color-theta);
 
   /** Text Color
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --text-color: #333;
   --text-color-minus: #fff;
   --label-color: #333;
 
   /** Button
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
-  --button-background: #fff;
-  --button-background-plus: #d8dadd;
-  --button-background-minus: #c8cacd;
+  --button-background: linear-gradient(to bottom, #fff, #f4f4f4);
+  --button-background-plus: linear-gradient(to bottom, #d8dadd, #ccced2);
+  --button-background-minus: linear-gradient(to bottom, #bcbec2, #c8cacd);
+  --button-background-list: linear-gradient(to bottom, #e7e9ec, #dbddf0);
 
   /** Links
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --link-color: var(--accent-color);
 
   /** Inputs
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --input-background: #f4f4f4;
   --input-color: #333;
   --input-clear-background: #909ca7;
 
   /** Buttons
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --button-box-shadow: none;
   --button-box-shadow-active: var(--button-box-shadow);
 
   /** Header
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --header-background: var(--background);
   --header-color: var(--text-color);
@@ -113,12 +105,12 @@
   --header-action-button-color: var(--text-color);
 
   /** Transitions
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --transition-duration: 0.3s;
 
   /** Palettes
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --background-alpha: #b0b2b5;
   --background-beta: #ffffff;
@@ -152,27 +144,25 @@
     inset -0.3rem -0.3rem 0.1rem #d0d2d5;
 
   --backdrop-color: rgba(231, 233, 236, 0.5);
-
-  color-scheme: light;
 }
 
 [data-theme="dark"] {
   --logo: url(images/logo_dark.png);
 
   /** Accent Color
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --accent-color: #00ddff;
   --accent-text-color: rgba(0,0,0,0.75);
   --focus-outline: 0.2rem solid var(--accent-color);
 
   /** Statusbar Filter
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --statusbar-filter: none;
 
   /** Grey Colors
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --color-alpha: #333333;
   --color-beta: #ffffff;
@@ -185,7 +175,7 @@
   --color-iota: #f4f6f8;
 
   /** Brand Colors
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --color-darkblue: #0061e0;
   --color-blue: #00a0e8;
@@ -200,51 +190,55 @@
   --color-preffered: #40a060;
 
   /** Background
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --background: #101214;
   --background-plus: #212325;
   --background-minus: #66686a;
 
+  --list-background: #212325;
+  --list-background-shadow: inset 0 0 0.5rem #252729, 0 0.5rem 1rem rgba(0,0,0,0.1);
+
   /** Borders
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --border-color: var(--color-theta);
 
   /** Text Color
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
-    --text-color: #fff;
-    --text-color-minus: #333;
-    --label-color: #fff;
+   --text-color: #fff;
+   --text-color-minus: #333;
+   --label-color: #fff;
 
   /** Button
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
-  --button-background: #303234;
-  --button-background-plus: #383a3c;
-  --button-background-minus: #404244;
+  --button-background: linear-gradient(to bottom, #303234, #2c2e30);
+  --button-background-plus: linear-gradient(to bottom, #383a3c, #343638);
+  --button-background-minus: linear-gradient(to bottom, #3c3e40, #404244);
+  --button-background-list: linear-gradient(to bottom, #181a1c, #101214);
 
   /** Links
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --link-color: var(--accent-color);
 
   /** Inputs
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --input-background: #1c1e20;
   --input-color: #fff;
   --input-clear-background: #7c7b82;
 
   /** Buttons
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --button-box-shadow: none;
   --button-box-shadow-active: var(--button-box-shadow);
 
   /** Header
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --header-background: var(--background);
   --header-color: var(--text-color);
@@ -254,12 +248,12 @@
   --header-action-button-color: var(--text-color);
 
   /** Transitions
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --transition-duration: 0.3s;
 
   /** Palettes
-    ---------------------------------------------------------*/
+   ---------------------------------------------------------*/
 
   --background-alpha: #000204;
   --background-beta: #303234;
@@ -293,8 +287,6 @@
     inset -0.3rem -0.3rem 0.1rem #212325;
 
   --backdrop-color: rgba(16, 18, 20, 0.5);
-
-  color-scheme: dark;
 }
 
 :focus-visible {
@@ -313,6 +305,7 @@ a:focus-visible, button:focus-visible {
 
 html {
   overflow-x: hidden;
+  --font-families: 'Jali', system-ui, sans-serif;
 }
 
 html, body {
@@ -323,6 +316,7 @@ html, body {
   font-family: var(--font-families);
   accent-color: var(--accent-color);
   scroll-behavior: smooth;
+  color-scheme: light dark;
 }
 
 button,

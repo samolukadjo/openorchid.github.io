@@ -14,7 +14,9 @@ login.addEventListener('submit', (evt) => {
   console.log('Logging In...');
   try {
     OrchidServices.auth.login(loginEmail.value, loginPassword.value);
-    location.href = '/';
+    setTimeout(() => {
+      location.href = '/';
+    }, 500);
   } catch(e) {
     triggerError('error-somethingWentWrong');
   }

@@ -6,7 +6,16 @@
   display: flex;
   z-index: 10;
   position: sticky;
-  top: -5rem;
+  top: 0;
+  border-bottom-color: var(--background-plus);
+  transition: all 0.3s ease;
+}
+
+.ws--header.scrolling {
+  background: var(--background);
+  border-bottom: solid 0.1rem var(--background-plus);
+  box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.3);
+  height: 5.1rem;
 }
 
 .ws--header .home {
@@ -272,4 +281,8 @@
   0% {
     transform: rotate(0deg);
   }
+}
+
+#options-button + .ws--button {
+  margin-inline-start: 1rem;
 }

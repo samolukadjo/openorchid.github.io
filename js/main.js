@@ -114,9 +114,4 @@
       notificationsButton.style.display = 'none';
     }
   });
-
-  // var loginButton = document.getElementById('login-button');
-  // loginButton.addEventListener('click', () => {
-  //   var win = window.open('/auth/index.html', '_blank', 'width=854,height=480');
-  // });
 })(window);

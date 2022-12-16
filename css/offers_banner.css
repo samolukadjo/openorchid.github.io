@@ -1,4 +1,6 @@
 .ws--offers-banner {
+  --banner-background: #8040a0;
+  --banner-text-color: #ddb0ff;
   width: 100%;
   padding: 2rem 3rem;
   box-sizing: border-box;

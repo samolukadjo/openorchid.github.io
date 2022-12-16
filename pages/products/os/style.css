@@ -2,7 +2,7 @@ html, body {
   --background: #000;
   --background-plus: #212121;
   --text-color: #e7e7e7;
-  --logo: url(/images/logo.svg);
+  --logo: url(/images/logo_dark.png);
 
   --header-background: rgba(0,0,0,0.6);
   --footer-background: #101010;
@@ -16,6 +16,7 @@ html, body {
   height: calc(100vw / 1.75);
   position: relative;
   margin: 0;
+  user-select: none;
 }
 
 .preview > img,
@@ -70,7 +71,7 @@ html, body {
   -webkit-mask-image: linear-gradient(to left, white, transparent);
 }
 
-.preview.with-context > p {
+.preview.with-context > .context {
   position: absolute;
   top: 0;
   width: 50%;
@@ -81,33 +82,39 @@ html, body {
   font-weight: normal;
   line-height: 5.5vw;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   color: #00a0e8;
   margin: 0;
   text-align: center;
   background: linear-gradient(to bottom right, #40a060, #00ddff, #0061e0, #a04080);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: 'Readex Pro', 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
 }
 
-.preview.with-context.left > p {
+.preview.with-context.left > .context {
   left: 50%;
   text-align: left;
 }
 
-.preview.with-context.right > p {
+.preview.with-context.right > .context {
   left: 0;
   text-align: right;
 }
 
-.preview.with-context[data-scroll-animate] > p {
+.preview.with-context[data-scroll-animate] > .context {
   transition: opacity 0.3s ease;
   opacity: 0;
 }
 
-.preview.with-context[data-scroll-animate].visible > p {
+.preview.with-context[data-scroll-animate].visible > .context {
   transition: opacity 0.3s ease 0.5s;
   opacity: 1;
+}
+
+.preview.with-context p {
+  margin: 0;
 }
 
 @media screen and (orientation: landscape) {
@@ -133,7 +140,7 @@ html, body {
     background: #101010;
   }
 
-  .preview.with-context > p {
+  .preview.with-context > .context {
     font-size: 4vw;
     line-height: 4.5vw;
   }

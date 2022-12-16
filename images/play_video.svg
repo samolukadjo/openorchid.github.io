@@ -8,8 +8,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    viewBox="0 0 16 16"
-   width="16"
-   height="16"
+   width="60"
+   height="60"
    version="1.1"
    id="svg18"
    sodipodi:docname="learn_more.svg"
@@ -33,142 +33,6 @@
     <filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Drop Shadow"
-       id="filter856">
-      <feFlood
-         flood-opacity="0.25098"
-         flood-color="rgb(0,0,0)"
-         result="flood"
-         id="feFlood846" />
-      <feComposite
-         in="flood"
-         in2="SourceGraphic"
-         operator="in"
-         result="composite1"
-         id="feComposite848" />
-      <feGaussianBlur
-         in="composite1"
-         stdDeviation="0.5"
-         result="blur"
-         id="feGaussianBlur850" />
-      <feOffset
-         dx="0"
-         dy="0.5"
-         result="offset"
-         id="feOffset852" />
-      <feComposite
-         in="SourceGraphic"
-         in2="offset"
-         operator="over"
-         result="composite2"
-         id="feComposite854" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Drop Shadow"
-       id="filter836">
-      <feFlood
-         flood-opacity="0.25098"
-         flood-color="rgb(255,255,255)"
-         result="flood"
-         id="feFlood826" />
-      <feComposite
-         in="flood"
-         in2="SourceGraphic"
-         operator="out"
-         result="composite1"
-         id="feComposite828" />
-      <feGaussianBlur
-         in="composite1"
-         stdDeviation="0.5"
-         result="blur"
-         id="feGaussianBlur830" />
-      <feOffset
-         dx="0"
-         dy="0.5"
-         result="offset"
-         id="feOffset832" />
-      <feComposite
-         in="offset"
-         in2="SourceGraphic"
-         operator="atop"
-         result="composite2"
-         id="feComposite834" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Drop Shadow"
-       id="filter37"
-       x="-0.075"
-       y="-0.075"
-       width="1.15"
-       height="1.18125">
-      <feFlood
-         flood-opacity="0.25098"
-         flood-color="rgb(0,0,0)"
-         result="flood"
-         id="feFlood27" />
-      <feComposite
-         in="flood"
-         in2="SourceGraphic"
-         operator="in"
-         result="composite1"
-         id="feComposite29" />
-      <feGaussianBlur
-         in="composite1"
-         stdDeviation="0.5"
-         result="blur"
-         id="feGaussianBlur31" />
-      <feOffset
-         dx="0"
-         dy="0.5"
-         result="offset"
-         id="feOffset33" />
-      <feComposite
-         in="SourceGraphic"
-         in2="offset"
-         operator="over"
-         result="composite2"
-         id="feComposite35" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Drop Shadow"
-       id="filter894"
-       x="-0.3"
-       y="-0.3"
-       width="1.6"
-       height="1.725">
-      <feFlood
-         flood-opacity="0.25098"
-         flood-color="rgb(0,0,0)"
-         result="flood"
-         id="feFlood884" />
-      <feComposite
-         in="flood"
-         in2="SourceGraphic"
-         operator="in"
-         result="composite1"
-         id="feComposite886" />
-      <feGaussianBlur
-         in="composite1"
-         stdDeviation="0.5"
-         result="blur"
-         id="feGaussianBlur888" />
-      <feOffset
-         dx="0"
-         dy="0.5"
-         result="offset"
-         id="feOffset890" />
-      <feComposite
-         in="SourceGraphic"
-         in2="offset"
-         operator="over"
-         result="composite2"
-         id="feComposite892" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Drop Shadow"
        id="filter854">
       <feFlood
          flood-opacity="0.25"
@@ -183,12 +47,12 @@
          id="feComposite846" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="0.5"
+         stdDeviation="0.1"
          result="blur"
          id="feGaussianBlur848" />
       <feOffset
          dx="0"
-         dy="1"
+         dy="0.2"
          result="offset"
          id="feOffset850" />
       <feComposite
@@ -239,7 +103,7 @@
      id="g1"
      x1="0%"
      y1="0%"
-     x2="100%"
+     x2="0%"
      y2="100%">
     <stop
        offset="0%"
@@ -247,7 +111,7 @@
        id="stop7" />
     <stop
        offset="100%"
-       style="stop-color:#b0d0ff;stop-opacity:1"
+       style="stop-color:#ffd0b0;stop-opacity:1"
        id="stop9" />
   </linearGradient>
   <style
@@ -264,7 +128,7 @@
      class="ac-color"
      id="path14" />
   <path
-     d="M6 4 12 8 6 12 6 4"
+     d="M6.75 4.5 11.25 7.5Q12 8 11.25 8.5L6.75 11.5Q6 12 6 11.25L6 4.75Q6 4 6.75 4.5"
      class="ac-color1"
      id="path16"
      style="filter:url(#filter854)" />
