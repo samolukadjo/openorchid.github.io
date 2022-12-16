@@ -14,27 +14,7 @@
   };
 
   var data = {};
-  var header = document.getElementById('header');
-  var searchbox = document.getElementById('searchbox');
-  var searchboxInput = document.getElementById('searchbox-input');
   var newsContainer = document.getElementById('widgets-news');
-
-  searchbox.addEventListener('submit', function(evt) {
-    evt.preventDefault();
-
-    var newsList = newsContainer.querySelectorAll('li');
-    newsList.forEach(function(item) {
-      if (searchboxInput.value !==  '') {
-        if (searchboxInput.value.test(item.innerText)) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      } else {
-        item.style.display = '';
-      }
-    });
-  });
 
   var date = new Date();
   var lastMonth = date.getFullYear() + '-' + date.getMonth() + '-' + date.getUTCDate();

@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/lib/gaia-icons/gaia-icons.css">
   <link rel="stylesheet" href="css/widgets.css">
+  <link rel="stylesheet" href="css/websites.css">
   <script src="/lib/moment-with-locales.min.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/websites.js"></script>
   <script defer src="js/news.js"></script>
 
   <!-- Localization -->
@@ -17,11 +20,14 @@
 </head>
 <body>
   <div class="background"></div>
-  <img src="/images/logo.svg" alt="" class="brandlogo">
-  <form action="" id="searchbox">
-    <input type="text" data-l10n-id="type-here-to-search" id="searchbox-input">
-    <button type="reset" data-icon="close"></button>
-  </form>
+  <header id="header">
+    <img src="/images/logo.png" alt="" class="brandlogo">
+    <form action="" id="searchbox">
+      <input type="text" data-l10n-id="type-here-to-search" id="searchbox-input">
+      <button type="reset" data-icon="close"></button>
+    </form>
+    <div id="websites"></div>
+  </header>
   <div id="widgets">
     <div id="widgets-news"></div>
   </div>
