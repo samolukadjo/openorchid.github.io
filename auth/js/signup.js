@@ -11,7 +11,7 @@ var signUpSubmitButton = document.getElementById('signup-submit-button');
 var loginLink = document.getElementById('login-link');
 
 signUpCancelButton.addEventListener('click', () => {
-  location.href = '/';
+  location.href = redirectUrl || '/';
 });
 
 signUp.addEventListener('submit', (evt) => {
@@ -21,7 +21,7 @@ signUp.addEventListener('submit', (evt) => {
   if (signUpPassword.value == signUpConfirmPassword.value) {
     try {
       OrchidServices.auth.signUp(signUpUsername.value, signUpEmail.value, signUpPassword.value, signUpBirthdate.value);
-      location.href = '/';
+      location.href = redirectUrl || '/';
     } catch(e) {
       triggerError('error-somethingWentWrong');
     }

@@ -8,7 +8,7 @@ var loginSubmitButton = document.getElementById('login-submit-button');
 var signUpLink = document.getElementById('signup-link');
 
 loginCancelButton.addEventListener('click', () => {
-  location.href = '/';
+  location.href = redirectUrl || '/';
 });
 
 login.addEventListener('submit', (evt) => {
@@ -18,7 +18,7 @@ login.addEventListener('submit', (evt) => {
   try {
     OrchidServices.auth.login(loginEmail.value, loginPassword.value);
     setTimeout(() => {
-      location.href = '/';
+      location.href = redirectUrl || '/';
     }, 500);
   } catch(e) {
     triggerError('error-somethingWentWrong');
