@@ -30,8 +30,8 @@
 }
 
 .learn-more > p {
-  font-size: 1.6rem;
-  font-family: 'Readex Pro', 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
+  font-size: 2rem;
+  font-weight: bold;
   color: var(--text-color);
   -moz-padding-end: 1rem;
   padding-inline-end: 1rem;
@@ -46,7 +46,7 @@
 }
 
 .learn-more:hover > p {
-  box-shadow: 0 0.2rem 0 var(--text-color);
+  text-decoration: underline;
 }
 
 .learn-more.visible > p,
@@ -71,7 +71,6 @@
   }
 
   .learn-more > p {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.4rem;
   }
 }

@@ -106,7 +106,7 @@
       fill: url(#g2);
     }
     .ac-color3 {
-      fill: #e7e7e7;
+      fill: #858585;
       font-family: 'Readex Pro';
     }
   </style>

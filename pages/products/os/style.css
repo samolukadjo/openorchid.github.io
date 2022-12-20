@@ -79,28 +79,30 @@ html, body {
   padding: 1rem;
   box-sizing: border-box;
   font-size: 5vw;
-  font-weight: normal;
+  font-weight: bold;
   line-height: 5.5vw;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   flex-direction: column;
   color: #00a0e8;
   margin: 0;
-  text-align: center;
+  text-align: end;
   background: linear-gradient(to bottom right, #40a060, #00ddff, #0061e0, #a04080);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: 'Readex Pro', 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
 }
 
 .preview.with-context.left > .context {
   left: 50%;
   text-align: left;
+  align-items: flex-end;
 }
 
 .preview.with-context.right > .context {
   left: 0;
   text-align: right;
+  align-items: flex-start;
 }
 
 .preview.with-context[data-scroll-animate] > .context {

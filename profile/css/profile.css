@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'Jali Arabic';
-  src: url(../fonts/Jali_Arabic_Regular.ttf);
+  src: url(/fonts/Jali_Arabic_Regular.ttf);
 }
 
 @font-face {
   font-family: 'Jali Arabic';
   font-weight: bold;
-  src: url(../fonts/Jali_Arabic_Bold.ttf);
+  src: url(/fonts/Jali_Arabic_Bold.ttf);
 }
 
 :root {
@@ -73,9 +73,10 @@
   /** Button
    ---------------------------------------------------------*/
 
-  --button-background: #fff;
-  --button-background-plus: #d8dadd;
-  --button-background-minus: #c8cacd;
+  --button-background: linear-gradient(to bottom, #fff, #f4f4f4);
+  --button-background-plus: linear-gradient(to bottom, #d8dadd, #ccced2);
+  --button-background-minus: linear-gradient(to bottom, #bcbec2, #c8cacd);
+  --button-background-list: linear-gradient(to bottom, #e7e9ec, #dbddf0);
 
   /** Links
    ---------------------------------------------------------*/
@@ -145,8 +146,6 @@
     inset -0.3rem -0.3rem 0.1rem #d0d2d5;
 
   --backdrop-color: rgba(231, 233, 236, 0.5);
-
-  color-scheme: light;
 }
 
 [data-theme="dark"] {
@@ -154,7 +153,7 @@
   /** Accent Color
    ---------------------------------------------------------*/
 
-  --accent-color: #00ddff;
+  --accent-color: #80c2ff;
   --accent-text-color: rgba(0,0,0,0.75);
   --focus-outline: 0.2rem solid var(--accent-color);
 
@@ -213,9 +212,10 @@
   /** Button
    ---------------------------------------------------------*/
 
-  --button-background: #303234;
-  --button-background-plus: #383a3c;
-  --button-background-minus: #404244;
+  --button-background: linear-gradient(to bottom, #303234, #2c2e30);
+  --button-background-plus: linear-gradient(to bottom, #383a3c, #343638);
+  --button-background-minus: linear-gradient(to bottom, #3c3e40, #404244);
+  --button-background-list: linear-gradient(to bottom, #181a1c, #101214);
 
   /** Links
    ---------------------------------------------------------*/
@@ -285,8 +285,6 @@
     inset -0.3rem -0.3rem 0.1rem #212325;
 
   --backdrop-color: rgba(16, 18, 20, 0.5);
-
-  color-scheme: dark;
 }
 
 *,
@@ -301,7 +299,29 @@ html, body {
   font-family: 'Jali Arabic', system-ui, sans-serif;
   background: var(--background);
   overflow-x: hidden;
+  overflow-y: auto !important;
   display: block !important;
+  color-scheme: light dark;
+}
+
+.dialog-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transform: scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dialog-container.visible {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
 }
 
 #banner {
@@ -313,6 +333,15 @@ html, body {
   height: calc(100vw / 1.75);
   max-height: 60vh;
   overflow: hidden;
+}
+
+#banner > img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .container {
@@ -411,6 +440,30 @@ html, body {
   height: 1.6rem;
   margin-inline-end: 0.4rem;
   position: relative;
+}
+
+[data-editmode="true"] #banner:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5) url(images/camera.svg) no-repeat center / 3rem;
+  pointer-events: none;
+  z-index: 5;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+@supports (backdrop-filter: saturate(180%) blur(20px)) {
+  [data-editmode="true"] #banner:after {
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+
+[data-editmode="true"] #banner:hover:after {
+  opacity: 1;
 }
 
 [data-editmode="true"] #avatar:hover > img.shadow {

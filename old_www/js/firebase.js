@@ -283,7 +283,7 @@ export function openLoginPrompt(type = 'login', callback) {
     }
 
     .dark-mode-enabled .wosui-login > section a {
-      color: #00ddff;
+      color: #80c2ff;
     }
 
     .wosui-login menu {

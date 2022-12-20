@@ -16,10 +16,10 @@ login.addEventListener('submit', (evt) => {
 
   console.log('Logging In...');
   try {
-    OrchidServices.auth.login(loginEmail.value, loginPassword.value);
-    setTimeout(() => {
+    OrchidServices.onlogin = () => {
       location.href = redirectUrl || '/';
-    }, 500);
+    };
+    OrchidServices.auth.login(loginEmail.value, loginPassword.value);
   } catch(e) {
     triggerError('error-somethingWentWrong');
   }

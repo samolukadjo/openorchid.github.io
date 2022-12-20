@@ -1,9 +1,9 @@
 (function (exports) {
   "use strict";
 
-  var darkModeEnabled = localStorage.getItem("ws.webstore.darkMode") == "true" ||
-                        localStorage.getItem("ws.articles.darkMode") == "true" ||
-                        localStorage.getItem("ws.darkMode") == "true";
+  var darkModeEnabled = window.top.localStorage.getItem("ws.webstore.darkMode") == "true" ||
+                        window.top.localStorage.getItem("ws.articles.darkMode") == "true" ||
+                        window.top.localStorage.getItem("ws.chat.darkMode") == "true";
   var root = document.querySelector(":root");
 
   root.dataset.theme = darkModeEnabled ? "dark" : "light";

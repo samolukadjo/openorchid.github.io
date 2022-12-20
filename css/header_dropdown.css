@@ -1,44 +1,39 @@
-.ws--header ul li {
+header ul li {
   position: relative;
 }
 
-.ws--header a + .dropdown {
+header a + .dropdown {
   position: absolute;
   top: calc(100% - 0.5rem);
-  display: none;
-  background: var(--background);
+  background: var(--input-background);
   border-radius: 1.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.5);
   overflow: hidden;
+  display: flex;
+
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transform: translateY(-1rem);
+  opacity: 0;
+  visibility: hidden;
 }
-html[dir="ltr"] .ws--header a + .dropdown {
+html[dir="ltr"] header a + .dropdown {
   left: 0;
 }
-html[dir="rtl"] .ws--header a + .dropdown {
+html[dir="rtl"] header a + .dropdown {
   right: 0;
 }
 
-.ws--header ul li:hover > a + .dropdown {
-  display: flex;
-  animation: links-dropdown-show 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
-}
-
-@keyframes links-dropdown-show {
-  from {
-    transform: translateY(-32px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+header ul li:hover > a + .dropdown {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 .dropdown .dropdown-col {
   min-width: 256px;
 }
 
-.dropdown .dropdown-col:last-child {
+.dropdown .dropdown-col:nth-child(2n) {
   min-width: 320px;
   background: var(--background-plus);
 }
@@ -72,21 +67,7 @@ html[dir="rtl"] .ws--header a + .dropdown {
 .dropdown .dropdown-col ul li > a {
   width: 100%;
   margin: 0;
-  border-radius: 0;
   padding: 0 1.5rem;
   box-sizing: border-box;
   border-radius: 0.8rem;
-  animation: dropdown-link 0.3s cubic-bezier(0, 0, 0, 1) forwards;
 }
-
-@keyframes dropdown-link {
-  from {
-    transform: translateY(32px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-

@@ -1,6 +1,18 @@
 @font-face {
-  font-family: 'Jali';
+  font-family: 'Jali Arabic';
   src: url(/fonts/Jali_Arabic_Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Jali Arabic';
+  font-weight: bold;
+  src: url(/fonts/Jali_Arabic_Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Jali Arabic';
+  font-weight: 1000;
+  src: url(/fonts/Jali_Arabic_Black.ttf);
 }
 
 :root {
@@ -152,7 +164,7 @@
   /** Accent Color
    ---------------------------------------------------------*/
 
-  --accent-color: #00ddff;
+  --accent-color: #80c2ff;
   --accent-text-color: rgba(0,0,0,0.75);
   --focus-outline: 0.2rem solid var(--accent-color);
 
@@ -303,9 +315,13 @@ a:focus-visible, button:focus-visible {
   color: var(--accent-text-color);
 }
 
+*,
+::placeholder {
+  --font-families: 'Jali Arabic', system-ui, sans-serif;
+}
+
 html {
   overflow-x: hidden;
-  --font-families: 'Jali', system-ui, sans-serif;
 }
 
 html, body {
@@ -373,8 +389,8 @@ select {
   line-height: 4rem;
   border-radius: 1rem;
   border: none;
-  background: var(--background-plus);
-  border: solid 0.1rem #858585;
+  background: var(--input-background);
+  border: solid 0.1rem var(--input-clear-background);
   color: var(--text-color);
   padding: 0 1rem;
   box-sizing: border-box;

@@ -23,7 +23,7 @@
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
-    --accent-color: #00ddff;
+    --accent-color: #80c2ff;
     --accent-text-color: rgba(0,0,0,0.75);
     --background: #101214;
     --background-plus: #212325;

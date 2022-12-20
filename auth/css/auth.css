@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'IBM Plex Sans Arabic';
-  src: url(/fonts/IBMPlexSansArabic-Regular.ttf);
+  font-family: 'Jali Arabic';
+  src: url(/fonts/Jali_Arabic_Regular.ttf);
 }
 
 @font-face {
-  font-family: 'IBM Plex Sans Arabic';
+  font-family: 'Jali Arabic';
   font-weight: bold;
-  src: url(/fonts/IBMPlexSansArabic-Bold.ttf);
+  src: url(/fonts/Jali_Arabic_Bold.ttf);
 }
 
 :root {
@@ -20,15 +20,22 @@
   --translucent-plus: rgba(0,0,0,0.1);
 }
 
-[data-theme="dark"] {
-  --accent-color: #00ddff;
-  --accent-text-color: rgba(0,0,0,0.75);
-  --background: #101214;
-  --background-plus: #212325;
-  --text-color: #e7e7e7;
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --accent-color: #80c2ff;
+    --accent-text-color: rgba(0,0,0,0.75);
+    --background: #101214;
+    --background-plus: #212325;
+    --text-color: #e7e7e7;
 
-  --translucent: rgba(255,255,255,0.05);
-  --translucent-plus: rgba(255,255,255,0.1);
+    --translucent: rgba(255,255,255,0.05);
+    --translucent-plus: rgba(255,255,255,0.1);
+  }
+}
+
+*,
+::placeholder {
+  font-family: 'Jali Arabic', system-ui, sans-serif;
 }
 
 html, body {
@@ -39,7 +46,6 @@ html, body {
   position: absolute;
   width: 100%;
   height: 100%;
-  font-family: 'IBM Plex Sans Arabic', system-ui;
 }
 
 .auth-screen {
@@ -70,6 +76,7 @@ html, body {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  color: var(--text-color);
 }
 html[dir="ltr"] .auth-screen > .container {
   right: 0;

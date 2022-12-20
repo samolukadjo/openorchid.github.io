@@ -1,3 +1,4 @@
 articles/
 webstore/
 node_modules/
+*.log

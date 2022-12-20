@@ -128,7 +128,7 @@ html[dir="rtl"] #devices > .device img {
 }
 
 .dark-mode-enabled #devices > .device.current {
-  border-color: #00ddff;
+  border-color: #80c2ff;
 }
 
 .dark-mode-enabled #devices > .device:hover {

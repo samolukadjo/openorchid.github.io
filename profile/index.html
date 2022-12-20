@@ -9,10 +9,13 @@
   <link rel="stylesheet" href="css/profile.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/tooltips.css">
+  <link rel="stylesheet" href="css/confirm.css">
+  <link rel="stylesheet" href="css/input_areas.css">
   <script defer type="module" src="services/script.js"></script>
   <script defer src="js/image_compressor.js"></script>
   <script defer src="js/profile.js"></script>
   <script defer src="js/dark_mode.js"></script>
+  <script defer src="js/input_dialog.js"></script>
 
   <!-- Localization -->
   <script src="js/l10n.js"></script>
@@ -21,7 +24,9 @@
   <link rel="localization" href="locales/main.{locale}.properties">
 </head>
 <body>
-  <div id="banner"></div>
+  <div id="banner">
+    <img src="" alt="" id="banner-image">
+  </div>
   <main class="container">
     <header id="header">
       <div id="avatar">
@@ -38,31 +43,55 @@
       <div class="content-col gaia-list">
         <header data-l10n-id="personal"></header>
         <ul>
-          <li class="hbox active">
+          <li class="hbox">
             <div class="vbox fit">
               <p data-l10n-id="email"></p>
               <p id="email"></p>
             </div>
-            <span data-icon="edit"></span>
           </li>
           <li class="hbox active">
             <div class="vbox fit">
               <p data-l10n-id="phoneNumber"></p>
               <p id="phone-number"></p>
             </div>
-            <span data-icon="edit"></span>
           </li>
         </ul>
       </div>
       <div class="content-col gaia-list">
         <header data-l10n-id="description"></header>
         <ul>
-          <li>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore magnam, numquam error temporibus labore quos pariatur possimus quis aliquam veniam explicabo eum illo esse similique itaque provident at velit assumenda!</p>
+          <li class="active">
+            <p id="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore magnam, numquam error temporibus labore quos pariatur possimus quis aliquam veniam explicabo eum illo esse similique itaque provident at velit assumenda!</p>
           </li>
         </ul>
       </div>
     </div>
   </main>
+
+  <div class="dialog-container" id="phone-number-dialog">
+    <form role="dialog" data-type="confirm">
+      <section>
+        <h1 data-l10n-id="phoneNumber-change"></h1>
+        <input type="text" id="phone-number-dialog-input">
+      </section>
+      <menu>
+        <button id="phone-number-dialog-close" data-l10n-id="cancel"></button>
+        <button id="phone-number-dialog-confirm" class="recommend" data-l10n-id="continue"></button>
+      </menu>
+    </form>
+  </div>
+
+  <div class="dialog-container" id="description-dialog">
+    <form role="dialog" data-type="confirm">
+      <section>
+        <h1 data-l10n-id="description-change"></h1>
+        <textarea id="description-dialog-input"></textarea>
+      </section>
+      <menu>
+        <button id="description-dialog-close" data-l10n-id="cancel"></button>
+        <button id="description-dialog-confirm" class="recommend" data-l10n-id="continue"></button>
+      </menu>
+    </form>
+  </div>
 </body>
 </html>

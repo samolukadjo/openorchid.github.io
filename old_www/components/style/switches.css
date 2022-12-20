@@ -279,7 +279,7 @@ html[dir="rtl"] .skin-comms label.pack-switch:hover input:checked ~ span:after {
 
 /* switch: 'ON' state */
 .dark-mode-enabled label.pack-switch input:checked ~ span:after {
-  background-color: #00ddff;
+  background-color: #80c2ff;
 }
 html[dir="ltr"] .dark-mode-enabled label.pack-switch input:checked ~ span:after {
   background-image: url(switches/images/switch/dark/background.png);

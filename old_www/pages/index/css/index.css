@@ -145,7 +145,7 @@ html[dir="rtl"] .card > span {
   padding-left: 4rem;
 }
 .dark-mode-enabled .card > span {
-  color: #00ddff;
+  color: #80c2ff;
 }
 
 .card:hover > span {

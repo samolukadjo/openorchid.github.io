@@ -71,10 +71,9 @@ html[dir="rtl"] .ws--poster > .keyart-container {
 
 .ws--poster > div h1 {
   font-size: 2.4rem;
-  font-weight: bold;
+  font-weight: 1000;
   margin: 0;
   max-width: 400px;
-  font-family: 'Readex Pro', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
 }
 
 .ws--poster > div p {

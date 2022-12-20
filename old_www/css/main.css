@@ -8,7 +8,7 @@ html, body {
 }
 .dark-mode-enabled {
   background-color: #303030;
-  accent-color: #00ddff;
+  accent-color: #80c2ff;
 }
 
 :is(.header, .footer) a {
@@ -28,7 +28,7 @@ html, body {
   transition: all 0.3s ease;
 }
 .dark-mode-enabled :is(.header, .footer) a:after {
-  background-color: #00ddff;
+  background-color: #80c2ff;
 }
 
 :is(.header, .footer) a:hover:after {

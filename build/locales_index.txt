@@ -4,7 +4,6 @@ widgets/locales/widgets.en-US.properties
 start/locales/widgets.en-US.properties
 profile/locales/main.en-US.properties
 weather/locales/main.en-US.properties
-chat/locales/chat.en-US.properties
 old_www/devices/locales/devices.en-US.properties
 old_www/locales/website.en-US.properties
 old_www/pages/index/locales/main.en-US.properties

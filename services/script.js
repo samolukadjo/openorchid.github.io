@@ -8,7 +8,9 @@ import {
   getDocs,
   onSnapshot,
   setDoc,
-  collection
+  collection,
+  deleteDoc,
+  deleteField
 } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 import {
   getStorage,
@@ -302,6 +304,13 @@ var OrchidServices = {
     setDoc(docRef, value, { merge: true });
   },
 
+  remove: async function os_remove(path) {
+    const docRef = doc(db, path);
+    await deleteDoc(docRef);
+  },
+
+  removeField: deleteField,
+
   storage: {
     /**
      * Creates a storage file using a blob and a path.
@@ -369,6 +378,7 @@ var OrchidServices = {
         if (user.username == username || user.email == username || user.phone_number == username) {
           if (user.password == MD5(password)) {
             OrchidServices.auth.loginWithToken(user.token);
+            OrchidServices.onlogin();
           } else {
             if (this.DEBUG) {
               console.error('[' + user.token + '] Password does not match.');
@@ -460,14 +470,15 @@ var OrchidServices = {
       });
     },
 
-    publishArticle: async function os_publishArticle(title, markdown) {
+    publishArticle: async function os_publishArticle(data) {
       var id = OrchidServices._generateUUID();
       OrchidServices.set('articles/' + id, {
         token: id,
         author_id: OrchidServices.userId(),
         published_at: Date.now(),
-        title: title,
-        content: markdown,
+        content: data.content,
+        tags: data.tags,
+        images: data.images,
         likes: [],
         dislikes: [],
         comments: []
@@ -513,7 +524,9 @@ var OrchidServices = {
         chat_groups: { [token]: "" },
       });
     }
-  }
+  },
+
+  onlogin: () => {}
 };
 
 OrchidServices.init();
