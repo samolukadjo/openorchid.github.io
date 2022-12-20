@@ -126,6 +126,8 @@ function initSlideshow() {
       }
 
       element.classList.add("current");
+      element.classList.remove("previous");
+      element.classList.remove("next");
       dot.classList.add("active");
     });
     if (index == 0) {
