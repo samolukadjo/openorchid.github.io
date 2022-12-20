@@ -1,0 +1,123 @@
+.products {
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.products h1 {
+  font-size: 4rem;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 1rem;
+  color: var(--text-color);
+}
+
+.products ul {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+  grid-template-rows: repeat(2, minmax(32rem, 1fr));
+  gap: 1rem;
+}
+
+.products ul li {
+  background: var(--background-plus);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+
+.products ul li:first-child {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  aspect-ratio: unset;
+}
+
+.products ul li a {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--text-color);
+  display: block;
+}
+
+.products ul li .product-text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: var(--background-plus);
+}
+
+.products ul li img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.products ul li:hover img {
+  transform: scale(1.1);
+}
+
+.products ul li h3 {
+  margin: 0 0 0.2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.products ul li p {
+  margin: 0 0 0.2rem;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text-color);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.products ul li span {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--accent-color);
+  display: inline-block;
+  text-align: start;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.products ul li span:after {
+  content: '';
+  font-size: 1.6rem;
+  font-family: 'gaia-icons';
+  -moz-margin-start: 0.5rem;
+  margin-inline-start: 0.5rem;
+  transition: margin 0.2s ease;
+}
+html[dir="ltr"] .products ul li span:after {
+  content: 'forward';
+}
+html[dir="rtl"] .products ul li span:after {
+  content: 'back';
+}
+
+.products ul li:hover span:after {
+  -moz-margin-start: 1rem;
+  margin-inline-start: 1rem;
+}

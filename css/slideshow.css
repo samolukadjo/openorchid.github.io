@@ -18,6 +18,7 @@
   width: 100%;
   height: 4rem;
   display: flex;
+  z-index: 5;
 }
 
 .slideshow-container .controls button {
@@ -60,6 +61,7 @@
   height: 1.5rem;
   display: flex;
   justify-content: center;
+  z-index: 5;
 }
 
 .slideshow-container .dots .dot {
@@ -85,7 +87,7 @@
   width: 5rem;
   position: relative;
   overflow: hidden;
-  background: var(--color-primary, var(--text-color));
+  background: var(--color-primary, var(--text-color)) linear-gradient(0deg, var(--translucent-plus), var(--translucent-plus));
 }
 
 .slideshow-container .dots .dot.active::before {
@@ -102,19 +104,29 @@
   width: 100%;
   height: 100%;
   background: #000;
-  position: relative;
   overflow: hidden;
   position: absolute;
 
-  transition: all 0.3s ease 0.3s;
-  opacity: 0;
-  visibility: hidden;
+  transition: all 0.3s cubic-bezier(1, 0, 0, 1);
+}
+
+html[dir="ltr"] .slideshow.previous,
+html[dir="rtl"] .slideshow.next {
+  transform: translateX(calc(-100% - 1rem));
+}
+
+html[dir="ltr"] .slideshow.next,
+html[dir="rtl"] .slideshow.previous {
+  transform: translateX(calc(100% + 1rem));
+}
+
+.slideshow.previous {
+  z-index: 1;
 }
 
 .slideshow.current {
-  transition: all 0.3s ease;
   opacity: 1;
-  visibility: visible;
+  z-index: 2;
 }
 
 .slideshow > img {
@@ -165,13 +177,22 @@ html[dir="rtl"] .slideshow > div {
 .slideshow > div > * {
   transition: all 0.3s ease;
   opacity: 0;
-  transform: translateY(32px);
   visibility: hidden;
+}
+
+html[dir="ltr"] .slideshow.previous > div > *,
+html[dir="rtl"] .slideshow.next > div > * {
+  transform: translateX(-32px);
+}
+
+html[dir="ltr"] .slideshow.next > div > *,
+html[dir="rtl"] .slideshow.previous > div > * {
+  transform: translateX(32px);
 }
 
 .slideshow.current > div > * {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0) !important;
   visibility: visible;
 }
 
@@ -194,7 +215,7 @@ html[dir="rtl"] .slideshow > div {
 }
 
 .slideshow > div h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 1000;
   margin: 0;
   max-width: 400px;
@@ -279,13 +300,12 @@ html[dir="rtl"] .slideshow > div a:hover:after {
   }
 
   .slideshow-container .dots .dot {
-    width: 10rem;
-    background: var(--background-plus);
+    width: calc(5vw + 5rem);
     margin-inline-end: 1rem;
   }
 
   .slideshow-container .dots .dot.active {
-    width: 10rem;
+    width: calc(5vw + 5rem);
   }
 
   .slideshow {

@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="css/videoplayer.css">
   <link rel="stylesheet" href="css/tooltips.css">
   <link rel="stylesheet" href="css/slideshow.css">
+  <link rel="stylesheet" href="css/products.css">
   <link rel="stylesheet" href="css/animated/learn_more.css">
   <script defer src="/services/script.js" type="module"></script>
   <!-- Elastic Scrolling -->
@@ -155,11 +156,11 @@
     </div>
   </header>
 
-  <div class="ws--header-dropdown"></div>
+  <div class="header-dropdown"></div>
 
-  <main class="ws--content" id="content"></main>
+  <main class="content" id="content"></main>
 
-  <div class="ws--quick-search" id="quick-search">
+  <div class="quick-search" id="quick-search">
     <div class="spacer">
       <h1 data-icon="search" data-l10n-id="quick-search"></h1>
       <form action="" id="quick-search-form">
@@ -169,7 +170,7 @@
     </div>
   </div>
 
-  <ul class="ws--notices">
+  <ul class="notices">
     <li data-l10n-id="notice-doNotSteal"></li>
     <li data-l10n-id="notice-doNotMessWithTheCode"></li>
     <li data-l10n-id="notice-doNotPirate"></li>
@@ -179,7 +180,7 @@
     <li data-l10n-id="notice-notTwitter"></li>
   </ul>
 
-  <footer class="ws--footer">
+  <footer class="footer">
     <div class="container">
       <div class="row center">
         <div class="footer-col">
@@ -280,19 +281,6 @@
     </div>
   </footer>
 
-  <div class="ws--notifications" id="notifications">
-    <div class="oui--header">
-      <h1 data-l10n-id="notifications"></h1>
-      <a href="#" id="notifications-clear-all-button" data-icon="clear-all"></a>
-      <a href="#" id="notifications-close-button" data-icon="close"></a>
-    </div>
-    <ul id="notifications-list"></ul>
-    <div id="notifications-empty">
-      <span data-icon="notifications"></span>
-      <p data-l10n-id="notifications-empty"></p>
-    </div>
-  </div>
-
   <div id="video-player">
     <video controls id="video-player-content">
       <source src="" type="video/mp4" id="video-player-source">
@@ -300,8 +288,8 @@
     <button id="video-player-close" data-icon="close"></button>
   </div>
 
-  <div class="ws--offers-dialog">
-    <div class="ws--offers-banner" id="service-worker-dialog">
+  <div class="offers-dialog">
+    <div class="offers-banner" id="service-worker-dialog">
       <div>
         <h1 data-l10n-id="sw-title"></h1>
         <p data-l10n-id="sw-detail"></p>
@@ -311,7 +299,7 @@
           <li data-l10n-id="sw-feature3"></li>
         </ul>
         <menu>
-          <a href="/articles/?article=c10fb552-276c-44c9-adfe-2d69eeffe6cd" class="ws--button"
+          <a href="/articles/?article=c10fb552-276c-44c9-adfe-2d69eeffe6cd" class="button"
             data-l10n-id="privacyPolicy"></a>
         </menu>
       </div>

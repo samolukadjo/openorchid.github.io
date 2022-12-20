@@ -32,6 +32,7 @@
 
   window.addEventListener('load', function() {
     if (OrchidServices.isUserLoggedIn()) {
+      profileButton.href = 'https://orchidfoss.github.io/profile/?user_id=' + OrchidServices.userId();
       OrchidServices.getWithUpdate('profile/' + OrchidServices.userId(), function(data) {
         profileTooltip.textContent = data.username;
         profileAvatar.alt = data.username;

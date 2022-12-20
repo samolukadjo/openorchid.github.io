@@ -23,7 +23,7 @@ header.scrolling.visible {
 }
 
 header.scrolling .header-container {
-  background: linear-gradient(to bottom, var(--backdrop-color), transparent);
+  background: var(--backdrop-color);
 }
 
 header.light {
@@ -96,7 +96,7 @@ header.dark {
   opacity: 0;
 }
 
-.ws--header .tab-skip:focus {
+.header .tab-skip:focus {
   margin: 0.5rem 0;
   opacity: 1;
   pointer-events: all;
@@ -235,14 +235,9 @@ html[dir="rtl"] .header-container form {
   font-size: 2rem;
 }
 
-@supports (backdrop-filter: blur(20px)) {
-  .header-container {
-    backdrop-filter: blur(20px);
-  }
-
-  .header-container:not(:hover) {
-    -webkit-mask-image:
-      linear-gradient(to bottom, white calc(100% - 0.5rem), transparent);
+@supports (backdrop-filter: saturate(180%) blur(20px)) {
+  header.scrolling .header-container {
+    backdrop-filter: saturate(180%) blur(20px);
   }
 
   header.light form {
@@ -289,13 +284,6 @@ html[dir="rtl"] .header-container form {
   .header-container {
     padding: 1rem 5vw;
     height: 7rem;
-  }
-
-  @supports (backdrop-filter: blur(20px)) {
-    .header-container:not(:hover) {
-      -webkit-mask-image:
-        linear-gradient(to bottom, white calc(100% - 1.5rem), transparent);
-    }
   }
 
   .header-container form {

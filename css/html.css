@@ -336,7 +336,7 @@ html, body {
 }
 
 button,
-.ws--button {
+.button {
   border: solid 0.1rem var(--accent-color);
   color: var(--accent-color);
   background: transparent;
@@ -352,30 +352,30 @@ button,
 }
 
 button:hover,
-.ws--button:hover {
+.button:hover {
   background: var(--accent-color);
   color: var(--accent-text-color);
 }
 
 button:active
-.ws--button:active {
+.button:active {
   background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.125), rgba(255,255,255,0.125));
 }
 
 button.recommend,
-.ws--button.recommend {
+.button.recommend {
   background: var(--accent-color);
   color: var(--accent-text-color);
   border: none;
 }
 
 button.recommend:hover,
-.ws--button.recommend:hover {
+.button.recommend:hover {
   background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.125), rgba(255,255,255,0.125));
 }
 
 button.recommend:active,
-.ws--button.recommend:active {
+.button.recommend:active {
   background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.25), rgba(255,255,255,0.25));
 }
 

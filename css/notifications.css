@@ -1,4 +1,4 @@
-.ws--notifications {
+.notifications {
   position: fixed;
   top: 0;
   width: 320px;
@@ -16,29 +16,29 @@
   opacity: 0;
   visibility: hidden;
 }
-html[dir="ltr"] .ws--notifications {
+html[dir="ltr"] .notifications {
   right: 0;
   transform: translateX(100%);
 }
-html[dir="rtl"] .ws--notifications {
+html[dir="rtl"] .notifications {
   left: 0;
   transform: translateX(-100%);
 }
 
-.ws--notifications.visible {
+.notifications.visible {
   opacity: 1;
   transform: translateX(0) !important;
   visibility: visible;
 }
 
-.ws--notifications > * {
+.notifications > * {
   transition: all 0.75s cubic-bezier(0.2, 0.9, 0.1, 1);
   opacity: 0;
   transform: scale(0.9);
   visibility: hidden;
 }
 
-.ws--notifications > #notifications-empty {
+.notifications > #notifications-empty {
   transform: scale(0.9) translateY(128px);
 }
 

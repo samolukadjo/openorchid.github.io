@@ -1,4 +1,4 @@
-.ws--offers-banner {
+.offers-banner {
   --banner-background: #8040a0;
   --banner-text-color: #ddb0ff;
   width: 100%;
@@ -14,37 +14,37 @@
   position: relative;
 }
 
-[data-theme="dark"] .ws--offers-banner {
+[data-theme="dark"] .offers-banner {
   --accent-text-color: rgba(0,0,0,0.75);
 }
 
 
-.ws--offers-banner.visible {
+.offers-banner.visible {
   display: flex;
 }
 
-.ws--offers-banner > div {
+.offers-banner > div {
   min-width: 260px;
   position: relative;
   padding: 0 0 5rem;
   color: var(--banner-text-color);
 }
 
-.ws--offers-banner > div:first-child {
+.offers-banner > div:first-child {
   flex: 1;
 }
 
-.ws--offers-banner > div > * {
+.offers-banner > div > * {
   opacity: 0;
 }
-html[dir="ltr"] .ws--offers-banner > div > * {
+html[dir="ltr"] .offers-banner > div > * {
   animation: offers-appear 0.3s ease forwards 0.5s;
 }
-html[dir="rtl"] .ws--offers-banner > div > * {
+html[dir="rtl"] .offers-banner > div > * {
   animation: offers-appear-rtl 0.3s ease forwards 0.5s;
 }
 
-.ws--offers-banner > div:first-child > * {
+.offers-banner > div:first-child > * {
   animation-delay: 0.55s !important;
 }
 
@@ -70,21 +70,21 @@ html[dir="rtl"] .ws--offers-banner > div > * {
   }
 }
 
-.ws--offers-banner h1 {
+.offers-banner h1 {
   font-size: 2.4rem;
   font-weight: bold;
   color: var(--banner-text-color);
   margin: 0;
 }
 
-.ws--offers-banner p {
+.offers-banner p {
   font-size: 1.6rem;
   font-weight: normal;
   color: var(--banner-text-color);
   margin: 0;
 }
 
-.ws--offers-banner menu {
+.offers-banner menu {
   width: 100%;
   height: 5rem;
   margin: 0;
@@ -96,19 +96,19 @@ html[dir="rtl"] .ws--offers-banner > div > * {
   display: flex;
 }
 
-.ws--offers-banner menu button {
+.offers-banner menu button {
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
 }
 
 @media screen and (min-width: 1280px) {
-  .ws--offers-banner {
+  .offers-banner {
     padding: 5rem 3rem;
   }
 }
 
 /* Dialog version */
-.ws--offers-dialog {
+.offers-dialog {
   position: fixed;
   left: 0;
   top: 0;
@@ -121,11 +121,11 @@ html[dir="rtl"] .ws--offers-banner > div > * {
   z-index: 100;
 }
 
-.ws--offers-dialog.visible {
+.offers-dialog.visible {
   display: flex;
 }
 
-.ws--offers-dialog > .ws--offers-banner {
+.offers-dialog > .offers-banner {
   display: flex;
   width: 768px;
   max-width: calc(100% - 2rem);
@@ -147,11 +147,11 @@ html[dir="rtl"] .ws--offers-banner > div > * {
 }
 
 @media screen and (orientation: landscape) {
-  .ws--offers-banner div:last-child menu {
+  .offers-banner div:last-child menu {
     justify-content: end;
   }
 
-  .ws--offers-banner div:last-child menu button {
+  .offers-banner div:last-child menu button {
     -moz-margin-end: 0;
     margin-inline-end: 0;
     -moz-margin-start: 1rem;

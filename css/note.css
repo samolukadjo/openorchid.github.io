@@ -1,4 +1,4 @@
-.ws--note {
+.note {
   background: #ffc000;
   color: rgba(0,0,0,0.75);
   font-size: 1.6rem;
@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.ws--note > span {
+.note > span {
   position: relative;
   display: block;
   opacity: 0;
