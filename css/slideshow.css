@@ -107,7 +107,7 @@
   overflow: hidden;
   position: absolute;
 
-  transition: all 0.3s cubic-bezier(1, 0, 0, 1);
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
 }
 
 html[dir="ltr"] .slideshow.previous,
@@ -137,18 +137,6 @@ html[dir="rtl"] .slideshow.previous {
   height: 100%;
   object-fit: cover;
   background: var(--background-plus);
-  animation: slideshow-image 1s cubic-bezier(0.2, 0.9, 0.1, 1);
-}
-
-@keyframes slideshow-image {
-  from {
-    transform: scale(1.2);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 .slideshow > div {
@@ -175,19 +163,19 @@ html[dir="rtl"] .slideshow > div {
 }
 
 .slideshow > div > * {
-  transition: all 0.3s ease;
+  transition: transform 1s cubic-bezier(0.2, 0.9, 0.1, 1), opacity 1s cubic-bezier(0.2, 0.9, 0.1, 1), visibility 1s;
   opacity: 0;
   visibility: hidden;
 }
 
 html[dir="ltr"] .slideshow.previous > div > *,
 html[dir="rtl"] .slideshow.next > div > * {
-  transform: translateX(-32px);
+  transform: translateX(-128px);
 }
 
 html[dir="ltr"] .slideshow.next > div > *,
 html[dir="rtl"] .slideshow.previous > div > * {
-  transform: translateX(32px);
+  transform: translateX(128px);
 }
 
 .slideshow.current > div > * {
