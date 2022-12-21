@@ -206,14 +206,14 @@ html[dir="rtl"] .slideshow.previous > div > * {
   font-size: 4rem;
   font-weight: 1000;
   margin: 0;
-  max-width: 400px;
+  max-width: 480px;
 }
 
 .slideshow > div p {
   font-size: 1.6rem;
   font-weight: normal;
   margin: 0;
-  max-width: 400px;
+  max-width: 480px;
   line-height: 2.2rem;
 }
 
@@ -352,9 +352,5 @@ html[dir="rtl"] .slideshow > div a:hover:after {
     margin: 1rem 0 0;
     height: 4rem;
     line-height: 4rem;
-  }
-
-  .slideshow > div h1 {
-    font-size: 5rem;
   }
 }

@@ -8,12 +8,9 @@ import os
 dir_path = os.getcwd()
 
 locales_index = open(dir_path + '/build/locales_index.txt', 'w')
-manifest_index = open(dir_path + '/build/manifest_index.txt', 'w')
 locales_index.close()
-manifest_index.close()
 
 locales_index = open(dir_path + '/build/locales_index.txt', 'a')
-manifest_index = open(dir_path + '/build/manifest_index.txt', 'a')
 
 for root, dirs, files in os.walk(dir_path):
   for file in files:

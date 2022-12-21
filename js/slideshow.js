@@ -3,18 +3,24 @@ function initSlideshow() {
 
   var slideshowList = [
     {
+      background: "images/wallpapers/rose-petals-dark.png",
+      title: "home-orchid-title",
+      detail: "home-orchid-summary",
+      linkTo: "#",
+    },
+    {
       background:
         document.dir === "rtl"
           ? "images/keyarts/poster_explore_rtl.png"
           : "images/keyarts/poster_explore.png",
-      title: "home-poster1-title",
-      detail: "home-poster1-description",
+      title: "home-store-title",
+      detail: "home-store-summary",
       linkTo: "#",
     },
     {
-      background: "images/keyart/orchid_1.1.png",
-      title: "home-poster2-title",
-      detail: "home-poster2-description",
+      background: "images/wallpapers/rose-petals.png",
+      title: "home-os-title",
+      detail: "home-os-summary",
       linkTo: "#",
     }
   ];
