@@ -17,6 +17,18 @@
   var phoneNumber = document.getElementById("phone-number");
   var phoneNumberHolder = document.getElementById("phone-number-holder");
 
+  const parallaxElements = [bannerImage];
+  const parallax = function(img) {
+    const speed = 3;
+    let pos = (document.body.scrollTop / speed) + "px";
+    img.style.objectPosition = `center ${pos}`;
+  }
+  document.body.addEventListener('scroll', function(e) {
+    parallaxElements.forEach( (img) => {
+      parallax(img);
+    });
+  });
+
   bannerImage.onerror = () => {
     bannerImage.style.display = "none";
   };
