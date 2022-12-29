@@ -1,6 +1,6 @@
 #tablist {
   width: calc(100% - 10vw);
-  margin: 0 auto;
+  margin: 1rem auto 0;
   border-top: solid 0.1rem rgba(0, 0, 0, 0.125);
 }
 
