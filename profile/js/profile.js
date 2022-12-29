@@ -1,6 +1,21 @@
 (function (exports) {
   "use strict";
 
+  exports.EnglishToArabicNumerals = function EnglishToArabicNumerals(
+    numberString
+  ) {
+    var arabicNumerals = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+    if (document.dir == "rtl") {
+      return numberString
+        .toLocaleString(navigator.mozL10n.language.code)
+        .replace(/[0-9]/g, function (w) {
+          return arabicNumerals[+w];
+        });
+    } else {
+      return numberString;
+    }
+  };
+
   var banner = document.getElementById("banner");
   var bannerImage = document.getElementById("banner-image");
   var avatar = document.getElementById("avatar");
@@ -16,12 +31,14 @@
   var descriptionHolder = document.getElementById("description-holder");
   var phoneNumber = document.getElementById("phone-number");
   var phoneNumberHolder = document.getElementById("phone-number-holder");
+  var addFriendButton = document.getElementById("add-friend-button");
+  var followButton = document.getElementById("follow-button");
 
   const parallaxElements = [bannerImage];
   const parallax = function(img) {
     const speed = 3;
     let pos = (document.body.scrollTop / speed) + "px";
-    img.style.objectPosition = `center ${pos}`;
+    img.style.transform = `translateY(${pos})`;
   }
   document.body.addEventListener('scroll', function(e) {
     parallaxElements.forEach( (img) => {
@@ -179,6 +196,28 @@
         };
       } else {
         document.body.dataset.editmode = false;
+
+        OrchidServices.get('profile/' + OrchidServices.userId()).then(data => {
+          if (data.friends.indexOf(userId) !== -1) {
+            addFriendButton.dataset.l10nId = 'remove-friend';
+          }
+        });
+
+        addFriendButton.onclick = function (evt) {
+          OrchidServices.get('profile/' + OrchidServices.userId()).then((data) => {
+            var friends = data.friends;
+
+            if (friends.indexOf(userId) !== -1) {
+              friends.splice(userId);
+              OrchidServices.set('profile/' + OrchidServices.userId(), { friends: friends });
+              addFriendButton.dataset.l10nId = 'remove-friend';
+            } else {
+              friends.push(userId);
+              OrchidServices.set('profile/' + OrchidServices.userId(), { friends: friends });
+              addFriendButton.dataset.l10nId = 'add-friend';
+            }
+          });
+        };
       }
 
       badges.innerHTML = "";
@@ -206,6 +245,23 @@
       } else {
         phoneNumberHolder.classList.remove('active');
         descriptionHolder.classList.remove('active');
+      }
+    });
+
+    var webapps = document.getElementById("webapps");
+    var posts = document.getElementById("posts");
+
+    webapps.innerHTML = '';
+    posts.innerHTML = '';
+
+    OrchidServices.getList("webstore", function (data, id) {
+      if (data.author_id == userId) {
+        createWebappIcon(data, id, false);
+      }
+    });
+    OrchidServices.getList("articles", function (data, id) {
+      if (data.author_id == userId) {
+        createPostCard(data, id);
       }
     });
   }

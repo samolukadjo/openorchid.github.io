@@ -11,12 +11,18 @@
   <link rel="stylesheet" href="css/tooltips.css">
   <link rel="stylesheet" href="css/confirm.css">
   <link rel="stylesheet" href="css/input_areas.css">
+  <link rel="stylesheet" href="css/tablist.css">
+  <link rel="stylesheet" href="css/webapps.css">
+  <link rel="stylesheet" href="css/posts.css">
   <script defer type="module" src="services/script.js"></script>
   <script defer src="/lib/simpleParallax.min.js"></script>
   <script defer src="js/image_compressor.js"></script>
   <script defer src="js/profile.js"></script>
   <script defer src="js/dark_mode.js"></script>
   <script defer src="js/input_dialog.js"></script>
+  <script defer src="js/tablist.js"></script>
+  <script defer src="js/webapps.js"></script>
+  <script defer src="js/posts.js"></script>
 
   <!-- Localization -->
   <script src="js/l10n.js"></script>
@@ -42,10 +48,11 @@
         </div>
       </div>
       <div class="actions">
-        <button id="add-friend" data-l10n-id="add-friend"></button>
-        <button id="follow" data-l10n-id="follow"></button>
+        <button id="add-friend-button" data-l10n-id="add-friend"></button>
+        <button id="follow-button" data-l10n-id="follow"></button>
       </div>
     </header>
+
     <div class="content">
       <div class="content-col gaia-list">
         <header data-l10n-id="personal"></header>
@@ -84,6 +91,17 @@
             <p id="description-empty" data-l10n-id="description-empty"></p>
           </li>
         </ul>
+      </div>
+    </div>
+
+    <div id="tablist">
+      <ul class="tablist-tabs">
+        <li for="webapps" data-l10n-id="webapps"></li>
+        <li for="posts" data-l10n-id="posts"></li>
+      </ul>
+      <div class="tablist-views">
+        <section id="webapps"></section>
+        <section id="posts"></section>
       </div>
     </div>
   </main>

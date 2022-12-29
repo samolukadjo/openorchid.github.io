@@ -37,10 +37,10 @@ form[role="dialog"][data-type="confirm"] > section {
   font-size: 1.6rem;
   color: var(--text-color, #333);
   padding: 0 1.5rem;
-  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
   display: inline-block;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 100%;
   vertical-align: middle;
   white-space: normal;
