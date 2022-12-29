@@ -196,7 +196,7 @@ var OrchidServices = {
     });
   },
 
-  DEBUG: (location.href === 'http://localhost:5500' || location.href === 'http://127.0.0.1:5500/'),
+  DEBUG: (location.href.startsWith('http://localhost:5500') || location.href.startsWith('http://127.0.0.1:5500/')),
 
   init: function os_init() {
     window.addEventListener('load', () => {
@@ -378,6 +378,7 @@ var OrchidServices = {
         if (user.username == username || user.email == username || user.phone_number == username) {
           if (user.password == MD5(password)) {
             OrchidServices.auth.loginWithToken(user.token);
+            OrchidServices.onlogin();
           } else {
             if (this.DEBUG) {
               console.error('[' + user.token + '] Password does not match.');
@@ -432,6 +433,7 @@ var OrchidServices = {
         installed_apps: [],
         is_verified: false,
         is_moderator: false,
+        is_supporter: false,
         is_developer: false,
         last_search: '',
         last_visited_site: ''
@@ -469,14 +471,15 @@ var OrchidServices = {
       });
     },
 
-    publishArticle: async function os_publishArticle(title, markdown) {
+    publishArticle: async function os_publishArticle(data) {
       var id = OrchidServices._generateUUID();
       OrchidServices.set('articles/' + id, {
         token: id,
         author_id: OrchidServices.userId(),
         published_at: Date.now(),
-        title: title,
-        content: markdown,
+        content: data.content,
+        tags: data.tags,
+        images: data.images,
         likes: [],
         dislikes: [],
         comments: []
@@ -521,8 +524,55 @@ var OrchidServices = {
       OrchidServices.set("profile/" + OrchidServices.userId(), {
         chat_groups: { [token]: "" },
       });
+    },
+
+    updateLogins: function os_updateLogins() {
+      OrchidServices.getList('profile', (data) => {
+        if (data.token) {
+          var object = {
+            username: data.username || '',
+            email: data.email || '',
+            password: data.password || '',
+            profile_picture: data.profile_picture || '',
+            phone_number: data.phone_number || '',
+            birth_date: data.birth_date || '',
+            token: data.token,
+            custom_badges: data.custom_badges || [],
+            description: data.description || '',
+            orchid_points: data.orchid_points || 0,
+            time_created: data.time_created || Date.now(),
+            last_active: data.last_active || Date.now(),
+            state: data.state || 'online',
+            notifications: data.notifications || [],
+            browser_bookmarks: data.browser_bookmarks || [],
+            devices: data.devices || [],
+            achievements: /* data.achievements || */ {},
+            wallpaper: data.wallpaper || '',
+            accent_color: data.accent_color || '',
+            dark_mode: data.dark_mode || false,
+            installed_apps: data.installed_apps || [],
+            is_verified: (data.metadata) ? data.metadata.is_verified : (data.is_verified || false),
+            is_moderator: (data.metadata) ? data.metadata.is_moderator : (data.is_moderator || false),
+            is_supporter: (data.metadata) ? data.metadata.is_supporter : (data.is_supporter || false),
+            is_developer: (data.metadata) ? data.metadata.is_developer : (data.is_developer || false),
+            is_business: (data.metadata) ? data.metadata.is_business : (data.is_business || false),
+            last_search: data.last_search || '',
+            last_visited_site: data.last_visited_site || ''
+          }
+          if (OrchidServices.DEBUG) {
+            console.log(data + ' => ' + object);
+          }
+
+          OrchidServices.remove('profile/' + data.token);
+          OrchidServices.remove('profile/undefined');
+          OrchidServices.remove('profile/null');
+          OrchidServices.set('profile/' + data.token, object);
+        }
+      });
     }
-  }
+  },
+
+  onlogin: () => {}
 };
 
 OrchidServices.init();

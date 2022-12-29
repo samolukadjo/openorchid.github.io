@@ -2,18 +2,16 @@
 // Code copy-pasted from:
 // https://code.tutsplus.com/tutorials/how-to-crop-or-resize-an-image-with-javascript--cms-40446
 
-function compressImage(imagePath, callback) {
+function compressImage(imagePath, width, height, callback) {
   var image = new Image();
   image.src = imagePath;
 
-  var w = image.width || 256;
-  var h = image.height || 256;
-  var canvas = document.createElement('canvas');
-  var ctx = canvas.getContext('2d');
+  var w = width || image.width || 256;
+  var h = height || image.height || 256;
 
   image.addEventListener('load', function() {
-    w = image.width || 256;
-    h = image.height || 256;
+    w = width || image.width || 256;
+    h = height || image.height || 256;
 
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');

@@ -9,8 +9,13 @@
   var username = document.getElementById("username");
   var badges = document.getElementById("badges");
   var email = document.getElementById("email");
+  var createdAt = document.getElementById("created-at");
+  var lastActive = document.getElementById("last-active");
   var description = document.getElementById("description");
+  var descriptionEmpty = document.getElementById("description-empty");
+  var descriptionHolder = document.getElementById("description-holder");
   var phoneNumber = document.getElementById("phone-number");
+  var phoneNumberHolder = document.getElementById("phone-number-holder");
 
   bannerImage.onerror = () => {
     bannerImage.style.display = "none";
@@ -45,10 +50,16 @@
     OrchidServices.getWithUpdate("profile/" + userId, (data) => {
       document.title = data.username + " - " + navigator.mozL10n.get("title");
 
+      if (data.is_business) {
+        document.body.classList.add('business');
+      } else {
+        document.body.classList.remove('business');
+      }
+      document.body.dataset.state = data.state || 'offline';
+
       bannerImage.src = data.banner_image;
       avatarImage.src = data.profile_picture;
       avatarImage.alt = data.username;
-      description.innerText = data.description;
       avatarImageShadow.src = data.profile_picture;
       avatarImageShadow.alt = data.username;
       username.textContent = data.username;
@@ -56,7 +67,33 @@
       phoneNumber.textContent =
         data.phone_number || navigator.mozL10n.get("none");
 
-      if (userId == OrchidServices.userId()) {
+      createdAt.textContent = new Date(data.time_created).toLocaleDateString(navigator.mozL10n.language.code, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      });
+
+      lastActive.textContent = new Date(data.last_active).toLocaleDateString(navigator.mozL10n.language.code, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      });
+
+      if (data.description) {
+        description.innerText = data.description;
+        descriptionEmpty.style.display = 'none';
+      } else {
+        description.innerText = '';
+        descriptionEmpty.style.display = 'block';
+      }
+
+      if (data.token == OrchidServices.userId()) {
         document.body.dataset.editmode = true;
 
         banner.onclick = function (evt) {
@@ -70,7 +107,7 @@
             var reader = new FileReader();
             reader.addEventListener("load", function (e) {
               var result = e.target.result;
-              compressImage(result, function (image) {
+              compressImage(result, 1280, 432, function (image) {
                 OrchidServices.set("profile/" + userId, {
                   banner_image: image,
                 });
@@ -92,7 +129,7 @@
             var reader = new FileReader();
             reader.addEventListener("load", function (e) {
               var result = e.target.result;
-              compressImage(result, function (image) {
+              compressImage(result, 100, 100, function (image) {
                 OrchidServices.set("profile/" + userId, {
                   profile_picture: image,
                 });
@@ -133,26 +170,31 @@
       }
 
       badges.innerHTML = "";
-      if (data.metadata) {
-        drawMetaBadge("verified", data.metadata.is_verified);
-        drawMetaBadge("moderator", data.metadata.is_moderator);
-        drawMetaBadge("supporter", data.metadata.is_donator);
-        drawMetaBadge("developer", data.metadata.is_developer);
+      drawMetaBadge("verified", data.is_verified);
+      drawMetaBadge("moderator", data.is_moderator);
+      drawMetaBadge("supporter", data.is_supporter);
+      drawMetaBadge("developer", data.is_developer);
+
+      if (data.token == OrchidServices.userId()) {
+        phoneNumber.parentElement.addEventListener('click', () => {
+          InputDialog('phone-number-dialog', data.phone_number, (data) => {
+            console.log(data);
+            OrchidServices.set('profile/' + OrchidServices.userId(), { phone_number: data });
+          });
+        });
+        description.parentElement.addEventListener('click', () => {
+          InputDialog('description-dialog', data.description, (data) => {
+            console.log(data);
+            OrchidServices.set('profile/' + OrchidServices.userId(), { description: data });
+          });
+        });
+
+        phoneNumberHolder.classList.add('active');
+        descriptionHolder.classList.add('active');
+      } else {
+        phoneNumberHolder.classList.remove('active');
+        descriptionHolder.classList.remove('active');
       }
-
-      phoneNumber.parentElement.addEventListener('click', () => {
-        InputDialog('phone-number-dialog', data.phone_number, (data) => {
-          console.log(data);
-          OrchidServices.set('profile/' + OrchidServices.userId(), { phone_number: data });
-        });
-      });
-
-      description.parentElement.addEventListener('click', () => {
-        InputDialog('description-dialog', data.description, (data) => {
-          console.log(data);
-          OrchidServices.set('profile/' + OrchidServices.userId(), { description: data });
-        });
-      });
     });
   }
 

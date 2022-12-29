@@ -3,6 +3,7 @@
   aspect-ratio: 4 / 3;
   position: relative;
   margin: 0 0 3rem;
+  perspective: 100vw;
 }
 
 .slideshow-container .holder {
@@ -87,7 +88,8 @@
   width: 5rem;
   position: relative;
   overflow: hidden;
-  background: var(--color-primary, var(--text-color)) linear-gradient(0deg, var(--translucent-plus), var(--translucent-plus));
+  background: var(--color-primary, var(--text-color));
+  box-shadow: 0 0 5rem var(--color-secondary, var(--text-color-minus));
 }
 
 .slideshow-container .dots .dot.active::before {
@@ -107,26 +109,13 @@
   overflow: hidden;
   position: absolute;
 
-  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
-}
-
-html[dir="ltr"] .slideshow.previous,
-html[dir="rtl"] .slideshow.next {
-  transform: translateX(calc(-100% - 1rem));
-}
-
-html[dir="ltr"] .slideshow.next,
-html[dir="rtl"] .slideshow.previous {
-  transform: translateX(calc(100% + 1rem));
-}
-
-.slideshow.previous {
-  z-index: 1;
+  transition: all 0.3s ease 0.3s;
+  opacity: 0;
 }
 
 .slideshow.current {
   opacity: 1;
-  z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .slideshow > img {
@@ -142,7 +131,7 @@ html[dir="rtl"] .slideshow.previous {
 .slideshow > div {
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 50%;
   height: 100%;
   padding: 1rem 4rem;
   box-sizing: border-box;
@@ -167,15 +156,11 @@ html[dir="rtl"] .slideshow > div {
   opacity: 0;
   visibility: hidden;
 }
-
-html[dir="ltr"] .slideshow.previous > div > *,
-html[dir="rtl"] .slideshow.next > div > * {
-  transform: translateX(-128px);
-}
-
-html[dir="ltr"] .slideshow.next > div > *,
-html[dir="rtl"] .slideshow.previous > div > * {
+html[dir="ltr"] .slideshow > div > * {
   transform: translateX(128px);
+}
+html[dir="rtl"] .slideshow > div > * {
+  transform: translateX(-128px);
 }
 
 .slideshow.current > div > * {
@@ -303,6 +288,62 @@ html[dir="rtl"] .slideshow > div a:hover:after {
 
   .slideshow > div {
     padding: 32px 48px;
+  }
+
+  html[dir="ltr"] .slideshow.start > div {
+    left: 0;
+    background: linear-gradient(to right, var(--color-primary, rgba(0,0,0,0.75)), transparent);
+  }
+  html[dir="rtl"] .slideshow.start > div {
+    right: 0;
+    background: linear-gradient(to left, var(--color-primary, rgba(0,0,0,0.75)), transparent);
+  }
+
+  html[dir="ltr"] .slideshow.start.top > div {
+    background: linear-gradient(to right bottom, var(--color-primary, rgba(0,0,0,0.75)), transparent 50%);
+  }
+  html[dir="rtl"] .slideshow.start.top > div {
+    background: linear-gradient(to left bottom, var(--color-primary, rgba(0,0,0,0.75)), transparent 50%);
+  }
+
+  html[dir="ltr"] .slideshow.start.bottom > div {
+    background: linear-gradient(to right top, var(--color-primary, rgba(0,0,0,0.75)), transparent 50%);
+  }
+  html[dir="rtl"] .slideshow.start.bottom > div {
+    background: linear-gradient(to left top, var(--color-primary, rgba(0,0,0,0.75)), transparent 50%);
+  }
+
+  html[dir="ltr"] .slideshow.end > div {
+    left: 50%;
+    background: linear-gradient(to left, var(--color-primary, rgba(0,0,0,0.75)), transparent);
+  }
+  html[dir="rtl"] .slideshow.end > div {
+    right: 50%;
+    background: linear-gradient(to right, var(--color-primary, rgba(0,0,0,0.75)), transparent);
+  }
+
+  html[dir="ltr"] .slideshow.end.top > div {
+    background: linear-gradient(to left bottom, var(--color-primary, rgba(0,0,0,0.75)), transparent 50%);
+  }
+  html[dir="rtl"] .slideshow.end.top > div {
+    background: linear-gradient(to right bottom, var(--color-primary, rgba(0,0,0,0.75)), transparent 50%);
+  }
+
+  html[dir="ltr"] .slideshow.end.bottom > div {
+    background: linear-gradient(to left top, var(--color-primary, rgba(0,0,0,0.75)), transparent 50%);
+  }
+  html[dir="rtl"] .slideshow.end.bottom > div {
+    background: linear-gradient(to right top, var(--color-primary, rgba(0,0,0,0.75)), transparent 50%);
+  }
+
+  .slideshow.top > div {
+    height: 50%;
+  }
+
+  .slideshow.bottom > div {
+    height: 50%;
+    top: unset;
+    bottom: 0;
   }
 
   .slideshow > div img {

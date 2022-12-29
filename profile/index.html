@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/confirm.css">
   <link rel="stylesheet" href="css/input_areas.css">
   <script defer type="module" src="services/script.js"></script>
+  <script defer src="/lib/simpleParallax.min.js"></script>
   <script defer src="js/image_compressor.js"></script>
   <script defer src="js/profile.js"></script>
   <script defer src="js/dark_mode.js"></script>
@@ -29,14 +30,20 @@
   </div>
   <main class="container">
     <header id="header">
-      <div id="avatar">
-        <img src="" alt="" class="main">
-        <img src="" alt="" class="shadow">
-        <div role="title" class="bottom" data-l10n-id="change-avatar"></div>
+      <div class="figure">
+        <div id="avatar">
+          <img src="" alt="" class="main">
+          <img src="" alt="" class="shadow">
+          <div role="title" class="bottom" data-l10n-id="change-avatar"></div>
+        </div>
+        <div class="vbox left">
+          <p id="username"></p>
+          <div id="badges"></div>
+        </div>
       </div>
-      <div class="vbox left">
-        <p id="username"></p>
-        <div id="badges"></div>
+      <div class="actions">
+        <button id="add-friend" data-l10n-id="add-friend"></button>
+        <button id="follow" data-l10n-id="follow"></button>
       </div>
     </header>
     <div class="content">
@@ -49,10 +56,22 @@
               <p id="email"></p>
             </div>
           </li>
-          <li class="hbox active">
+          <li class="hbox" id="phone-number-holder">
             <div class="vbox fit">
               <p data-l10n-id="phoneNumber"></p>
               <p id="phone-number"></p>
+            </div>
+          </li>
+          <li class="hbox">
+            <div class="vbox fit">
+              <p data-l10n-id="created-at"></p>
+              <p id="created-at"></p>
+            </div>
+          </li>
+          <li class="hbox">
+            <div class="vbox fit">
+              <p data-l10n-id="last-active"></p>
+              <p id="last-active"></p>
             </div>
           </li>
         </ul>
@@ -60,8 +79,9 @@
       <div class="content-col gaia-list">
         <header data-l10n-id="description"></header>
         <ul>
-          <li class="active">
+          <li id="description-holder">
             <p id="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore magnam, numquam error temporibus labore quos pariatur possimus quis aliquam veniam explicabo eum illo esse similique itaque provident at velit assumenda!</p>
+            <p id="description-empty" data-l10n-id="description-empty"></p>
           </li>
         </ul>
       </div>

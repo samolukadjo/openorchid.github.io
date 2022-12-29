@@ -7,21 +7,24 @@ function initSlideshow() {
       title: "home-orchid-title",
       detail: "home-orchid-summary",
       linkTo: "#",
+      placement: "start"
     },
     {
       background:
         document.dir === "rtl"
-          ? "images/keyarts/poster_explore_rtl.png"
-          : "images/keyarts/poster_explore.png",
+          ? "images/keyarts/poster_explore.png"
+          : "images/keyarts/poster_explore_rtl.png",
       title: "home-store-title",
       detail: "home-store-summary",
       linkTo: "#",
+      placement: "end"
     },
     {
       background: "images/wallpapers/rose-petals.png",
       title: "home-os-title",
       detail: "home-os-summary",
       linkTo: "#",
+      placement: "start bottom"
     }
   ];
 
@@ -40,6 +43,51 @@ function initSlideshow() {
     element.classList.add("slideshow");
     if (index == 0) {
       element.classList.add("current");
+    }
+    switch (slideshow.placement) {
+      case 'start':
+        element.classList.add('start');
+        break;
+
+      case 'start top':
+      case 'top start':
+        element.classList.add('start');
+        element.classList.add('top');
+        break;
+
+      case 'start bottom':
+      case 'bottom start':
+        element.classList.add('start');
+        element.classList.add('bottom');
+        break;
+
+      case 'end':
+        element.classList.add('end');
+        break;
+
+      case 'end top':
+      case 'top end':
+        element.classList.add('end');
+        element.classList.add('top');
+        break;
+
+      case 'end bottom':
+      case 'bottom end':
+        element.classList.add('end');
+        element.classList.add('bottom');
+        break;
+
+      case 'top':
+        element.classList.add('top');
+        break;
+
+      case 'bottom':
+        element.classList.add('bottom');
+        break;
+
+      default:
+        element.classList.add('start');
+        break;
     }
     slideshowPosters.appendChild(element);
 
@@ -132,8 +180,6 @@ function initSlideshow() {
       }
 
       element.classList.add("current");
-      element.classList.remove("previous");
-      element.classList.remove("next");
       dot.classList.add("active");
     });
     if (index == 0) {
@@ -149,7 +195,6 @@ function initSlideshow() {
         slideshowPosters.querySelector(".slideshow.current");
       if (selectedSlideshow) {
         selectedSlideshow.classList.remove("current");
-        selectedSlideshow.classList.add("previous");
       }
 
       var selectedDot = slideshowDots.querySelector(".dot.active");
@@ -159,29 +204,8 @@ function initSlideshow() {
 
       if (selectedSlideshow.nextElementSibling) {
         selectedSlideshow.nextElementSibling.classList.add("current");
-        selectedSlideshow.nextElementSibling.classList.remove("previous");
-        selectedSlideshow.nextElementSibling.classList.remove("next");
-
-        if (selectedSlideshow.nextElementSibling.nextElementSibling) {
-          selectedSlideshow.nextElementSibling.nextElementSibling.classList.remove(
-            "previous"
-          );
-          selectedSlideshow.nextElementSibling.nextElementSibling.classList.add(
-            "next"
-          );
-        } else {
-          slideshowPosters.children[0].classList.remove("previous");
-          slideshowPosters.children[0].classList.add("next");
-        }
       } else {
         slideshowPosters.children[0].classList.add("current");
-        slideshowPosters.children[0].classList.remove("previous");
-        slideshowPosters.children[0].classList.remove("next");
-
-        if (slideshowPosters.children[1]) {
-          slideshowPosters.children[1].classList.remove("previous");
-          slideshowPosters.children[1].classList.add("next");
-        }
       }
 
       if (selectedDot.nextElementSibling) {
@@ -210,7 +234,6 @@ function initSlideshow() {
       slideshowPosters.querySelector(".slideshow.current");
     if (selectedSlideshow) {
       selectedSlideshow.classList.remove("current");
-      selectedSlideshow.classList.add("next");
     }
 
     var selectedDot = slideshowDots.querySelector(".dot.active");
@@ -220,43 +243,10 @@ function initSlideshow() {
 
     if (selectedSlideshow.previousElementSibling) {
       selectedSlideshow.previousElementSibling.classList.add("current");
-      selectedSlideshow.previousElementSibling.classList.remove("previous");
-      selectedSlideshow.previousElementSibling.classList.remove("next");
-
-      if (selectedSlideshow.previousElementSibling.previousElementSibling) {
-        selectedSlideshow.previousElementSibling.previousElementSibling.classList.add(
-          "previous"
-        );
-        selectedSlideshow.previousElementSibling.previousElementSibling.classList.remove(
-          "next"
-        );
-      } else {
-        slideshowPosters.children[
-          slideshowPosters.children.length - 1
-        ].classList.add("previous");
-        slideshowPosters.children[
-          slideshowPosters.children.length - 1
-        ].classList.remove("next");
-      }
     } else {
       slideshowPosters.children[
         slideshowPosters.children.length - 1
       ].classList.add("current");
-      slideshowPosters.children[
-        slideshowPosters.children.length - 1
-      ].classList.remove("previous");
-      slideshowPosters.children[
-        slideshowPosters.children.length - 1
-      ].classList.remove("next");
-
-      if (slideshowPosters.children[slideshowPosters.children.length - 2]) {
-        slideshowPosters.children[
-          slideshowPosters.children.length - 2
-        ].classList.add("previous");
-        slideshowPosters.children[
-          slideshowPosters.children.length - 2
-        ].classList.remove("next");
-      }
     }
 
     if (selectedDot.previousElementSibling) {
@@ -273,7 +263,6 @@ function initSlideshow() {
       slideshowPosters.querySelector(".slideshow.current");
     if (selectedSlideshow) {
       selectedSlideshow.classList.remove("current");
-      selectedSlideshow.classList.add("previous");
     }
 
     var selectedDot = slideshowDots.querySelector(".dot.active");
@@ -283,29 +272,8 @@ function initSlideshow() {
 
     if (selectedSlideshow.nextElementSibling) {
       selectedSlideshow.nextElementSibling.classList.add("current");
-      selectedSlideshow.nextElementSibling.classList.remove("previous");
-      selectedSlideshow.nextElementSibling.classList.remove("next");
-
-      if (selectedSlideshow.nextElementSibling.nextElementSibling) {
-        selectedSlideshow.nextElementSibling.nextElementSibling.classList.remove(
-          "previous"
-        );
-        selectedSlideshow.nextElementSibling.nextElementSibling.classList.add(
-          "next"
-        );
-      } else {
-        slideshowPosters.children[0].classList.remove("previous");
-        slideshowPosters.children[0].classList.add("next");
-      }
     } else {
       slideshowPosters.children[0].classList.add("current");
-      slideshowPosters.children[0].classList.remove("previous");
-      slideshowPosters.children[0].classList.remove("next");
-
-      if (slideshowPosters.children[1]) {
-        slideshowPosters.children[1].classList.remove("previous");
-        slideshowPosters.children[1].classList.add("next");
-      }
     }
 
     if (selectedDot.nextElementSibling) {
