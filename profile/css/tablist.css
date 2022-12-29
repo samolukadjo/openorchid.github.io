@@ -1,7 +1,6 @@
 #tablist {
   width: calc(100% - 10vw);
-  margin: 1rem auto 0;
-  border-top: solid 0.1rem rgba(0, 0, 0, 0.125);
+  margin: 1.5rem auto 0;
 }
 
 #tablist .tablist-tabs {
