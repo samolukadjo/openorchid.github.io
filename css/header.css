@@ -7,11 +7,12 @@ header {
 
 header.scrolling {
   transform: translateY(-100%);
-  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transition: transform 0.75s cubic-bezier(0.2, 0.9, 0.1, 1);
 }
 
 header.scrolling.visible {
   transform: translateY(0);
+  border-bottom: solid 0.1rem var(--translucent-plus);
 }
 
 .header-container {
@@ -161,7 +162,7 @@ header.dark {
   top: 0;
   width: 100%;
   height: 100%;
-  background: var(--background-plus);
+  background: var(--translucent);
   border-radius: 50%;
 }
 
@@ -169,7 +170,7 @@ header.dark {
   width: 4rem;
   height: 4rem;
   border-radius: 2rem;
-  background: var(--background-plus);
+  background: var(--translucent);
   display: flex;
   overflow: hidden;
   margin: 0.5rem 0;
@@ -178,10 +179,17 @@ header.dark {
   z-index: 1;
 }
 html[dir="ltr"] .header-container form {
-  background: var(--background-plus) url(images/search.svg) no-repeat left 1rem center / 2rem;
+  background: var(--translucent) url(images/search_light.svg) no-repeat left 1rem center / 2rem;
 }
 html[dir="rtl"] .header-container form {
-  background: var(--background-plus) url(images/search.svg) no-repeat right 1rem center / 2rem;
+  background: var(--translucent) url(images/search_light.svg) no-repeat right 1rem center / 2rem;
+}
+
+html[dir="ltr"][data-theme="dark"] .header-container form {
+  background: var(--translucent) url(images/search_dark.svg) no-repeat left 1rem center / 2rem;
+}
+html[dir="rtl"][data-theme="dark"] .header-container form {
+  background: var(--translucent) url(images/search_dark.svg) no-repeat right 1rem center / 2rem;
 }
 
 .header-container form:focus-within {
@@ -202,6 +210,11 @@ html[dir="rtl"] .header-container form {
   padding-inline-start: 4rem;
   box-sizing: border-box;
   color: var(--text-color);
+}
+
+.header-container form input::placeholder {
+  color: var(--text-color);
+  opacity: 0.5;
 }
 
 .header-container form button {

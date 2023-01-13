@@ -205,16 +205,32 @@
 
         addFriendButton.onclick = function (evt) {
           OrchidServices.get('profile/' + OrchidServices.userId()).then((data) => {
-            var friends = data.friends;
+            var friends = data.friends || [];
 
             if (friends.indexOf(userId) !== -1) {
-              friends.splice(userId);
+              friends.push(userId);
               OrchidServices.set('profile/' + OrchidServices.userId(), { friends: friends });
               addFriendButton.dataset.l10nId = 'remove-friend';
             } else {
-              friends.push(userId);
+              friends.splice(userId);
               OrchidServices.set('profile/' + OrchidServices.userId(), { friends: friends });
               addFriendButton.dataset.l10nId = 'add-friend';
+            }
+          });
+        };
+
+        followButton.onclick = function (evt) {
+          OrchidServices.get('profile/' + OrchidServices.userId()).then((data) => {
+            var followers = data.followers || [];
+
+            if (followers.indexOf(userId) !== -1) {
+              followers.push(userId);
+              OrchidServices.set('profile/' + OrchidServices.userId(), { followers: followers });
+              followButton.dataset.l10nId = 'unfollow';
+            } else {
+              followers.splice(userId);
+              OrchidServices.set('profile/' + OrchidServices.userId(), { followers: followers });
+              followButton.dataset.l10nId = 'follow';
             }
           });
         };

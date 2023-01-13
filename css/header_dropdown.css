@@ -7,7 +7,7 @@ header a + .dropdown {
   top: calc(100% - 0.5rem);
   background: var(--input-background);
   border-radius: 1.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.5);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.3);
   overflow: hidden;
   display: flex;
 

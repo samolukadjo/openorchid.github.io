@@ -31,6 +31,7 @@
       content.innerHTML = client.responseText;
       importCSS('/pages/' + path + '/style.css');
       importScript('/pages/' + path + '/script.js');
+      initSlideshow();
     };
     client.send();
   };

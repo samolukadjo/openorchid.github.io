@@ -31,6 +31,8 @@
   });
 
   window.addEventListener('load', function() {
+    AOS.init();
+
     if (OrchidServices.isUserLoggedIn()) {
       profileButton.href = 'https://orchidfoss.github.io/profile/?user_id=' + OrchidServices.userId();
       OrchidServices.getWithUpdate('profile/' + OrchidServices.userId(), function(data) {

@@ -17,7 +17,10 @@
   color: #a6a6a6;
   font-size: 2.4rem;
   font-weight: normal;
+  height: 3rem;
   line-height: 3rem;
+  display: flex;
+  align-items: center;
 }
 
 .quick-search h1:before {

@@ -26,6 +26,7 @@
   <meta property="twitter:image" content="images/thumbnail.svg" />
   <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
   <link rel="stylesheet" href="lib/gaia-icons/bidi-helper.css">
+  <link rel="stylesheet" href="lib/aos.css">
   <link rel="stylesheet" href="lib/orchid_ui/header.css">
   <link rel="stylesheet" href="css/html.css">
   <link rel="stylesheet" href="css/offers_banner.css">
@@ -48,6 +49,7 @@
   <!-- Elastic Scrolling -->
   <script defer src="lib/smooth-scrollbar.js"></script>
   <script defer src="lib/plugins/overscroll.js"></script>
+  <script defer src="lib/aos.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/service_worker.js"></script>
   <script defer src="js/content.js"></script>
@@ -160,7 +162,7 @@
 
   <main class="content" id="content"></main>
 
-  <div class="quick-search" id="quick-search">
+  <div class="quick-search" id="quick-search" data-aos="fade-up" data-aos-easing="expo-in" data-aos-duration="500">
     <div class="spacer">
       <h1 data-icon="search" data-l10n-id="quick-search"></h1>
       <form action="" id="quick-search-form">
@@ -170,7 +172,7 @@
     </div>
   </div>
 
-  <ul class="notices">
+  <ul class="notices" data-aos="fade-up" data-aos-easing="expo-in" data-aos-duration="500">
     <li data-l10n-id="notice-doNotSteal"></li>
     <li data-l10n-id="notice-doNotMessWithTheCode"></li>
     <li data-l10n-id="notice-doNotPirate"></li>
@@ -180,7 +182,7 @@
     <li data-l10n-id="notice-notTwitter"></li>
   </ul>
 
-  <footer class="footer">
+  <footer class="footer" data-aos="fade-down" data-aos-easing="expo-in" data-aos-duration="500">
     <div class="container">
       <div class="row center">
         <div class="footer-col">

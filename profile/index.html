@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/tablist.css">
   <link rel="stylesheet" href="css/webapps.css">
   <link rel="stylesheet" href="css/posts.css">
+  <link rel="stylesheet" href="css/switches.css">
   <script defer type="module" src="services/script.js"></script>
   <script defer src="/lib/simpleParallax.min.js"></script>
   <script defer src="js/image_compressor.js"></script>
@@ -82,6 +83,31 @@
             </div>
           </li>
         </ul>
+
+        <header data-l10n-id="achievements"></header>
+        <ul>
+          <li class="hbox">
+            <img src="/favicon.svg" alt="">
+            <div class="vbox fit">
+              <p>Achievement 1</p>
+              <p>Achievement description 1</p>
+            </div>
+          </li>
+          <li class="hbox">
+            <img src="/favicon.svg" alt="">
+            <div class="vbox fit">
+              <p>Achievement 2</p>
+              <p>Achievement description 2</p>
+            </div>
+          </li>
+          <li class="hbox">
+            <img src="/favicon.svg" alt="">
+            <div class="vbox fit">
+              <p>Achievement 3</p>
+              <p>Achievement description 3</p>
+            </div>
+          </li>
+        </ul>
       </div>
       <div class="content-col gaia-list">
         <header data-l10n-id="description"></header>
@@ -91,6 +117,19 @@
             <p id="description-empty" data-l10n-id="description-empty"></p>
           </li>
         </ul>
+
+        <div id="owner-only">
+          <header data-l10n-id="account"></header>
+          <ul>
+            <li class="active">
+              <label class="pack-switch reverse">
+                <input type="checkbox" id="phone-number-switch-input">
+                <span data-l10n-id="phoneNumber-hide"></span>
+              </label>
+            </li>
+            <li class="hbox active" data-l10n-id="deleteAccount"></li>
+          </ul>
+        </div>
       </div>
     </div>
 

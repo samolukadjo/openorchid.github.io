@@ -12,6 +12,9 @@
   width: max-content;
   display: block;
   pointer-events: none;
+  z-index: 100;
+  text-transform: none;
+  white-space: nowrap;
 
   transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
   transform: var(--transform);

@@ -1,10 +1,12 @@
 html, body {
+  --accent-color: #80c2ff;
   --background: #000;
+  --input-background: #181818;
   --background-plus: #212121;
   --text-color: #e7e7e7;
   --logo: url(/images/logo_dark.png);
 
-  --header-background: rgba(0,0,0,0.6);
+  --backdrop-color: rgba(0,0,0,0.6);
   --footer-background: #101010;
 
   --translucent-plus: rgba(255,255,255,0.1);
@@ -32,8 +34,6 @@ html, body {
 .preview.with-context {
   overflow: hidden;
   background: #000;
-  position: sticky;
-  top: 5rem;
 }
 
 .preview.with-context:nth-child(2n) {
@@ -43,18 +43,6 @@ html, body {
 .preview.with-context > img,
 .preview.with-context > video {
   object-fit: cover;
-}
-
-.preview.with-context {
-  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1) 0.3s;
-  transform: translateY(128px);
-  opacity: 0;
-}
-
-.preview.with-context.visible {
-  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1) 0.3s;
-  transform: translateY(0);
-  opacity: 1;
 }
 
 .preview.with-context.left > img,
