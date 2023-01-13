@@ -6,7 +6,7 @@
 
 .products h1 {
   font-size: 4rem;
-  font-weight: normal;
+  font-weight: bold;
   text-align: center;
   margin: 0 0 1rem;
   color: var(--text-color);
@@ -64,7 +64,7 @@
 }
 
 .products ul li:hover img {
-  transform: scale(1.1) rotate(2deg);
+  transform: scale(1.1);
 }
 
 .products ul li .product-text {
@@ -79,8 +79,8 @@
 
 .products ul li h3 {
   margin: 0 0 0.2rem;
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 3rem;
+  font-weight: bold;
   color: #fff;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -143,13 +143,13 @@
 }
 
 .products ul li.light span {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.75);
   backdrop-filter: saturate(180%) blur(20px);
   color: rgba(255,255,255,0.75);
 }
 
 .products ul li.dark span {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.75);
   backdrop-filter: saturate(180%) blur(20px);
   color: rgba(0,0,0,0.75);
 }
@@ -182,10 +182,5 @@ html[dir="rtl"] .products ul li span:after {
 @media screen and (min-width: 768px) {
   .products ul li {
     border-radius: 2.5rem;
-  }
-
-  .products ul li h3 {
-    font-size: 2.4rem;
-    font-weight: normal;
   }
 }
