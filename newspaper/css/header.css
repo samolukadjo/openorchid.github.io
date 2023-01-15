@@ -1,4 +1,4 @@
-.oui--header {
+.header {
   width: 100%;
   height: 5rem;
   display: flex;
@@ -7,7 +7,7 @@
   background: var(--background);
 }
 
-.oui--header h1 {
+.header h1 {
   width: 100%;
   font-size: 2rem;
   font-weight: normal;
@@ -20,12 +20,12 @@
   color: var(--text-color, #333);
 }
 
-.oui--header h1:empty {
+.header h1:empty {
   padding: 0;
 }
 
-.oui--header a,
-.oui--header button {
+.header a,
+.header button {
   margin: 0.5rem 0;
   padding: 0 1rem;
   box-sizing: border-box;
@@ -44,24 +44,24 @@
   position: relative;
 }
 
-.oui--header a:hover,
-.oui--header button:hover {
+.header a:hover,
+.header button:hover {
   background: var(--translucent, rgba(0,0,0,0.05));
 }
 
-.oui--header a:active,
-.oui--header button:active {
+.header a:active,
+.header button:active {
   background: var(--translucent-plus, rgba(0,0,0,0.1));
 }
 
-.oui--header a[data-icon]:before,
-.oui--header button[data-icon]:before {
+.header a[data-icon]:before,
+.header button[data-icon]:before {
   font-size: 2rem;
   font-weight: normal;
 }
 
-.oui--header a > img,
-.oui--header button > img {
+.header a > img,
+.header button > img {
   position: absolute;
   left: 0;
   top: 0;
@@ -72,17 +72,17 @@
   background: #858585;
 }
 
-.oui--header a[href].logo {
+.header a[href].logo {
   width: 5.4rem;
   height: 4rem;
   background: transparent var(--logo) no-repeat center / auto calc(100% - 0.5rem);
   border-radius: 0;
 }
 
-.oui--header form {
+.header form {
   width: 100%;
   max-width: 400px;
-  background: var(--background-minus, #b0d0ff);
+  background: var(--background-plus, #fff);
   height: 3.6rem;
   margin: 0.7rem 0.5rem;
   border-radius: 1.8rem;
@@ -91,14 +91,14 @@
   position: relative;
 }
 
-.oui--header form:focus-within {
+.header form:focus-within {
   background: var(--background-plus, #fff);
   z-index: 10;
   height: unset;
   border-radius: 1.5rem 1.5rem 0 0;
 }
 
-.oui--header form .search {
+.header form .search {
   display: inline-flex;
   position: relative;
   -moz-padding-start: 4rem;
@@ -106,19 +106,19 @@
   box-sizing: border-box;
   border-radius: 1.5rem 1.5rem 0 0;
 }
-html[dir="ltr"] .oui--header form .search {
+html[dir="ltr"] .header form .search {
   background: url(images/search.svg) no-repeat left 1rem center / 2rem;
 }
-html[dir="rtl"] .oui--header form .search {
+html[dir="rtl"] .header form .search {
   background: url(images/search.svg) no-repeat right 1rem center / 2rem;
 }
 
-.oui--header form:focus-within .search {
+.header form:focus-within .search {
   background-color: var(--background-plus) !important;
   z-index: 1;
 }
 
-.oui--header form .search > input[type="text"] {
+.header form .search > input[type="text"] {
   border: none;
   padding: 0;
   width: 100%;
@@ -131,7 +131,7 @@ html[dir="rtl"] .oui--header form .search {
   outline: none;
 }
 
-.oui--header form .search > button {
+.header form .search > button {
   margin: 0;
   -moz-margin-start: -4rem;
   margin-inline-start: -4rem;
@@ -143,12 +143,12 @@ html[dir="rtl"] .oui--header form .search {
   line-height: 3.6rem;
 }
 
-.oui--header form:focus-within .search > button {
+.header form:focus-within .search > button {
   margin: 0;
   opacity: 1;
 }
 
-.oui--header form .results {
+.header form .results {
   width: 100%;
   position: absolute;
   left: 0;
@@ -167,13 +167,13 @@ html[dir="rtl"] .oui--header form .search {
   visibility: hidden;
 }
 
-.oui--header form:focus-within .results {
+.header form:focus-within .results {
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
 }
 
-.oui--header form .results li {
+.header form .results li {
   margin: 0;
   padding: 0 1rem;
   box-sizing: border-box;
@@ -186,12 +186,12 @@ html[dir="rtl"] .oui--header form .search {
   list-style: none;
 }
 
-.oui--header form .results li:hover {
+.header form .results li:hover {
   background: var(--translucent);
 }
 
 @media screen and (max-width: 599px) {
-  .oui--header form:focus-within {
+  .header form:focus-within {
     outline: solid 0.2rem var(--accent-color, #0061e0);
     position: absolute;
     left: 0;
@@ -202,7 +202,7 @@ html[dir="rtl"] .oui--header form .search {
     max-width: unset;
   }
 
-  .oui--header form:focus-within .search > input[type="text"] {
+  .header form:focus-within .search > input[type="text"] {
     height: 4rem;
     line-height: 4rem;
   }
