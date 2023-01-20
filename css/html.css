@@ -15,6 +15,11 @@
   src: url(/fonts/Jali_Arabic_Black.ttf);
 }
 
+@font-face {
+  font-family: 'Lobster';
+  src: url(/fonts/Lobster-Regular.ttf);
+}
+
 :root {
   --logo: url(images/logo_light.png);
 
@@ -387,16 +392,25 @@ select {
   width: 100%;
   height: 4rem;
   line-height: 4rem;
-  border-radius: 1rem;
+  border-radius: 0.4rem;
   border: none;
   background: var(--input-background);
-  border: solid 0.1rem var(--input-clear-background);
+  border: solid 0.2rem var(--input-clear-background);
   color: var(--text-color);
   padding: 0 1rem;
   box-sizing: border-box;
   font-size: 1.6rem;
   font-weight: normal;
   margin: 0 0 1rem;
+}
+
+select:hover {
+  border: solid 0.2rem #a6a6a6;
+}
+
+select:focus {
+  border: solid 0.2rem var(--accent-color);
+  outline: none;
 }
 
 .pointerless {
@@ -483,4 +497,11 @@ pre {
   font-size: 1.4rem;
   width: 100%;
   overflow: auto;
+}
+
+.capyloon {
+  font-family: "Lobster", cursive;
+  background: linear-gradient(to bottom right, red, orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

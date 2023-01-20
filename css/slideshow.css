@@ -15,18 +15,18 @@
 .slideshow-container .controls {
   position: absolute;
   left: 0;
-  top: calc(50% - 2rem);
+  top: calc(50% - 3rem);
   width: 100%;
-  height: 4rem;
+  height: 6rem;
   display: flex;
   z-index: 5;
 }
 
 .slideshow-container .controls button {
   width: 4rem;
-  height: 4rem;
-  line-height: 4rem;
-  border-radius: 0.6rem;
+  height: 6rem;
+  line-height: 6rem;
+  border-radius: 2rem;
   background: transparent;
   border: none;
   color: var(--color-secondary, #fff);
@@ -46,8 +46,8 @@
   position: static;
   width: unset;
   margin: 0;
-  height: 4rem;
-  line-height: 4rem;
+  height: 6rem;
+  line-height: 6rem;
 }
 
 .slideshow-container .controls .forward {
@@ -87,9 +87,7 @@
   opacity: 1;
   width: 5rem;
   position: relative;
-  overflow: hidden;
   background: var(--color-primary, var(--text-color));
-  box-shadow: 0 0 5rem var(--color-secondary, var(--text-color-minus));
 }
 
 .slideshow-container .dots .dot.active::before {
@@ -100,6 +98,7 @@
   height: calc(100% - 0.4rem);
   border-radius: 1rem;
   background: var(--color-secondary, var(--accent-color));
+  box-shadow: 0 0 5rem var(--color-secondary, var(--text-color-minus));
 }
 
 .slideshow {
@@ -283,7 +282,6 @@ html[dir="rtl"] .slideshow > div a:hover:after {
 
   .slideshow {
     border-radius: 1.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   }
 
   .slideshow > div {
@@ -357,32 +355,29 @@ html[dir="rtl"] .slideshow > div a:hover:after {
   .slideshow-container {
     width: calc(100% - 128px);
     margin: 0 64px 48px;
-    aspect-ratio: 2.25 / 1;
+    aspect-ratio: 2.175 / 1;
   }
 
   .slideshow-container .controls {
-    left: -1.5rem;
-    width: calc(100% + 3rem);
+    left: 1rem;
+    width: calc(100% - 2rem);
   }
 
   .slideshow-container .controls button {
-    border-radius: 2rem;
-    background: var(--button-background);
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.25);
-    color: var(--text-color);
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(20px);
   }
 
   .slideshow-container .controls button:hover {
-    background: var(--button-background-plus);
+    background: rgba(0,0,0,0.5);
   }
 
   .slideshow-container .controls button:active {
-    background: var(--button-background-minus);
+    background: rgba(0,0,0,0.75);
   }
 
   .slideshow {
     border-radius: 1.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   }
 
   /* -186 -61 -312 -151 -63 -347 */
