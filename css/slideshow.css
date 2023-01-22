@@ -17,15 +17,21 @@
   left: 1rem;
   top: 1rem;
   width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  border-radius: 2rem;
   padding: 0 1rem;
   box-sizing: border-box;
   border: none;
-  --accent-color: #fff;
+  background: transparent;
+  color: #fff;
   filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.5));
 }
 
 .slideshow-container .playpause-button:hover {
   filter: none;
+  background: #fff;
+  color: #000;
 }
 
 .slideshow-container .playpause-button::before {
@@ -92,6 +98,8 @@
   flex-direction: column;
   background: transparent;
   padding: 1rem 0;
+  color: var(--color-secondary, #fff);
+  border: none;
   transition: all 0.3s ease;
 }
 
@@ -114,6 +122,7 @@
 }
 
 .slideshow-container .dots .dot:hover .label,
+.slideshow-container .dots .dot:focus .label,
 .slideshow-container .dots .dot.active .label {
   transform: translateY(0);
   opacity: 1;
@@ -131,10 +140,6 @@
 
 .slideshow-container .dots .dot.active .progress {
   opacity: 1;
-}
-
-.slideshow-container .dots .dot:hover {
-  opacity: 0.75;
 }
 
 .slideshow-container .dots .dot:last-child {
@@ -259,11 +264,11 @@ html[dir="rtl"] .slideshow > div > * {
 .slideshow > div a {
   font-size: 1.6rem;
   font-weight: bold;
-  color: var(--color-primary, var(--accent-text-color));
+  color: var(--color-primary, #000);
   display: inline-block;
   text-align: start;
   text-decoration: none;
-  background: var(--color-secondary, var(--accent-color));
+  background: var(--color-secondary, #fff);
   height: 3.4rem;
   line-height: 3.4rem;
   font-size: 1.6rem;

@@ -322,7 +322,7 @@ a:focus, button:focus {
 
 *,
 ::placeholder {
-  --font-families: 'Jali Arabic', system-ui, sans-serif;
+  font-family: 'Jali Arabic', system-ui, sans-serif;
 }
 
 html {
@@ -340,7 +340,6 @@ html, body {
   color-scheme: light dark;
 }
 
-button,
 .button {
   border: solid 0.1rem var(--accent-color);
   color: var(--accent-color);
@@ -356,36 +355,27 @@ button,
   text-decoration: none;
 }
 
-button:hover,
 .button:hover {
   background: var(--accent-color);
   color: var(--accent-text-color);
 }
 
-button:active
 .button:active {
   background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.125), rgba(255,255,255,0.125));
 }
 
-button.recommend,
 .button.recommend {
   background: var(--accent-color);
   color: var(--accent-text-color);
   border: none;
 }
 
-button.recommend:hover,
 .button.recommend:hover {
   background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.125), rgba(255,255,255,0.125));
 }
 
-button.recommend:active,
 .button.recommend:active {
   background: var(--accent-color) linear-gradient(0deg, rgba(255,255,255,0.25), rgba(255,255,255,0.25));
-}
-
-button, select, input {
-  font-family: var(--font-families);
 }
 
 select {

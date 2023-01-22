@@ -24,7 +24,7 @@ async function initSlideshow() {
 
   function init(json) {
     json.forEach((slideshow, index) => {
-      var dot = document.createElement('div');
+      var dot = document.createElement('button');
       dot.classList.add('dot');
       slideshowDots.appendChild(dot);
       dot.addEventListener('click', () => {
