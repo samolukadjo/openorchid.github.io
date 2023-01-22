@@ -20,6 +20,12 @@
   padding: 0 1rem;
   box-sizing: border-box;
   border: none;
+  --accent-color: #fff;
+  filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.5));
+}
+
+.slideshow-container .playpause-button:hover {
+  filter: none;
 }
 
 .slideshow-container .playpause-button::before {
