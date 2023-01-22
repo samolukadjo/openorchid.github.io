@@ -96,7 +96,7 @@ html[dir="rtl"] .footer ul li:not(.external)::after {
   content: 'back';
 }
 
-html[dir="rtl"] .footer ul li.external::after {
+.footer ul li.external::after {
   content: 'link';
 }
 

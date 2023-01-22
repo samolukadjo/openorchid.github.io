@@ -1,0 +1,23 @@
+[
+  {
+    "background": "images/wallpapers/rose-petals-dark.png",
+    "title": "home-brand-title",
+    "detail": "home-brand-summary",
+    "link_to": "#",
+    "placement": "start"
+  },
+  {
+    "background": "images/keyarts/poster_explore.png",
+    "title": "home-store-title",
+    "detail": "home-store-summary",
+    "link_to": "#",
+    "placement": "end"
+  },
+  {
+    "background": "videos/sample.mp4",
+    "title": "home-os-title",
+    "detail": "home-os-summary",
+    "link_to": "#",
+    "placement": "start bottom"
+  }
+]

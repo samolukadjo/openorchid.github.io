@@ -12,6 +12,20 @@
   height: 100%;
 }
 
+.slideshow-container .playpause-button {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 4rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  border: none;
+}
+
+.slideshow-container .playpause-button::before {
+  font-size: 2rem;
+}
+
 .slideshow-container .controls {
   position: absolute;
   left: 0;
@@ -57,9 +71,8 @@
 .slideshow-container .dots {
   position: absolute;
   left: 0;
-  bottom: 1rem;
+  bottom: 0;
   width: 100%;
-  height: 1.5rem;
   display: flex;
   justify-content: center;
   z-index: 5;
@@ -67,12 +80,51 @@
 
 .slideshow-container .dots .dot {
   width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 1.5rem;
   box-sizing: border-box;
-  background: #858585;
   margin-inline-end: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  padding: 1rem 0;
   transition: all 0.3s ease;
+}
+
+.slideshow-container .dots .dot .label {
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--color-secondary, #fff);
+
+  transition: all 0.3s ease;
+  transform: translateY(1rem);
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(5px);
+}
+
+.slideshow-container .dots .dot:hover .label,
+.slideshow-container .dots .dot.active .label {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  filter: blur(0px);
+}
+
+.slideshow-container .dots .dot .progress {
+  width: 100%;
+  height: 0.4rem;
+  border-radius: 0.2rem;
+  background: var(--color-secondary, #fff);
+  opacity: 0.5;
+}
+
+.slideshow-container .dots .dot.active .progress {
+  opacity: 1;
 }
 
 .slideshow-container .dots .dot:hover {
@@ -81,13 +133,6 @@
 
 .slideshow-container .dots .dot:last-child {
   margin: 0;
-}
-
-.slideshow-container .dots .dot.active {
-  opacity: 1;
-  width: 5rem;
-  position: relative;
-  background: var(--color-primary, var(--text-color));
 }
 
 .slideshow-container .dots .dot.active::before {
@@ -110,11 +155,13 @@
 
   transition: all 0.3s ease 0.3s;
   opacity: 0;
+  visibility: hidden;
 }
 
 .slideshow.current {
-  opacity: 1;
   transition: all 0.3s ease;
+  opacity: 1;
+  visibility: visible;
 }
 
 .slideshow > .background {
@@ -151,9 +198,10 @@ html[dir="rtl"] .slideshow > div {
 }
 
 .slideshow > div > * {
-  transition: transform 1s cubic-bezier(0.2, 0.9, 0.1, 1), opacity 1s cubic-bezier(0.2, 0.9, 0.1, 1), visibility 1s;
+  transition: transform 1s cubic-bezier(0.2, 0.9, 0.1, 1), opacity 1s cubic-bezier(0.2, 0.9, 0.1, 1), filter 1s cubic-bezier(0.2, 0.9, 0.1, 1), visibility 1s;
   opacity: 0;
   visibility: hidden;
+  filter: blur(10px);
 }
 html[dir="ltr"] .slideshow > div > * {
   transform: translateX(128px);
@@ -166,6 +214,7 @@ html[dir="rtl"] .slideshow > div > * {
   opacity: 1;
   transform: translateX(0) !important;
   visibility: visible;
+  filter: blur(0px);
 }
 
 .slideshow > div > *:nth-child(1) {
@@ -259,16 +308,6 @@ html[dir="rtl"] .slideshow > div a:hover:after {
     width: calc(100% - 2rem);
     margin: 0.5rem 1rem 3.5rem;
     aspect-ratio: 2 / 1;
-  }
-
-  .slideshow-container .dots {
-    position: absolute;
-    left: 0;
-    bottom: 1rem;
-    width: 100%;
-    height: 1.5rem;
-    display: flex;
-    justify-content: center;
   }
 
   .slideshow-container .dots .dot {
