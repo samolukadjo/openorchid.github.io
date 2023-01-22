@@ -7,7 +7,7 @@ header {
 
 header.scrolling {
   transform: translateY(-100%);
-  transition: transform 0.75s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transition: transform 0.3s ease;
 }
 
 header.scrolling.visible {
@@ -63,7 +63,7 @@ header.dark {
   width: min-content;
   position: relative;
 
-  /* Orchid branding */
+  /* DigitByte branding */
   width: 12rem;
   background: var(--logo) no-repeat center / 100% auto;
 }
@@ -97,8 +97,9 @@ header.dark {
   opacity: 0;
 }
 
-.header .tab-skip:focus {
+.header-container .tab-skip:focus {
   margin: 0.5rem 0;
+  margin-inline-start: 1rem;
   opacity: 1;
   pointer-events: all;
 }

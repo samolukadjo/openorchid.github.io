@@ -21,7 +21,7 @@
 }
 
 :root {
-  --logo: url(images/logo_light.png);
+  --logo: url(images/brand-light.svg);
 
   /** Accent Color
    ---------------------------------------------------------*/
@@ -164,7 +164,7 @@
 }
 
 [data-theme="dark"] {
-  --logo: url(images/logo_dark.png);
+  --logo: url(images/brand.svg);
 
   /** Accent Color
    ---------------------------------------------------------*/
@@ -306,11 +306,11 @@
   --backdrop-color: rgba(16, 18, 20, 0.5);
 }
 
-:focus-visible {
+:focus {
   outline: dashed 0.1rem currentColor;
 }
 
-a:focus-visible, button:focus-visible {
+a:focus, button:focus {
   font-weight: bold !important;
 }
 

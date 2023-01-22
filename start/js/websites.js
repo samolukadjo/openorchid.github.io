@@ -30,7 +30,7 @@
     },
     {
       href: 'https://orchidfoss.github.io',
-      name: 'Orchid Org.',
+      name: 'DigitByte Org.',
       icon: '/favicon.svg'
     }
   ];

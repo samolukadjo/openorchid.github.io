@@ -130,10 +130,14 @@
 }
 
 .products ul li:hover p {
-  transform: scale(0.8);
+  transform: scaleX(0.6) scaleY(1.1);
   opacity: 0;
   visibility: hidden;
   filter: blur(10px);
+}
+
+.products ul li:first-child:hover p {
+  transform: scaleX(0.4) scaleY(1.1);
 }
 
 .products ul li.light h3,
@@ -166,11 +170,15 @@
   box-sizing: border-box;
   width: max-content;
   border-radius: 2rem;
-  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
-  transform: scale(1.1) scaleX(1.25);
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1.25);
+  transform: scaleX(1.5) scaleY(0.75);
   opacity: 0;
   visibility: hidden;
   filter: blur(10px);
+}
+
+.products ul li:first-child span {
+  transform: scaleX(3) scaleY(0.75);
 }
 
 .products ul li:hover span {

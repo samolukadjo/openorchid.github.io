@@ -80,7 +80,7 @@
   margin-bottom: 0;
 }
 
-.footer ul li:after {
+.footer ul li::after {
   content: '';
   font-size: 1.6rem;
   font-family: 'gaia-icons';
@@ -89,14 +89,18 @@
   color: var(--text-color);
   transition: margin 0.2s ease;
 }
-html[dir="ltr"] .footer ul li:after {
+html[dir="ltr"] .footer ul li:not(.external)::after {
   content: 'forward';
 }
-html[dir="rtl"] .footer ul li:after {
+html[dir="rtl"] .footer ul li:not(.external)::after {
   content: 'back';
 }
 
-.footer ul li:hover:after {
+html[dir="rtl"] .footer ul li.external::after {
+  content: 'link';
+}
+
+.footer ul li:not(.external):hover::after {
   -moz-margin-start: 1rem;
   margin-inline-start: 1rem;
 }
@@ -126,19 +130,21 @@ html[dir="rtl"] .footer ul li:after {
   width: 4rem;
   height: 4rem;
   line-height: 4rem;
-  background: var(--text-color);
-  color: var(--background);
+  color: var(--text-color);
   border-radius: 50%;
   display: inline-block;
   text-align: center;
   text-decoration: none;
   display: block;
+  margin: 0;
 }
 
-.footer .social-media > a {
-  margin: 0;
-  -moz-margin-end: 0.5rem;
-  margin-inline-end: 0.5rem;
+.footer .social-media > a:hover {
+  background: var(--translucent);
+}
+
+.footer .social-media > a:active {
+  background: var(--translucent-plus);
 }
 
 .footer .social-media > a:last-child {
