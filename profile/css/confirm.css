@@ -186,7 +186,7 @@ form[role="dialog"][data-type="confirm"] p {
   word-wrap: break-word;
   margin: 0;
   padding: 1rem 1.5rem;
-  border-top: 0.1rem solid #e7e9ec;
+  border-top: 0.1rem solid #f0f6ff;
   line-height: 2.5rem;
   -moz-user-select: none; /* 1 */
 }
@@ -218,7 +218,7 @@ form[role="dialog"][data-type="confirm"] p small {
 }
 
 form[role="dialog"][data-type="confirm"] dl {
-  border-top: 0.1rem solid #e7e9ec;
+  border-top: 0.1rem solid #f0f6ff;
   margin: 1rem 0 0;
   overflow: hidden;
   padding-top: 1rem;
@@ -269,7 +269,7 @@ form[role="dialog"][data-type="confirm"] figure figcaption {
 form[role="dialog"][data-type="confirm"] ul {
   margin: 0;
   padding: 2rem 1.5rem;
-  border-top: 0.1rem solid #e7e9ec;
+  border-top: 0.1rem solid #f0f6ff;
   list-style: none;
   font-size: 1.6rem;
   font-weight: normal;

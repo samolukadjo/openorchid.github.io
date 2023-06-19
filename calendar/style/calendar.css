@@ -1,7 +1,7 @@
 :root {
   --accent-color: #0061e0;
   --accent-text-color: rgba(255,255,255,0.75);
-  --background: #e7e9ec;
+  --background: #f0f6ff;
   --background-plus: #fff;
   --events-background: #f4f4f4;
   --text-color: #333;
@@ -15,7 +15,7 @@
   :root {
     --accent-color: #80c2ff;
     --accent-text-color: rgba(0,0,0,0.75);
-    --background: #101214;
+    --background: #000;
     --background-plus: #212325;
     --events-background: #181a1c;
     --text-color: #e7e7e7;

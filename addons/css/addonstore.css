@@ -13,7 +13,7 @@
   --logo: url(/addons/images/store.svg);
   --accent-color: #40a060;
   --accent-text-color: rgba(255,255,255,0.75);
-  --background: #e7e9ec;
+  --background: #f0f6ff;
   --background-plus: #fff;
   --header-background: rgba(231, 233, 236, 0.5);
   --text-color: #333;
@@ -31,7 +31,7 @@
 }
 
 [data-theme="dark"] {
-  --background: #101214;
+  --background: #000;
   --background-plus: #212325;
   --header-background: rgba(16, 18, 20, 0.6);
   --text-color: #e7e7e7;

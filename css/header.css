@@ -1,18 +1,7 @@
 header {
-  position: sticky;
-  top: 0;
+  position: relative;
   width: 100%;
   z-index: 10;
-}
-
-header.scrolling {
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
-}
-
-header.scrolling.visible {
-  transform: translateY(0);
-  border-bottom: solid 0.1rem var(--translucent-plus);
 }
 
 .header-container {
@@ -23,14 +12,10 @@ header.scrolling.visible {
   display: flex;
 }
 
-header.scrolling .header-container {
-  background: var(--backdrop-color);
-}
-
 header.light {
   --accent-color: #0061e0;
   --accent-text-color: rgba(255,255,255,0.75);
-  --background: #e7e9ec;
+  --background: #f0f6ff;
   --background-plus: #fff;
   --text-color: #333;
 
@@ -41,7 +26,7 @@ header.light {
 header.dark {
   --accent-color: #80c2ff;
   --accent-text-color: rgba(0,0,0,0.75);
-  --background: #101214;
+  --background: #000;
   --background-plus: #212324;
   --text-color: #e7e7e7;
 
@@ -63,7 +48,7 @@ header.dark {
   width: min-content;
   position: relative;
 
-  /* DigitByte branding */
+  /* OpenOrchid branding */
   width: 12rem;
   background: var(--logo) no-repeat center / 100% auto;
 }
@@ -249,22 +234,6 @@ html[dir="rtl"][data-theme="dark"] .header-container form {
   font-size: 2rem;
 }
 
-@supports (backdrop-filter: saturate(180%) blur(20px)) {
-  header.scrolling .header-container {
-    backdrop-filter: saturate(180%) blur(20px);
-  }
-
-  header.light form {
-    background-color: rgba(0,0,0,0.125) !important;
-    background-image: url(images/search_light.svg) !important;
-  }
-
-  header.dark form {
-    background-color: rgba(255,255,255,0.125) !important;
-    background-image: url(images/search_dark.svg) !important;
-  }
-}
-
 @media screen and (max-width: 1023px) {
   html[dir="ltr"] .header-container {
     padding-right: 5rem;
@@ -296,7 +265,7 @@ html[dir="rtl"][data-theme="dark"] .header-container form {
 
 @media screen and (min-width: 1024px) {
   .header-container {
-    padding: 1rem 5vw;
+    padding: 1rem calc(5vw - 1.25rem);
     height: 7rem;
   }
 

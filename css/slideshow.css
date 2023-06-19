@@ -118,7 +118,6 @@
   transform: translateY(1rem);
   opacity: 0;
   visibility: hidden;
-  filter: blur(5px);
 }
 
 .slideshow-container .dots .dot:hover .label,
@@ -127,7 +126,6 @@
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
-  filter: blur(0px);
 }
 
 .slideshow-container .dots .dot .progress {
@@ -212,7 +210,6 @@ html[dir="rtl"] .slideshow > div {
   transition: transform 1s cubic-bezier(0.2, 0.9, 0.1, 1), opacity 1s cubic-bezier(0.2, 0.9, 0.1, 1), filter 1s cubic-bezier(0.2, 0.9, 0.1, 1), visibility 1s;
   opacity: 0;
   visibility: hidden;
-  filter: blur(10px);
 }
 html[dir="ltr"] .slideshow > div > * {
   transform: translateX(128px);
@@ -225,7 +222,6 @@ html[dir="rtl"] .slideshow > div > * {
   opacity: 1;
   transform: translateX(0) !important;
   visibility: visible;
-  filter: blur(0px);
 }
 
 .slideshow > div > *:nth-child(1) {

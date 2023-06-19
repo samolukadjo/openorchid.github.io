@@ -16,7 +16,7 @@ body {
   font-size: 18px;
   color: var(--text-color, #333);
   overflow: hidden;
-  background: var(--background, #e7e9ec);
+  background: var(--background, #f0f6ff);
 }
 
 ul {
@@ -166,7 +166,7 @@ ul.gaia-list,
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background: var(--background, #e7e9ec);
+  background: var(--background, #f0f6ff);
   margin: 1rem auto -1rem;
   position: relative;
   max-width: 788px;
@@ -302,7 +302,7 @@ html[dir="rtl"] .gaia-list label.pack-switch span:after {
 
 /* Footer */
 .gaia-footer {
-  border-top: 1px solid #e7e9ec;
+  border-top: 1px solid #f0f6ff;
   background-color: var(--background, #fff);
   padding: 10px 15px;
   display: flex;

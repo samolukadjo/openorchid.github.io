@@ -263,7 +263,7 @@ export function openLoginPrompt(type = 'login', callback) {
       margin: 0;
       height: 4rem;
       line-height: 4rem;
-      background: #e7e9ec;
+      background: #f0f6ff;
       border-radius: 0.4rem;
       border: none;
       padding: 0 1.5rem;

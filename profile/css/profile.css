@@ -33,7 +33,7 @@
   --color-epsilon: #858789;
   --color-zeta: #a6a8ab;
   --color-eta: #c7c9cc;
-  --color-theta: #e7e9ec;
+  --color-theta: #f0f6ff;
   --color-iota: #f4f6f8;
 
   /** Brand Colors
@@ -54,7 +54,7 @@
   /** Background
    ---------------------------------------------------------*/
 
-  --background: #e7e9ec;
+  --background: #f0f6ff;
   --background-plus: #fff;
   --background-minus: #a6a8ab;
 
@@ -76,7 +76,7 @@
   --button-background: linear-gradient(to bottom, #fff, #f4f4f4);
   --button-background-plus: linear-gradient(to bottom, #d8dadd, #ccced2);
   --button-background-minus: linear-gradient(to bottom, #bcbec2, #c8cacd);
-  --button-background-list: linear-gradient(to bottom, #e7e9ec, #dbddf0);
+  --button-background-list: linear-gradient(to bottom, #f0f6ff, #dbddf0);
 
   /** Links
    ---------------------------------------------------------*/
@@ -122,7 +122,7 @@
   --background-zeta: #d0d2d5;
   --background-eta: #d8dadd;
   --background-theta: #e0e2e5;
-  --background-iota: #e7e9ec;
+  --background-iota: #f0f6ff;
 
   --translucent: rgba(0,0,0,0.05);
   --translucent-plus: rgba(0,0,0,0.1);
@@ -172,7 +172,7 @@
   --color-epsilon: #858789;
   --color-zeta: #a6a8ab;
   --color-eta: #c7c9cc;
-  --color-theta: #e7e9ec;
+  --color-theta: #f0f6ff;
   --color-iota: #f4f6f8;
 
   /** Brand Colors
@@ -193,7 +193,7 @@
   /** Background
    ---------------------------------------------------------*/
 
-  --background: #101214;
+  --background: #000;
   --background-plus: #212325;
   --background-minus: #66686a;
 
@@ -215,7 +215,7 @@
   --button-background: linear-gradient(to bottom, #303234, #2c2e30);
   --button-background-plus: linear-gradient(to bottom, #383a3c, #343638);
   --button-background-minus: linear-gradient(to bottom, #3c3e40, #404244);
-  --button-background-list: linear-gradient(to bottom, #181a1c, #101214);
+  --button-background-list: linear-gradient(to bottom, #181a1c, #000);
 
   /** Links
    ---------------------------------------------------------*/
@@ -258,7 +258,7 @@
   --background-gamma: #040608;
   --background-delta: #080a0c;
   --background-epsilon: #0c0e10;
-  --background-zeta: #101214;
+  --background-zeta: #000;
   --background-eta: #181a1c;
   --background-theta: #202224;
   --background-iota: #282a2c;

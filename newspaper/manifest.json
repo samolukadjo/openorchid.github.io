@@ -1,6 +1,6 @@
 {
   "short_name": "Newspaper",
-  "name": "DigitByte Newspaper",
+  "name": "OpenOrchid Newspaper",
   "icons": [
     {
       "src": "images/newspaper_16.png",
@@ -36,5 +36,5 @@
   "start_url": "/newspaper/index.html",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme-color": "#e7e9ec"
+  "theme-color": "#f0f6ff"
 }

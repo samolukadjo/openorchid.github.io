@@ -168,7 +168,7 @@ li .button {
   white-space: normal;
   line-height: 2rem;
   padding: 1rem 1.5rem;
-  background: var(--button-background-list, linear-gradient(to bottom, #e7e9ec, #dbddf0));
+  background: var(--button-background-list, linear-gradient(to bottom, #f0f6ff, #dbddf0));
 }
 html[dir="ltr"] li button,
 html[dir="ltr"] li .bb-button,
@@ -348,7 +348,7 @@ select {
   overflow: hidden;
   height: 4rem;
   border: none;
-  background: var(--button-background-list, linear-gradient(to bottom, #e7e9ec, #dbddf0));
+  background: var(--button-background-list, linear-gradient(to bottom, #f0f6ff, #dbddf0));
   border-radius: 0.8rem;
 }
 

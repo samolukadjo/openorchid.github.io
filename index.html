@@ -5,29 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
-    <title data-l10n-id="brandName">DigitByte</title>
+    <title data-l10n-id="brandName">OpenOrchid</title>
     <meta name="theme-color" content="var(--background, #e7e7e7)" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="DigitByte" />
+    <meta property="og:site_name" content="OpenOrchid" />
     <meta property="og:title" content="Website" />
     <meta property="og:description" content="Discover new things." />
     <meta property="og:url" content="https://orchidfoss.github.io/" />
     <meta property="og:image" content="images/thumbnail.svg" />
-    <meta name="title" content="DigitByte" />
+    <meta name="title" content="OpenOrchid" />
     <meta name="description" content="Discover new things." />
     <meta
       name="keywords"
-      content="MortCodesWeb, DigitByte, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0"
+      content="MortCodesWeb, OpenOrchid, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0"
     />
     <meta property="twitter:card" content="website" />
-    <meta property="twitter:site" content="@digitbyte" />
-    <meta property="twitter:title" content="DigitByte" />
+    <meta property="twitter:site" content="@OpenOrchid" />
+    <meta property="twitter:title" content="OpenOrchid" />
     <meta property="twitter:description" content="Discover new things." />
     <meta property="twitter:url" content="https://orchidfoss.github.io/" />
     <meta property="twitter:image" content="images/thumbnail.svg" />
     <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css" />
     <link rel="stylesheet" href="lib/gaia-icons/bidi-helper.css" />
-    <link rel="stylesheet" href="lib/aos.css" />
     <link rel="stylesheet" href="lib/orchid_ui/header.css" />
     <link rel="stylesheet" href="css/html.css" />
     <link rel="stylesheet" href="css/offers_banner.css" />
@@ -50,7 +49,6 @@
     <!-- Elastic Scrolling -->
     <script defer src="lib/smooth-scrollbar.js"></script>
     <script defer src="lib/plugins/overscroll.js"></script>
-    <script defer src="lib/aos.js"></script>
     <script defer src="js/main.js"></script>
     <script defer src="js/service_worker.js"></script>
     <script defer src="js/content.js"></script>
@@ -75,6 +73,32 @@
   </head>
 
   <body>
+    <div class="offers-banner" id="service-worker-dialog">
+      <div>
+        <h1 data-l10n-id="sw-title"></h1>
+        <p data-l10n-id="sw-detail"></p>
+        <ul>
+          <li data-l10n-id="sw-feature1"></li>
+          <li data-l10n-id="sw-feature2"></li>
+          <li data-l10n-id="sw-feature3"></li>
+        </ul>
+        <menu>
+          <a
+            href="#"
+            class="button recommend"
+            id="service-worker-dialog-allow"
+            data-l10n-id="yes"
+          ></a>
+          <a
+            href="#"
+            class="button"
+            id="service-worker-dialog-deny"
+            data-l10n-id="no"
+          ></a>
+        </menu>
+      </div>
+    </div>
+
     <header id="header">
       <div class="header-container">
         <a href="/" class="logo">
@@ -237,13 +261,7 @@
 
     <main class="content" id="content"></main>
 
-    <div
-      class="quick-search"
-      id="quick-search"
-      data-aos="fade-up"
-      data-aos-easing="expo-in"
-      data-aos-duration="500"
-    >
+    <div class="quick-search" id="quick-search">
       <div class="spacer">
         <h1 data-icon="search" data-l10n-id="quick-search"></h1>
         <form action="" id="quick-search-form">
@@ -257,12 +275,7 @@
       </div>
     </div>
 
-    <ul
-      class="notices"
-      data-aos="fade-up"
-      data-aos-easing="expo-in"
-      data-aos-duration="500"
-    >
+    <ul class="notices">
       <li data-l10n-id="notice-doNotSteal"></li>
       <li data-l10n-id="notice-doNotMessWithTheCode"></li>
       <li data-l10n-id="notice-doNotPirate"></li>
@@ -272,12 +285,7 @@
       <li data-l10n-id="notice-notTwitter"></li>
     </ul>
 
-    <footer
-      class="footer"
-      data-aos="fade-down"
-      data-aos-easing="expo-in"
-      data-aos-duration="500"
-    >
+    <footer class="footer" data-aos="fade-down">
       <div class="container">
         <div class="row center">
           <div class="footer-col">
@@ -400,12 +408,6 @@
             </div>
             <h4 data-l10n-id="footer-extras"></h4>
             <ul>
-              <li class="external">
-                <a href="https://www.capyloon.org/" target="_blank">
-                  <span data-l10n-id="footer-extras-capyloon"></span>
-                  <span class="capyloon">Capyloon</span>
-                </a>
-              </li>
               <li>
                 <a
                   href="https://www.github.com/orchidfoss/orchidfoss.github.io/"
@@ -468,37 +470,6 @@
         <source src="" type="video/mp4" id="video-player-source" />
       </video>
       <button id="video-player-close" data-icon="close"></button>
-    </div>
-
-    <div class="offers-dialog">
-      <div class="offers-banner" id="service-worker-dialog">
-        <div>
-          <h1 data-l10n-id="sw-title"></h1>
-          <p data-l10n-id="sw-detail"></p>
-          <ul>
-            <li data-l10n-id="sw-feature1"></li>
-            <li data-l10n-id="sw-feature2"></li>
-            <li data-l10n-id="sw-feature3"></li>
-          </ul>
-          <menu>
-            <a
-              href="/articles/?article=c10fb552-276c-44c9-adfe-2d69eeffe6cd"
-              class="button"
-              data-l10n-id="privacyPolicy"
-            ></a>
-          </menu>
-        </div>
-        <div>
-          <menu>
-            <button
-              class="recommend"
-              id="service-worker-dialog-allow"
-              data-l10n-id="yes"
-            ></button>
-            <button id="service-worker-dialog-deny" data-l10n-id="no"></button>
-          </menu>
-        </div>
-      </div>
     </div>
   </body>
 </html>

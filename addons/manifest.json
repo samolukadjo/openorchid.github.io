@@ -1,6 +1,6 @@
 {
   "short_name": "Web Store",
-  "name": "DigitByte Web Store",
+  "name": "OpenOrchid Web Store",
   "icons": [
     {
       "src": "images/store_16.png",
@@ -36,5 +36,5 @@
   "start_url": "/webstore/index.html",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme-color": "#e7e9ec"
+  "theme-color": "#f0f6ff"
 }

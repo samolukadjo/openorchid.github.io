@@ -1,2 +1,2 @@
 # orchidfoss.github.io
-DigitByte website at it's earliest.
+OpenOrchid website at it's earliest.
