@@ -164,6 +164,6 @@
   };
 
   exports.showWebappInfo = function showWebappInfo(id) {
-    location.href = 'https://orchidfoss.github.io/webstore/?webapp=' + id;
+    location.href = 'https://openorchid.github.io/webstore/?webapp=' + id;
   };
 })(window);

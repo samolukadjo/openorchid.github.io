@@ -17,7 +17,7 @@ OrchidServices.getList('articles', (article) => {
   antiDupe.push(article.token);
 
   var element = document.createElement('a');
-  element.href = 'https://orchidfoss.github.io/articles/?post=' + article.token;
+  element.href = 'https://openorchid.github.io/articles/?post=' + article.token;
   cards.appendChild(element);
 
   var image = document.createElement('img');

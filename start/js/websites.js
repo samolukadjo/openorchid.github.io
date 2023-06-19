@@ -29,7 +29,7 @@
       icon: 'images/github.png'
     },
     {
-      href: 'https://orchidfoss.github.io',
+      href: 'https://openorchid.github.io',
       name: 'OpenOrchid Org.',
       icon: '/favicon.svg'
     }

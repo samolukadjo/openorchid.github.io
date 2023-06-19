@@ -34,7 +34,7 @@
     AOS.init();
 
     if (OrchidServices.isUserLoggedIn()) {
-      profileButton.href = 'https://orchidfoss.github.io/profile/?user_id=' + OrchidServices.userId();
+      profileButton.href = 'https://openorchid.github.io/profile/?user_id=' + OrchidServices.userId();
       OrchidServices.getWithUpdate('profile/' + OrchidServices.userId(), function(data) {
         profileTooltip.textContent = data.username;
         profileAvatar.alt = data.username;

@@ -9,6 +9,6 @@ config:
   dev:
     url: http://127.0.0.1:5500/
   prod:
-    url: https://orchidfoss.github.io/
+    url: https://openorchid.github.io/
 
 url: site.config[site.env].url

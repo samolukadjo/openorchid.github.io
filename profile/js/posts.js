@@ -28,7 +28,7 @@
     icon.loading = "lazy";
     icon.onerror = () => {
       icon.src =
-        "https://orchidfoss.github.io/images/profile_pictures/avatar_default.svg";
+        "https://openorchid.github.io/images/profile_pictures/avatar_default.svg";
     };
     iconHolder.appendChild(icon);
 
@@ -198,6 +198,6 @@
   };
 
   exports.showPostInfo = function showPostInfo(id) {
-    location.href = 'https://orchidfoss.github.io/articles/?post=' + id;
+    location.href = 'https://openorchid.github.io/articles/?post=' + id;
   };
 })(window);

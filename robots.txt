@@ -9,4 +9,4 @@ Disallow: /pages
 Disallow: /start
 Disallow: /widgets
 
-Sitemap: https://orchidfoss.github.io/sitemap.xml
+Sitemap: https://openorchid.github.io/sitemap.xml
